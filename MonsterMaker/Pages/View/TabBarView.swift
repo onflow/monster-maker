@@ -39,6 +39,8 @@ struct TabBarView: View {
             }
             .frame(height: 70)
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

@@ -23,6 +23,11 @@
 		1591D2A52910D7840001811D /* MainTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A42910D7840001811D /* MainTabPage.swift */; };
 		1591D2A72910DCC90001811D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A62910DCC90001811D /* TabBarView.swift */; };
 		1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A82910E4900001811D /* PrimaryButtonView.swift */; };
+		1591D2AB2910EB610001811D /* NFTListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AA2910EB610001811D /* NFTListPage.swift */; };
+		1591D2AD2910EB7B0001811D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AC2910EB7B0001811D /* HeaderView.swift */; };
+		1591D2AF2910ECF20001811D /* NFTLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AE2910ECF20001811D /* NFTLocalView.swift */; };
+		1591D2B22910EF180001811D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B12910EF180001811D /* Extension.swift */; };
+		1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B32910FA4C0001811D /* NFTGridCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		1591D2A42910D7840001811D /* MainTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPage.swift; sourceTree = "<group>"; };
 		1591D2A62910DCC90001811D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		1591D2A82910E4900001811D /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
+		1591D2AA2910EB610001811D /* NFTListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListPage.swift; sourceTree = "<group>"; };
+		1591D2AC2910EB7B0001811D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		1591D2AE2910ECF20001811D /* NFTLocalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTLocalView.swift; sourceTree = "<group>"; };
+		1591D2B12910EF180001811D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		1591D2B32910FA4C0001811D /* NFTGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTGridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +87,11 @@
 		1591D27D29109E960001811D /* MonsterMaker */ = {
 			isa = PBXGroup;
 			children = (
-				1591D29B2910CBBE0001811D /* Info.plist */,
+				1591D2B02910EF090001811D /* Util */,
+				1591D2A02910D16E0001811D /* Pages */,
 				1591D28D2910CB590001811D /* Resources */,
 				1591D27E29109E960001811D /* MonsterMakerApp.swift */,
-				1591D29C2910CD100001811D /* Style.swift */,
-				1591D28229109E970001811D /* Assets.xcassets */,
+				1591D29B2910CBBE0001811D /* Info.plist */,
 				1591D28429109E970001811D /* MonsterMaker.entitlements */,
 				1591D28529109E970001811D /* Preview Content */,
 			);
@@ -99,7 +109,7 @@
 		1591D28D2910CB590001811D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1591D2A02910D16E0001811D /* Page */,
+				1591D28229109E970001811D /* Assets.xcassets */,
 				1591D28E2910CB670001811D /* Font */,
 			);
 			path = Resources;
@@ -118,25 +128,38 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		1591D2A02910D16E0001811D /* Page */ = {
+		1591D2A02910D16E0001811D /* Pages */ = {
 			isa = PBXGroup;
 			children = (
 				1591D2A12910D1BC0001811D /* View */,
 				1591D29E2910D15B0001811D /* MakerPage.swift */,
 				1591D28029109E960001811D /* WelcomePage.swift */,
 				1591D2A42910D7840001811D /* MainTabPage.swift */,
+				1591D2AA2910EB610001811D /* NFTListPage.swift */,
 			);
-			path = Page;
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		1591D2A12910D1BC0001811D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1591D2A22910D1CE0001811D /* ComponentView.swift */,
+				1591D2AE2910ECF20001811D /* NFTLocalView.swift */,
 				1591D2A62910DCC90001811D /* TabBarView.swift */,
 				1591D2A82910E4900001811D /* PrimaryButtonView.swift */,
+				1591D2AC2910EB7B0001811D /* HeaderView.swift */,
+				1591D2B32910FA4C0001811D /* NFTGridCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1591D2B02910EF090001811D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1591D29C2910CD100001811D /* Style.swift */,
+				1591D2B12910EF180001811D /* Extension.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,8 +241,13 @@
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
 				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
+				1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */,
+				1591D2B22910EF180001811D /* Extension.swift in Sources */,
 				1591D29F2910D15B0001811D /* MakerPage.swift in Sources */,
 				1591D2A52910D7840001811D /* MainTabPage.swift in Sources */,
+				1591D2AD2910EB7B0001811D /* HeaderView.swift in Sources */,
+				1591D2AF2910ECF20001811D /* NFTLocalView.swift in Sources */,
+				1591D2AB2910EB610001811D /* NFTListPage.swift in Sources */,
 				1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */,
 				1591D29D2910CD100001811D /* Style.swift in Sources */,
 				1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */,

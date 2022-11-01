@@ -17,7 +17,7 @@ struct MainTabPage: View {
             TabView(selection: $selectedIndex) {
                 MakerPage()
                     .tag(0)
-                MakerPage()
+                NFTListPage()
                     .tag(1)
             }
         
