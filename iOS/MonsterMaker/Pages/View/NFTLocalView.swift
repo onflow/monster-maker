@@ -17,15 +17,18 @@ struct NFTLocalView: View {
     var data: NFTLocalData
     
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack {
             if let headImage = NFTLocalImage.headers[safe: data.headIndex] {
                 Image(headImage)
+                    .zIndex(1000)
             }
             if let torsoImage = NFTLocalImage.torso[safe: data.torsoIndex] {
                 Image(torsoImage)
+                    .zIndex(1001)
             }
             if let legImage = NFTLocalImage.legs[safe: data.legIndex] {
                 Image(legImage)
+                    .zIndex(999)
             }
         }
     }

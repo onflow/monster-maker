@@ -8,20 +8,6 @@
 import SwiftUI
 
 
-class NFTLocalImage {
-    static var headers: [String] = {
-        (1...5).compactMap { "head_\(String($0))"}
-    }()
-    
-    static var legs: [String] = {
-        (1...5).compactMap { "legs_\(String($0))"}
-    }()
-    
-    static var torso: [String] = {
-        (1...10).compactMap { "monster_torso_\(String($0))"}
-    }()
-}
-
 struct MakerPage: View {
     
     @State
@@ -34,10 +20,13 @@ struct MakerPage: View {
             
             VStack(spacing: 24) {
                 Spacer()
-                VStack(spacing: 0) {
-                    ComponentView(images: NFTLocalImage.headers)
-                    ComponentView(images: NFTLocalImage.torso)
-                    ComponentView(images: NFTLocalImage.legs)
+                ZStack {
+                    ComponentView(images: NFTLocalImage.headers, position: .head)
+                        .zIndex(1000)
+                    ComponentView(images: NFTLocalImage.torso, position: .torso)
+                        .zIndex(1001)
+                    ComponentView(images: NFTLocalImage.legs, position: .leg)
+                        .zIndex(999)
                 }
                 
                 Spacer()

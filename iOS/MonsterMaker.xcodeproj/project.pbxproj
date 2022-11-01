@@ -28,6 +28,7 @@
 		1591D2AF2910ECF20001811D /* NFTLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AE2910ECF20001811D /* NFTLocalView.swift */; };
 		1591D2B22910EF180001811D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B12910EF180001811D /* Extension.swift */; };
 		1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B32910FA4C0001811D /* NFTGridCell.swift */; };
+		1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B62911C2900001811D /* NFTLocalImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		1591D2AE2910ECF20001811D /* NFTLocalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTLocalView.swift; sourceTree = "<group>"; };
 		1591D2B12910EF180001811D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1591D2B32910FA4C0001811D /* NFTGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTGridCell.swift; sourceTree = "<group>"; };
+		1591D2B62911C2900001811D /* NFTLocalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTLocalImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		1591D2A02910D16E0001811D /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				1591D2B52911C27F0001811D /* Model */,
 				1591D2A12910D1BC0001811D /* View */,
 				1591D29E2910D15B0001811D /* MakerPage.swift */,
 				1591D28029109E960001811D /* WelcomePage.swift */,
@@ -160,6 +163,14 @@
 				1591D2B12910EF180001811D /* Extension.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		1591D2B52911C27F0001811D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1591D2B62911C2900001811D /* NFTLocalImage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 			files = (
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
+				1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */,
 				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
 				1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */,
 				1591D2B22910EF180001811D /* Extension.swift in Sources */,
