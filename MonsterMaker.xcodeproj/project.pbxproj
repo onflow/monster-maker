@@ -8,18 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D27E29109E960001811D /* MonsterMakerApp.swift */; };
-		1591D28129109E960001811D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D28029109E960001811D /* ContentView.swift */; };
+		1591D28129109E960001811D /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D28029109E960001811D /* WelcomePage.swift */; };
 		1591D28329109E970001811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1591D28229109E970001811D /* Assets.xcassets */; };
 		1591D28729109E970001811D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1591D28629109E970001811D /* Preview Assets.xcassets */; };
+		1591D2952910CB8F0001811D /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1591D28F2910CB8F0001811D /* Montserrat-SemiBold.ttf */; };
+		1591D2962910CB8F0001811D /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1591D2902910CB8F0001811D /* Montserrat-Regular.ttf */; };
+		1591D2972910CB8F0001811D /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1591D2912910CB8F0001811D /* Montserrat-Bold.ttf */; };
+		1591D2982910CB8F0001811D /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1591D2922910CB8F0001811D /* Montserrat-Light.ttf */; };
+		1591D2992910CB8F0001811D /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1591D2932910CB8F0001811D /* Montserrat-Black.ttf */; };
+		1591D29A2910CB8F0001811D /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1591D2942910CB8F0001811D /* Montserrat-Thin.ttf */; };
+		1591D29D2910CD100001811D /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D29C2910CD100001811D /* Style.swift */; };
+		1591D29F2910D15B0001811D /* MakerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D29E2910D15B0001811D /* MakerPage.swift */; };
+		1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A22910D1CE0001811D /* ComponentView.swift */; };
+		1591D2A52910D7840001811D /* MainTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A42910D7840001811D /* MainTabPage.swift */; };
+		1591D2A72910DCC90001811D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A62910DCC90001811D /* TabBarView.swift */; };
+		1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A82910E4900001811D /* PrimaryButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1591D27E29109E960001811D /* MonsterMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMakerApp.swift; sourceTree = "<group>"; };
-		1591D28029109E960001811D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1591D28029109E960001811D /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 		1591D28229109E970001811D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1591D28429109E970001811D /* MonsterMaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonsterMaker.entitlements; sourceTree = "<group>"; };
 		1591D28629109E970001811D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1591D28F2910CB8F0001811D /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		1591D2902910CB8F0001811D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		1591D2912910CB8F0001811D /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		1591D2922910CB8F0001811D /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		1591D2932910CB8F0001811D /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		1591D2942910CB8F0001811D /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		1591D29B2910CBBE0001811D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1591D29C2910CD100001811D /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		1591D29E2910D15B0001811D /* MakerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerPage.swift; sourceTree = "<group>"; };
+		1591D2A22910D1CE0001811D /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		1591D2A42910D7840001811D /* MainTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPage.swift; sourceTree = "<group>"; };
+		1591D2A62910DCC90001811D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		1591D2A82910E4900001811D /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +77,10 @@
 		1591D27D29109E960001811D /* MonsterMaker */ = {
 			isa = PBXGroup;
 			children = (
+				1591D29B2910CBBE0001811D /* Info.plist */,
+				1591D28D2910CB590001811D /* Resources */,
 				1591D27E29109E960001811D /* MonsterMakerApp.swift */,
-				1591D28029109E960001811D /* ContentView.swift */,
+				1591D29C2910CD100001811D /* Style.swift */,
 				1591D28229109E970001811D /* Assets.xcassets */,
 				1591D28429109E970001811D /* MonsterMaker.entitlements */,
 				1591D28529109E970001811D /* Preview Content */,
@@ -67,6 +94,49 @@
 				1591D28629109E970001811D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1591D28D2910CB590001811D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1591D2A02910D16E0001811D /* Page */,
+				1591D28E2910CB670001811D /* Font */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1591D28E2910CB670001811D /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1591D2932910CB8F0001811D /* Montserrat-Black.ttf */,
+				1591D2912910CB8F0001811D /* Montserrat-Bold.ttf */,
+				1591D2922910CB8F0001811D /* Montserrat-Light.ttf */,
+				1591D2902910CB8F0001811D /* Montserrat-Regular.ttf */,
+				1591D28F2910CB8F0001811D /* Montserrat-SemiBold.ttf */,
+				1591D2942910CB8F0001811D /* Montserrat-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		1591D2A02910D16E0001811D /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				1591D2A12910D1BC0001811D /* View */,
+				1591D29E2910D15B0001811D /* MakerPage.swift */,
+				1591D28029109E960001811D /* WelcomePage.swift */,
+				1591D2A42910D7840001811D /* MainTabPage.swift */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
+		1591D2A12910D1BC0001811D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1591D2A22910D1CE0001811D /* ComponentView.swift */,
+				1591D2A62910DCC90001811D /* TabBarView.swift */,
+				1591D2A82910E4900001811D /* PrimaryButtonView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +197,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1591D2982910CB8F0001811D /* Montserrat-Light.ttf in Resources */,
+				1591D2992910CB8F0001811D /* Montserrat-Black.ttf in Resources */,
+				1591D2972910CB8F0001811D /* Montserrat-Bold.ttf in Resources */,
+				1591D2962910CB8F0001811D /* Montserrat-Regular.ttf in Resources */,
+				1591D2952910CB8F0001811D /* Montserrat-SemiBold.ttf in Resources */,
 				1591D28729109E970001811D /* Preview Assets.xcassets in Resources */,
+				1591D29A2910CB8F0001811D /* Montserrat-Thin.ttf in Resources */,
 				1591D28329109E970001811D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +215,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1591D28129109E960001811D /* ContentView.swift in Sources */,
+				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
+				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
+				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
+				1591D29F2910D15B0001811D /* MakerPage.swift in Sources */,
+				1591D2A52910D7840001811D /* MainTabPage.swift in Sources */,
+				1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */,
+				1591D29D2910CD100001811D /* Style.swift in Sources */,
 				1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +279,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,6 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -269,6 +353,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MonsterMaker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -277,9 +363,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -287,10 +372,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dapperlabs.MonsterMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,6 +394,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MonsterMaker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -315,9 +404,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -325,10 +413,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dapperlabs.MonsterMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

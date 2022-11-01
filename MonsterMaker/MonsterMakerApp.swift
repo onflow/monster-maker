@@ -11,7 +11,7 @@ import SwiftUI
 struct MonsterMakerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomePage()
         }
     }
 }
