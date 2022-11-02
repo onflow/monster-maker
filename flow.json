@@ -12,13 +12,7 @@
 	  "port": 8701
 	},
 	"contracts": {
-	  "KittyItems": "./cadence/contracts/KittyItems.cdc",
-	  "NFTStorefrontV2": {
-		"source": "./cadence/contracts/NFTStorefrontV2.cdc",
-		"aliases": {
-		  "testnet": "0x2d55b98eb200daef"
-		}
-	  },
+	  "MonsterMaker": "./cadence/contracts/MonsterMaker.cdc",
 	  "NonFungibleToken": {
 		"source": "./cadence/contracts/NonFungibleToken.cdc",
 		"aliases": {
@@ -60,7 +54,7 @@
 	},
 	"deployments": {
 	  "emulator": {
-		"emulator-account": ["KittyItems", "NFTStorefrontV2", "NonFungibleToken", "MetadataViews"]
+		"emulator-account": ["MonsterMaker", "NonFungibleToken", "MetadataViews"]
 	  }
 	}
   }

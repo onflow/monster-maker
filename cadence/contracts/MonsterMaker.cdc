@@ -36,13 +36,12 @@ pub contract MonsterMaker: NonFungibleToken {
     }
 
     pub fun componentToString(_ component: MonsterComponent): String {
-        return "b"
-        .concat(component.background.toString())
-        .concat("h")
+        return component.background.toString()
+        .concat("-")
         .concat(component.head.toString())
-        .concat("t")
+        .concat("-")
         .concat(component.torso.toString())
-        .concat("l")
+        .concat("-")
         .concat(component.legs.toString())
     }
 
