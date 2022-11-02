@@ -8,12 +8,26 @@
 import Foundation
 
 enum NFTComponent {
+    case background
+    case leg
     case head
     case torso
-    case leg
 }
 
+struct NFTLocalData {
+    var backgroundIndex: Int
+    var headIndex: Int
+    var torsoIndex: Int
+    var legIndex: Int
+}
+
+
 class NFTLocalImage {
+    
+    static var backgrounds: [String] = {
+        (1...10).compactMap { "bg_\(String($0))"}
+    }()
+    
     static var headers: [String] = {
         (1...5).compactMap { "monster_head_\(String($0))"}
     }()

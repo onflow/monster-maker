@@ -7,36 +7,47 @@
 
 import SwiftUI
 
-struct NFTLocalData {
-    var headIndex: Int
-    var torsoIndex: Int
-    var legIndex: Int
-}
 
 struct NFTLocalView: View {
     var data: NFTLocalData
     
     var body: some View {
         ZStack {
+            
+            if let backgroundImage = NFTLocalImage.backgrounds[safe: data.backgroundIndex] {
+                Image(backgroundImage)
+                    .resizable()
+                    .scaledToFit()
+                    .zIndex(998)
+            }
+            
             if let headImage = NFTLocalImage.headers[safe: data.headIndex] {
                 Image(headImage)
+                    .resizable()
+                    .scaledToFit()
                     .zIndex(1000)
             }
             if let torsoImage = NFTLocalImage.torso[safe: data.torsoIndex] {
                 Image(torsoImage)
+                    .resizable()
+                    .scaledToFit()
                     .zIndex(1001)
             }
             if let legImage = NFTLocalImage.legs[safe: data.legIndex] {
                 Image(legImage)
+                    .resizable()
+                    .scaledToFit()
                     .zIndex(999)
             }
         }
+//        .background(Color.random)
     }
 }
 
 struct NFTLocalView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTLocalView(data: .init(headIndex: 0,
+        NFTLocalView(data: .init(backgroundIndex: 0,
+                                 headIndex: 0,
                                  torsoIndex: 0,
                                  legIndex: 0))
     }

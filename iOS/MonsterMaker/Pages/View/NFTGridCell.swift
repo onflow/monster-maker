@@ -35,9 +35,7 @@ struct NFTGridCell: View {
 //            }
             
             NFTLocalView(data: data)
-                .scaledToFit()
-                .padding()
-                .background(Color.MM.grey)
+//                .background(Color.MM.grey)
                 .cornerRadius(12)
             
             Text("NFT \(data.headIndex)\(data.torsoIndex)\(data.legIndex)")
@@ -50,6 +48,6 @@ struct NFTGridCell: View {
 
 struct NFTGridCell_Previews: PreviewProvider {
     static var previews: some View {
-        NFTGridCell(data: .init(headIndex: 0, torsoIndex: 0, legIndex: 0))
+        NFTGridCell(data: .init(backgroundIndex: 0, headIndex: 0, torsoIndex: 0, legIndex: 0))
     }
 }

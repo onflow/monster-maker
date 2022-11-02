@@ -23,3 +23,12 @@ extension Font {
         static let title = Font.custom("Montserrat", size: 32, relativeTo: .title).weight(.bold)
     }
 }
+
+// Padding
+extension CGFloat {
+    class MM  {
+        static let standard: CGFloat = 12
+        static let double: CGFloat = 24
+        static let large: CGFloat = 48
+    }
+}

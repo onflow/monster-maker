@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-
-
 struct NFTListPage: View {
     
     let data = (1...20).map { "Item \($0)" }
     
+    static let spacing: CGFloat = 10
+    
+    static let width: CGFloat = (UIScreen.main.bounds.width - 3 * NFTListPage.spacing)/2
+    
     let columns = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
+        GridItem(.fixed(NFTListPage.width), spacing: 10),
+        GridItem(.fixed(NFTListPage.width), spacing: 10),
     ]
     
     func randonIndex(_ list: [Any]) -> Int {
@@ -28,9 +30,11 @@ struct NFTListPage: View {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                     ForEach(1..<20) { index in
-                        NFTGridCell(data: .init(headIndex: randonIndex(NFTLocalImage.headers),
+                        NFTGridCell(data: .init(backgroundIndex: randonIndex(NFTLocalImage.backgrounds),
+                                                headIndex: randonIndex(NFTLocalImage.headers),
                                                 torsoIndex: randonIndex(NFTLocalImage.torso),
                                                 legIndex: randonIndex(NFTLocalImage.legs)))
+                        .frame(width: NFTListPage.width, height: NFTListPage.width + 20)
                     }
                 }
                 .padding(.horizontal, 10)

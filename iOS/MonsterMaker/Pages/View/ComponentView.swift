@@ -16,32 +16,39 @@ struct ComponentView: View {
     
     var position: NFTComponent = .head
     
-    let width = UIScreen.main.bounds.width/2.5
+    let screenWidth = UIScreen.main.bounds.width
+    let width = UIScreen.main.bounds.width
     
     let defaultOffset: CGFloat = (UIScreen.main.bounds.width/5)
     
     var offset: CGFloat {
         switch position {
         case .leg:
-            return defaultOffset * 1.2
+            return defaultOffset * 1.5
         case .torso:
             return defaultOffset * 0.5
         case .head:
-            return defaultOffset * -0.5
+            return defaultOffset * -1
+        case .background:
+            return defaultOffset * -2
         }
+    }
+    
+    var isBackground: Bool {
+        position == .background
     }
     
     var body: some View {
         
         ZStack {
             Image(images[currentIndex])
-                .frame(width: width)
-            
-//            VStack(spacing: 0) {
-//            }
+                .resizable()
+                .scaledToFit()
+                .frame(width: isBackground ? screenWidth : width)
+                .aspectRatio(1, contentMode: .fill)
+                .allowsHitTesting(false)
             
             HStack {
-//                Spacer()
                 Button {
                     if currentIndex == 0 {
                         return
@@ -53,7 +60,8 @@ struct ComponentView: View {
                         .font(.system(size: 50))
                 }
                 
-                Spacer(minLength: width)
+                Spacer(minLength: width/2.5)
+                
                 
                 Button {
                     if currentIndex == images.count - 1 {
@@ -66,16 +74,14 @@ struct ComponentView: View {
                         .foregroundColor(.MM.grey)
                         .font(.system(size: 50))
                 }
-                
-//                Spacer()
             }
             .offset(x: 0, y: offset)
-            
+            .padding(.horizontal, isBackground ? 0 : 48)
         }
         .frame(maxWidth: .infinity)
     }
     
-    init(images: [String], position: NFTComponent = .head) {
+    init(images: [String], position: NFTComponent) {
         currentIndex = Int.random(in: 0..<images.count)
         self.images = images
         self.position = position
@@ -86,9 +92,10 @@ struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
         
         ZStack {
-            ComponentView(images: NFTLocalImage.headers)
-            ComponentView(images: NFTLocalImage.torso, position: .torso)
+            ComponentView(images: NFTLocalImage.backgrounds, position: .background)
+            ComponentView(images: NFTLocalImage.headers, position: .head)
             ComponentView(images: NFTLocalImage.legs, position: .leg)
+            ComponentView(images: NFTLocalImage.torso, position: .torso)
         }
         .previewLayout(.sizeThatFits)
     }
