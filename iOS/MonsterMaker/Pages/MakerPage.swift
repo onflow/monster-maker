@@ -16,7 +16,7 @@ struct MakerPage: View {
     var color: Color = Color.random
     
     var body: some View {
-        VStack {
+        VStack(spacing: .MM.zero) {
             
             HeaderView(title: "Monster Maker")
             
@@ -40,9 +40,10 @@ struct MakerPage: View {
                 Spacer()
                 
                 VStack(spacing: .MM.double) {
+                     
                     TextField("Name", text: $name)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 12)
+                        .padding(.vertical, .MM.standard)
                         .overlay {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .stroke(Color.MM.dark, lineWidth: 5)
@@ -50,9 +51,10 @@ struct MakerPage: View {
                         .tint(Color.MM.dark)
                         .foregroundColor(Color.MM.dark)
                         .font(.title.weight(.semibold))
+                        .frame(minHeight: .MM.xlarge)
                     
                     PrimaryButtonView(title: "Mint") {
-                        
+                        // TODO Mint
                     }
                     
                 }

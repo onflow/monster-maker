@@ -17,13 +17,14 @@ struct PrimaryButtonView: View {
             action()
         }
         .font(.custom("Montserrat", size: 32).weight(.bold))
-        .padding(.horizontal, 24)
-        .padding(.vertical, 12)
+        .padding(.horizontal, .MM.double)
+        .padding(.vertical, .MM.standard)
         .frame(maxWidth: .infinity, alignment: .center)
         .background(Color.MM.dark)
         .foregroundColor(.MM.white)
-        .cornerRadius(8)
+        .cornerRadius(.MM.medium)
         .textCase(.uppercase)
+        .frame(minHeight: .MM.xlarge)
     }
 }
 
