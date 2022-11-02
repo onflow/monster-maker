@@ -13,7 +13,6 @@ struct NFTLocalView: View {
     
     var body: some View {
         ZStack {
-            
             if let backgroundImage = NFTLocalImage.backgrounds[safe: data.backgroundIndex] {
                 Image(backgroundImage)
                     .resizable()
@@ -40,7 +39,6 @@ struct NFTLocalView: View {
                     .zIndex(999)
             }
         }
-//        .background(Color.random)
     }
 }
 

@@ -21,7 +21,6 @@ struct MakerPage: View {
             HeaderView(title: "Monster Maker")
             
             VStack(spacing: .MM.double) {
-                Spacer()
                 ZStack {
                     
                     ComponentView(images: NFTLocalImage.backgrounds, position: .background)
@@ -35,7 +34,7 @@ struct MakerPage: View {
                         .zIndex(999)
                 }
                 .frame(maxWidth: .infinity)
-//                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                 .padding(.horizontal, .MM.standard)
                 
                 Spacer()

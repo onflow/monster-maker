@@ -14,28 +14,7 @@ struct NFTGridCell: View {
     var body: some View {
         VStack(alignment: .center) {
             
-//            if #available(iOS 16.0, *) {
-//                let renderer = ImageRenderer(content: NFTLocalView(data: data))
-//                if let image = renderer.uiImage {
-//                    Image(uiImage: image)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .padding()
-//                        .background(Color.MM.grey)
-//                        .cornerRadius(12)
-//                }
-//            } else {
-//                let image = NFTLocalView(data: data).snapshot()
-//                Image(uiImage: image)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .padding()
-//                    .background(Color.MM.grey)
-//                    .cornerRadius(12)
-//            }
-            
             NFTLocalView(data: data)
-//                .background(Color.MM.grey)
                 .cornerRadius(12)
             
             Text("NFT \(data.headIndex)\(data.torsoIndex)\(data.legIndex)")

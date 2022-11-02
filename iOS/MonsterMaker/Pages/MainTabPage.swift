@@ -26,8 +26,6 @@ struct MainTabPage: View {
                 .init(systemImage: "square.grid.2x2.fill")
             ],
                        selectedIndex: $selectedIndex)
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .ignoresSafeArea()
         }
     }
 }
