@@ -6,12 +6,51 @@
 //
 
 import SwiftUI
+import Combine
+import FCL
 
 @main
 struct MonsterMakerApp: App {
+    
+    @StateObject
+    var vm = MMViewModel()
+    
+    init () {
+        FlowClient.setup()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            WelcomePage()
+            if vm.isLogin {
+                MainTabPage()
+            } else {
+                WelcomePage()
+            }
         }
+    }
+}
+
+
+class MMViewModel: ObservableObject {
+    @Published
+    var isLogin: Bool = false
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        fcl.$currentUser.sink { [weak self] user in
+            if let user = user {
+                print("<==== Current User =====>")
+                print(user)
+                DispatchQueue.main.async {
+                    self?.isLogin = true
+                }
+            } else {
+                print("<==== No User =====>")
+                DispatchQueue.main.async {
+                    self?.isLogin = false
+                }
+            }
+        }.store(in: &cancellables)
     }
 }

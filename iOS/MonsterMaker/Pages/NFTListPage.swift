@@ -25,20 +25,28 @@ struct NFTListPage: View {
     }
     
     var body: some View {
-        VStack {
-            HeaderView(title: "My Monster")
-            ScrollView {
-                LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                    ForEach(1..<20) { index in
-                        NFTGridCell(data: .init(backgroundIndex: randonIndex(NFTLocalImage.backgrounds),
-                                                headIndex: randonIndex(NFTLocalImage.headers),
-                                                torsoIndex: randonIndex(NFTLocalImage.torso),
-                                                legIndex: randonIndex(NFTLocalImage.legs)))
-                        .frame(width: NFTListPage.width, height: NFTListPage.width + 20)
+        NavigationView {
+            VStack {
+                HeaderView(title: "My Monster")
+                ScrollView {
+                    LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+                        ForEach(1..<20) { index in
+                            let data: NFTLocalData = .init(backgroundIndex: randonIndex(NFTLocalImage.backgrounds),
+                                                           headIndex: randonIndex(NFTLocalImage.headers),
+                                                           torsoIndex: randonIndex(NFTLocalImage.torso),
+                                                           legIndex: randonIndex(NFTLocalImage.legs))
+                            
+                            NavigationLink {
+                                NFTDetailView(data: data)
+                            } label: {
+                                NFTGridCell(data: data)
+                                    .frame(width: NFTListPage.width, height: NFTListPage.width + 20)
+                            }
+                        }
                     }
-                }
-                .padding(.horizontal, 10)
-            }.background(Color.MM.background)
+                    .padding(.horizontal, 10)
+                }.background(Color.MM.background)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.MM.background)

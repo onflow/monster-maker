@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1588EB2F29131FC50069EAC4 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1588EB2E29131FC50069EAC4 /* FCL */; };
+		1588EB32291320390069EAC4 /* FlowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowClient.swift */; };
+		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
 		1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D27E29109E960001811D /* MonsterMakerApp.swift */; };
 		1591D28129109E960001811D /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D28029109E960001811D /* WelcomePage.swift */; };
 		1591D28329109E970001811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1591D28229109E970001811D /* Assets.xcassets */; };
@@ -32,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1588EB31291320390069EAC4 /* FlowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowClient.swift; sourceTree = "<group>"; };
+		1588EB332913327C0069EAC4 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1591D27E29109E960001811D /* MonsterMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMakerApp.swift; sourceTree = "<group>"; };
 		1591D28029109E960001811D /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
@@ -64,12 +69,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1588EB2F29131FC50069EAC4 /* FCL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1588EB302913201E0069EAC4 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				1588EB31291320390069EAC4 /* FlowClient.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		1591D27229109E960001811D = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +103,7 @@
 		1591D27D29109E960001811D /* MonsterMaker */ = {
 			isa = PBXGroup;
 			children = (
+				1588EB302913201E0069EAC4 /* Flow */,
 				1591D2B02910EF090001811D /* Util */,
 				1591D2A02910D16E0001811D /* Pages */,
 				1591D28D2910CB590001811D /* Resources */,
@@ -139,6 +154,7 @@
 				1591D28029109E960001811D /* WelcomePage.swift */,
 				1591D2A42910D7840001811D /* MainTabPage.swift */,
 				1591D2AA2910EB610001811D /* NFTListPage.swift */,
+				1588EB332913327C0069EAC4 /* NFTDetailView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -189,6 +205,9 @@
 			dependencies = (
 			);
 			name = MonsterMaker;
+			packageProductDependencies = (
+				1588EB2E29131FC50069EAC4 /* FCL */,
+			);
 			productName = MonsterMaker;
 			productReference = 1591D27B29109E960001811D /* MonsterMaker.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +236,9 @@
 				Base,
 			);
 			mainGroup = 1591D27229109E960001811D;
+			packageReferences = (
+				1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */,
+			);
 			productRefGroup = 1591D27C29109E960001811D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -249,9 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1588EB32291320390069EAC4 /* FlowClient.swift in Sources */,
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
 				1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */,
+				1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */,
 				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
 				1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */,
 				1591D2B22910EF180001811D /* Extension.swift in Sources */,
@@ -484,6 +508,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Outblock/fcl-swift";
+			requirement = {
+				kind = revision;
+				revision = 1c279c80b6e37bf2ece2312677581d81197c1d86;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1588EB2E29131FC50069EAC4 /* FCL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */;
+			productName = FCL;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1591D27329109E960001811D /* Project object */;
 }

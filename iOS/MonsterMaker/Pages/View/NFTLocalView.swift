@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-
 struct NFTLocalView: View {
     var data: NFTLocalData
+    
+    @State
+    var appear = false
     
     var body: some View {
         ZStack {
@@ -25,6 +27,11 @@ struct NFTLocalView: View {
                     .resizable()
                     .scaledToFit()
                     .zIndex(1000)
+                    .offset(x:0, y: appear ? 2 : 0)
+                    .animation(Animation.linear(duration: 0.5).repeatForever(autoreverses: true), value: appear)
+                    .onAppear {
+                        appear.toggle()
+                    }
             }
             if let torsoImage = NFTLocalImage.torso[safe: data.torsoIndex] {
                 Image(torsoImage)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FCL
 
 struct HeaderView: View {
     
@@ -13,13 +14,29 @@ struct HeaderView: View {
     
     var body: some View {
         HStack {
-            Text(title)
+            Text( fcl.currentUser?.addr.hex ?? title)
                 .font(.MM.body)
                 .fontWeight(.semibold)
                 .foregroundColor(.MM.dark)
                 .textCase(.uppercase)
+                .padding(.vertical, 10)
+            
+            
+//            Spacer()
+//
+//            if let _ = fcl.currentUser?.addr.hex {
+//                Button {
+//                    //
+//                } label: {
+//                    Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+//                        .foregroundColor(.MM.dark)
+//                        .font(.largeTitle)
+//                }
+//            }
+            
         }
         .frame(maxWidth: .infinity)
+//        .frame(height: .MM.large)
         .padding(.bottom, 12)
         .background(Color.MM.grey)
     }
