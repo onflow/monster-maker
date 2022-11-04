@@ -19,10 +19,7 @@ struct NFTListPage: View {
         GridItem(.fixed(NFTListPage.width), spacing: 10),
         GridItem(.fixed(NFTListPage.width), spacing: 10),
     ]
-    
-    func randonIndex(_ list: [Any]) -> Int {
-        Int.random(in: 0..<list.count)
-    }
+
     
     var body: some View {
         NavigationView {
@@ -31,10 +28,10 @@ struct NFTListPage: View {
                 ScrollView {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                         ForEach(1..<20) { index in
-                            let data: NFTLocalData = .init(backgroundIndex: randonIndex(NFTLocalImage.backgrounds),
-                                                           headIndex: randonIndex(NFTLocalImage.headers),
-                                                           torsoIndex: randonIndex(NFTLocalImage.torso),
-                                                           legIndex: randonIndex(NFTLocalImage.legs))
+                            let data: NFTLocalData = .init(background: NFTLocalImage.backgrounds.randomIndex,
+                                                           head: NFTLocalImage.headers.randomIndex,
+                                                           torso: NFTLocalImage.torso.randomIndex,
+                                                           legs: NFTLocalImage.legs.randomIndex)
                             
                             NavigationLink {
                                 NFTDetailView(data: data)

@@ -9,18 +9,17 @@ import Foundation
 
 enum NFTComponent {
     case background
-    case leg
+    case legs
     case head
     case torso
 }
 
-struct NFTLocalData {
-    var backgroundIndex: Int
-    var headIndex: Int
-    var torsoIndex: Int
-    var legIndex: Int
+struct NFTLocalData: Codable {
+    var background: Int
+    var head: Int
+    var torso: Int
+    var legs: Int
 }
-
 
 class NFTLocalImage {
     

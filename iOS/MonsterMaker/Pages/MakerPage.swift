@@ -7,8 +7,25 @@
 
 import SwiftUI
 
+extension MakerPage {
+    struct ViewState {
+        var name: String = ""
+        var components: NFTLocalData = .init(background: NFTLocalImage.backgrounds.randomIndex,
+                                             head: NFTLocalImage.headers.randomIndex,
+                                             torso: NFTLocalImage.torso.randomIndex,
+                                             legs: NFTLocalImage.legs.randomIndex)
+    }
+
+    enum Action {
+        case mint
+    }
+}
+
 
 struct MakerPage: View {
+    
+    @StateObject
+    var viewModel = MakerViewModel()
     
     @State
     var name: String = ""
@@ -23,14 +40,22 @@ struct MakerPage: View {
             VStack(spacing: .MM.double) {
                 ZStack {
                     
-                    ComponentView(images: NFTLocalImage.backgrounds, position: .background)
+                    ComponentView(images: NFTLocalImage.backgrounds,
+                                  currentIndex: viewModel.state.components.background,
+                                  position: .background)
                         .zIndex(998)
                     
-                    ComponentView(images: NFTLocalImage.headers, position: .head)
+                    ComponentView(images: NFTLocalImage.headers,
+                                  currentIndex: viewModel.state.components.head,
+                                  position: .head)
                         .zIndex(1000)
-                    ComponentView(images: NFTLocalImage.torso, position: .torso)
+                    ComponentView(images: NFTLocalImage.torso,
+                                  currentIndex: viewModel.state.components.torso,
+                                  position: .torso)
                         .zIndex(1001)
-                    ComponentView(images: NFTLocalImage.legs, position: .leg)
+                    ComponentView(images: NFTLocalImage.legs,
+                                  currentIndex: viewModel.state.components.legs,
+                                  position: .legs)
                         .zIndex(999)
                 }
                 .frame(maxWidth: .infinity)
@@ -54,7 +79,7 @@ struct MakerPage: View {
                         .frame(minHeight: .MM.xlarge)
                     
                     PrimaryButtonView(title: "Mint") {
-                        // TODO Mint
+                        viewModel.trigger(.mint)
                     }
                     
                 }

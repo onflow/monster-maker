@@ -27,7 +27,7 @@ struct NFTDetailView: View {
             
             NFTLocalView(data: data)
             
-            Text("NFT \(data.headIndex)\(data.torsoIndex)\(data.legIndex)")
+            Text("NFT \(data.head)\(data.torso)\(data.legs)")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
             
@@ -43,9 +43,9 @@ struct NFTDetailView: View {
 
 struct NFTDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTDetailView(data: .init(backgroundIndex: 0,
-                                  headIndex: 0,
-                                  torsoIndex: 0,
-                                  legIndex: 0))
+        NFTDetailView(data: .init(background: 0,
+                                  head: 0,
+                                  torso: 0,
+                                  legs: 0))
     }
 }

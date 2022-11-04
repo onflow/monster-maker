@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1525E940291578CF00F7C63A /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1525E93F291578CF00F7C63A /* Moya */; };
+		1525E943291578EC00F7C63A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E942291578EC00F7C63A /* Network.swift */; };
+		1525E945291579C700F7C63A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E944291579C700F7C63A /* Endpoint.swift */; };
+		1525E94729157A8900F7C63A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94629157A8900F7C63A /* Request.swift */; };
+		1525E94A29157B8500F7C63A /* MakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94929157B8500F7C63A /* MakerViewModel.swift */; };
+		1525E94C29157BB900F7C63A /* AnyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94B29157BB900F7C63A /* AnyViewModel.swift */; };
+		1525E94E29157E8100F7C63A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94D29157E8100F7C63A /* Response.swift */; };
 		1588EB2F29131FC50069EAC4 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1588EB2E29131FC50069EAC4 /* FCL */; };
 		1588EB32291320390069EAC4 /* FlowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowClient.swift */; };
 		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
@@ -35,6 +42,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1525E942291578EC00F7C63A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		1525E944291579C700F7C63A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1525E94629157A8900F7C63A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1525E94929157B8500F7C63A /* MakerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerViewModel.swift; sourceTree = "<group>"; };
+		1525E94B29157BB900F7C63A /* AnyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModel.swift; sourceTree = "<group>"; };
+		1525E94D29157E8100F7C63A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		1588EB31291320390069EAC4 /* FlowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowClient.swift; sourceTree = "<group>"; };
 		1588EB332913327C0069EAC4 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1525E940291578CF00F7C63A /* Moya in Frameworks */,
 				1588EB2F29131FC50069EAC4 /* FCL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +90,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1525E941291578E100F7C63A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1525E942291578EC00F7C63A /* Network.swift */,
+				1525E944291579C700F7C63A /* Endpoint.swift */,
+				1525E94629157A8900F7C63A /* Request.swift */,
+				1525E94D29157E8100F7C63A /* Response.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1525E94829157B7600F7C63A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1525E94929157B8500F7C63A /* MakerViewModel.swift */,
+				1525E94B29157BB900F7C63A /* AnyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1588EB302913201E0069EAC4 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +137,7 @@
 		1591D27D29109E960001811D /* MonsterMaker */ = {
 			isa = PBXGroup;
 			children = (
+				1525E941291578E100F7C63A /* Network */,
 				1588EB302913201E0069EAC4 /* Flow */,
 				1591D2B02910EF090001811D /* Util */,
 				1591D2A02910D16E0001811D /* Pages */,
@@ -148,6 +183,7 @@
 		1591D2A02910D16E0001811D /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				1525E94829157B7600F7C63A /* ViewModel */,
 				1591D2B52911C27F0001811D /* Model */,
 				1591D2A12910D1BC0001811D /* View */,
 				1591D29E2910D15B0001811D /* MakerPage.swift */,
@@ -207,6 +243,7 @@
 			name = MonsterMaker;
 			packageProductDependencies = (
 				1588EB2E29131FC50069EAC4 /* FCL */,
+				1525E93F291578CF00F7C63A /* Moya */,
 			);
 			productName = MonsterMaker;
 			productReference = 1591D27B29109E960001811D /* MonsterMaker.app */;
@@ -238,6 +275,7 @@
 			mainGroup = 1591D27229109E960001811D;
 			packageReferences = (
 				1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */,
+				1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 1591D27C29109E960001811D /* Products */;
 			projectDirPath = "";
@@ -274,6 +312,7 @@
 				1588EB32291320390069EAC4 /* FlowClient.swift in Sources */,
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
+				1525E94A29157B8500F7C63A /* MakerViewModel.swift in Sources */,
 				1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */,
 				1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */,
 				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
@@ -281,9 +320,14 @@
 				1591D2B22910EF180001811D /* Extension.swift in Sources */,
 				1591D29F2910D15B0001811D /* MakerPage.swift in Sources */,
 				1591D2A52910D7840001811D /* MainTabPage.swift in Sources */,
+				1525E94729157A8900F7C63A /* Request.swift in Sources */,
+				1525E945291579C700F7C63A /* Endpoint.swift in Sources */,
+				1525E943291578EC00F7C63A /* Network.swift in Sources */,
+				1525E94C29157BB900F7C63A /* AnyViewModel.swift in Sources */,
 				1591D2AD2910EB7B0001811D /* HeaderView.swift in Sources */,
 				1591D2AF2910ECF20001811D /* NFTLocalView.swift in Sources */,
 				1591D2AB2910EB610001811D /* NFTListPage.swift in Sources */,
+				1525E94E29157E8100F7C63A /* Response.swift in Sources */,
 				1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */,
 				1591D29D2910CD100001811D /* Style.swift in Sources */,
 				1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */,
@@ -510,6 +554,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
@@ -521,6 +573,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1525E93F291578CF00F7C63A /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
 		1588EB2E29131FC50069EAC4 /* FCL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */;

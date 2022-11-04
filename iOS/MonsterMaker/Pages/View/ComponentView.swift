@@ -23,7 +23,7 @@ struct ComponentView: View {
     
     var offset: CGFloat {
         switch position {
-        case .leg:
+        case .legs:
             return defaultOffset * 1.5
         case .torso:
             return defaultOffset * 0.5
@@ -80,21 +80,15 @@ struct ComponentView: View {
         }
         .frame(maxWidth: .infinity)
     }
-    
-    init(images: [String], position: NFTComponent) {
-        currentIndex = Int.random(in: 0..<images.count)
-        self.images = images
-        self.position = position
-    }
 }
 
 struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        
+    
         ZStack {
             ComponentView(images: NFTLocalImage.backgrounds, position: .background)
             ComponentView(images: NFTLocalImage.headers, position: .head)
-            ComponentView(images: NFTLocalImage.legs, position: .leg)
+            ComponentView(images: NFTLocalImage.legs, position: .legs)
             ComponentView(images: NFTLocalImage.torso, position: .torso)
         }
         .previewLayout(.sizeThatFits)

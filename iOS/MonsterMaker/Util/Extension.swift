@@ -16,6 +16,10 @@ extension Collection {
         }
         return indices.contains(correctIndex) ? self[correctIndex] : nil
     }
+    
+    var randomIndex: Int {
+        Int.random(in: 0..<count)
+    }
 }
 
 extension View {
@@ -42,3 +46,4 @@ extension Color {
                      blue: .random(in: 0...1))
     }
 }
+
