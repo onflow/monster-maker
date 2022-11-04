@@ -138,7 +138,7 @@ pub contract MonsterMaker: NonFungibleToken {
                         self.id
                     )
                 case Type<MetadataViews.ExternalURL>():
-                    return MetadataViews.ExternalURL("https://kitty-items.flow.com/".concat(self.id.toString()))
+                    return MetadataViews.ExternalURL("https://monster-maker.vercel.app/".concat(self.id.toString()))
                 case Type<MetadataViews.NFTCollectionData>():
                     return MetadataViews.NFTCollectionData(
                         storagePath: MonsterMaker.CollectionStoragePath,
@@ -161,12 +161,10 @@ pub contract MonsterMaker: NonFungibleToken {
                     return MetadataViews.NFTCollectionDisplay(
                         name: "The MonsterMaker Collection",
                         description: "This collection is used as an example to help you develop your next Flow NFT.",
-                        externalURL: MetadataViews.ExternalURL("https://kitty-items.flow.com/"),
+                        externalURL: MetadataViews.ExternalURL("https://monster-maker.vercel.app/"),
                         squareImage: media,
                         bannerImage: media,
-                        socials: {
-                            "twitter": MetadataViews.ExternalURL("https://twitter.com/flow_blockchain")
-                        }
+                        socials: {}
                     )
                 case Type<MetadataViews.Traits>():
                     // exclude mintedTime and foo to show other uses of Traits
@@ -307,13 +305,16 @@ pub contract MonsterMaker: NonFungibleToken {
         pub fun mintNFT(
             recipient: &{NonFungibleToken.CollectionPublic}, 
             component: MonsterMaker.MonsterComponent, 
-            royalties: [MetadataViews.Royalty],
         ) {
             let metadata: {String: AnyStruct} = {}
             let currentBlock = getCurrentBlock()
             metadata["mintedBlock"] = currentBlock.height
             metadata["mintedTime"] = currentBlock.timestamp
             metadata["minter"] = recipient.owner!.address
+            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.background)] = component.background
+            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.head)] = component.head
+            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.torso)] = component.torso
+            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.legs)] = component.legs
 
             // this piece of metadata will be used to show embedding rarity into a trait
             // metadata["foo"] = "bar"

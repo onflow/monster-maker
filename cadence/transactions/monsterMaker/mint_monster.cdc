@@ -1,7 +1,7 @@
 import NonFungibleToken from "../../contracts/NonFungibleToken.cdc"
-import KittyItems from "../../contracts/KittyItems.cdc"
-import MetadataViews from "../contracts/MetadataViews.cdc"
-import FungibleToken from "./utility/FungibleToken.cdc"
+import MonsterMaker from "../../contracts/MonsterMaker.cdc"
+import MetadataViews from "../../contracts/MetadataViews.cdc"
+import FungibleToken from "../../contracts/FungibleToken.cdc"
 
 // This transction uses the NFTMinter resource to mint a new NFT.
 //
@@ -10,15 +10,14 @@ import FungibleToken from "./utility/FungibleToken.cdc"
 
 transaction(
     recipient: Address, 
-    kind: UInt8, 
-    rarity: UInt8, 
-    cuts: [UFix64],
-    royaltyDescriptions: [String],
-    royaltyBeneficiaries: [Address] 
+    background: UInt64,
+    head: UInt64,
+    torso: UInt64, 
+    leg: UInt64
 ) {
 
     // local variable for storing the minter reference
-    let minter: &KittyItems.NFTMinter
+    let minter: &MonsterMaker.NFTMinter
 
     /// Reference to the receiver's collection
     let recipientCollectionRef: &{NonFungibleToken.CollectionPublic}
@@ -27,22 +26,21 @@ transaction(
     let mintingIDBefore: UInt64
 
     prepare(signer: AuthAccount) {
-        self.mintingIDBefore = KittyItems.totalSupply
+        self.mintingIDBefore = MonsterMaker.totalSupply
 
         // Borrow a reference to the NFTMinter resource in storage
-        self.minter = signer.borrow<&KittyItems.NFTMinter>(from: KittyItems.MinterStoragePath)
+        self.minter = signer.borrow<&MonsterMaker.NFTMinter>(from: MonsterMaker.MinterStoragePath)
             ?? panic("Could not borrow a reference to the NFT minter")
 
         // Borrow the recipient's public NFT collection reference
         self.recipientCollectionRef = getAccount(recipient)
-            .getCapability(KittyItems.CollectionPublicPath)
+            .getCapability(MonsterMaker.CollectionPublicPath)
             .borrow<&{NonFungibleToken.CollectionPublic}>()
             ?? panic("Could not get receiver reference to the NFT Collection")
     }
 
     execute {
-        let kindValue = KittyItems.Kind(rawValue: kind) ?? panic("invalid kind")
-        let rarityValue = KittyItems.Rarity(rawValue: rarity) ?? panic("invalid rarity")
+        let componentValue = MonsterMaker.MonsterComponent(background: background, head: head, torso: torso, leg: leg)
 
         // TODO: Add royalty feature to KI using beneficiaries, cuts, and descriptions. At the moment, we don't provide royalties with KI, so this will be an empty list.
         let royalties: [MetadataViews.Royalty] = []
@@ -50,14 +48,12 @@ transaction(
         // mint the NFT and deposit it to the recipient's collection
         self.minter.mintNFT(
             recipient: self.recipientCollectionRef,
-            kind: kindValue,
-            rarity: rarityValue,
-            royalties: royalties
+            component: componentValue
         )
     }
 
     post {
         self.recipientCollectionRef.getIDs().contains(self.mintingIDBefore): "The next NFT ID should have been minted and delivered"
-        KittyItems.totalSupply == self.mintingIDBefore + 1: "The total supply should have been increased by 1"
+        MonsterMaker.totalSupply == self.mintingIDBefore + 1: "The total supply should have been increased by 1"
     }
 }

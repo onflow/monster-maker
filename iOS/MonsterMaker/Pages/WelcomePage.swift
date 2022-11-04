@@ -15,7 +15,7 @@ struct WelcomePage: View {
         NavigationView {
             VStack(spacing: .MM.standard) {
                 Spacer()
-                Text("Master \n Maker")
+                Text("Monster \n Maker")
                     .font(.custom("Montserrat", size: 60).weight(.regular))
                     .textCase(.uppercase)
                     .foregroundColor(Color.MM.dark)
