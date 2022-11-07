@@ -21,11 +21,13 @@ struct MonsterMakerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if vm.isLogin {
+//            if vm.isLogin {
                 MainTabPage()
-            } else {
-                WelcomePage()
-            }
+                    .mmBackground()
+//            } else {
+//                WelcomePage()
+//                    .mmBackground()
+//            }
         }
     }
 }

@@ -13,68 +13,66 @@ struct WelcomePage: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: .MM.standard) {
-                Spacer()
-                Text("Monster \n Maker")
-                    .font(.custom("Montserrat", size: 60).weight(.regular))
-                    .textCase(.uppercase)
-                    .foregroundColor(Color.MM.dark)
+            
+            ZStack(alignment: .bottom) {
                 
-                
-                Spacer()
-                
-//                NavigationLink {
-//                    MainTabPage()
-//                } label: {
-//                    Text("Connect")
-//                        .font(.custom("Montserrat", size: 32).weight(.bold))
-//                        .padding(.horizontal, 24)
-//                        .padding(.vertical, 12)
-//                        .frame(maxWidth: .infinity, alignment: .center)
-//                        .background(Color.MM.dark)
-//                        .foregroundColor(.MM.white)
-//                        .cornerRadius(8)
-//                        .textCase(.uppercase)
-//
-//                }
-                
-                
-                PrimaryButtonView(title: "Connect Dapper") {
-                    Task {
-                        let wallet = FCL.WalletProvider(id: "Dapper Pro",
-                                                          name: "Dapper Pro",
-                                                          method: .walletConnect,
-                                                          endpoint: "dapper-pro://",
-                                                          supportNetwork: [.testnet])
-                        
-                        let provider: FCL.Provider = .custom(wallet)
-                        fcl.changeProvider(provider: provider, env: .testnet)
-                        let _ = try await fcl.authenticate()
-                    }
+                VStack(spacing: 0) {
+                    
+                    Spacer()
+                    
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width - 2*CGFloat.MM.large)
+                    
+                    
+                    Spacer()
                 }
                 
-                PrimaryButtonView(title: "Connect lilico") {
+                Button {
                     Task {
                         fcl.changeProvider(provider: .lilico, env: .testnet)
                         let _ = try await fcl.authenticate()
                     }
+                    
+                } label: {
+                    Image("bottom-bar")
+                        .resizable()
+                        .scaledToFit()
                 }
-                
-                
-                PrimaryButtonView(title: "Connect blocto") {
-                    Task {
-                        fcl.changeProvider(provider: .blocto, env: .testnet)
-                        let _ = try await fcl.authenticate()
-                    }
-                }
-                .padding(.bottom, 24)
-                
-//                NavigationLink("",
-//                               destination: MainTabPage(),
-//                               isActive: $isLogin)
-                
             }
-            .padding()
+                
+//                PrimaryButtonView(title: "Connect") {
+//                    Task {
+//                        let wallet = FCL.WalletProvider(id: "Dapper Pro",
+//                                                          name: "Dapper Pro",
+//                                                          method: .walletConnect,
+//                                                          endpoint: "dapper-pro://",
+//                                                          supportNetwork: [.testnet])
+//
+//                        let provider: FCL.Provider = .custom(wallet)
+//                        fcl.changeProvider(provider: provider, env: .testnet)
+//                        let _ = try await fcl.authenticate()
+//                    }
+//                }
+                
+//                PrimaryButtonView(title: "Connect lilico") {
+//                    Task {
+//                        fcl.changeProvider(provider: .lilico, env: .testnet)
+//                        let _ = try await fcl.authenticate()
+//                    }
+//                }
+//
+//
+//                PrimaryButtonView(title: "Connect blocto") {
+//                    Task {
+//                        fcl.changeProvider(provider: .blocto, env: .testnet)
+//                        let _ = try await fcl.authenticate()
+//                    }
+//                }
+            .ignoresSafeArea(.all)
+            .frame(maxWidth: .infinity)
+            .mmBackground()
         }
     }
 }

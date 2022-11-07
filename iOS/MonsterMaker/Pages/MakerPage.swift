@@ -32,6 +32,14 @@ struct MakerPage: View {
     
     var color: Color = Color.random
     
+    @State
+    var isShown: Bool = false
+    
+    @State
+    var isRotate: Bool = false
+
+    let animationDuration = 1.5
+    
     var body: some View {
         VStack(spacing: .MM.zero) {
             
@@ -62,25 +70,36 @@ struct MakerPage: View {
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                 .padding(.horizontal, .MM.standard)
                 
-                Spacer()
+//                Spacer()
                 
                 VStack(spacing: .MM.double) {
                      
-                    TextField("Name", text: $name)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical, .MM.standard)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(Color.MM.dark, lineWidth: 5)
-                        }
-                        .tint(Color.MM.dark)
-                        .foregroundColor(Color.MM.dark)
-                        .font(.title.weight(.semibold))
-                        .frame(minHeight: .MM.xlarge)
+//                    TextField("Name", text: $name)
+//                        .multilineTextAlignment(.center)
+//                        .padding(.vertical, .MM.standard)
+//                        .overlay {
+//                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+//                                .stroke(Color.MM.dark, lineWidth: 5)
+//                        }
+//                        .tint(Color.MM.dark)
+//                        .foregroundColor(Color.MM.dark)
+//                        .font(.title.weight(.semibold))
+//                        .frame(minHeight: .MM.xlarge)
                     
-                    PrimaryButtonView(title: "Mint") {
-                        viewModel.trigger(.mint)
-                    }
+//                    PrimaryButtonView(title: "Mint") {
+//                        viewModel.trigger(.mint)
+//                    }
+                    
+                    Image("bar-mint")
+//                        .transition(.offset(y: -500))
+                        .offset(y: isShown ? 100 : 500)
+                        .animation(.easeInOut(duration: animationDuration),
+                                   value: isShown)
+                        .rotationEffect(.degrees(isRotate ? 0 : 2),
+                                        anchor: .bottom)
+                        .animation(.easeInOut.repeatForever(autoreverses: true).delay(animationDuration),
+                                   value: isRotate)
+                    
                     
                 }
                 .padding(.horizontal, .MM.double)
@@ -88,7 +107,18 @@ struct MakerPage: View {
             .padding(.bottom, .MM.large)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.MM.background)
+        .background{
+            LinearGradient(colors: [Color(hex: 0x061B20),
+                                    Color(hex: 0x1C6470),
+                                    Color(hex: 0xD3E549) ],
+                           startPoint: .top,
+                           endPoint: .bottom)
+            .ignoresSafeArea()
+        }
+        .onAppear{
+            isShown.toggle()
+            isRotate.toggle()
+        }
     }
 }
 

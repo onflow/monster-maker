@@ -31,14 +31,22 @@ struct TabBarView: View {
                             .font(.largeTitle.weight(.black))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .background(isSelected ? Color.MM.grey : Color.MM.dark )
+//                    .background(isSelected ? Color.MM.grey : Color.MM.dark )
                     .foregroundColor(isSelected ? Color.MM.dark : Color.MM.grey)
                     .animation(.easeInOut, value: isSelected)
                 }
                 
             }
+            .background{
+                Image("bottom-bar")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: .screenWidth)
+                    .offset(y: -60)
+            }
             .frame(height: 70)
         }
+//        .ignoresSafeArea()
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }

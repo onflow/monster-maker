@@ -14,12 +14,36 @@ struct HeaderView: View {
     
     var body: some View {
         HStack {
-            Text( fcl.currentUser?.addr.hex ?? title)
-                .font(.MM.body)
-                .fontWeight(.semibold)
-                .foregroundColor(.MM.dark)
-                .textCase(.uppercase)
-                .padding(.vertical, 10)
+            
+            Button {
+                
+            } label: {
+            }
+            .frame(width: 56)
+            
+            Spacer()
+            
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 60)
+            
+            Spacer()
+            
+            Button {
+                
+            } label: {
+                Image("exit")
+            }
+            .frame(width: 56)
+            
+            
+//            Text( fcl.currentUser?.addr.hex ?? title)
+//                .font(.MM.body)
+//                .fontWeight(.semibold)
+//                .foregroundColor(.MM.dark)
+//                .textCase(.uppercase)
+//                .padding(.vertical, 10)
             
             
 //            Spacer()
@@ -36,9 +60,9 @@ struct HeaderView: View {
             
         }
         .frame(maxWidth: .infinity)
-//        .frame(height: .MM.large)
-        .padding(.bottom, 12)
-        .background(Color.MM.grey)
+        .padding(.bottom, .MM.standard)
+        .padding(.horizontal, .MM.standard)
+        .background(.clear)
     }
 }
 

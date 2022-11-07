@@ -19,7 +19,7 @@ struct ComponentView: View {
     let screenWidth = UIScreen.main.bounds.width
     let width = UIScreen.main.bounds.width
     
-    let defaultOffset: CGFloat = (UIScreen.main.bounds.width/5)
+    let defaultOffset: CGFloat = 250 / 5
     
     var offset: CGFloat {
         switch position {
@@ -40,13 +40,20 @@ struct ComponentView: View {
     
     var body: some View {
         
-        ZStack {
-            Image(images[currentIndex])
-                .resizable()
-                .scaledToFit()
-                .frame(width: isBackground ? screenWidth : width)
-                .aspectRatio(1, contentMode: .fill)
-                .allowsHitTesting(false)
+        VStack(alignment: .center, spacing: 0) {
+            
+            
+            Button {
+                if currentIndex == 0 {
+                    return
+                }
+                currentIndex = currentIndex - 1
+            } label: {
+                Image("arrow-up")
+            }
+            .visibility( !isBackground ? .gone : .visible)
+            .offset(y: -.MM.standard)
+            
             
             HStack {
                 Button {
@@ -55,13 +62,29 @@ struct ComponentView: View {
                     }
                     currentIndex = currentIndex - 1
                 } label: {
-                    Image(systemName: currentIndex == 0 ? "arrowtriangle.backward" : "arrowtriangle.backward.fill")
-                        .foregroundColor(.MM.grey)
-                        .font(.system(size: 50))
+                    Image("arrow-left")
+                }
+                .visibility( isBackground ? .gone : .visible)
+                .offset(y: offset)
+                
+                
+                ZStack {
+                    Image(images[currentIndex])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .aspectRatio(1, contentMode: .fill)
+                        .allowsHitTesting(false)
+                        .zIndex(1100)
                 }
                 
-                Spacer(minLength: width/2.5)
-                
+                .overlay{
+                    Image("bg")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 250)
+                        .aspectRatio(1, contentMode: .fill)
+                }
                 
                 Button {
                     if currentIndex == images.count - 1 {
@@ -69,22 +92,33 @@ struct ComponentView: View {
                     }
                     currentIndex = currentIndex + 1
                 } label: {
-                    Image(systemName: currentIndex == images.count - 1  ? "arrowtriangle.forward":
-                            "arrowtriangle.forward.fill")
-                        .foregroundColor(.MM.grey)
-                        .font(.system(size: 50))
+                    Image("arrow-right")
                 }
+                .visibility( isBackground ? .gone : .visible)
+                .offset(y: offset)
             }
-            .offset(x: 0, y: offset)
-            .padding(.horizontal, isBackground ? 0 : 48)
+            
+            Button {
+                if currentIndex == images.count - 1 {
+                    return
+                }
+                currentIndex = currentIndex + 1
+            } label: {
+                Image("arrow-down")
+            }
+            .visibility( !isBackground ? .gone : .visible)
+            .offset(y: .MM.standard)
+            
         }
-        .frame(maxWidth: .infinity)
+        .frame(width: .screenWidth)
     }
 }
 
 struct ComponentView_Previews: PreviewProvider {
-    static var previews: some View {
     
+    static let screenWidth = UIScreen.main.bounds.width
+    
+    static var previews: some View {
         ZStack {
             ComponentView(images: NFTLocalImage.backgrounds, position: .background)
             ComponentView(images: NFTLocalImage.headers, position: .head)

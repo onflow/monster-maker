@@ -34,4 +34,7 @@ extension CGFloat {
         static let large: CGFloat = 48
         static let xlarge: CGFloat = 64
     }
+    
+    static let screenWidth = UIScreen.main.bounds.width
+    static let screenHeight = UIScreen.main.bounds.height
 }
