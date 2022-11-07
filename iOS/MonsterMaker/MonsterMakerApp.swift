@@ -23,7 +23,6 @@ struct MonsterMakerApp: App {
         WindowGroup {
 //            if vm.isLogin {
                 MainTabPage()
-                    .mmBackground()
 //            } else {
 //                WelcomePage()
 //                    .mmBackground()

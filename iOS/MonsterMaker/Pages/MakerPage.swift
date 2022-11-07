@@ -30,8 +30,6 @@ struct MakerPage: View {
     @State
     var name: String = ""
     
-    var color: Color = Color.random
-    
     @State
     var isShown: Bool = false
     
@@ -44,15 +42,16 @@ struct MakerPage: View {
         VStack(spacing: .MM.zero) {
             
             HeaderView(title: "Monster Maker")
+            Spacer()
             
-            VStack(spacing: .MM.double) {
+//            VStack(spacing: 0) {
                 ZStack {
                     
                     ComponentView(images: NFTLocalImage.backgrounds,
                                   currentIndex: viewModel.state.components.background,
                                   position: .background)
                         .zIndex(998)
-                    
+
                     ComponentView(images: NFTLocalImage.headers,
                                   currentIndex: viewModel.state.components.head,
                                   position: .head)
@@ -70,53 +69,29 @@ struct MakerPage: View {
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                 .padding(.horizontal, .MM.standard)
                 
-//                Spacer()
-                
-                VStack(spacing: .MM.double) {
-                     
-//                    TextField("Name", text: $name)
-//                        .multilineTextAlignment(.center)
-//                        .padding(.vertical, .MM.standard)
-//                        .overlay {
-//                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-//                                .stroke(Color.MM.dark, lineWidth: 5)
-//                        }
-//                        .tint(Color.MM.dark)
-//                        .foregroundColor(Color.MM.dark)
-//                        .font(.title.weight(.semibold))
-//                        .frame(minHeight: .MM.xlarge)
+                Spacer()
                     
-//                    PrimaryButtonView(title: "Mint") {
-//                        viewModel.trigger(.mint)
-//                    }
+                Button {
+                    viewModel.trigger(.mint)
+                } label: {
                     
                     Image("bar-mint")
-//                        .transition(.offset(y: -500))
-                        .offset(y: isShown ? 100 : 500)
+                        .resizable()
+                        .scaledToFit()
+                        .offset(y: isShown ? 50 : 500)
                         .animation(.easeInOut(duration: animationDuration),
                                    value: isShown)
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
                         .animation(.easeInOut.repeatForever(autoreverses: true).delay(animationDuration),
                                    value: isRotate)
-                    
-                    
                 }
-                .padding(.horizontal, .MM.double)
-            }
-            .padding(.bottom, .MM.large)
+//            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background{
-            LinearGradient(colors: [Color(hex: 0x061B20),
-                                    Color(hex: 0x1C6470),
-                                    Color(hex: 0xD3E549) ],
-                           startPoint: .top,
-                           endPoint: .bottom)
-            .ignoresSafeArea()
-        }
+        .frame(maxWidth: .screenWidth, maxHeight: .infinity)
+        .mmBackground()
         .onAppear{
-            isShown.toggle()
+            isShown = true
             isRotate.toggle()
         }
     }

@@ -22,9 +22,10 @@ struct NFTListPage: View {
 
     
     var body: some View {
-        NavigationView {
-            VStack {
+//        NavigationView {
+        VStack(spacing: .MM.zero) {
                 HeaderView(title: "My Monster")
+                Spacer()
                 ScrollView {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                         ForEach(1..<20) { index in
@@ -42,11 +43,12 @@ struct NFTListPage: View {
                         }
                     }
                     .padding(.horizontal, 10)
-                }.background(Color.MM.background)
+                }.background(.clear)
             }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.MM.background)
+            .mmBackground()
+//        }
+            .frame(maxWidth: .screenWidth, maxHeight: .screenHeight)
+//        .ignoresSafeArea(.all)
     }
 }
 

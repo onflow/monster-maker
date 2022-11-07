@@ -15,6 +15,7 @@
 		1525E94C29157BB900F7C63A /* AnyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94B29157BB900F7C63A /* AnyViewModel.swift */; };
 		1525E94E29157E8100F7C63A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94D29157E8100F7C63A /* Response.swift */; };
 		1525E9502918AB6400F7C63A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94F2918AB6400F7C63A /* View.swift */; };
+		1538F120291930C800338FF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1538F11F291930C800338FF4 /* Launch Screen.storyboard */; };
 		1588EB2F29131FC50069EAC4 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1588EB2E29131FC50069EAC4 /* FCL */; };
 		1588EB32291320390069EAC4 /* FlowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowClient.swift */; };
 		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
@@ -50,6 +51,7 @@
 		1525E94B29157BB900F7C63A /* AnyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModel.swift; sourceTree = "<group>"; };
 		1525E94D29157E8100F7C63A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		1525E94F2918AB6400F7C63A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		1538F11F291930C800338FF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1588EB31291320390069EAC4 /* FlowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowClient.swift; sourceTree = "<group>"; };
 		1588EB332913327C0069EAC4 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 			children = (
 				1591D28229109E970001811D /* Assets.xcassets */,
 				1591D28E2910CB670001811D /* Font */,
+				1538F11F291930C800338FF4 /* Launch Screen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				1591D2982910CB8F0001811D /* Montserrat-Light.ttf in Resources */,
 				1591D2992910CB8F0001811D /* Montserrat-Black.ttf in Resources */,
 				1591D2972910CB8F0001811D /* Montserrat-Bold.ttf in Resources */,
+				1538F120291930C800338FF4 /* Launch Screen.storyboard in Resources */,
 				1591D2962910CB8F0001811D /* Montserrat-Regular.ttf in Resources */,
 				1591D2952910CB8F0001811D /* Montserrat-SemiBold.ttf in Resources */,
 				1591D28729109E970001811D /* Preview Assets.xcassets in Resources */,

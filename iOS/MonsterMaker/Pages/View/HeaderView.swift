@@ -60,8 +60,9 @@ struct HeaderView: View {
             
         }
         .frame(maxWidth: .infinity)
-        .padding(.bottom, .MM.standard)
+        .frame(height: 80)
         .padding(.horizontal, .MM.standard)
+//        .padding(.top, .MM.medium)
         .background(.clear)
     }
 }
