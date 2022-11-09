@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "bg_9.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "view_button_on@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "view_button_on@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

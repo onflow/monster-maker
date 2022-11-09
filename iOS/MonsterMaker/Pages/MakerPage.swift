@@ -43,8 +43,6 @@ struct MakerPage: View {
             
             HeaderView(title: "Monster Maker")
             Spacer()
-            
-//            VStack(spacing: 0) {
                 ZStack {
                     
                     ComponentView(images: NFTLocalImage.backgrounds,
@@ -83,10 +81,11 @@ struct MakerPage: View {
                                    value: isShown)
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
-                        .animation(.easeInOut.repeatForever(autoreverses: true).delay(animationDuration),
+                        .animation(.easeInOut
+                            .repeatForever(autoreverses: true)
+                            .delay(animationDuration),
                                    value: isRotate)
                 }
-//            }
         }
         .frame(maxWidth: .screenWidth, maxHeight: .infinity)
         .mmBackground()

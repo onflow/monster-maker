@@ -31,7 +31,7 @@ struct HeaderView: View {
             Spacer()
             
             Button {
-                
+                fcl.unauthenticate()
             } label: {
                 Image("exit")
             }

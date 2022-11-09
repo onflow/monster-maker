@@ -12,14 +12,14 @@ class FlowClient {
     
     static func setup() {
         
-//        let provider: FCL.Provider = .lilico
-        let wallet = FCL.WalletProvider(id: "Dapper Pro",
-                                          name: "Dapper Pro",
-                                          method: .walletConnect,
-                                          endpoint: "dapper-pro://",
-                                          supportNetwork: [.testnet])
+        let provider: FCL.Provider = .lilico
+//        let wallet = FCL.WalletProvider(id: "Dapper Pro",
+//                                          name: "Dapper Pro",
+//                                          method: .walletConnect,
+//                                          endpoint: "dapper-pro://",
+//                                          supportNetwork: [.testnet])
         
-        let provider: FCL.Provider = .custom(wallet)
+//        let provider: FCL.Provider = .custom(wallet)
         
         let accountProof = FCL.Metadata.AccountProofConfig(appIdentifier: "Monster Maker",
                                                            nonce: "75f8587e5bd5f9dcc9909d0dae1f0ac5814458b2ae129620502cb936fde7120a")

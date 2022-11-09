@@ -24,7 +24,7 @@ struct NFTLocalData: Codable {
 class NFTLocalImage {
     
     static var backgrounds: [String] = {
-        (1...10).compactMap { "bg_\(String($0))"}
+        (1...5).compactMap { "bg_\(String($0))"}
     }()
     
     static var headers: [String] = {

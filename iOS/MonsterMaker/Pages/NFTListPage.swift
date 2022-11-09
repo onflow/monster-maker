@@ -19,7 +19,6 @@ struct NFTListPage: View {
         GridItem(.fixed(NFTListPage.width), spacing: 10),
         GridItem(.fixed(NFTListPage.width), spacing: 10),
     ]
-
     
     var body: some View {
 //        NavigationView {

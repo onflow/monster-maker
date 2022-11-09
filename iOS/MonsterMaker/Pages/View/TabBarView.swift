@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TabItemData {
-    let systemImage: String
+    let image: String
+    let selectedImage: String
 }
 
 struct TabBarView: View {
@@ -27,13 +28,12 @@ struct TabBarView: View {
                     Button {
                         self.selectedIndex = index
                     } label: {
-                        Image(systemName: item.systemImage)
+                        Image(isSelected ? item.selectedImage : item.image)
                             .font(.largeTitle.weight(.black))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-//                    .background(isSelected ? Color.MM.grey : Color.MM.dark )
-                    .foregroundColor(isSelected ? Color.MM.dark : Color.MM.grey)
-                    .animation(.easeInOut, value: isSelected)
+//                    .foregroundColor(isSelected ? Color.MM.dark : Color.MM.grey)
+//                    .animation(.easeInOut, value: isSelected)
                 }
                 
             }
@@ -42,11 +42,9 @@ struct TabBarView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: .screenWidth)
-                    .offset(y: -60)
             }
             .frame(height: 70)
         }
-//        .ignoresSafeArea()
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
@@ -55,8 +53,10 @@ struct TabBarView: View {
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
         TabBarView(items: [
-            .init(systemImage: "square.and.pencil"),
-            .init(systemImage: "square.grid.2x2.fill")
+            .init(image: "create-button-on",
+                  selectedImage: "create-button-off"),
+            .init(image: "view-button-on" ,
+                  selectedImage: "view-button-off")
         ],
                    selectedIndex: .constant(0))
     }

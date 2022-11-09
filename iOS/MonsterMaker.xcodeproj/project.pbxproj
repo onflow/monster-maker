@@ -16,6 +16,7 @@
 		1525E94E29157E8100F7C63A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94D29157E8100F7C63A /* Response.swift */; };
 		1525E9502918AB6400F7C63A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94F2918AB6400F7C63A /* View.swift */; };
 		1538F120291930C800338FF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1538F11F291930C800338FF4 /* Launch Screen.storyboard */; };
+		1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F121291BDBF100338FF4 /* DiscoveryView.swift */; };
 		1588EB2F29131FC50069EAC4 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1588EB2E29131FC50069EAC4 /* FCL */; };
 		1588EB32291320390069EAC4 /* FlowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowClient.swift */; };
 		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
@@ -52,6 +53,7 @@
 		1525E94D29157E8100F7C63A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		1525E94F2918AB6400F7C63A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1538F11F291930C800338FF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		1538F121291BDBF100338FF4 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		1588EB31291320390069EAC4 /* FlowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowClient.swift; sourceTree = "<group>"; };
 		1588EB332913327C0069EAC4 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 				1591D2A82910E4900001811D /* PrimaryButtonView.swift */,
 				1591D2AC2910EB7B0001811D /* HeaderView.swift */,
 				1591D2B32910FA4C0001811D /* NFTGridCell.swift */,
+				1538F121291BDBF100338FF4 /* DiscoveryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1588EB32291320390069EAC4 /* FlowClient.swift in Sources */,
+				1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */,
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
 				1525E94A29157B8500F7C63A /* MakerViewModel.swift in Sources */,
@@ -575,7 +579,7 @@
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
 				kind = revision;
-				revision = 1c279c80b6e37bf2ece2312677581d81197c1d86;
+				revision = 0a773287775eb6abf8cdb0e6df5acaf3159a6a92;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

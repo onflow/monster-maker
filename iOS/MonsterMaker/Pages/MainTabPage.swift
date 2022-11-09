@@ -22,8 +22,10 @@ struct MainTabPage: View {
             }
         
             TabBarView(items:[
-                .init(systemImage: "square.and.pencil"),
-                .init(systemImage: "square.grid.2x2.fill")
+                .init(image: "create-button-off",
+                      selectedImage: "create-button-on"),
+                .init(image: "view-button-off" ,
+                      selectedImage: "view-button-on")
             ],
                        selectedIndex: $selectedIndex)
         }

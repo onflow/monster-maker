@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "bg_8.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "share_button@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "share_button@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

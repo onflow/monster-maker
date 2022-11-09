@@ -38,10 +38,13 @@ struct ComponentView: View {
         position == .background
     }
     
+    var imageHeight: CGFloat {
+        isBackground ? 250 : 200
+    }
+    
     var body: some View {
         
         VStack(alignment: .center, spacing: 0) {
-            
             
             Button {
                 if currentIndex == 0 {
@@ -52,8 +55,7 @@ struct ComponentView: View {
                 Image("arrow-up")
             }
             .visibility( !isBackground ? .gone : .visible)
-            .offset(y: -.MM.standard)
-            
+            .offset(y: -.MM.zero)
             
             HStack {
                 Button {
@@ -72,19 +74,18 @@ struct ComponentView: View {
                     Image(images[currentIndex])
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 200, height: 200)
+                        .frame(width: imageHeight, height: imageHeight)
                         .aspectRatio(1, contentMode: .fill)
                         .allowsHitTesting(false)
                         .zIndex(1100)
                 }
-                
-                .overlay{
-                    Image("bg")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250, height: 250)
-                        .aspectRatio(1, contentMode: .fill)
-                }
+//                .overlay{
+//                    Image("bg")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 250, height: 250)
+//                        .aspectRatio(1, contentMode: .fill)
+//                }
                 
                 Button {
                     if currentIndex == images.count - 1 {

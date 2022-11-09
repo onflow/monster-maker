@@ -11,6 +11,9 @@ import Combine
 
 struct WelcomePage: View {
     
+    @State
+    var showConnect = false
+    
     var body: some View {
         NavigationView {
             
@@ -28,51 +31,38 @@ struct WelcomePage: View {
                     
                     Spacer()
                 }
-                
-                Button {
-                    Task {
-                        fcl.changeProvider(provider: .lilico, env: .testnet)
-                        let _ = try await fcl.authenticate()
-                    }
-                    
-                } label: {
+                                
+                ZStack(alignment: .bottom) {
                     Image("bottom-bar")
                         .resizable()
                         .scaledToFit()
+                    
+                    Button {
+                        showConnect = true
+                    } label: {
+                        Image("connect-button")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                            .padding(.bottom, 30)
+                    }
                 }
             }
-                
-//                PrimaryButtonView(title: "Connect") {
-//                    Task {
-//                        let wallet = FCL.WalletProvider(id: "Dapper Pro",
-//                                                          name: "Dapper Pro",
-//                                                          method: .walletConnect,
-//                                                          endpoint: "dapper-pro://",
-//                                                          supportNetwork: [.testnet])
-//
-//                        let provider: FCL.Provider = .custom(wallet)
-//                        fcl.changeProvider(provider: provider, env: .testnet)
-//                        let _ = try await fcl.authenticate()
-//                    }
-//                }
-                
-//                PrimaryButtonView(title: "Connect lilico") {
-//                    Task {
-//                        fcl.changeProvider(provider: .lilico, env: .testnet)
-//                        let _ = try await fcl.authenticate()
-//                    }
-//                }
-//
-//
-//                PrimaryButtonView(title: "Connect blocto") {
-//                    Task {
-//                        fcl.changeProvider(provider: .blocto, env: .testnet)
-//                        let _ = try await fcl.authenticate()
-//                    }
-//                }
             .ignoresSafeArea(.all)
             .frame(maxWidth: .infinity)
             .mmBackground()
+            .sheet(isPresented: $showConnect) {
+                if #available(iOS 16.0, *) {
+                    DiscoveryView()
+                        .presentationDetents([.height(200)])
+                } else {
+                    // Fallback on earlier versions
+                    Color.clear.background{
+                        DiscoveryView()
+                            .frame(height: 200)
+                    }
+                }
+            }
         }
     }
 }
