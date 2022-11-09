@@ -44,7 +44,7 @@ struct WelcomePage: View {
                             .resizable()
                             .scaledToFit()
                             .frame(height: 50)
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 48)
                     }
                 }
             }

@@ -16,6 +16,9 @@ struct ComponentView: View {
     
     var position: NFTComponent = .head
     
+    @State
+    var appear = false
+    
     let screenWidth = UIScreen.main.bounds.width
     let width = UIScreen.main.bounds.width
     
@@ -70,7 +73,19 @@ struct ComponentView: View {
                 .offset(y: offset)
                 
                 
-                ZStack {
+                if position == .head {
+                    Image(images[currentIndex])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: imageHeight, height: imageHeight)
+                        .aspectRatio(1, contentMode: .fill)
+                        .allowsHitTesting(false)
+                        .zIndex(1100)
+                        .offset(x:0, y: appear ? 2 : 0)
+                        .animation(Animation.linear(duration: 0.5)
+                            .repeatForever(autoreverses: true),
+                                   value: appear)
+                } else {
                     Image(images[currentIndex])
                         .resizable()
                         .scaledToFit()
@@ -79,13 +94,6 @@ struct ComponentView: View {
                         .allowsHitTesting(false)
                         .zIndex(1100)
                 }
-//                .overlay{
-//                    Image("bg")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 250, height: 250)
-//                        .aspectRatio(1, contentMode: .fill)
-//                }
                 
                 Button {
                     if currentIndex == images.count - 1 {
@@ -108,10 +116,13 @@ struct ComponentView: View {
                 Image("arrow-down")
             }
             .visibility( !isBackground ? .gone : .visible)
-            .offset(y: .MM.standard)
+            .offset(y: .MM.small)
             
         }
         .frame(width: .screenWidth)
+        .onAppear {
+            appear = true
+        }
     }
 }
 

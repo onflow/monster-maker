@@ -32,7 +32,9 @@ struct DiscoveryView: View {
             }
             .padding(.vertical, 12)
             .padding(.horizontal, 18)
+            
             Divider()
+                .foregroundColor(Color(hex: 0x616161))
             
             ScrollView(.horizontal) {
                 LazyHStack(alignment: .center, spacing: 18) {

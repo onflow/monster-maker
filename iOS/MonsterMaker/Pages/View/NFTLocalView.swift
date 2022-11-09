@@ -13,6 +13,8 @@ struct NFTLocalView: View {
     @State
     var appear = false
     
+    let scale = 0.8
+    
     var body: some View {
         ZStack {
             if let backgroundImage = NFTLocalImage.backgrounds[safe: data.background] {
@@ -32,18 +34,21 @@ struct NFTLocalView: View {
                     .onAppear {
                         appear.toggle()
                     }
+                    .scaleEffect(CGSize(width: scale, height: scale))
             }
             if let torsoImage = NFTLocalImage.torso[safe: data.torso] {
                 Image(torsoImage)
                     .resizable()
                     .scaledToFit()
                     .zIndex(1001)
+                    .scaleEffect(CGSize(width: scale, height: scale))
             }
             if let legImage = NFTLocalImage.legs[safe: data.legs] {
                 Image(legImage)
                     .resizable()
                     .scaledToFit()
                     .zIndex(999)
+                    .scaleEffect(CGSize(width: scale, height: scale))
             }
         }
     }

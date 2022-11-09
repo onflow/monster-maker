@@ -38,10 +38,38 @@ class FlowClient {
                    provider: provider)
 
         fcl.config
-            .put("0xFungibleToken", value: "0xf233dcee88fe0abe")
-            .put("0xFUSD", value: "0x3c5959b568896393")
+            .put("0xFungibleToken", value: "0x631e88ae7f1d7c20")
+            .put("0xMonsterMaker", value: "0xccaf756025bafaf9")
+            .put("0xMetadataViews", value: "0x631e88ae7f1d7c20")
         
     }
     
+    
+    static func checkCollectionVault() async throws -> Bool {
+        guard let address = fcl.currentUser?.addr else {
+            throw FCLError.unauthenticated
+        }
+        
+        let result: Bool = try await fcl.query(script:
+        
+        """
+        import NonFungibleToken from 0xNonFungibleToken
+        import MonsterMaker from 0xMonsterMaker
+        
+        pub fun main(address: Address) : Bool {
+            let account = getAccount(address)
+
+            let vaultRef = account
+            .getCapability<&{NonFungibleToken.CollectionPublic}>(MonsterMaker.CollectionPublicPath)
+            .check()
+
+            return vaultRef
+        }
+        """,
+                                   args: [.init(value: .address(address))]).decode()
+        
+        return result
+        
+    }
     
 }

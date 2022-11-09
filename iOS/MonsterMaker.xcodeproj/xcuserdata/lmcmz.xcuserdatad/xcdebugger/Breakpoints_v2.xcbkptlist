@@ -7,17 +7,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "87976A08-8771-4720-956C-A5CC564765A3"
+            uuid = "FB58AB1E-6792-4EB4-B4F1-634864178E29"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MonsterMaker/Pages/ViewModel/MakerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "trigger(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FB58AB1E-6792-4EB4-B4F1-634864178E29 - a8bb92fd80dbd47b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in MonsterMaker.MakerViewModel.trigger(MonsterMaker.MakerPage.Action) -&gt; ()"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/dapper/MonsterMaker/iOS/MonsterMaker/Pages/ViewModel/MakerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "628">
+               </Location>
+               <Location
+                  uuid = "FB58AB1E-6792-4EB4-B4F1-634864178E29 - 60f8d3f1c89307cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) await resume partial function for closure #1 @Sendable () async -&gt; () in MonsterMaker.MakerViewModel.trigger(MonsterMaker.MakerPage.Action) -&gt; ()"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/dapper/MonsterMaker/iOS/MonsterMaker/Pages/ViewModel/MakerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "FB58AB1E-6792-4EB4-B4F1-634864178E29 - dc878df8cf0e5c7f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in MonsterMaker.MakerViewModel.trigger(MonsterMaker.MakerPage.Action) -&gt; ()"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/dapper/MonsterMaker/iOS/MonsterMaker/Pages/ViewModel/MakerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "FB58AB1E-6792-4EB4-B4F1-634864178E29 - 7798a53ac7d4467c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for closure #1 @Sendable () async -&gt; () in MonsterMaker.MakerViewModel.trigger(MonsterMaker.MakerPage.Action) -&gt; ()"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/dapper/MonsterMaker/iOS/MonsterMaker/Pages/ViewModel/MakerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

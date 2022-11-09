@@ -28,6 +28,7 @@ extension Font {
 extension CGFloat {
     class MM  {
         static let zero: CGFloat = 0
+        static let small: CGFloat = 8
         static let standard: CGFloat = 12
         static let medium: CGFloat = 16
         static let double: CGFloat = 24

@@ -17,9 +17,6 @@ struct NFTGridCell: View {
             NFTLocalView(data: data)
                 .cornerRadius(12)
             
-            Text("NFT \(data.head)\(data.torso)\(data.legs)")
-                .font(.MM.body)
-                .fontWeight(.semibold)
         }
     }
 }
