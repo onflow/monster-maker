@@ -16,7 +16,7 @@ struct MainTabPage: View {
         NavigationView{
             ZStack {
                 TabView(selection: $selectedIndex) {
-                    MakerPage()
+                    MakerPage(vm: .init(MakerViewModel()))
                         .tag(0)
                     NFTListPage(vm: .init(NFTListViewModel()))
                         .tag(1)

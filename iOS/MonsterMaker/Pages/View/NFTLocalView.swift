@@ -59,9 +59,9 @@ struct NFTLocalView: View {
 
 struct NFTLocalView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTLocalView(data: .init(background: 0,
-                                 head: 0,
-                                 torso: 0,
-                                 legs: 0))
+        NFTLocalView(data: .init(background: 4,
+                                 head: 2,
+                                 torso: 7,
+                                 legs: 3))
     }
 }

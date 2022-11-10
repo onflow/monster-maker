@@ -11,8 +11,8 @@ struct ComponentView: View {
     
     var images: [String]
     
-    @State
-    var currentIndex: Int = 0
+    @Binding
+    var currentIndex: Int
     
     var position: NFTComponent = .head
     
@@ -74,25 +74,29 @@ struct ComponentView: View {
                 
                 
                 if position == .head {
-                    Image(images[currentIndex])
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: imageHeight, height: imageHeight)
-                        .aspectRatio(1, contentMode: .fill)
-                        .allowsHitTesting(false)
-                        .zIndex(1100)
-                        .offset(x:0, y: appear ? 2 : 0)
-                        .animation(Animation.linear(duration: 0.5)
-                            .repeatForever(autoreverses: true),
-                                   value: appear)
+                    if let image = images[safe: currentIndex] {
+                        Image(image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: imageHeight, height: imageHeight)
+                            .aspectRatio(1, contentMode: .fill)
+                            .allowsHitTesting(false)
+                            .zIndex(1100)
+                            .offset(x:0, y: appear ? 2 : 0)
+                            .animation(Animation.linear(duration: 0.5)
+                                .repeatForever(autoreverses: true),
+                                       value: appear)
+                    }
                 } else {
-                    Image(images[currentIndex])
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: imageHeight, height: imageHeight)
-                        .aspectRatio(1, contentMode: .fill)
-                        .allowsHitTesting(false)
-                        .zIndex(1100)
+                    if let image = images[safe: currentIndex] {
+                        Image(image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: imageHeight, height: imageHeight)
+                            .aspectRatio(1, contentMode: .fill)
+                            .allowsHitTesting(false)
+                            .zIndex(1100)
+                    }
                 }
                 
                 Button {
@@ -132,10 +136,18 @@ struct ComponentView_Previews: PreviewProvider {
     
     static var previews: some View {
         ZStack {
-            ComponentView(images: NFTLocalImage.backgrounds, position: .background)
-            ComponentView(images: NFTLocalImage.headers, position: .head)
-            ComponentView(images: NFTLocalImage.legs, position: .legs)
-            ComponentView(images: NFTLocalImage.torso, position: .torso)
+            ComponentView(images: NFTLocalImage.backgrounds,
+                          currentIndex: .constant(1),
+                          position: .background)
+            ComponentView(images: NFTLocalImage.headers,
+                          currentIndex: .constant(1),
+                          position: .head)
+            ComponentView(images: NFTLocalImage.legs,
+                          currentIndex: .constant(1),
+                          position: .legs)
+            ComponentView(images: NFTLocalImage.torso,
+                          currentIndex: .constant(1),
+                          position: .torso)
         }
         .previewLayout(.sizeThatFits)
     }

@@ -22,5 +22,7 @@
 		<string>Montserrat-SemiBold.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

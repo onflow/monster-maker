@@ -127,14 +127,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		1538F123291C564700338FF4 /* Share */ = {
-			isa = PBXGroup;
-			children = (
-				1538F124291C565800338FF4 /* ShareActivityItemSource.swift */,
-			);
-			path = Share;
-			sourceTree = "<group>";
-		};
 		1588EB302913201E0069EAC4 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +155,6 @@
 		1591D27D29109E960001811D /* MonsterMaker */ = {
 			isa = PBXGroup;
 			children = (
-				1538F123291C564700338FF4 /* Share */,
 				1525E941291578E100F7C63A /* Network */,
 				1588EB302913201E0069EAC4 /* Flow */,
 				1591D2B02910EF090001811D /* Util */,
@@ -241,6 +232,7 @@
 		1591D2B02910EF090001811D /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1538F124291C565800338FF4 /* ShareActivityItemSource.swift */,
 				1591D29C2910CD100001811D /* Style.swift */,
 				1525E94F2918AB6400F7C63A /* View.swift */,
 				1591D2B12910EF180001811D /* Extension.swift */,
@@ -503,12 +495,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -544,12 +539,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

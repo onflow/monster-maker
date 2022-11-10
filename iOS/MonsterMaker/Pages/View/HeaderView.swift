@@ -14,6 +14,9 @@ struct HeaderView: View {
     var pendingTx = FlowManager.shared.pendingTx
     
     @State
+    var lastTxId = ""
+    
+    @State
     var showWebView = false
     
     var body: some View {
@@ -53,13 +56,15 @@ struct HeaderView: View {
         .padding(.horizontal, .MM.standard)
         .background(.clear)
         .sheet(isPresented: $showWebView) {
-            if let txId = FlowManager.shared.pendingTx,
-                let url = URL(string: "https://testnet.flowscan.org/transaction/\(txId)") {
+            if let url = URL(string: "https://testnet.flowscan.org/transaction/\(lastTxId)") {
                 SafariView(url: url)
             }
         }
         .onReceive(FlowManager.shared.$pendingTx) { value in
             self.pendingTx = value
+            if let value {
+                self.lastTxId = value
+            }
         }
     }
 }

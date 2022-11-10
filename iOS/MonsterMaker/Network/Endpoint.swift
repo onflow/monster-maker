@@ -41,6 +41,4 @@ extension NFTEndpoint: TargetType {
     var headers: [String : String]? {
         nil
     }
-    
-    
 }

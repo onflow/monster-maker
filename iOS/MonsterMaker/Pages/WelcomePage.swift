@@ -14,6 +14,9 @@ struct WelcomePage: View {
     @State
     var showConnect = false
     
+    @State
+    var isShown = false
+    
     var body: some View {
         NavigationView {
             
@@ -46,6 +49,11 @@ struct WelcomePage: View {
                             .padding(.bottom, 48)
                     }
                 }
+                .offset(y: isShown ? 0 : 300)
+                .animation(.easeInOut(duration: 1), value: isShown)
+            }
+            .onAppear{
+                isShown = true
             }
             .ignoresSafeArea(.all)
             .frame(maxWidth: .infinity)

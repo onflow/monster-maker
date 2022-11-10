@@ -39,7 +39,7 @@ struct NFTListPage: View {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                         ForEach(vm.nfts, id: \.name) { nft in
                                 NavigationLink {
-                                    NFTDetailView(data: nft.component)
+                                    NFTDetailView(data: nft)
                                 } label: {
                                     NFTGridCell(data: nft.component)
                                         .frame(width: NFTListPage.width,

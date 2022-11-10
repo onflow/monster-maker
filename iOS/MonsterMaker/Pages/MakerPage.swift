@@ -9,7 +9,6 @@ import SwiftUI
 
 extension MakerPage {
     struct ViewState {
-        var name: String = ""
         var components: NFTLocalData = .init(background: NFTLocalImage.backgrounds.randomIndex,
                                              head: NFTLocalImage.headers.randomIndex,
                                              torso: NFTLocalImage.torso.randomIndex,
@@ -18,6 +17,7 @@ extension MakerPage {
 
     enum Action {
         case mint
+        case updateIndex(Int, NFTComponent)
     }
 }
 
@@ -25,10 +25,7 @@ extension MakerPage {
 struct MakerPage: View {
     
     @StateObject
-    var viewModel = MakerViewModel()
-    
-    @State
-    var name: String = ""
+    var vm:AnyViewModel<ViewState, Action>
     
     @State
     var isShown: Bool = false
@@ -43,22 +40,25 @@ struct MakerPage: View {
             HeaderView()
             Spacer()
                 ZStack {
-                    
                     ComponentView(images: NFTLocalImage.backgrounds,
-                                  currentIndex: Int(viewModel.state.components.background),
+                                  currentIndex: .init(get: { vm.components.background },
+                                                      set: { vm.trigger(.updateIndex($0, .background)) }),
                                   position: .background)
                         .zIndex(998)
 
                     ComponentView(images: NFTLocalImage.headers,
-                                  currentIndex: Int(viewModel.state.components.head),
+                                  currentIndex: .init(get: { vm.components.head },
+                                                      set: { vm.trigger(.updateIndex($0, .head)) }),
                                   position: .head)
                         .zIndex(1000)
                     ComponentView(images: NFTLocalImage.torso,
-                                  currentIndex: Int(viewModel.state.components.torso),
+                                  currentIndex: .init(get: { vm.components.torso },
+                                                      set: { vm.trigger(.updateIndex($0, .torso)) }),
                                   position: .torso)
                         .zIndex(1001)
                     ComponentView(images: NFTLocalImage.legs,
-                                  currentIndex: Int(viewModel.state.components.legs),
+                                  currentIndex: .init(get: { vm.components.legs },
+                                                      set: { vm.trigger(.updateIndex($0, .legs)) }),
                                   position: .legs)
                         .zIndex(999)
                 }
@@ -69,9 +69,8 @@ struct MakerPage: View {
                 Spacer()
                     
                 Button {
-                    viewModel.trigger(.mint)
+                    vm.trigger(.mint)
                 } label: {
-                    
                     Image("bar-mint")
                         .resizable()
                         .scaledToFit()
@@ -97,6 +96,6 @@ struct MakerPage: View {
 
 struct MakerView_Previews: PreviewProvider {
     static var previews: some View {
-        MakerPage()
+        MakerPage(vm: .init(MakerViewModel()))
     }
 }

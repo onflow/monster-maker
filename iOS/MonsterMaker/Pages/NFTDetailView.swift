@@ -12,9 +12,7 @@ struct NFTDetailView: View {
     @Environment(\.presentationMode)
     var presentationMode
     
-    let data: NFTLocalData
-    
-    let title = "Monster Maker NFT"
+    let data: NFTModel
     
     var body: some View {
         VStack {
@@ -33,12 +31,8 @@ struct NFTDetailView: View {
             
             Spacer()
             
-            NFTLocalView(data: data)
+            NFTLocalView(data: data.component)
                 .padding(.horizontal, .MM.double)
-            
-//            Text("NFT \(data.head)\(data.torso)\(data.legs)")
-//                .font(.largeTitle)
-//                .fontWeight(.semibold)
             
             Spacer()
             
@@ -48,10 +42,12 @@ struct NFTDetailView: View {
                     .scaledToFit()
                 
                 Button {
-                    
                     Task {
+                        let title = "Monster Maker NFT #\(data.itemID)"
                         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                        let image = NFTLocalView(data: data).snapshot()
+                        let image = NFTLocalView(data: data.component)
+                            .frame(width: 400, height: 400)
+                            .snapshot()
                         let itemSource = ShareActivityItemSource(shareText: title, shareImage: image)
                         let activityController = UIActivityViewController(activityItems: [image, title, itemSource], applicationActivities: nil)
                         activityController.isModalInPresentation = true
@@ -67,7 +63,7 @@ struct NFTDetailView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(height: 50)
-                        .padding(.bottom, 48)
+                        .padding(.bottom, .MM.large)
                 }
             }
             
@@ -76,15 +72,11 @@ struct NFTDetailView: View {
         .mmBackground()
         .navigationTitle("")
         .navigationBarHidden(true)
-//        .toolbar(.hidden, for: .tabBar)
     }
 }
 
 struct NFTDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTDetailView(data: .init(background: 0,
-                                  head: 0,
-                                  torso: 0,
-                                  legs: 0))
+        NFTDetailView(data: .init(name: "", description: "", thumbnail: "", itemID: 0, resourceID: 0, owner: "", component: .init(background: 0, head: 0, torso: 0, legs: 0)))
     }
 }

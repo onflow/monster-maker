@@ -10,7 +10,6 @@ import UIKit
 import LinkPresentation
 
 class ShareActivityItemSource: NSObject, UIActivityItemSource {
-    
     var shareText: String
     var shareImage: UIImage
     var linkMetaData = LPLinkMetadata()
