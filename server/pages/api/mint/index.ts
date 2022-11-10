@@ -7,7 +7,7 @@ import * as path from "path"
 import { join } from 'path'
 const { send }  = require('@onflow/transport-http');
 
-const MonsterMakerAddress = "0x0dbefa5699ae9d3b"
+const MonsterMakerAddress = "0xfd3d8fe2c8056370"
 
 const authzFn = async (account: any = {}) => {
     const ADDRESS = MonsterMakerAddress;

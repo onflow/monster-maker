@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FCL
 
 class NFTListViewModel: ViewModel {
     @Published
@@ -14,8 +15,20 @@ class NFTListViewModel: ViewModel {
     func trigger(_ input: NFTListPage.Action) {
         switch input {
         case .load:
+            guard let address = fcl.currentUser?.addr else {
+                return
+            }
             Task {
-                
+                do {
+                    
+                    let idList: [UInt64] = try await fcl.query(script: MonsterMakerCadence.nftIDs, args: [.init(value: .address(address))]).decode()
+                    print(idList)
+                    
+                    let nftList: [NFTModel] = try await fcl.query(script: MonsterMakerCadence.nftList, args: [.init(value: .address(address))]).decode()
+                    print(nftList)
+                } catch {
+                    print(error)
+                }
             }
         }
     }

@@ -53,6 +53,10 @@ class MonsterMakerCadence {
     
     static let nftList =
     """
+    import NonFungibleToken from 0xNonFungibleToken
+    import MonsterMaker from 0xMonsterMaker
+    import MetadataViews from 0xMetadataViews
+    
     pub struct Monster {
         pub let name: String
         pub let description: String
@@ -129,5 +133,22 @@ class MonsterMakerCadence {
 
         return monsters
     }
+    """
+    
+    
+    static let nftIDs =
+    """
+        import NonFungibleToken from 0xNonFungibleToken
+        import MonsterMaker from 0xMonsterMaker
+        import MetadataViews from 0xMetadataViews
+    
+        pub fun main(address: Address): [UInt64] {
+            let account = getAccount(address)
+            let collectionRef = account.getCapability(MonsterMaker.CollectionPublicPath)!.borrow<&{NonFungibleToken.CollectionPublic}>()
+                ?? panic("Could not borrow capability from public collection")
+            
+            let ids = collectionRef.getIDs()
+            return ids
+        }
     """
 }

@@ -18,7 +18,7 @@ struct MainTabPage: View {
                 TabView(selection: $selectedIndex) {
                     MakerPage()
                         .tag(0)
-                    NFTListPage(vm: .init(MockNFTListViewModel()))
+                    NFTListPage(vm: .init(NFTListViewModel()))
                         .tag(1)
                 }
                 .navigationBarHidden(true)

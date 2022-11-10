@@ -12,8 +12,8 @@ import FCL
 @main
 struct MonsterMakerApp: App {
     
-    @StateObject
-    var vm = MMViewModel()
+    @State
+    var isLogin: Bool = false
     
     init () {
         FlowManager.shared.setup()
@@ -21,37 +21,18 @@ struct MonsterMakerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if vm.isLogin {
+            if isLogin {
                 MainTabPage()
+                    .onReceive(fcl.$currentUser) { value in
+                        self.isLogin = (value != nil)
+                    }
             } else {
                 WelcomePage()
-                    .mmBackground()
+                    .onReceive(fcl.$currentUser) { value in
+                        
+                        self.isLogin = (value != nil)
+                    }
             }
         }
-    }
-}
-
-
-class MMViewModel: ObservableObject {
-    @Published
-    var isLogin: Bool = false
-    
-    private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        fcl.$currentUser.sink { [weak self] user in
-            if let user = user {
-                print("<==== Current User =====>")
-                print(user)
-                DispatchQueue.main.async {
-                    self?.isLogin = true
-                }
-            } else {
-                print("<==== No User =====>")
-                DispatchQueue.main.async {
-                    self?.isLogin = false
-                }
-            }
-        }.store(in: &cancellables)
     }
 }

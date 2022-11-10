@@ -18,10 +18,21 @@ class FlowManager: ObservableObject {
     
     func subscribeTransaction(txId: String) {        
         Task {
-            let id = Flow.ID(hex: txId)
-            pendingTx = txId
-            let _ = try await id.onceSealed()
-            pendingTx = nil
+            do {
+                let id = Flow.ID(hex: txId)
+                
+                DispatchQueue.main.async {
+                    self.pendingTx = txId
+                }
+                let _ = try await id.onceSealed()
+                DispatchQueue.main.async {
+                    self.pendingTx = nil
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.pendingTx = nil
+                }
+            }
         }
     }
     
@@ -46,7 +57,7 @@ class FlowManager: ObservableObject {
 
         fcl.config
             .put("0xFungibleToken", value: "0x631e88ae7f1d7c20")
-            .put("0xMonsterMaker", value: "0xccaf756025bafaf9")
+            .put("0xMonsterMaker", value: "0xfd3d8fe2c8056370")
             .put("0xMetadataViews", value: "0x631e88ae7f1d7c20")
         
     }
