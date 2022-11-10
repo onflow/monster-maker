@@ -10,10 +10,10 @@ import FungibleToken from "../../contracts/FungibleToken.cdc"
 
 transaction(
     recipient: Address, 
-    background: UInt64,
-    head: UInt64,
-    torso: UInt64, 
-    leg: UInt64
+    background: Int,
+    head: Int,
+    torso: Int, 
+    leg: Int
 ) {
 
     // local variable for storing the minter reference

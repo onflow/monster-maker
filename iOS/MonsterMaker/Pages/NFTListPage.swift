@@ -33,7 +33,7 @@ struct NFTListPage: View {
     
     var body: some View {
         VStack(spacing: .MM.zero) {
-                HeaderView(title: "My Monster")
+                HeaderView()
                 Spacer()
                 ScrollView {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {

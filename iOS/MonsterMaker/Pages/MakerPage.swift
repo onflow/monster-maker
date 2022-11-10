@@ -40,8 +40,7 @@ struct MakerPage: View {
     
     var body: some View {
         VStack(spacing: .MM.zero) {
-            
-            HeaderView(title: "Monster Maker")
+            HeaderView()
             Spacer()
                 ZStack {
                     

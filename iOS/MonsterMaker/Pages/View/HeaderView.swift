@@ -10,8 +10,6 @@ import FCL
 
 struct HeaderView: View {
     
-    var title: String
-    
     @State
     var pendingTx = FlowManager.shared.pendingTx
     
@@ -55,7 +53,7 @@ struct HeaderView: View {
         .padding(.horizontal, .MM.standard)
         .background(.clear)
         .sheet(isPresented: $showWebView) {
-            if let txId = pendingTx,
+            if let txId = FlowManager.shared.pendingTx,
                 let url = URL(string: "https://testnet.flowscan.org/transaction/\(txId)") {
                 SafariView(url: url)
             }
@@ -68,6 +66,6 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "Monster Maker")
+        HeaderView()
     }
 }
