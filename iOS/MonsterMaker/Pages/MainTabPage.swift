@@ -13,21 +13,24 @@ struct MainTabPage: View {
     var selectedIndex: Int = 0
     
     var body: some View {
-        ZStack {
-            TabView(selection: $selectedIndex) {
-                MakerPage()
-                    .tag(0)
-                NFTListPage()
-                    .tag(1)
+        NavigationView{
+            ZStack {
+                TabView(selection: $selectedIndex) {
+                    MakerPage()
+                        .tag(0)
+                    NFTListPage()
+                        .tag(1)
+                }
+                .navigationBarHidden(true)
+
+                TabBarView(items:[
+                    .init(image: "create-button-off",
+                          selectedImage: "create-button-on"),
+                    .init(image: "view-button-off" ,
+                          selectedImage: "view-button-on")
+                ],
+                           selectedIndex: $selectedIndex)
             }
-        
-            TabBarView(items:[
-                .init(image: "create-button-off",
-                      selectedImage: "create-button-on"),
-                .init(image: "view-button-off" ,
-                      selectedImage: "view-button-on")
-            ],
-                       selectedIndex: $selectedIndex)
         }
     }
 }

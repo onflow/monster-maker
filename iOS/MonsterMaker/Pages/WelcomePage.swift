@@ -28,7 +28,6 @@ struct WelcomePage: View {
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width - 2*CGFloat.MM.large)
                     
-                    
                     Spacer()
                 }
                                 

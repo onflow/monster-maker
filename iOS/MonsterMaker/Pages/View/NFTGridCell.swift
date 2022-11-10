@@ -13,10 +13,8 @@ struct NFTGridCell: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            
             NFTLocalView(data: data)
                 .cornerRadius(12)
-            
         }
     }
 }

@@ -64,7 +64,6 @@ struct DiscoveryView: View {
                                             .cornerRadius(10)
                                     },
                                     placeholder: {
-//                                        ProgressView()
                                         Color(hex: 0xe0e0e0)
                                             .frame(width: 70, height: 70)
                                             .cornerRadius(10)

@@ -76,6 +76,7 @@ struct NFTDetailView: View {
         .mmBackground()
         .navigationTitle("")
         .navigationBarHidden(true)
+//        .toolbar(.hidden, for: .tabBar)
     }
 }
 

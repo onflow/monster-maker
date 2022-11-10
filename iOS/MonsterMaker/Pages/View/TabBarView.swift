@@ -32,8 +32,6 @@ struct TabBarView: View {
                             .font(.largeTitle.weight(.black))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-//                    .foregroundColor(isSelected ? Color.MM.dark : Color.MM.grey)
-//                    .animation(.easeInOut, value: isSelected)
                 }
                 
             }

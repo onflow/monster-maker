@@ -21,7 +21,6 @@ struct NFTListPage: View {
     ]
     
     var body: some View {
-        NavigationView {
         VStack(spacing: .MM.zero) {
                 HeaderView(title: "My Monster")
                 Spacer()
@@ -46,12 +45,13 @@ struct NFTListPage: View {
             }
             .mmBackground()
         }
-            .frame(maxWidth: .screenWidth, maxHeight: .screenHeight)
-    }
+//            .frame(maxWidth: .screenWidth, maxHeight: .screenHeight)
 }
 
 struct NFTListPage_Previews: PreviewProvider {
     static var previews: some View {
-        NFTListPage()
+        NavigationView {
+            NFTListPage()
+        }
     }
 }
