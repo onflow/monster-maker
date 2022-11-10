@@ -8,7 +8,7 @@ import { join } from 'path'
 const { send }  = require('@onflow/transport-http');
 
 const authzFn = async (account: any = {}) => {
-    const ADDRESS = "0xccaf756025bafaf9";
+    const ADDRESS = "0x0dbefa5699ae9d3b";
     const KEY_ID = 0;
     return {
       ...account, 
@@ -42,7 +42,7 @@ const fclConfig = () => {
     .put("0xNonFungibleToken", '0x631e88ae7f1d7c20')
     .put("0xFungibleToken", '0x9a0766d93b6608b7')
     .put("0xMetadataViews", '0x631e88ae7f1d7c20')
-    .put("0xMonsterMaker", '0xccaf756025bafaf9')
+    .put("0xMonsterMaker", '0x0dbefa5699ae9d3b')
 }
 
 const replaceAddress = (cadence: string) => {
@@ -50,7 +50,7 @@ const replaceAddress = (cadence: string) => {
     .replaceAll(`"../../contracts/NonFungibleToken.cdc"`, '0x631e88ae7f1d7c20')
     .replaceAll(`"../../contracts/FungibleToken.cdc"`, '0x9a0766d93b6608b7')
     .replaceAll(`"../../contracts/MetadataViews.cdc"`, '0x631e88ae7f1d7c20')
-    .replaceAll(`"../../contracts/MonsterMaker.cdc"`, '0xccaf756025bafaf9')
+    .replaceAll(`"../../contracts/MonsterMaker.cdc"`, '0x0dbefa5699ae9d3b')
 }
 
 export default async function handler(

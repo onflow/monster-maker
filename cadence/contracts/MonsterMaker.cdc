@@ -44,28 +44,6 @@ pub contract MonsterMaker: NonFungibleToken {
         .concat("-")
         .concat(component.legs.toString())
     }
-
-    pub enum Kind: UInt8 {
-        pub case background
-        pub case head
-        pub case torso
-        pub case legs
-    }
-
-    pub fun kindToString(_ kind: Kind): String {
-        switch kind {
-            case Kind.background:
-                return "Background"
-            case Kind.head:
-                return "Head"
-            case Kind.torso:
-                return "Torso"
-            case Kind.legs:
-                return "Leg"
-        }
-
-        return ""
-    }
     
     // A Monster Item as an NFT
     //
@@ -86,21 +64,24 @@ pub contract MonsterMaker: NonFungibleToken {
 
 
         pub fun thumbnail(): MetadataViews.HTTPFile {
-          return MetadataViews.HTTPFile(url: "https://api/".concat(MonsterMaker.componentToString(self.component)))
+          return MetadataViews.HTTPFile(url: "https://monster-maker.vercel.app/api/".concat(MonsterMaker.componentToString(self.component)))
         }
 
+        access(self) let royalties: [MetadataViews.Royalty]
         access(self) let metadata: {String: AnyStruct}
 
-        // The token kind (e.g. Fishbowl)
+
         pub let component: MonsterMaker.MonsterComponent
 
 
         init(
             id: UInt64,
+            royalties: [MetadataViews.Royalty],
             metadata: {String: AnyStruct},
             component: MonsterMaker.MonsterComponent,    
         ){
             self.id = id
+            self.royalties = royalties
             self.metadata = metadata
             self.component = component
         }
@@ -113,7 +94,8 @@ pub contract MonsterMaker: NonFungibleToken {
                 Type<MetadataViews.NFTCollectionData>(),
                 Type<MetadataViews.NFTCollectionDisplay>(),
                 Type<MetadataViews.Serial>(),
-                Type<MetadataViews.Traits>()
+                Type<MetadataViews.Traits>(),
+                Type<MetadataViews.Royalties>()
             ]
         }
 
@@ -137,6 +119,10 @@ pub contract MonsterMaker: NonFungibleToken {
                     return MetadataViews.Serial(
                         self.id
                     )
+                case Type<MetadataViews.Royalties>():
+                    return MetadataViews.Royalties(
+                        self.royalties
+                    )
                 case Type<MetadataViews.ExternalURL>():
                     return MetadataViews.ExternalURL("https://monster-maker.vercel.app/".concat(self.id.toString()))
                 case Type<MetadataViews.NFTCollectionData>():
@@ -154,16 +140,23 @@ pub contract MonsterMaker: NonFungibleToken {
                 case Type<MetadataViews.NFTCollectionDisplay>():
                     let media = MetadataViews.Media(
                         file: MetadataViews.HTTPFile(
-                            url: "https://assets.website-files.com/5f6294c0c7a8cdd643b1c820/5f6294c0c7a8cda55cb1c936_Flow_Wordmark.svg"
+                            url: "https://i.imgur.com/UMXsEjt.png"
                         ),
-                        mediaType: "image/svg+xml"
+                        mediaType: "image/png"
+                    )
+
+                    let bannerMedia = MetadataViews.Media(
+                        file: MetadataViews.HTTPFile(
+                            url: "https://i.imgur.com/NzV9cyo.png"
+                        ),
+                        mediaType: "image/png"
                     )
                     return MetadataViews.NFTCollectionDisplay(
                         name: "The MonsterMaker Collection",
                         description: "This collection is used as an example to help you develop your next Flow NFT.",
                         externalURL: MetadataViews.ExternalURL("https://monster-maker.vercel.app/"),
                         squareImage: media,
-                        bannerImage: media,
+                        bannerImage: bannerMedia,
                         socials: {}
                     )
                 case Type<MetadataViews.Traits>():
@@ -304,17 +297,18 @@ pub contract MonsterMaker: NonFungibleToken {
         //
         pub fun mintNFT(
             recipient: &{NonFungibleToken.CollectionPublic}, 
-            component: MonsterMaker.MonsterComponent, 
+            component: MonsterMaker.MonsterComponent,
+            royalties: [MetadataViews.Royalty],
         ) {
             let metadata: {String: AnyStruct} = {}
             let currentBlock = getCurrentBlock()
             metadata["mintedBlock"] = currentBlock.height
             metadata["mintedTime"] = currentBlock.timestamp
             metadata["minter"] = recipient.owner!.address
-            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.background)] = component.background
-            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.head)] = component.head
-            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.torso)] = component.torso
-            metadata[MonsterMaker.kindToString(MonsterMaker.Kind.legs)] = component.legs
+            metadata["background"] = component.background
+            metadata["head"] = component.head
+            metadata["torso"] = component.torso
+            metadata["legs"] = component.legs
 
             // this piece of metadata will be used to show embedding rarity into a trait
             // metadata["foo"] = "bar"
@@ -322,6 +316,7 @@ pub contract MonsterMaker: NonFungibleToken {
             // create a new NFT
             var newNFT <- create MonsterMaker.NFT(
                 id: MonsterMaker.totalSupply,
+                royalties: royalties,
                 metadata: metadata,
                 component: component, 
             )
@@ -362,9 +357,9 @@ pub contract MonsterMaker: NonFungibleToken {
         self.totalSupply = 0
 
         // Set our named paths
-        self.CollectionStoragePath = /storage/MonsterMakerCollectionTest
-        self.CollectionPublicPath = /public/MonsterMakerCollectionTest
-        self.MinterStoragePath = /storage/MonsterMakerMinterTest
+        self.CollectionStoragePath = /storage/MonsterMakerCollection
+        self.CollectionPublicPath = /public/MonsterMakerCollection
+        self.MinterStoragePath = /storage/MonsterMakerMinter
 
         // Create a Collection resource and save it to storage
         let collection <- create Collection()
