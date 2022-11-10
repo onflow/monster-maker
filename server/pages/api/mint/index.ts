@@ -68,10 +68,10 @@ export default async function handler(
         cadence: replaceAddress(cadece),
         args: (arg: any, t: any) => [
             fcl.arg(address, t.Address), 
-            fcl.arg(background, t.UInt64), 
-            fcl.arg(head, t.UInt64), 
-            fcl.arg(torso, t.UInt64), 
-            fcl.arg(legs, t.UInt64)
+            fcl.arg(background, t.Int), 
+            fcl.arg(head, t.Int), 
+            fcl.arg(torso, t.Int), 
+            fcl.arg(legs, t.Int)
         ],
         proposer: authzFn,
         authorizations: [authzFn],

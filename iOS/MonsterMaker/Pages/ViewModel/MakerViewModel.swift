@@ -26,6 +26,7 @@ class MakerViewModel: ViewModel {
                     if isEnabled {
                         let request = MintRequest(address: address.hex, components: state.components)
                         let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
+                        print("txId ==> \(response.txId)")
                         FlowManager.shared.subscribeTransaction(txId: response.txId)
                     } else {
                         let txId = try await fcl.mutate(cadence: MonsterMakerCadence.initAccount,
