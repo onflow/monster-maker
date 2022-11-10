@@ -17,33 +17,36 @@ struct NFTLocalView: View {
     
     var body: some View {
         ZStack {
-            if let backgroundImage = NFTLocalImage.backgrounds[safe: data.background] {
+            if let backgroundImage = NFTLocalImage.backgrounds[safe: Int(data.background)] {
                 Image(backgroundImage)
                     .resizable()
                     .scaledToFit()
                     .zIndex(998)
             }
             
-            if let headImage = NFTLocalImage.headers[safe: data.head] {
+            if let headImage = NFTLocalImage.headers[safe: Int(data.head)] {
                 Image(headImage)
                     .resizable()
                     .scaledToFit()
                     .zIndex(1000)
                     .offset(x:0, y: appear ? 2 : 0)
-                    .animation(Animation.linear(duration: 0.5).repeatForever(autoreverses: true), value: appear)
+                    .animation(Animation.linear(duration: 0.5)
+                        .repeatForever(autoreverses: true)
+                        .delay(Double.random(in: 0..<1)),
+                               value: appear)
                     .onAppear {
                         appear.toggle()
                     }
                     .scaleEffect(CGSize(width: scale, height: scale))
             }
-            if let torsoImage = NFTLocalImage.torso[safe: data.torso] {
+            if let torsoImage = NFTLocalImage.torso[safe: Int(data.torso)] {
                 Image(torsoImage)
                     .resizable()
                     .scaledToFit()
                     .zIndex(1001)
                     .scaleEffect(CGSize(width: scale, height: scale))
             }
-            if let legImage = NFTLocalImage.legs[safe: data.legs] {
+            if let legImage = NFTLocalImage.legs[safe: Int(data.legs)] {
                 Image(legImage)
                     .resizable()
                     .scaledToFit()

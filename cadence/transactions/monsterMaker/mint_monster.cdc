@@ -48,7 +48,8 @@ transaction(
         // mint the NFT and deposit it to the recipient's collection
         self.minter.mintNFT(
             recipient: self.recipientCollectionRef,
-            component: componentValue
+            component: componentValue,
+            royalties: royalties
         )
     }
 

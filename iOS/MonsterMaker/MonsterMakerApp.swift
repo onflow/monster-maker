@@ -16,7 +16,7 @@ struct MonsterMakerApp: App {
     var vm = MMViewModel()
     
     init () {
-        FlowClient.setup()
+        FlowManager.shared.setup()
     }
     
     var body: some Scene {

@@ -22,12 +22,12 @@ pub contract MonsterMaker: NonFungibleToken {
     pub let MinterStoragePath: StoragePath
 
     pub struct MonsterComponent {
-        pub var background: UInt64
-        pub var head: UInt64
-        pub var torso: UInt64
-        pub var legs: UInt64
+        pub var background: Int
+        pub var head: Int
+        pub var torso: Int
+        pub var legs: Int
 
-        init(background: UInt64, head: UInt64, torso: UInt64, legs: UInt64) {
+        init(background: Int, head: Int, torso: Int, legs: Int) {
             self.background = background
             self.head = head
             self.torso = torso
@@ -72,7 +72,6 @@ pub contract MonsterMaker: NonFungibleToken {
 
 
         pub let component: MonsterMaker.MonsterComponent
-
 
         init(
             id: UInt64,
@@ -164,17 +163,7 @@ pub contract MonsterMaker: NonFungibleToken {
                     let excludedTraits = ["mintedTime", "foo"]
                     let traitsView = MetadataViews.dictToTraits(dict: self.metadata, excludedNames: excludedTraits)
 
-                    // mintedTime is a unix timestamp, we should mark it with a displayType so platforms know how to show it.
-                    let mintedTimeTrait = MetadataViews.Trait(name: "mintedTime", value: self.metadata["mintedTime"]!, displayType: "Date", rarity: nil)
-                    traitsView.addTrait(mintedTimeTrait)
-
-                    // foo is a trait with its own rarity
-                    let fooTraitRarity = MetadataViews.Rarity(score: 10.0, max: 100.0, description: "Common")
-                    let fooTrait = MetadataViews.Trait(name: "foo", value: self.metadata["foo"], displayType: nil, rarity: fooTraitRarity)
-                    traitsView.addTrait(fooTrait)
-                    
                     return traitsView
-
             }
             return nil 
         }

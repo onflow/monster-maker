@@ -7,9 +7,20 @@
 
 import SwiftUI
 
+extension NFTListPage {
+    struct ViewState {
+        var nfts: [NFTModel]
+    }
+
+    enum Action {
+        case load
+    }
+}
+
 struct NFTListPage: View {
     
-    let data = (1...20).map { "Item \($0)" }
+    @StateObject
+    var vm: AnyViewModel<ViewState, Action>
     
     static let spacing: CGFloat = 10
     
@@ -26,24 +37,24 @@ struct NFTListPage: View {
                 Spacer()
                 ScrollView {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                        ForEach(1..<20) { index in
-                            let data: NFTLocalData = .init(background: NFTLocalImage.backgrounds.randomIndex,
-                                                           head: NFTLocalImage.headers.randomIndex,
-                                                           torso: NFTLocalImage.torso.randomIndex,
-                                                           legs: NFTLocalImage.legs.randomIndex)
-                            
-                            NavigationLink {
-                                NFTDetailView(data: data)
-                            } label: {
-                                NFTGridCell(data: data)
-                                    .frame(width: NFTListPage.width, height: NFTListPage.width + 20)
-                            }
+                        ForEach(vm.nfts, id: \.name) { nft in
+                                NavigationLink {
+                                    NFTDetailView(data: nft.component)
+                                } label: {
+                                    NFTGridCell(data: nft.component)
+                                        .frame(width: NFTListPage.width,
+                                               height: NFTListPage.width + 20)
+                                }
                         }
                     }
-                    .padding(.horizontal, 10)
+                    .padding(.horizontal, .MM.standard)
+                    .padding(.bottom, 80)
                 }.background(.clear)
             }
             .mmBackground()
+            .onAppear {
+                vm.trigger(.load)
+            }
         }
 //            .frame(maxWidth: .screenWidth, maxHeight: .screenHeight)
 }
@@ -51,7 +62,7 @@ struct NFTListPage: View {
 struct NFTListPage_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            NFTListPage()
+            NFTListPage(vm: .init(MockNFTListViewModel()))
         }
     }
 }

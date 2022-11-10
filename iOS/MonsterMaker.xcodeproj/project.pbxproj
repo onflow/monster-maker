@@ -18,8 +18,12 @@
 		1538F120291930C800338FF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1538F11F291930C800338FF4 /* Launch Screen.storyboard */; };
 		1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F121291BDBF100338FF4 /* DiscoveryView.swift */; };
 		1538F125291C565800338FF4 /* ShareActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F124291C565800338FF4 /* ShareActivityItemSource.swift */; };
+		1538F127291D3BAD00338FF4 /* NFTListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */; };
+		1538F129291D3C2B00338FF4 /* MonsterMakerCadence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */; };
+		1538F12B291D3EE000338FF4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F12A291D3EE000338FF4 /* SafariView.swift */; };
+		1538F12D291D431900338FF4 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F12C291D431900338FF4 /* NFTModel.swift */; };
 		1588EB2F29131FC50069EAC4 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1588EB2E29131FC50069EAC4 /* FCL */; };
-		1588EB32291320390069EAC4 /* FlowClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowClient.swift */; };
+		1588EB32291320390069EAC4 /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowManager.swift */; };
 		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
 		1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D27E29109E960001811D /* MonsterMakerApp.swift */; };
 		1591D28129109E960001811D /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D28029109E960001811D /* WelcomePage.swift */; };
@@ -56,7 +60,11 @@
 		1538F11F291930C800338FF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1538F121291BDBF100338FF4 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		1538F124291C565800338FF4 /* ShareActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityItemSource.swift; sourceTree = "<group>"; };
-		1588EB31291320390069EAC4 /* FlowClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowClient.swift; sourceTree = "<group>"; };
+		1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListViewModel.swift; sourceTree = "<group>"; };
+		1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMakerCadence.swift; sourceTree = "<group>"; };
+		1538F12A291D3EE000338FF4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		1538F12C291D431900338FF4 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
+		1588EB31291320390069EAC4 /* FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowManager.swift; sourceTree = "<group>"; };
 		1588EB332913327C0069EAC4 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1591D27E29109E960001811D /* MonsterMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMakerApp.swift; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 			children = (
 				1525E94929157B8500F7C63A /* MakerViewModel.swift */,
 				1525E94B29157BB900F7C63A /* AnyViewModel.swift */,
+				1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -129,7 +138,8 @@
 		1588EB302913201E0069EAC4 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				1588EB31291320390069EAC4 /* FlowClient.swift */,
+				1588EB31291320390069EAC4 /* FlowManager.swift */,
+				1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -223,6 +233,7 @@
 				1591D2AC2910EB7B0001811D /* HeaderView.swift */,
 				1591D2B32910FA4C0001811D /* NFTGridCell.swift */,
 				1538F121291BDBF100338FF4 /* DiscoveryView.swift */,
+				1538F12A291D3EE000338FF4 /* SafariView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				1591D2B62911C2900001811D /* NFTLocalImage.swift */,
+				1538F12C291D431900338FF4 /* NFTModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,7 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1588EB32291320390069EAC4 /* FlowClient.swift in Sources */,
+				1588EB32291320390069EAC4 /* FlowManager.swift in Sources */,
 				1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */,
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
@@ -341,15 +353,19 @@
 				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
 				1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */,
 				1591D2B22910EF180001811D /* Extension.swift in Sources */,
+				1538F127291D3BAD00338FF4 /* NFTListViewModel.swift in Sources */,
 				1525E9502918AB6400F7C63A /* View.swift in Sources */,
 				1591D29F2910D15B0001811D /* MakerPage.swift in Sources */,
 				1591D2A52910D7840001811D /* MainTabPage.swift in Sources */,
+				1538F129291D3C2B00338FF4 /* MonsterMakerCadence.swift in Sources */,
 				1525E94729157A8900F7C63A /* Request.swift in Sources */,
 				1525E945291579C700F7C63A /* Endpoint.swift in Sources */,
 				1525E943291578EC00F7C63A /* Network.swift in Sources */,
 				1525E94C29157BB900F7C63A /* AnyViewModel.swift in Sources */,
+				1538F12B291D3EE000338FF4 /* SafariView.swift in Sources */,
 				1591D2AD2910EB7B0001811D /* HeaderView.swift in Sources */,
 				1591D2AF2910ECF20001811D /* NFTLocalView.swift in Sources */,
+				1538F12D291D431900338FF4 /* NFTModel.swift in Sources */,
 				1591D2AB2910EB610001811D /* NFTListPage.swift in Sources */,
 				1525E94E29157E8100F7C63A /* Response.swift in Sources */,
 				1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */,

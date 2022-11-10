@@ -7,19 +7,26 @@
 
 import Foundation
 import FCL
+import Flow
 
-class FlowClient {
+class FlowManager: ObservableObject {
     
-    static func setup() {
-        
+    static let shared = FlowManager()
+    
+    @Published
+    var pendingTx: String? = nil
+    
+    func subscribeTransaction(txId: String) {        
+        Task {
+            let id = Flow.ID(hex: txId)
+            pendingTx = txId
+            let _ = try await id.onceSealed()
+            pendingTx = nil
+        }
+    }
+    
+    func setup() {
         let provider: FCL.Provider = .lilico
-//        let wallet = FCL.WalletProvider(id: "Dapper Pro",
-//                                          name: "Dapper Pro",
-//                                          method: .walletConnect,
-//                                          endpoint: "dapper-pro://",
-//                                          supportNetwork: [.testnet])
-        
-//        let provider: FCL.Provider = .custom(wallet)
         
         let accountProof = FCL.Metadata.AccountProofConfig(appIdentifier: "Monster Maker",
                                                            nonce: "75f8587e5bd5f9dcc9909d0dae1f0ac5814458b2ae129620502cb936fde7120a")
@@ -45,31 +52,15 @@ class FlowClient {
     }
     
     
-    static func checkCollectionVault() async throws -> Bool {
+    func checkCollectionVault() async throws -> Bool {
         guard let address = fcl.currentUser?.addr else {
             throw FCLError.unauthenticated
         }
         
-        let result: Bool = try await fcl.query(script:
-        
-        """
-        import NonFungibleToken from 0xNonFungibleToken
-        import MonsterMaker from 0xMonsterMaker
-        
-        pub fun main(address: Address) : Bool {
-            let account = getAccount(address)
-
-            let vaultRef = account
-            .getCapability<&{NonFungibleToken.CollectionPublic}>(MonsterMaker.CollectionPublicPath)
-            .check()
-
-            return vaultRef
-        }
-        """,
+        let result: Bool = try await fcl.query(script: MonsterMakerCadence.checkInit,
                                    args: [.init(value: .address(address))]).decode()
         
         return result
-        
     }
     
 }

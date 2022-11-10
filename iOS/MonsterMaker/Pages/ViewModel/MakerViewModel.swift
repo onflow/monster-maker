@@ -12,7 +12,6 @@ class MakerViewModel: ViewModel {
     @Published
     private(set) var state: MakerPage.ViewState = .init()
     
-
     func trigger(_ input: MakerPage.Action) {
         switch input {
         case .mint:
@@ -22,46 +21,17 @@ class MakerViewModel: ViewModel {
             }
             
             Task {
-                
                 do {
-                    
-                    let isEnabled = try await FlowClient.checkCollectionVault()
-                    
+                    let isEnabled = try await FlowManager.shared.checkCollectionVault()
                     if isEnabled {
                         let request = MintRequest(address: address.hex, components: state.components)
                         let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
-                        print(response)
+                        FlowManager.shared.subscribeTransaction(txId: response.txId)
                     } else {
-                        
-                        let txId = try await fcl.mutate(cadence:
-                    """
-                    import NonFungibleToken from 0xNonFungibleToken
-                    import MonsterMaker from 0xMonsterMaker
-                    import MetadataViews from 0xMetadataViews
-                    
-                    // This transaction configures an account to hold Kitty Items.
-                    
-                    transaction {
-                        prepare(signer: AuthAccount) {
-                            // if the account doesn't already have a collection
-                            if signer.borrow<&MonsterMaker.Collection>(from: MonsterMaker.CollectionStoragePath) == nil {
-                    
-                                // create a new empty collection
-                                let collection <- MonsterMaker.createEmptyCollection()
-                                
-                                // save it to the account
-                                signer.save(<-collection, to: MonsterMaker.CollectionStoragePath)
-                    
-                                // create a public capability for the collection
-                                signer.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
-                            }
-                        }
-                    }
-                    """,
+                        let txId = try await fcl.mutate(cadence: MonsterMakerCadence.initAccount,
                                                         args: [])
-                        
                         print("txId ==> \(txId.hex)")
-                        
+                        FlowManager.shared.subscribeTransaction(txId: txId.hex)
                     }
                 } catch {
                     print(error)

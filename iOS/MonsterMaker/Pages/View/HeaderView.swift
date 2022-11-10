@@ -12,10 +12,22 @@ struct HeaderView: View {
     
     var title: String
     
+    @State
+    var showWebView = false
+    
     var body: some View {
         HStack {
             
-            Button {} label: {}
+            Button {
+                if let _ = FlowManager.shared.pendingTx {
+                    showWebView.toggle()
+                }
+            } label: {
+                if let _ = FlowManager.shared.pendingTx {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .yellow))
+                }
+            }
             .frame(width: 50)
             
             Spacer()
@@ -39,6 +51,12 @@ struct HeaderView: View {
         .frame(height: 56)
         .padding(.horizontal, .MM.standard)
         .background(.clear)
+        .sheet(isPresented: $showWebView) {
+            if let txId = FlowManager.shared.pendingTx,
+                let url = URL(string: "https://testnet.flowscan.org/transaction/\(txId)") {
+                SafariView(url: url)
+            }
+        }
     }
 }
 

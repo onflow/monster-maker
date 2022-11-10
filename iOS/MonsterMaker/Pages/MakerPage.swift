@@ -46,20 +46,20 @@ struct MakerPage: View {
                 ZStack {
                     
                     ComponentView(images: NFTLocalImage.backgrounds,
-                                  currentIndex: viewModel.state.components.background,
+                                  currentIndex: Int(viewModel.state.components.background),
                                   position: .background)
                         .zIndex(998)
 
                     ComponentView(images: NFTLocalImage.headers,
-                                  currentIndex: viewModel.state.components.head,
+                                  currentIndex: Int(viewModel.state.components.head),
                                   position: .head)
                         .zIndex(1000)
                     ComponentView(images: NFTLocalImage.torso,
-                                  currentIndex: viewModel.state.components.torso,
+                                  currentIndex: Int(viewModel.state.components.torso),
                                   position: .torso)
                         .zIndex(1001)
                     ComponentView(images: NFTLocalImage.legs,
-                                  currentIndex: viewModel.state.components.legs,
+                                  currentIndex: Int(viewModel.state.components.legs),
                                   position: .legs)
                         .zIndex(999)
                 }
