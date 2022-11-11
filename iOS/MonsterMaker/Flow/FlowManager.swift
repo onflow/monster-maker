@@ -59,7 +59,6 @@ class FlowManager: ObservableObject {
             .put("0xFungibleToken", value: "0x631e88ae7f1d7c20")
             .put("0xMonsterMaker", value: "0xfd3d8fe2c8056370")
             .put("0xMetadataViews", value: "0x631e88ae7f1d7c20")
-        
     }
     
     

@@ -605,7 +605,7 @@
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
 				kind = revision;
-				revision = 9149519853db20e542a49afecd9a3fc36285aee1;
+				revision = a66a890bcc219a5c3e0a3852949f8bf5d774e327;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
