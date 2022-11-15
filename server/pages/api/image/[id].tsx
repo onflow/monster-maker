@@ -9,6 +9,13 @@ import satori from 'satori'
 const sharp = require('sharp')
 import fs from 'fs/promises'
 import { join } from 'path'
+const nodeHtmlToImage = require('node-html-to-image')
+
+async function imageDataURI(path: string) {
+    const image = await fs.readFile(path);
+    const base64Image = image.toString('base64');
+    return 'data:image/png;base64,' + base64Image
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -21,47 +28,59 @@ export default async function handler(
         return res.status(403).json({message: 'Invalid'})
     }
 
-    console.log('components ->', components)
+    const backgroundPath = join(process.cwd(), 'public', 'images', 'background', `bg_${components[0]}.png`)
+    const backgroundSource = await imageDataURI(backgroundPath)
+    const headPath = join(process.cwd(), 'public', 'images', 'head', `monster_head_${components[1]}.png`)
+    const headSource = await imageDataURI(headPath)
+    const torsoPath = join(process.cwd(), 'public', 'images', 'torso', `monster_torso_${components[2]}.png`)
+    const torsoSource = await imageDataURI(torsoPath)
+    const legsPath = join(process.cwd(), 'public', 'images', 'legs', `monster_legs_${components[3]}.png`)
+    const legsSource = await imageDataURI(legsPath)
 
-    const component = (components: number[])=> {
-        return (
-            <NFTView bgIndex={components[0]} headIndex={components[1]} legsIndex={components[2]} torsoIndex={components[3]} />
-        );
-    }
+    const image = await nodeHtmlToImage({
+        html: 
+        `
+        <html>
+            <head>
+                <style>
+                html {
+                    padding: 0;
+                    margin: 0;
+                }
 
-    // var myDiv = document.createElement('div');
-    const svgString = renderToString(
-        React.createElement(component)
-    );
+                body {
+                    padding: 0;
+                    margin: 0;
+                    width: 1024px;
+                    height: 1024px;
+                }
 
-
-    const fontPath = join(process.cwd(), 'public', 'fonts', 'Roboto-Regular.ttf')
-    console.log('fontPath ->',fontPath)
-    const fontData = await fs.readFile(fontPath)
-    const svg = await satori(svgString, 
-    {
-        width: 400,
-        height: 400,
-        fonts: [
-            {
-                name: 'Inter',
-                data: fontData,
-                weight: 400,
-                style: 'normal',
-              }
-        ],
-    })
-
-    console.log(svg)
-
-    const buffer = await sharp(Buffer.from(svg)).png().toBuffer()
-    // const canvas = await html2canvas(svg);
-    // const buffer = canvas.toDataURL('image/jpg');
-
-    // const buffer = await toJpeg(React.createElement(component))
-
-    res.setHeader('Content-Type', 'image/jpg');
-    res.send(buffer);
-
-    // res.status(200).json({ name: 'John Doe' })
+                .overlapGrid {
+                    display: grid;
+                    grid-template-areas: overlay;
+                  }
+                  
+                .overlapGrid > img {
+                    grid-area: overlay;
+                    width: 1024px;
+                    height: 1024px; 
+                    layout: responsive;
+                }
+                </style>
+            </head>
+            <body>
+                <div class="overlapGrid">
+                    <img src="{{backgroundSource}}"/>
+                    <img src="{{headSource}}"/>
+                    <img src="{{torsoSource}}"/>
+                    <img src="{{legsSource}}"/>
+                </div>
+            </body>
+        </html>
+        `,
+        content: { backgroundSource, legsSource, headSource, torsoSource},
+        transparent: true
+      });
+    res.writeHead(200, { 'Content-Type': 'image/png' });
+    res.status(200).end(image, 'binary');
 }

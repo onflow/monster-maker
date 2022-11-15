@@ -64,7 +64,7 @@ pub contract MonsterMaker: NonFungibleToken {
 
 
         pub fun thumbnail(): MetadataViews.HTTPFile {
-          return MetadataViews.HTTPFile(url: "https://monster-maker.vercel.app/api/".concat(MonsterMaker.componentToString(self.component)))
+          return MetadataViews.HTTPFile(url: "https://monster-maker.vercel.app/api/image/".concat(MonsterMaker.componentToString(self.component)))
         }
 
         access(self) let royalties: [MetadataViews.Royalty]

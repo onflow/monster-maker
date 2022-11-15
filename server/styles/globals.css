@@ -20,6 +20,6 @@ a {
   }
   body {
     color: #404040;
-    background: #F7F6F4;
+    background: linear-gradient(#061B20, #1C6470, #D3E549);
   }
 }
