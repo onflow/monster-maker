@@ -17,8 +17,6 @@ transaction {
 
             // create a public capability for the collection
             signer.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
-        } else {
-            log("AAAAAAAA")
         }
     }
 }

@@ -31,7 +31,6 @@ const sign = async (signableMessage: string): Promise<string> => {
     const messageHash = await secp.utils.sha256(
       Buffer.from(signableMessage, 'hex')
     );
-
     const signature = await secp.sign(messageHash, env.privateKey as string);
     const realSignature = secp.Signature.fromHex(signature).toCompactHex();
     return realSignature;

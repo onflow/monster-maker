@@ -66,14 +66,19 @@ export default async function handler(
                     height: 1024px; 
                     layout: responsive;
                 }
+
+                .other {
+                    transform: scale(0.8);
+                }
+
                 </style>
             </head>
             <body>
                 <div class="overlapGrid">
                     <img src="{{backgroundSource}}"/>
-                    <img src="{{headSource}}"/>
-                    <img src="{{torsoSource}}"/>
-                    <img src="{{legsSource}}"/>
+                    <img src="{{headSource}}" class="other" />
+                    <img src="{{torsoSource}}" class="other"/>
+                    <img src="{{legsSource}}" class="other" />
                 </div>
             </body>
         </html>
