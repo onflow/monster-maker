@@ -33,6 +33,9 @@ struct MakerPage: View {
     
     @State
     var isRotate: Bool = false
+    
+    @State
+    var isPending: Bool = false
 
     let animationDuration = 1.5
     
@@ -63,7 +66,7 @@ struct MakerPage: View {
                                   position: .legs)
                         .zIndex(999)
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: UIScreen.main.bounds.width)
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                 .padding(.horizontal, .MM.standard)
                 
@@ -78,9 +81,9 @@ struct MakerPage: View {
                     Image("bar-mint")
                         .resizable()
                         .scaledToFit()
-                        .offset(y: ( isShown && !vm.isMiniting) ? 50 : 500)
+                        .offset(y: ( isShown && !vm.isMiniting && !isPending) ? 50 : 500)
                         .animation(.easeInOut(duration: animationDuration),
-                                   value: isShown || vm.isMiniting )
+                                   value: isShown || vm.isMiniting || isPending )
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
                         .animation(.easeInOut
@@ -91,9 +94,12 @@ struct MakerPage: View {
         }
         .frame(maxWidth: .screenWidth, maxHeight: .infinity)
         .mmBackground()
-        .onAppear{
+        .onAppear {
             isShown = true
             isRotate.toggle()
+        }
+        .onReceive(FlowManager.shared.$pendingTx) { value in
+            self.isPending = value != nil
         }
     }
 }

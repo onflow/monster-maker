@@ -42,18 +42,30 @@ struct ComponentView: View {
     }
     
     var imageHeight: CGFloat {
-        isBackground ? 250 : 200
+        screenWidth - CGFloat.MM.large * 2 - CGFloat.MM.medium * 2
     }
+    
+    private func previousImage() {
+        if currentIndex == 0 {
+            return
+        }
+        currentIndex = currentIndex - 1
+    }
+    
+    private func nextImage() {
+        if currentIndex == images.count - 1 {
+            return
+        }
+        currentIndex = currentIndex + 1
+    }
+
     
     var body: some View {
         
         VStack(alignment: .center, spacing: 0) {
             
             Button {
-                if currentIndex == 0 {
-                    return
-                }
-                currentIndex = currentIndex - 1
+                previousImage()
             } label: {
                 Image("arrow-up")
             }
@@ -62,23 +74,19 @@ struct ComponentView: View {
             
             HStack {
                 Button {
-                    if currentIndex == 0 {
-                        return
-                    }
-                    currentIndex = currentIndex - 1
+                    previousImage()
                 } label: {
                     Image("arrow-left")
                 }
                 .visibility( isBackground ? .gone : .visible)
                 .offset(y: offset)
                 
-                
                 if position == .head {
                     if let image = images[safe: currentIndex] {
                         Image(image)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: imageHeight, height: imageHeight)
+                            .frame(maxWidth: imageHeight, maxHeight: imageHeight)
                             .aspectRatio(1, contentMode: .fill)
                             .allowsHitTesting(false)
                             .zIndex(1100)
@@ -86,24 +94,23 @@ struct ComponentView: View {
                             .animation(Animation.linear(duration: 0.5)
                                 .repeatForever(autoreverses: true),
                                        value: appear)
+                            .scaleEffect(isBackground ? CGSize(width: 1, height: 1) : CGSize(width: 0.8, height: 0.8))
                     }
                 } else {
                     if let image = images[safe: currentIndex] {
                         Image(image)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: imageHeight, height: imageHeight)
+                            .frame(maxWidth: imageHeight, maxHeight: imageHeight)
                             .aspectRatio(1, contentMode: .fill)
                             .allowsHitTesting(false)
                             .zIndex(1100)
+                            .scaleEffect(isBackground ? CGSize(width: 1, height: 1) : CGSize(width: 0.8, height: 0.8))
                     }
                 }
                 
                 Button {
-                    if currentIndex == images.count - 1 {
-                        return
-                    }
-                    currentIndex = currentIndex + 1
+                    nextImage()
                 } label: {
                     Image("arrow-right")
                 }
@@ -112,10 +119,7 @@ struct ComponentView: View {
             }
             
             Button {
-                if currentIndex == images.count - 1 {
-                    return
-                }
-                currentIndex = currentIndex + 1
+                nextImage()
             } label: {
                 Image("arrow-down")
             }
@@ -123,7 +127,8 @@ struct ComponentView: View {
             .offset(y: .MM.small)
             
         }
-        .frame(width: .screenWidth)
+        .padding(.horizontal, .MM.standard)
+        .frame(width: screenWidth)
         .onAppear {
             appear = true
         }
@@ -149,6 +154,6 @@ struct ComponentView_Previews: PreviewProvider {
                           currentIndex: .constant(1),
                           position: .torso)
         }
-        .previewLayout(.sizeThatFits)
+//        .previewLayout(.sizeThatFits)
     }
 }

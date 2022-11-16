@@ -7,6 +7,7 @@
 
 import Foundation
 import FCL
+import UIKit
 
 @MainActor
 class MakerViewModel: ViewModel {
@@ -26,6 +27,8 @@ class MakerViewModel: ViewModel {
         guard let address = fcl.currentUser?.addr else {
             return
         }
+        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
         Task {
             do {
