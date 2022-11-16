@@ -10,6 +10,8 @@ import SwiftUI
 struct NFTLocalView: View {
     var data: NFTLocalData
     
+    var showAnimation = true
+    
     @State
     var appear = false
     
@@ -35,7 +37,9 @@ struct NFTLocalView: View {
                         .delay(Double.random(in: 0..<1)),
                                value: appear)
                     .onAppear {
-                        appear.toggle()
+                        if showAnimation {
+                            appear.toggle()
+                        }
                     }
                     .scaleEffect(CGSize(width: scale, height: scale))
             }

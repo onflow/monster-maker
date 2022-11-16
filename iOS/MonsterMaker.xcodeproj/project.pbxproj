@@ -47,6 +47,8 @@
 		1591D2B22910EF180001811D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B12910EF180001811D /* Extension.swift */; };
 		1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B32910FA4C0001811D /* NFTGridCell.swift */; };
 		1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B62911C2900001811D /* NFTLocalImage.swift */; };
+		15D1726F29244FE20049A956 /* InitPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1726E29244FE20049A956 /* InitPage.swift */; };
+		15D17271292450700049A956 /* InitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17270292450700049A956 /* InitViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		1591D2B12910EF180001811D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1591D2B32910FA4C0001811D /* NFTGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTGridCell.swift; sourceTree = "<group>"; };
 		1591D2B62911C2900001811D /* NFTLocalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTLocalImage.swift; sourceTree = "<group>"; };
+		15D1726E29244FE20049A956 /* InitPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitPage.swift; sourceTree = "<group>"; };
+		15D17270292450700049A956 /* InitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				1525E94929157B8500F7C63A /* MakerViewModel.swift */,
+				15D17270292450700049A956 /* InitViewModel.swift */,
 				1525E94B29157BB900F7C63A /* AnyViewModel.swift */,
 				1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */,
 			);
@@ -208,6 +213,7 @@
 				1591D29E2910D15B0001811D /* MakerPage.swift */,
 				1591D28029109E960001811D /* WelcomePage.swift */,
 				1591D2A42910D7840001811D /* MainTabPage.swift */,
+				15D1726E29244FE20049A956 /* InitPage.swift */,
 				1591D2AA2910EB610001811D /* NFTListPage.swift */,
 				1588EB332913327C0069EAC4 /* NFTDetailView.swift */,
 			);
@@ -341,6 +347,7 @@
 				1525E94A29157B8500F7C63A /* MakerViewModel.swift in Sources */,
 				1538F125291C565800338FF4 /* ShareActivityItemSource.swift in Sources */,
 				1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */,
+				15D17271292450700049A956 /* InitViewModel.swift in Sources */,
 				1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */,
 				1591D2A72910DCC90001811D /* TabBarView.swift in Sources */,
 				1591D2B42910FA4C0001811D /* NFTGridCell.swift in Sources */,
@@ -350,6 +357,7 @@
 				1591D29F2910D15B0001811D /* MakerPage.swift in Sources */,
 				1591D2A52910D7840001811D /* MainTabPage.swift in Sources */,
 				1538F129291D3C2B00338FF4 /* MonsterMakerCadence.swift in Sources */,
+				15D1726F29244FE20049A956 /* InitPage.swift in Sources */,
 				1525E94729157A8900F7C63A /* Request.swift in Sources */,
 				1525E945291579C700F7C63A /* Endpoint.swift in Sources */,
 				1525E943291578EC00F7C63A /* Network.swift in Sources */,
@@ -515,7 +523,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dapperlabs.MonsterMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -559,7 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dapperlabs.MonsterMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -605,7 +613,7 @@
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
 				kind = revision;
-				revision = a66a890bcc219a5c3e0a3852949f8bf5d774e327;
+				revision = 62efcc19b83fe018f226974c10bfe78a857b5d4e;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

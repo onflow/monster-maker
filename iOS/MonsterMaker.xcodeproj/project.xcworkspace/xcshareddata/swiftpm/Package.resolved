@@ -32,7 +32,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Outblock/fcl-swift",
       "state" : {
-        "revision" : "a66a890bcc219a5c3e0a3852949f8bf5d774e327"
+        "revision" : "62efcc19b83fe018f226974c10bfe78a857b5d4e"
       }
     },
     {
@@ -112,8 +112,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/WalletConnect/WalletConnectSwiftV2",
       "state" : {
-        "revision" : "3013d46340be019a59a0c969bfda720b7a9fda42",
-        "version" : "1.0.2"
+        "revision" : "84197cd011da4b1986fc7a431cdf3f0f32199db1",
+        "version" : "1.0.5"
       }
     },
     {

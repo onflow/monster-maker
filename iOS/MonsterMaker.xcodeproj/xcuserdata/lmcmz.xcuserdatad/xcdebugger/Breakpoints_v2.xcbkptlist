@@ -3,4 +3,258 @@
    uuid = "C5EE5099-7B96-4817-8602-72E8BE3F99D5"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8E13CA8-AF54-4FA1-9A79-EFD019B3AD64"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "execService(url:method:request:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F8E13CA8-AF54-4FA1-9A79-EFD019B3AD64 - 2a0dde1cf44750bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "F8E13CA8-AF54-4FA1-9A79-EFD019B3AD64 - 2a0dde1cf44750bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "632">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3CDD0C5-E078-464A-B396-79E9A0273A34"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "execService(url:method:request:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3993307F-CD94-42F3-99EC-8C72F53E6887"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "execService(url:method:request:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "execService(url:method:request:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692 - 2a0dde1cf44755ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "2088">
+               </Location>
+               <Location
+                  uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692 - 37f3911bca1cd1a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "3488">
+               </Location>
+               <Location
+                  uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692 - eeefa54e00e3e724"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(14) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "676">
+               </Location>
+               <Location
+                  uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692 - 99683a56a46c003b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(15) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "692">
+               </Location>
+               <Location
+                  uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692 - b3d0935edbdca13a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(16) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "796">
+               </Location>
+               <Location
+                  uuid = "B6FA6993-024B-45C3-BE41-4E11D131C692 - 6e58e8277f4cc239"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(17) suspend resume partial function for FCL.FCL.WalletConnectProvider.execService&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(url: Foundation.URL, method: FCL.FCL.ServiceType, request: Swift.Optional&lt;&#x3c4;_0_0&gt;) async throws -&gt; FCL.FCL.Response"
+                  moduleName = "MonsterMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lmcmz/Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "808">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C033E2B9-C1E1-4F9E-A30E-71A0BA1BCCAD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "setUpWCSubscribing()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3045D84-EBEB-4863-9994-F22F99E8714F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "setUpWCSubscribing()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BAB2353E-F44D-4A76-97A1-E9FA4A3776CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "setUpWCSubscribing()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF9A36FF-0FDA-4246-89DF-9829D4A8B021"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/MonsterMaker-hksfgnjsimktaidclqalppwwlrcg/SourcePackages/checkouts/fcl-swift/Sources/FCL/Provider/WalletConnect/WalletConnectProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "setUpWCSubscribing()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

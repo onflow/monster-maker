@@ -26,7 +26,7 @@ struct DiscoveryView: View {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "xmark")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 
             }
@@ -34,7 +34,7 @@ struct DiscoveryView: View {
             .padding(.horizontal, 18)
             
             Divider()
-                .foregroundColor(Color(hex: 0x616161))
+                .foregroundColor(.secondary)
             
             ScrollView(.horizontal) {
                 LazyHStack(alignment: .center, spacing: 18) {
@@ -72,14 +72,14 @@ struct DiscoveryView: View {
 
                                 Text(info.name)
                                     .font(.footnote)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                             }
                             
                         }
                     }
                 }.padding(18)
             }
-            .background(Color(hex: 0xf0f0f0))
+            .background(Color.primary.opacity(0.1))
             .frame(height: 150)
         }
         .background(Color.clear)

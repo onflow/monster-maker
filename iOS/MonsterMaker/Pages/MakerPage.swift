@@ -9,6 +9,7 @@ import SwiftUI
 
 extension MakerPage {
     struct ViewState {
+        var isMiniting: Bool = false
         var components: NFTLocalData = .init(background: NFTLocalImage.backgrounds.randomIndex,
                                              head: NFTLocalImage.headers.randomIndex,
                                              torso: NFTLocalImage.torso.randomIndex,
@@ -67,16 +68,19 @@ struct MakerPage: View {
                 .padding(.horizontal, .MM.standard)
                 
                 Spacer()
-                    
+            
                 Button {
+                    if vm.isMiniting {
+                        return
+                    }
                     vm.trigger(.mint)
                 } label: {
                     Image("bar-mint")
                         .resizable()
                         .scaledToFit()
-                        .offset(y: isShown ? 50 : 500)
+                        .offset(y: ( isShown && !vm.isMiniting) ? 50 : 500)
                         .animation(.easeInOut(duration: animationDuration),
-                                   value: isShown)
+                                   value: isShown || vm.isMiniting )
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
                         .animation(.easeInOut

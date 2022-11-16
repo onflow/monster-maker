@@ -19,6 +19,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen" translatesAutoresizingMaskIntoConstraints="NO" id="Xwr-YA-rxo">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lwi-0x-jTe">
+                                <rect key="frame" x="24" y="334" width="345" height="184"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lwi-0x-jTe" secondAttribute="height" multiplier="15:8" id="oA0-Eo-UoI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="0.023529411764705882" green="0.10588235294117647" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -26,6 +32,10 @@
                             <constraint firstItem="Xwr-YA-rxo" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="NoR-hW-R0Y"/>
                             <constraint firstItem="Xwr-YA-rxo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="VSL-yV-HdQ"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Xwr-YA-rxo" secondAttribute="trailing" id="crn-ie-cZS"/>
+                            <constraint firstItem="lwi-0x-jTe" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="24" id="ga3-QH-0bg"/>
+                            <constraint firstItem="lwi-0x-jTe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gcs-TE-wlm"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="lwi-0x-jTe" secondAttribute="trailing" constant="24" id="xgc-gA-PC3"/>
+                            <constraint firstItem="lwi-0x-jTe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zDU-m7-vZO"/>
                             <constraint firstAttribute="bottom" secondItem="Xwr-YA-rxo" secondAttribute="bottom" id="zVF-Zq-qYZ"/>
                         </constraints>
                     </view>
@@ -37,5 +47,6 @@
     </scenes>
     <resources>
         <image name="launch-screen" width="375" height="812"/>
+        <image name="logo" width="330" height="121"/>
     </resources>
 </document>

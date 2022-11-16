@@ -29,7 +29,8 @@ struct WelcomePage: View {
                     Image("logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: UIScreen.main.bounds.width - 2*CGFloat.MM.large)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, .MM.double)
                     
                     Spacer()
                 }
