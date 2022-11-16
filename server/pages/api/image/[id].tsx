@@ -33,9 +33,6 @@ export default async function handler(
     try {
         const backgroundPath = join(process.cwd(), 'public', 'images', 'background', `bg_${components[0]}.png`)
         const backgroundSource = await imageDataURI(backgroundPath)
-        res.status(200).json({backgroundPath, backgroundSource});
-        return
-
         const headPath = join(process.cwd(), 'public', 'images', 'head', `monster_head_${components[1]}.png`)
         const headSource = await imageDataURI(headPath)
         const torsoPath = join(process.cwd(), 'public', 'images', 'torso', `monster_torso_${components[2]}.png`)
@@ -45,6 +42,9 @@ export default async function handler(
 
         console.log('Image Path =>', backgroundPath, headPath, torsoPath, legsPath);
         console.log('Image Source =>', backgroundSource, legsSource, headSource, torsoSource);
+
+        res.status(200).json({backgroundSource, legsSource, headSource, torsoSource});
+        return
     
         const image = await nodeHtmlToImage({
             html: 
@@ -94,7 +94,7 @@ export default async function handler(
             `,
             content: { backgroundSource, legsSource, headSource, torsoSource},
             transparent: true
-          });
+        });
         res.writeHead(200, { 'Content-Type': 'image/png' });
         res.status(200).end(image, 'binary');
     } catch(error) {
