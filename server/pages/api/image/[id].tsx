@@ -28,64 +28,70 @@ export default async function handler(
         return res.status(403).json({message: 'Invalid'})
     }
 
-    const backgroundPath = join(process.cwd(), 'public', 'images', 'background', `bg_${components[0]}.png`)
-    const backgroundSource = await imageDataURI(backgroundPath)
-    const headPath = join(process.cwd(), 'public', 'images', 'head', `monster_head_${components[1]}.png`)
-    const headSource = await imageDataURI(headPath)
-    const torsoPath = join(process.cwd(), 'public', 'images', 'torso', `monster_torso_${components[2]}.png`)
-    const torsoSource = await imageDataURI(torsoPath)
-    const legsPath = join(process.cwd(), 'public', 'images', 'legs', `monster_legs_${components[3]}.png`)
-    const legsSource = await imageDataURI(legsPath)
-
-    const image = await nodeHtmlToImage({
-        html: 
-        `
-        <html>
-            <head>
-                <style>
-                html {
-                    padding: 0;
-                    margin: 0;
-                }
-
-                body {
-                    padding: 0;
-                    margin: 0;
-                    width: 1024px;
-                    height: 1024px;
-                }
-
-                .overlapGrid {
-                    display: grid;
-                    grid-template-areas: overlay;
-                  }
-                  
-                .overlapGrid > img {
-                    grid-area: overlay;
-                    width: 1024px;
-                    height: 1024px; 
-                    layout: responsive;
-                }
-
-                .other {
-                    transform: scale(0.8);
-                }
-
-                </style>
-            </head>
-            <body>
-                <div class="overlapGrid">
-                    <img src="{{backgroundSource}}"/>
-                    <img src="{{headSource}}" class="other" />
-                    <img src="{{torsoSource}}" class="other"/>
-                    <img src="{{legsSource}}" class="other" />
-                </div>
-            </body>
-        </html>
-        `,
-        content: { backgroundSource, legsSource, headSource, torsoSource},
-        transparent: true
-      });
-    res.writeHead(200, { 'Content-Type': 'image/png' });
-    res.status(200).end(image, 'binary');
+    try {
+        const backgroundPath = join(process.cwd(), 'public', 'images', 'background', `bg_${components[0]}.png`)
+        const backgroundSource = await imageDataURI(backgroundPath)
+        const headPath = join(process.cwd(), 'public', 'images', 'head', `monster_head_${components[1]}.png`)
+        const headSource = await imageDataURI(headPath)
+        const torsoPath = join(process.cwd(), 'public', 'images', 'torso', `monster_torso_${components[2]}.png`)
+        const torsoSource = await imageDataURI(torsoPath)
+        const legsPath = join(process.cwd(), 'public', 'images', 'legs', `monster_legs_${components[3]}.png`)
+        const legsSource = await imageDataURI(legsPath)
+    
+        const image = await nodeHtmlToImage({
+            html: 
+            `
+            <html>
+                <head>
+                    <style>
+                    html {
+                        padding: 0;
+                        margin: 0;
+                    }
+    
+                    body {
+                        padding: 0;
+                        margin: 0;
+                        width: 1024px;
+                        height: 1024px;
+                    }
+    
+                    .overlapGrid {
+                        display: grid;
+                        grid-template-areas: overlay;
+                      }
+                      
+                    .overlapGrid > img {
+                        grid-area: overlay;
+                        width: 1024px;
+                        height: 1024px; 
+                        layout: responsive;
+                    }
+    
+                    .other {
+                        transform: scale(0.8);
+                    }
+    
+                    </style>
+                </head>
+                <body>
+                    <div class="overlapGrid">
+                        <img src="{{backgroundSource}}"/>
+                        <img src="{{headSource}}" class="other" />
+                        <img src="{{torsoSource}}" class="other"/>
+                        <img src="{{legsSource}}" class="other" />
+                    </div>
+                </body>
+            </html>
+            `,
+            content: { backgroundSource, legsSource, headSource, torsoSource},
+            transparent: true
+          });
+        res.writeHead(200, { 'Content-Type': 'image/png' });
+        res.status(200).end(image, 'binary');
+    } catch(error) {
+        res.status(500).json({
+            error: error
+        })
+    }
 }
