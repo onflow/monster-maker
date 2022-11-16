@@ -24,6 +24,8 @@ export default async function handler(
     const id = req.query.id as string
     const components = id.split('-').map(id => parseInt(id))
 
+    console.log('Components =>', components);
+
     if (components.length < 4) {
         return res.status(403).json({message: 'Invalid'})
     }
@@ -37,6 +39,8 @@ export default async function handler(
         const torsoSource = await imageDataURI(torsoPath)
         const legsPath = join(process.cwd(), 'public', 'images', 'legs', `monster_legs_${components[3]}.png`)
         const legsSource = await imageDataURI(legsPath)
+
+        console.log('Image Source =>', backgroundSource, legsSource, headSource, torsoSource);
     
         const image = await nodeHtmlToImage({
             html: 
@@ -90,6 +94,7 @@ export default async function handler(
         res.writeHead(200, { 'Content-Type': 'image/png' });
         res.status(200).end(image, 'binary');
     } catch(error) {
+        console.log(error);
         res.status(500).json({
             error: error
         })
