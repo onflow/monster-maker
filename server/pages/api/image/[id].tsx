@@ -32,6 +32,9 @@ export default async function handler(
 
     try {
         const backgroundPath = join(process.cwd(), 'public', 'images', 'background', `bg_${components[0]}.png`)
+        res.status(200).json({backgroundPath});
+        return
+
         const backgroundSource = await imageDataURI(backgroundPath)
         const headPath = join(process.cwd(), 'public', 'images', 'head', `monster_head_${components[1]}.png`)
         const headSource = await imageDataURI(headPath)
@@ -40,6 +43,7 @@ export default async function handler(
         const legsPath = join(process.cwd(), 'public', 'images', 'legs', `monster_legs_${components[3]}.png`)
         const legsSource = await imageDataURI(legsPath)
 
+        console.log('Image Path =>', backgroundPath, headPath, torsoPath, legsPath);
         console.log('Image Source =>', backgroundSource, legsSource, headSource, torsoSource);
     
         const image = await nodeHtmlToImage({
