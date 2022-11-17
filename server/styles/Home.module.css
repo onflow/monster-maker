@@ -118,6 +118,10 @@
   grid-area: overlay;
 }
 
+.scaleBody {
+  scale: 0.8;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
