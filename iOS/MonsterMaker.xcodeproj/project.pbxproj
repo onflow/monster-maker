@@ -49,6 +49,7 @@
 		1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B62911C2900001811D /* NFTLocalImage.swift */; };
 		15D1726F29244FE20049A956 /* InitPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1726E29244FE20049A956 /* InitPage.swift */; };
 		15D17271292450700049A956 /* InitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17270292450700049A956 /* InitViewModel.swift */; };
+		15D172802926E0A60049A956 /* Instabug in Frameworks */ = {isa = PBXBuildFile; productRef = 15D1727F2926E0A60049A956 /* Instabug */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D172802926E0A60049A956 /* Instabug in Frameworks */,
 				1525E940291578CF00F7C63A /* Moya in Frameworks */,
 				1588EB2F29131FC50069EAC4 /* FCL in Frameworks */,
 			);
@@ -274,6 +276,7 @@
 			packageProductDependencies = (
 				1588EB2E29131FC50069EAC4 /* FCL */,
 				1525E93F291578CF00F7C63A /* Moya */,
+				15D1727F2926E0A60049A956 /* Instabug */,
 			);
 			productName = MonsterMaker;
 			productReference = 1591D27B29109E960001811D /* MonsterMaker.app */;
@@ -306,6 +309,7 @@
 			packageReferences = (
 				1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */,
 				1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */,
+				15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */,
 			);
 			productRefGroup = 1591D27C29109E960001811D /* Products */;
 			projectDirPath = "";
@@ -616,6 +620,14 @@
 				revision = 62efcc19b83fe018f226974c10bfe78a857b5d4e;
 			};
 		};
+		15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Instabug/Instabug-SP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -628,6 +640,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */;
 			productName = FCL;
+		};
+		15D1727F2926E0A60049A956 /* Instabug */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */;
+			productName = Instabug;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

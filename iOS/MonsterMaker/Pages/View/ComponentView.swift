@@ -47,6 +47,7 @@ struct ComponentView: View {
     
     private func previousImage() {
         if currentIndex == 0 {
+            currentIndex = images.count - 1
             return
         }
         currentIndex = currentIndex - 1
@@ -54,6 +55,7 @@ struct ComponentView: View {
     
     private func nextImage() {
         if currentIndex == images.count - 1 {
+            currentIndex = 0
             return
         }
         currentIndex = currentIndex + 1
