@@ -36,6 +36,9 @@ struct MakerPage: View {
     
     @State
     var isPending: Bool = false
+    
+    @State
+    var isShowFlight: Bool = false
 
     let animationDuration = 1.5
     
@@ -72,18 +75,29 @@ struct MakerPage: View {
                 
                 Spacer()
             
-                Button {
-                    if vm.isMiniting {
-                        return
+            if isPending || vm.isMiniting {
+                Image("minting-banner")
+                    .resizable()
+                    .scaledToFit()
+                    .offset(y: isShowFlight ? -30 : -50)
+                    .transition(.move(edge: .bottom))
+                    .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true),
+                               value: isShowFlight)
+                    .onAppear {
+                        isShowFlight.toggle()
                     }
+                
+            } else {
+                Button {
                     vm.trigger(.mint)
                 } label: {
                     Image("bar-mint")
                         .resizable()
                         .scaledToFit()
+                        .transition(.move(edge: .bottom))
                         .offset(y: ( isShown && !vm.isMiniting && !isPending) ? 50 : 500)
                         .animation(.easeInOut(duration: animationDuration),
-                                   value: isShown || vm.isMiniting || isPending )
+                                   value: isShown )
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
                         .animation(.easeInOut
@@ -91,6 +105,7 @@ struct MakerPage: View {
                             .delay(animationDuration),
                                    value: isRotate)
                 }
+            }
         }
         .frame(maxWidth: .screenWidth, maxHeight: .infinity)
         .mmBackground()
@@ -100,6 +115,8 @@ struct MakerPage: View {
         }
         .onReceive(FlowManager.shared.$pendingTx) { value in
             self.isPending = value != nil
+            isShown = value == nil
+            isRotate.toggle()
         }
     }
 }
