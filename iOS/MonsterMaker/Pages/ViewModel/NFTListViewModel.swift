@@ -21,11 +21,12 @@ class NFTListViewModel: ViewModel {
             Task {
                 do {                    
                     let nftList: [NFTModel] = try await fcl.query(script: MonsterMakerCadence.nftList, args: [.init(value: .address(address))]).decode()
-                    print(nftList)
                     
                     let sortedList = nftList.sorted { nft1, nft2 in
                         nft1.itemID > nft2.itemID
                     }
+                    
+                    print(sortedList)
                     
                     DispatchQueue.main.async {
                         self.state.nfts = sortedList

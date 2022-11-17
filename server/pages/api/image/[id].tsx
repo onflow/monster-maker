@@ -9,7 +9,7 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
     const id = req.query.id as string
-    const components = id.split('-').map(id => parseInt(id))
+    const components = id.split('-').map(id => parseInt(id) + 1)
 
     if (components.length < 4) {
         return res.status(403).json({message: 'Invalid parameter'})
