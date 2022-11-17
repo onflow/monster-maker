@@ -95,7 +95,7 @@ struct MakerPage: View {
                         .resizable()
                         .scaledToFit()
                         .transition(.move(edge: .bottom))
-                        .offset(y: ( isShown && !vm.isMiniting && !isPending) ? 50 : 500)
+                        .offset(y: isShown ? 50 : 500)
                         .animation(.easeInOut(duration: animationDuration),
                                    value: isShown )
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
