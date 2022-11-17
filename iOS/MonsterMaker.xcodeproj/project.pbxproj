@@ -508,6 +508,8 @@
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “$(PRODUCT_NAME)“ to use voice recordings in activities.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “$(PRODUCT_NAME)“ to save photo to your device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -552,6 +554,8 @@
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “$(PRODUCT_NAME)“ to use voice recordings in activities.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “$(PRODUCT_NAME)“ to save photo to your device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
