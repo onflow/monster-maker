@@ -4,13 +4,6 @@ import fs from 'fs/promises'
 import { join } from 'path'
 import { createCanvas, Image } from '@napi-rs/canvas'
 
-async function imageDataURI(path: string) {
-    const image = await fs.readFile(path);
-    // const base64Image = image.toString('base64');
-    // return 'data:image/png;base64,' + base64Image
-    return image;
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
@@ -18,25 +11,23 @@ export default async function handler(
     const id = req.query.id as string
     const components = id.split('-').map(id => parseInt(id))
 
-    console.log('Components =>', components);
-
     if (components.length < 4) {
-        return res.status(403).json({message: 'Invalid'})
+        return res.status(403).json({message: 'Invalid parameter'})
     }
 
-    const size = 600
+    const size = 800
     const bodySize = size * 0.8
     const offset = (size - bodySize)/2
 
     try {
         const backgroundPath = join(process.cwd(), 'public', 'images', 'background', `bg_${components[0]}.png`)
-        const backgroundSource = await imageDataURI(backgroundPath)
+        const backgroundSource = await fs.readFile(backgroundPath);
         const headPath = join(process.cwd(), 'public', 'images', 'head', `monster_head_${components[1]}.png`)
-        const headSource = await imageDataURI(headPath)
+        const headSource = await fs.readFile(headPath);
         const torsoPath = join(process.cwd(), 'public', 'images', 'torso', `monster_torso_${components[2]}.png`)
-        const torsoSource = await imageDataURI(torsoPath)
+        const torsoSource = await fs.readFile(torsoPath);
         const legsPath = join(process.cwd(), 'public', 'images', 'legs', `monster_legs_${components[3]}.png`)
-        const legsSource = await imageDataURI(legsPath)
+        const legsSource = await fs.readFile(legsPath);
 
         const canvas = createCanvas(size, size);
         const ctx = canvas.getContext("2d");
