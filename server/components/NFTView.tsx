@@ -5,12 +5,16 @@ import {head, legs, torso, background, headRange, backgroundRange, legsRange, to
 const NFTView = ({bgIndex, headIndex, legsIndex, torsoIndex} : {bgIndex: number, headIndex: number, legsIndex: number, torsoIndex: number}) => {
 
     const image = (src: string) => {
+        return (<Image src={src} alt="torso" width={1024} height={1024} layout="responsive" className={styles.scaleBody}/>)
+    }
+
+    const bgImage = (src: string) => {
         return (<Image src={src} alt="torso" width={1024} height={1024} layout="responsive"/>)
-      }
+    }
     
     return (
         <div className={styles.overlapGrid}>
-        {image(background(bgIndex))}
+        {bgImage(background(bgIndex))}
         {image(head(headIndex))}
         {image(torso(torsoIndex))}
         {image(legs(legsIndex))}
