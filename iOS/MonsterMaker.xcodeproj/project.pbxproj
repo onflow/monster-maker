@@ -50,6 +50,7 @@
 		15D1726F29244FE20049A956 /* InitPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1726E29244FE20049A956 /* InitPage.swift */; };
 		15D17271292450700049A956 /* InitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17270292450700049A956 /* InitViewModel.swift */; };
 		15D172802926E0A60049A956 /* Instabug in Frameworks */ = {isa = PBXBuildFile; productRef = 15D1727F2926E0A60049A956 /* Instabug */; };
+		15D17285292772DF0049A956 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17284292772DF0049A956 /* RefreshableScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		1591D2B62911C2900001811D /* NFTLocalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTLocalImage.swift; sourceTree = "<group>"; };
 		15D1726E29244FE20049A956 /* InitPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitPage.swift; sourceTree = "<group>"; };
 		15D17270292450700049A956 /* InitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewModel.swift; sourceTree = "<group>"; };
+		15D17284292772DF0049A956 /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 				1591D2B32910FA4C0001811D /* NFTGridCell.swift */,
 				1538F121291BDBF100338FF4 /* DiscoveryView.swift */,
 				1538F12A291D3EE000338FF4 /* SafariView.swift */,
+				15D17284292772DF0049A956 /* RefreshableScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				1588EB32291320390069EAC4 /* FlowManager.swift in Sources */,
 				1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */,
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
+				15D17285292772DF0049A956 /* RefreshableScrollView.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
 				1525E94A29157B8500F7C63A /* MakerViewModel.swift in Sources */,
 				1538F125291C565800338FF4 /* ShareActivityItemSource.swift in Sources */,

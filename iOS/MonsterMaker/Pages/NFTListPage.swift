@@ -35,28 +35,37 @@ struct NFTListPage: View {
         VStack(spacing: .MM.zero) {
                 HeaderView()
                 Spacer()
-                ScrollView {
+            
+                RefreshableScrollView {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
                         ForEach(vm.nfts, id: \.name) { nft in
-                                NavigationLink {
-                                    NFTDetailView(data: nft)
-                                } label: {
-                                    NFTGridCell(data: nft.component)
-                                        .frame(width: NFTListPage.width,
-                                               height: NFTListPage.width + 20)
-                                }
+                            // Hide arrow from list cell
+                            ZStack {
+                                NFTGridCell(data: nft.component)
+                                    .frame(width: NFTListPage.width,
+                                           height: NFTListPage.width + 20)
+                                
+                                NavigationLink(destination: NFTDetailView(data: nft)) {
+                                                EmptyView()
+                                            }
+                                .buttonStyle(PlainButtonStyle())
+                                .opacity(0)
+                            }
                         }
                     }
                     .padding(.horizontal, .MM.standard)
                     .padding(.bottom, 80)
-                }.background(.clear)
+                    
+                } onRefresh: {
+                    vm.trigger(.load)
+                }
+                .background(.clear)
             }
             .mmBackground()
-            .onAppear {
+            .task {
                 vm.trigger(.load)
             }
         }
-//            .frame(maxWidth: .screenWidth, maxHeight: .screenHeight)
 }
 
 struct NFTListPage_Previews: PreviewProvider {

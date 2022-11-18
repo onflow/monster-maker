@@ -9,7 +9,6 @@ import Foundation
 import FCL
 import UIKit
 
-@MainActor
 class MakerViewModel: ViewModel {
     @Published
     private(set) var state: MakerPage.ViewState = .init()

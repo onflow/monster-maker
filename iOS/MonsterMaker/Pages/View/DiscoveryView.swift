@@ -52,7 +52,6 @@ struct DiscoveryView: View {
                                     let _ = try await fcl.authenticate()
                                 }
                             }
-                            
                         } label: {
                             VStack {
                                 AsyncImage(
@@ -82,7 +81,7 @@ struct DiscoveryView: View {
             .background(Color.primary.opacity(0.1))
             .frame(height: 150)
         }
-        .background(Color.clear)
+        .background(Color.MM.background)
     }
 }
 

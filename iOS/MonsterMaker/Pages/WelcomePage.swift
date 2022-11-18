@@ -65,10 +65,12 @@ struct WelcomePage: View {
                         .presentationDetents([.height(200)])
                 } else {
                     // Fallback on earlier versions
-                    Color.clear.background{
+                    VStack(alignment: .trailing) {
+                        Spacer()
                         DiscoveryView()
                             .frame(height: 200)
                     }
+                    .background(ClearBackgroundView())
                 }
             }
         }
@@ -78,5 +80,17 @@ struct WelcomePage: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomePage()
+    }
+}
+
+struct ClearBackgroundView: UIViewRepresentable {
+    func makeUIView(context: Context) -> some UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+    func updateUIView(_ uiView: UIViewType, context: Context) {
     }
 }
