@@ -270,6 +270,7 @@
 				1591D27729109E960001811D /* Sources */,
 				1591D27829109E960001811D /* Frameworks */,
 				1591D27929109E960001811D /* Resources */,
+				98083885292850B400BC002D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -341,6 +342,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		98083885292850B400BC002D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#- -- SCRIPT BEGIN - --\n SKIP_SIMULATOR_BUILDS=1\n  SCRIPT_SRC=$(find \"$BUILT_PRODUCTS_DIR\" -name 'Instabug_dsym_upload.sh' | head -1)\n  if [ ! \"${SCRIPT_SRC}\" ]; then\n    echo \"Instabug: err: script not found. Make sure that you're including InstabugResources.bundle in your project directory\"\n    exit 1\n  fi\n   APP_TOKEN=\"37c1409f4fa0b8a5c7efcf8cdc797d59\"\n  source \"${SCRIPT_SRC}\"\n#- -- SCRIPT END - --\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1591D27729109E960001811D /* Sources */ = {
