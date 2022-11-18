@@ -43,6 +43,10 @@ struct MainTabPage: View {
                 Task {
                     isInit = try await FlowManager.shared.checkCollectionVault()
                 }
+            }.onReceive(FlowManager.shared.$pendingTx) { value in
+                Task {
+                    isInit = try await FlowManager.shared.checkCollectionVault()
+                }
             }
         }
     }

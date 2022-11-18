@@ -81,7 +81,6 @@ struct DiscoveryView: View {
             .background(Color.primary.opacity(0.1))
             .frame(height: 150)
         }
-        .background(Color.MM.background)
     }
 }
 

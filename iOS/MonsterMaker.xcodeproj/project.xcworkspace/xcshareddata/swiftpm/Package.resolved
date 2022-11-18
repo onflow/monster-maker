@@ -32,7 +32,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Outblock/fcl-swift",
       "state" : {
-        "revision" : "62efcc19b83fe018f226974c10bfe78a857b5d4e"
+        "revision" : "7f205d26491c1006b12518677e1f5ce6dd6ab399"
       }
     },
     {
