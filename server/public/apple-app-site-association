@@ -1,0 +1,11 @@
+{
+	"applinks": {
+ 		"apps": [], 
+		"details": [
+			{
+				"appID": "MGCLCSUVY9.com.dapperlabs.MonsterMaker",
+            	"paths": [ "*" ]
+        	}
+		]
+	}
+}
