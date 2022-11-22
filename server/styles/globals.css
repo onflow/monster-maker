@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -14,12 +14,6 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: #404040;
-    background: linear-gradient(#061B20, #1C6470, #D3E549);
-  }
+:root {
+  --gradient-colors: #061b20, #1c6470, #d3e549;
 }
