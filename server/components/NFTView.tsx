@@ -1,26 +1,32 @@
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import {head, legs, torso, background, headRange, backgroundRange, legsRange, torsoRange} from '../util'
+import {
+  getHeadImage,
+  getLegsImage,
+  getTorsoImage,
+  getBackgroundImage,
+} from "../utils/mapAssets";
+import BackgroundImage from "./BackgroundImage";
+import BodyPartImage from "./BodyPartImage";
+import styles from "../styles/Home.module.css";
 
-const NFTView = ({bgIndex, headIndex, legsIndex, torsoIndex} : {bgIndex: number, headIndex: number, legsIndex: number, torsoIndex: number}) => {
+const NFTView = ({
+  bgIndex,
+  headIndex,
+  legsIndex,
+  torsoIndex,
+}: {
+  bgIndex: number;
+  headIndex: number;
+  legsIndex: number;
+  torsoIndex: number;
+}) => {
+  return (
+    <div className={styles.overlapGrid}>
+      <BackgroundImage src={getBackgroundImage(bgIndex)} />
+      <BodyPartImage src={getHeadImage(headIndex)} alt="Head" />
+      <BodyPartImage src={getTorsoImage(torsoIndex)} alt="Torso" />
+      <BodyPartImage src={getLegsImage(legsIndex)} alt="Legs" />
+    </div>
+  );
+};
 
-    const image = (src: string) => {
-        return (<Image src={src} alt="torso" width={1024} height={1024} layout="responsive" className={styles.scaleBody}/>)
-    }
-
-    const bgImage = (src: string) => {
-        return (<Image src={src} alt="torso" width={1024} height={1024} layout="responsive"/>)
-    }
-    
-    return (
-        <div className={styles.overlapGrid}>
-        {bgImage(background(bgIndex))}
-        {image(head(headIndex))}
-        {image(torso(torsoIndex))}
-        {image(legs(legsIndex))}
-        </div>
-    )
-
-}
-
-export default NFTView
+export default NFTView;

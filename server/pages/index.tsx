@@ -1,10 +1,15 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import NFTView from "../components/NFTView";
-import { headRange, backgroundRange, legsRange, torsoRange } from "../util";
-import Image from 'next/image'
+import {
+  headRange,
+  backgroundRange,
+  legsRange,
+  torsoRange,
+} from "../utils/mapAssets";
+import Image from "next/image";
 
-export default function Home() {
+const Home = () => {
   const randomElement = (array: any[]) => {
     return array[Math.floor(Math.random() * array.length)];
   };
@@ -18,19 +23,19 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {/* <h1 className={styles.title}>Monster Maker</h1> */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "50px" }}>
+          <Image src="/images/logo.png" alt="logo" height="100" width="268" />
 
-        <div style={{display: 'flex', flexDirection: 'column', gap: '50px'}}>
-        <Image src="/images/logo.png" alt="logo" height="100" width="268" objectFit="scale-down" />
-
-        <NFTView
-          bgIndex={randomElement(backgroundRange())}
-          headIndex={randomElement(headRange())}
-          legsIndex={randomElement(legsRange())}
-          torsoIndex={randomElement(torsoRange())}
-        />
+          <NFTView
+            bgIndex={randomElement(backgroundRange())}
+            headIndex={randomElement(headRange())}
+            legsIndex={randomElement(legsRange())}
+            torsoIndex={randomElement(torsoRange())}
+          />
         </div>
       </main>
     </div>
   );
-}
+};
+
+export default Home;
