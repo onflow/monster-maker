@@ -1,0 +1,10 @@
+.navPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-basis: 230px;
+  background-repeat: repeat-x;
+  background-size: 600px;
+  background-position: center bottom;
+}

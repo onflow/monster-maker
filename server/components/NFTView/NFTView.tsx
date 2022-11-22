@@ -3,10 +3,10 @@ import {
   getLegsImage,
   getTorsoImage,
   getBackgroundImage,
-} from "../utils/mapAssets";
-import BackgroundImage from "./BackgroundImage";
-import BodyPartImage from "./BodyPartImage";
-import styles from "../styles/Home.module.css";
+} from 'utils/mapAssets';
+import BackgroundImage from './NFTBackground';
+import NFTBodyPart from './NFTBodyPart';
+import styles from './NFTView.module.css';
 
 const NFTView = ({
   bgIndex,
@@ -22,9 +22,9 @@ const NFTView = ({
   return (
     <div className={styles.overlapGrid}>
       <BackgroundImage src={getBackgroundImage(bgIndex)} />
-      <BodyPartImage src={getHeadImage(headIndex)} alt="Head" />
-      <BodyPartImage src={getTorsoImage(torsoIndex)} alt="Torso" />
-      <BodyPartImage src={getLegsImage(legsIndex)} alt="Legs" />
+      <NFTBodyPart src={getHeadImage(headIndex)} alt="Head" />
+      <NFTBodyPart src={getTorsoImage(torsoIndex)} alt="Torso" />
+      <NFTBodyPart src={getLegsImage(legsIndex)} alt="Legs" />
     </div>
   );
 };

@@ -1,8 +1,13 @@
+:root {
+  --gradient-colors: #061b20, #1c6470, #d3e549;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(180deg, var(--gradient-colors));
 }
 
 a {
@@ -14,6 +19,6 @@ a {
   box-sizing: border-box;
 }
 
-:root {
-  --gradient-colors: #061b20, #1c6470, #d3e549;
+img {
+  image-rendering: pixelated;
 }

@@ -1,0 +1,8 @@
+.overlapGrid {
+  display: grid;
+  grid-template-areas: 'overlap';
+}
+
+.overlapGrid > img {
+  grid-area: overlap;
+}
