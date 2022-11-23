@@ -7,9 +7,12 @@
 
 import Foundation
 import Moya
+import Flow
 
 enum NFTEndpoint {
     case mint(MintRequest)
+    case signerInfo
+    case signAsMinter(MinterRequest)
 }
 
 extension NFTEndpoint: TargetType {
@@ -21,13 +24,19 @@ extension NFTEndpoint: TargetType {
         switch self {
         case .mint:
             return "/mint"
+        case .signerInfo:
+            return "/signAsMinter/info"
+        case .signAsMinter:
+            return "/signAsMinter"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .mint:
+        case .mint, .signAsMinter:
             return .post
+        case .signerInfo:
+            return .get
         }
     }
     
@@ -35,10 +44,14 @@ extension NFTEndpoint: TargetType {
         switch self {
         case let .mint(request):
             return .requestJSONEncodable(request)
+        case let .signAsMinter(request):
+            return .requestJSONEncodable(request)
+        case .signerInfo:
+            return .requestPlain
         }
     }
     
     var headers: [String : String]? {
-        nil
+        ["network": flow.chainID.name]
     }
 }

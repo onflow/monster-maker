@@ -18,6 +18,7 @@ extension MakerPage {
 
     enum Action {
         case mint
+        case buy
         case updateIndex(Int, NFTComponent)
     }
 }
@@ -89,7 +90,7 @@ struct MakerPage: View {
                 
             } else {
                 Button {
-                    vm.trigger(.mint)
+                    vm.trigger(.buy)
                 } label: {
                     Image("bar-mint")
                         .resizable()

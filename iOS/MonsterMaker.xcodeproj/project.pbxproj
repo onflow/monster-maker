@@ -22,7 +22,8 @@
 		1538F129291D3C2B00338FF4 /* MonsterMakerCadence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */; };
 		1538F12B291D3EE000338FF4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F12A291D3EE000338FF4 /* SafariView.swift */; };
 		1538F12D291D431900338FF4 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F12C291D431900338FF4 /* NFTModel.swift */; };
-		1588EB2F29131FC50069EAC4 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1588EB2E29131FC50069EAC4 /* FCL */; };
+		1545C196292B91CC00A5B4E5 /* MintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545C195292B91CC00A5B4E5 /* MintHelper.swift */; };
+		1545C19F292E4A6E00A5B4E5 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1545C19E292E4A6E00A5B4E5 /* FCL */; };
 		1588EB32291320390069EAC4 /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowManager.swift */; };
 		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
 		1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D27E29109E960001811D /* MonsterMakerApp.swift */; };
@@ -68,6 +69,7 @@
 		1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMakerCadence.swift; sourceTree = "<group>"; };
 		1538F12A291D3EE000338FF4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		1538F12C291D431900338FF4 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
+		1545C195292B91CC00A5B4E5 /* MintHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintHelper.swift; sourceTree = "<group>"; };
 		1588EB31291320390069EAC4 /* FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowManager.swift; sourceTree = "<group>"; };
 		1588EB332913327C0069EAC4 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 		1591D27B29109E960001811D /* MonsterMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,9 +107,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1545C19F292E4A6E00A5B4E5 /* FCL in Frameworks */,
 				15D172802926E0A60049A956 /* Instabug in Frameworks */,
 				1525E940291578CF00F7C63A /* Moya in Frameworks */,
-				1588EB2F29131FC50069EAC4 /* FCL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,7 @@
 			children = (
 				1588EB31291320390069EAC4 /* FlowManager.swift */,
 				1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */,
+				1545C195292B91CC00A5B4E5 /* MintHelper.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -278,9 +281,9 @@
 			);
 			name = MonsterMaker;
 			packageProductDependencies = (
-				1588EB2E29131FC50069EAC4 /* FCL */,
 				1525E93F291578CF00F7C63A /* Moya */,
 				15D1727F2926E0A60049A956 /* Instabug */,
+				1545C19E292E4A6E00A5B4E5 /* FCL */,
 			);
 			productName = MonsterMaker;
 			productReference = 1591D27B29109E960001811D /* MonsterMaker.app */;
@@ -311,9 +314,9 @@
 			);
 			mainGroup = 1591D27229109E960001811D;
 			packageReferences = (
-				1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */,
 				1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */,
 				15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */,
+				1545C19D292E4A6E00A5B4E5 /* XCRemoteSwiftPackageReference "fcl-swift" */,
 			);
 			productRefGroup = 1591D27C29109E960001811D /* Products */;
 			projectDirPath = "";
@@ -390,6 +393,7 @@
 				1525E94729157A8900F7C63A /* Request.swift in Sources */,
 				1525E945291579C700F7C63A /* Endpoint.swift in Sources */,
 				1525E943291578EC00F7C63A /* Network.swift in Sources */,
+				1545C196292B91CC00A5B4E5 /* MintHelper.swift in Sources */,
 				1525E94C29157BB900F7C63A /* AnyViewModel.swift in Sources */,
 				1538F12B291D3EE000338FF4 /* SafariView.swift in Sources */,
 				1591D2AD2910EB7B0001811D /* HeaderView.swift in Sources */,
@@ -533,8 +537,8 @@
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “$(PRODUCT_NAME)“ to use voice recordings in activities.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “$(PRODUCT_NAME)“ to save photo to your device.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “MonsterMaker“ to use voice recordings in activities.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “MonsterMaker“ to save photo to your device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -579,8 +583,8 @@
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “$(PRODUCT_NAME)“ to use voice recordings in activities.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “$(PRODUCT_NAME)“ to save photo to your device.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “MonsterMaker“ to use voice recordings in activities.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “MonsterMaker“ to save photo to your device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -641,12 +645,12 @@
 				minimumVersion = 15.0.3;
 			};
 		};
-		1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */ = {
+		1545C19D292E4A6E00A5B4E5 /* XCRemoteSwiftPackageReference "fcl-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
 				kind = revision;
-				revision = 7f205d26491c1006b12518677e1f5ce6dd6ab399;
+				revision = 504523fd65e054f0a1229aeed419e00fd6437ef4;
 			};
 		};
 		15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */ = {
@@ -665,9 +669,9 @@
 			package = 1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		1588EB2E29131FC50069EAC4 /* FCL */ = {
+		1545C19E292E4A6E00A5B4E5 /* FCL */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1588EB2D29131FC50069EAC4 /* XCRemoteSwiftPackageReference "fcl-swift" */;
+			package = 1545C19D292E4A6E00A5B4E5 /* XCRemoteSwiftPackageReference "fcl-swift" */;
 			productName = FCL;
 		};
 		15D1727F2926E0A60049A956 /* Instabug */ = {
