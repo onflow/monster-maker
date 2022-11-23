@@ -46,11 +46,8 @@ class MakerViewModel: ViewModel {
                 state.isMiniting = false
                 print("txId ==> \(txId)")
                 FlowManager.shared.subscribeTransaction(txId: txId.hex)
-                
-//                let request = MintRequest(address: address.hex, components: state.components)
-//                let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
-//                print("txId ==> \(response.txId)")
             } catch {
+                state.isMiniting = false
                 print(error)
             }
         }
@@ -71,6 +68,7 @@ class MakerViewModel: ViewModel {
                 print("txId ==> \(response.txId)")
                 FlowManager.shared.subscribeTransaction(txId: response.txId)
             } catch {
+                state.isMiniting = false
                 print(error)
             }
         }
