@@ -19,11 +19,13 @@ class MakerViewModel: ViewModel {
             updateSelection(index: index, position: position)
         case .mint:
             mintNFT()
+        case .buy:
+            buyNFT()
         }
     }
     
-    private func mintNFT() {
-        guard let address = fcl.currentUser?.addr else {
+    private func buyNFT() {
+        guard let user = fcl.currentUser else {
             return
         }
         
@@ -32,9 +34,40 @@ class MakerViewModel: ViewModel {
         Task {
             do {
                 state.isMiniting = true
-                let request = MintRequest(address: address.hex, components: state.components)
-                let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
+                let txId = try await fcl.mutate(cadence: MonsterMakerCadence.mintMonster,
+                                                args: [
+                                                .int(state.components.background),
+                                                .int(state.components.head),
+                                                .int(state.components.torso),
+                                                .int(state.components.legs)
+                                               ],
+                                                gasLimit: 999,
+                                                authorizors: [user, MinterHelper.shared])
                 state.isMiniting = false
+                print("txId ==> \(txId)")
+                FlowManager.shared.subscribeTransaction(txId: txId.hex)
+                
+//                let request = MintRequest(address: address.hex, components: state.components)
+//                let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
+//                print("txId ==> \(response.txId)")
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func mintNFT() {
+        guard let user = fcl.currentUser else {
+            return
+        }
+        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+        Task {
+            do {
+                state.isMiniting = true
+                let request = MintRequest(address: user.addr.hex, components: state.components)
+                let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
                 print("txId ==> \(response.txId)")
                 FlowManager.shared.subscribeTransaction(txId: response.txId)
             } catch {

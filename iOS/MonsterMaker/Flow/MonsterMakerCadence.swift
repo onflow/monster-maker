@@ -151,4 +151,82 @@ class MonsterMakerCadence {
             return ids
         }
     """
+    
+    static let mintMonster =
+    """
+    import NonFungibleToken from 0xNonFungibleToken
+    import MonsterMaker from 0xMonsterMaker
+    import MetadataViews from 0xMetadataViews
+    import FungibleToken from 0xFungibleToken
+
+    // This transction uses the NFTMinter resource to mint a new NFT.
+    //
+    // It must be run with the account that has the minter resource
+    // stored at path /storage/NFTMinter.
+
+    transaction(
+        background: Int,
+        head: Int,
+        torso: Int,
+        leg: Int
+    ) {
+
+        // local variable for storing the minter reference
+        let minter: &MonsterMaker.NFTMinter
+
+        /// Reference to the receiver's collection
+        let recipientCollectionRef: &{NonFungibleToken.CollectionPublic}
+
+        /// Previous NFT ID before the transaction executes
+        let mintingIDBefore: UInt64
+
+        prepare(recipient: AuthAccount, signer: AuthAccount) {
+            self.mintingIDBefore = MonsterMaker.totalSupply
+    
+            // if the account doesn't already have a collection
+            if recipient.borrow<&MonsterMaker.Collection>(from: MonsterMaker.CollectionStoragePath) == nil {
+    
+                // create a new empty collection
+                let collection <- MonsterMaker.createEmptyCollection()
+                
+                // save it to the account
+                recipient.save(<-collection, to: MonsterMaker.CollectionStoragePath)
+    
+                // create a public capability for the collection
+                recipient.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
+            }
+    
+
+            // Borrow a reference to the NFTMinter resource in storage
+            self.minter = signer.borrow<&MonsterMaker.NFTMinter>(from: MonsterMaker.MinterStoragePath)
+                ?? panic("Could not borrow a reference to the NFT minter")
+
+            // Borrow the recipient's public NFT collection reference
+            self.recipientCollectionRef = recipient
+                .getCapability(MonsterMaker.CollectionPublicPath)
+                .borrow<&{NonFungibleToken.CollectionPublic}>()
+                ?? panic("Could not get receiver reference to the NFT Collection")
+        }
+
+        execute {
+            let componentValue = MonsterMaker.MonsterComponent(background: background, head: head, torso: torso, leg: leg)
+
+            // TODO: Add royalty feature to KI using beneficiaries, cuts, and descriptions. At the moment, we don't provide royalties with KI, so this will be an empty list.
+            let royalties: [MetadataViews.Royalty] = []
+
+            // mint the NFT and deposit it to the recipient's collection
+            self.minter.mintNFT(
+                recipient: self.recipientCollectionRef,
+                component: componentValue,
+                royalties: royalties
+            )
+        }
+
+        post {
+            self.recipientCollectionRef.getIDs().contains(self.mintingIDBefore): "The next NFT ID should have been minted and delivered"
+            MonsterMaker.totalSupply == self.mintingIDBefore + 1: "The total supply should have been increased by 1"
+        }
+    }
+     
+    """
 }

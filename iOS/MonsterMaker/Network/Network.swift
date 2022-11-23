@@ -10,7 +10,7 @@ import Moya
 
 class Network {
     static func request<T: Decodable, U: TargetType>(_ target: U, decoder: JSONDecoder = JSONDecoder()) async throws -> T {
-        let provider = MoyaProvider<U>(plugins: [NetworkLoggerPlugin()])
+        let provider = MoyaProvider<U>(plugins: [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))])
         let result = await provider.asyncRequest(target)
         switch result {
         case let .success(response):

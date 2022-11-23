@@ -38,7 +38,7 @@ class FlowManager: ObservableObject {
     }
     
     func setup() {
-        let provider: FCL.Provider = .lilico
+        let provider: FCL.Provider = .dapperPro
         let accountProof = FCL.Metadata.AccountProofConfig(appIdentifier: "Monster Maker",
                                                            nonce: "75f8587e5bd5f9dcc9909d0dae1f0ac5814458b2ae129620502cb936fde7120a")
         
