@@ -3,6 +3,8 @@ const RLP = require("rlp");
 const secp = require("@noble/secp256k1");
 import { env } from 'process';
 
+const MonsterMakerAddress = "0xfd3d8fe2c8056370"
+
 function sansPrefix(address: string): string | null {
   if (address == null) return null;
   return address.replace(/^0x/, "").replace(/^Fx/, "");
@@ -119,13 +121,12 @@ export default async function handler(
 //   }
 
   const signature = await sign(reTransactionEncoded, network);
-  const payerAddress = process.env.payerAddress;
-  const payerIndex = process.env.payerIndex as string;
+  const payerAddress = MonsterMakerAddress;
 
   res.status(200).json({
     data: {
       address: payerAddress,
-      keyIndex: parseInt(payerIndex),
+      keyIndex: 0,
       signature: signature,
     },
     status: 200,
