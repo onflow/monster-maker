@@ -23,6 +23,7 @@ const Home = () => {
           width={576}
           height={208}
           onClick={handleConnect}
+          alt="Connect wallet"
         />
       </NavPanel>
     </PageContainer>

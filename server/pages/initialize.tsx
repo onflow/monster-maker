@@ -23,6 +23,7 @@ const Initialize = () => {
           width={640}
           height={208}
           onClick={handleConnect}
+          alt="Initialize wallet"
         />
       </NavPanel>
     </PageContainer>

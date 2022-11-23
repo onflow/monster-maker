@@ -7,13 +7,14 @@ interface Props {
   height: number;
   onClick?: VoidFunction;
   inactive?: boolean;
+  alt: string;
 }
 
-const Button = ({ src, width, height, onClick, inactive }: Props) => {
+const Button = ({ src, width, height, onClick, inactive, alt }: Props) => {
   return (
     <Image
       src={src}
-      alt="background"
+      alt={alt}
       width={width}
       height={height}
       onClick={onClick}

@@ -23,6 +23,7 @@ const Create = () => {
           width={640}
           height={208}
           inactive
+          alt="Create NFT"
         />
 
         <Button
@@ -30,6 +31,7 @@ const Create = () => {
           width={640}
           height={208}
           onClick={handleView}
+          alt="View NFTs"
         />
       </NavPanel>
     </PageContainer>
