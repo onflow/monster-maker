@@ -4,10 +4,10 @@ function generateRange(length: number): Array<number> {
     .map((val, idx) => val + idx);
 }
 
-export const headRange = (): Array<number> => generateRange(5);
-export const legsRange = (): Array<number> => generateRange(5);
-export const torsoRange = (): Array<number> => generateRange(10);
-export const backgroundRange = (): Array<number> => generateRange(5);
+export const headRange: Array<number> = generateRange(5);
+export const legsRange: Array<number> = generateRange(5);
+export const torsoRange: Array<number> = generateRange(10);
+export const backgroundRange: Array<number> = generateRange(5);
 
 export const getHeadImage = (index: number): string =>
   `/images/head/monster_head_${index}.png`;

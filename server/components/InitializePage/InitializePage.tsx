@@ -12,10 +12,10 @@ const InitializePage = () => {
   return (
     <main className={styles.main}>
       <NFTView
-        bgIndex={getRandomIndex(backgroundRange())}
-        headIndex={getRandomIndex(headRange())}
-        legsIndex={getRandomIndex(legsRange())}
-        torsoIndex={getRandomIndex(torsoRange())}
+        bgIndex={getRandomIndex(backgroundRange)}
+        headIndex={getRandomIndex(headRange)}
+        legsIndex={getRandomIndex(legsRange)}
+        torsoIndex={getRandomIndex(torsoRange)}
       />
     </main>
   );

@@ -1,5 +1,5 @@
 import PageContainer from 'layout/PageContainer';
-import InitializePage from 'components/InitializePage';
+import CreatePage from 'components/CreatePage';
 import NavPanel from 'layout/NavPanel';
 import Button from 'components/Button';
 import { useRouter } from 'next/router';
@@ -15,7 +15,7 @@ const Create = () => {
 
   return (
     <PageContainer>
-      <InitializePage />
+      <CreatePage />
 
       <NavPanel>
         <Button

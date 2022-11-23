@@ -1,0 +1,13 @@
+.main {
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}
