@@ -1,7 +1,7 @@
-import PageContainer from 'layout/PageContainer';
+import Button from 'components/Button';
 import CreatePage from 'components/CreatePage';
 import NavPanel from 'layout/NavPanel';
-import Button from 'components/Button';
+import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
 
