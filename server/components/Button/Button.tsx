@@ -6,9 +6,10 @@ interface Props {
   width: number;
   height: number;
   onClick?: VoidFunction;
+  inactive?: boolean;
 }
 
-const Button = ({ src, width, height, onClick }: Props) => {
+const Button = ({ src, width, height, onClick, inactive }: Props) => {
   return (
     <Image
       src={src}
@@ -16,6 +17,7 @@ const Button = ({ src, width, height, onClick }: Props) => {
       width={width}
       height={height}
       onClick={onClick}
+      style={{ cursor: inactive ? 'auto' : 'pointer' }}
       className={styles.button}
     />
   );

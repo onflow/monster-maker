@@ -1,4 +1,4 @@
-import styles from './HomePage.module.css';
+import styles from './InitializePage.module.css';
 import NFTView from 'components/NFTView/NFTView';
 import {
   headRange,
@@ -6,14 +6,11 @@ import {
   legsRange,
   torsoRange,
 } from 'utils/mapAssets';
-import Image from 'next/image';
 import getRandomIndex from 'utils/getRandomIndex';
 
-const HomePage = () => {
+const InitializePage = () => {
   return (
     <main className={styles.main}>
-      <Image src="/images/logo.png" alt="logo" height="100" width="268" />
-
       <NFTView
         bgIndex={getRandomIndex(backgroundRange())}
         headIndex={getRandomIndex(headRange())}
@@ -24,4 +21,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default InitializePage;

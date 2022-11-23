@@ -1,8 +1,10 @@
 .overlapGrid {
+  max-width: 420px;
+  max-height: 420px;
   display: grid;
   grid-template-areas: 'overlap';
 }
 
-.overlapGrid > img {
+.overlapGrid > span {
   grid-area: overlap;
 }
