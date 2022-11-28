@@ -72,7 +72,7 @@ export const Web3ContextProvider = ({
     } = networks[network as NetworksKey];
     const iconUrl =
       window.location.origin + '/images/ui/monster_maker_logo.png';
-    const appTitle = process.env.NEXT_PUBLIC_APP_NAME;
+    const appTitle = process.env.NEXT_PUBLIC_APP_NAME || 'MonsterMaker';
 
     fcl.config({
       'app.detail.title': appTitle,
