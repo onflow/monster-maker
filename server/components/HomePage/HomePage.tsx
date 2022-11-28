@@ -1,5 +1,5 @@
-import styles from './HomePage.module.css';
 import Image from 'next/image';
+import styles from './HomePage.module.css';
 
 const HomePage = () => {
   return (

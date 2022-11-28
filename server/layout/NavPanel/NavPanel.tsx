@@ -1,6 +1,6 @@
+import tileBackground from 'public/images/ui/button_background_tileable.png';
 import { ReactNode } from 'react';
 import styles from './NavPanel.module.css';
-import tileBackground from 'public/images/ui/button_background_tileable.png';
 
 interface Props {
   children: ReactNode;

@@ -1,7 +1,7 @@
-import PageContainer from 'layout/PageContainer';
+import Button from 'components/Button';
 import HomePage from 'components/HomePage';
 import NavPanel from 'layout/NavPanel';
-import Button from 'components/Button';
+import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
 import { useWeb3Context } from 'contexts/Web3';

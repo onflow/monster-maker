@@ -1,8 +1,8 @@
 import {
+  getBackgroundImage,
   getHeadImage,
   getLegsImage,
   getTorsoImage,
-  getBackgroundImage,
 } from 'utils/mapAssets';
 import BackgroundImage from './NFTBackground';
 import NFTBodyPart from './NFTBodyPart';

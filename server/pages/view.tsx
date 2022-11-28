@@ -1,7 +1,8 @@
-import PageContainer from 'layout/PageContainer';
-import InitializePage from 'components/InitializePage';
-import NavPanel from 'layout/NavPanel';
 import Button from 'components/Button';
+import InitializePage from 'components/InitializePage';
+import Header from 'layout/Header';
+import NavPanel from 'layout/NavPanel';
+import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
 
@@ -15,6 +16,8 @@ const View = () => {
 
   return (
     <PageContainer>
+      <Header />
+
       <InitializePage />
 
       <NavPanel>

@@ -1,7 +1,8 @@
-import PageContainer from 'layout/PageContainer';
-import CreatePage from 'components/CreatePage';
-import NavPanel from 'layout/NavPanel';
 import Button from 'components/Button';
+import CreatePage from 'components/CreatePage';
+import Header from 'layout/Header';
+import NavPanel from 'layout/NavPanel';
+import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
 
@@ -15,7 +16,11 @@ const Create = () => {
 
   return (
     <PageContainer>
+      <Header />
+
       <CreatePage />
+
+      <div>Mint</div>
 
       <NavPanel>
         <Button

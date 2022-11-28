@@ -1,22 +1,24 @@
-import styles from './InitializePage.module.css';
 import NFTView from 'components/NFTView/NFTView';
+import getRandomIndex from 'utils/getRandomIndex';
 import {
-  headRange,
   backgroundRange,
+  headRange,
   legsRange,
   torsoRange,
 } from 'utils/mapAssets';
-import getRandomIndex from 'utils/getRandomIndex';
+import styles from './InitializePage.module.css';
 
 const InitializePage = () => {
   return (
     <main className={styles.main}>
-      <NFTView
-        bgIndex={getRandomIndex(backgroundRange)}
-        headIndex={getRandomIndex(headRange)}
-        legsIndex={getRandomIndex(legsRange)}
-        torsoIndex={getRandomIndex(torsoRange)}
-      />
+      <div className={styles.opacityWrapper}>
+        <NFTView
+          bgIndex={getRandomIndex(backgroundRange)}
+          headIndex={getRandomIndex(headRange)}
+          legsIndex={getRandomIndex(legsRange)}
+          torsoIndex={getRandomIndex(torsoRange)}
+        />
+      </div>
     </main>
   );
 };
