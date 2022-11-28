@@ -1,4 +1,5 @@
 import * as fcl from '@onflow/fcl';
+import router from 'next/router';
 import {
   createContext,
   ReactNode,
@@ -8,6 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { ROUTES } from 'utils/constants';
 
 interface IWeb3Context {
   connect: () => void;
@@ -92,6 +94,7 @@ export const Web3ContextProvider = ({
 
   const logout = useCallback(async () => {
     await fcl.unauthenticate();
+    router.push(ROUTES.HOME);
   }, []);
 
   const providerProps = useMemo(
