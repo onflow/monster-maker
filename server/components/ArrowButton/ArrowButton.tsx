@@ -14,11 +14,14 @@ interface Props {
   direction: Direction;
   onClick: VoidFunction;
   alt: string;
+  className?: string;
 }
 
-const ArrowButton = ({ direction, onClick, alt }: Props) => {
+const ArrowButton = ({ direction, onClick, alt, className }: Props) => {
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={className ? `${className} ${styles.wrapper}` : styles.wrapper}
+    >
       <Image
         src={directions[direction]}
         width={256}

@@ -17,6 +17,8 @@ const Create = () => {
     <PageContainer>
       <CreatePage />
 
+      <div>Mint</div>
+
       <NavPanel>
         <Button
           src="/images/ui/create_button_on.png"

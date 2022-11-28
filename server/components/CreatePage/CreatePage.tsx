@@ -18,101 +18,69 @@ const CreatePage = () => {
 
   return (
     <main className={styles.main}>
-      <div style={{ display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
-        <div
-          style={{
-            height: '96px',
-            display: 'flex',
-            justifyContent: 'center',
-            flexShrink: 0,
-            position: 'relative',
-            bottom: '-32px',
-          }}
-        >
-          <ArrowButton direction="up" onClick={decrementBg} alt="Change head" />
-        </div>
+      <div className={styles.relativeContainer}>
+        <NFTView
+          bgIndex={bgIndex}
+          headIndex={headIndex}
+          torsoIndex={torsoIndex}
+          legsIndex={legsIndex}
+        />
 
-        <div style={{ display: 'flex', flexShrink: 0 }}>
-          <div
-            style={{
-              height: '420px',
-              width: '96px',
-              flexShrink: 0,
-              position: 'relative',
-              right: '-24px',
-            }}
-          >
-            <ArrowButton
-              direction="left"
-              onClick={decrementHead}
-              alt="Change head"
-            />
+        <ArrowButton
+          direction="up"
+          onClick={decrementBg}
+          alt="Change background"
+          className={styles.bgDecrement}
+        />
 
-            <ArrowButton
-              direction="left"
-              onClick={decrementTorso}
-              alt="Change torso"
-            />
+        <ArrowButton
+          direction="left"
+          onClick={decrementHead}
+          alt="Change head"
+          className={styles.headDecrement}
+        />
 
-            <ArrowButton
-              direction="left"
-              onClick={decrementLegs}
-              alt="Change legs"
-            />
-          </div>
+        <ArrowButton
+          direction="left"
+          onClick={decrementTorso}
+          alt="Change torso"
+          className={styles.torsoDecrement}
+        />
 
-          <NFTView
-            bgIndex={bgIndex}
-            headIndex={headIndex}
-            torsoIndex={torsoIndex}
-            legsIndex={legsIndex}
-          />
+        <ArrowButton
+          direction="left"
+          onClick={decrementLegs}
+          alt="Change legs"
+          className={styles.legsDecrement}
+        />
 
-          <div
-            style={{
-              height: '420px',
-              width: '96px',
-              flexShrink: 0,
-              position: 'relative',
-              left: '-30px',
-            }}
-          >
-            <ArrowButton
-              direction="right"
-              onClick={incrementHead}
-              alt="Change head"
-            />
+        <ArrowButton
+          direction="right"
+          onClick={incrementHead}
+          alt="Change head"
+          className={styles.headIncrement}
+        />
 
-            <ArrowButton
-              direction="right"
-              onClick={incrementTorso}
-              alt="Change torso"
-            />
+        <ArrowButton
+          direction="right"
+          onClick={incrementTorso}
+          alt="Change torso"
+          className={styles.torsoIncrement}
+        />
 
-            <ArrowButton
-              direction="right"
-              onClick={incrementLegs}
-              alt="Change legs"
-            />
-          </div>
-        </div>
+        <ArrowButton
+          direction="right"
+          onClick={incrementLegs}
+          alt="Change legs"
+          className={styles.legsIncrement}
+        />
 
-        <div
-          style={{
-            height: '96px',
-            display: 'flex',
-            justifyContent: 'center',
-            flexShrink: 0,
-            position: 'relative',
-            top: '-26px',
-          }}
-        >
-          <ArrowButton
-            direction="down"
-            onClick={incrementBg}
-            alt="Change head"
-          />
-        </div>
+        <ArrowButton
+          direction="down"
+          onClick={incrementBg}
+          alt="Change head"
+          className={styles.bgIncrement}
+        />
       </div>
     </main>
   );
