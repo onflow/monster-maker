@@ -12,9 +12,6 @@ import Combine
 struct WelcomePage: View {
     
     @State
-    var showConnect = false
-    
-    @State
     var isShown = false
     
     var body: some View {
@@ -41,7 +38,7 @@ struct WelcomePage: View {
                         .scaledToFit()
                     
                     Button {
-                        showConnect = true
+                        fcl.openDiscovery()
                     } label: {
                         Image("connect-button")
                             .resizable()
@@ -59,20 +56,6 @@ struct WelcomePage: View {
             .ignoresSafeArea(.all)
             .frame(maxWidth: .infinity)
             .mmBackground()
-            .sheet(isPresented: $showConnect) {
-                if #available(iOS 16.0, *) {
-                    DiscoveryView()
-                        .presentationDetents([.height(200)])
-                } else {
-                    // Fallback on earlier versions
-                    VStack(alignment: .trailing) {
-                        Spacer()
-                        DiscoveryView()
-                            .frame(height: 200)
-                    }
-                    .background(ClearBackgroundView())
-                }
-            }
         }
     }
 }

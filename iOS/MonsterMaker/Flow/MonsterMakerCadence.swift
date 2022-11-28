@@ -35,6 +35,18 @@ class MonsterMakerCadence {
     }
     """
     
+    static let generateInit =
+    """
+    import TransactionGeneration from 0xTransactionGeneration
+
+    pub fun main(tx: String, collectionIdentifier: String, vaultIdentifier: String) : String {
+        return TransactionGeneration.getTx(tx: tx, params: {
+            "collectionIdentifier": collectionIdentifier,
+            "vaultIdentifier": vaultIdentifier
+        })!
+    }
+    """
+    
     static let checkInit =
     """
         import NonFungibleToken from 0xNonFungibleToken
