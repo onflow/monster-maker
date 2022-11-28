@@ -103,11 +103,6 @@ export const Web3ContextProvider = ({
     [connect, logout, user],
   );
 
-  // for Nextjs, return null until "window" is available
-  if (!global.window) {
-    return null;
-  }
-
   return (
     <Web3Context.Provider
       value={{
