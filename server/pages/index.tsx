@@ -4,14 +4,19 @@ import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
+import { useWeb3Context } from 'contexts/Web3';
+import { useEffect } from 'react';
 
 const Home = () => {
   const router = useRouter();
 
-  const handleConnect = () => {
-    // TODO: Initialize wallet
-    router.push(ROUTES.INITIALIZE);
-  };
+  const { connect, user } = useWeb3Context();
+
+  useEffect(() => {
+    if (user.loggedIn) {
+      router.push(ROUTES.INITIALIZE);
+    }
+  }, [user, router]);
 
   return (
     <PageContainer>
@@ -22,7 +27,7 @@ const Home = () => {
           src="/images/ui/connect_button.png"
           width={576}
           height={208}
-          onClick={handleConnect}
+          onClick={connect}
           alt="Connect wallet"
         />
       </NavPanel>
