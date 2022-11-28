@@ -16,7 +16,6 @@
 		1525E94E29157E8100F7C63A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94D29157E8100F7C63A /* Response.swift */; };
 		1525E9502918AB6400F7C63A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525E94F2918AB6400F7C63A /* View.swift */; };
 		1538F120291930C800338FF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1538F11F291930C800338FF4 /* Launch Screen.storyboard */; };
-		1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F121291BDBF100338FF4 /* DiscoveryView.swift */; };
 		1538F125291C565800338FF4 /* ShareActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F124291C565800338FF4 /* ShareActivityItemSource.swift */; };
 		1538F127291D3BAD00338FF4 /* NFTListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */; };
 		1538F129291D3C2B00338FF4 /* MonsterMakerCadence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */; };
@@ -63,7 +62,6 @@
 		1525E94D29157E8100F7C63A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		1525E94F2918AB6400F7C63A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1538F11F291930C800338FF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1538F121291BDBF100338FF4 /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		1538F124291C565800338FF4 /* ShareActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityItemSource.swift; sourceTree = "<group>"; };
 		1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListViewModel.swift; sourceTree = "<group>"; };
 		1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMakerCadence.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				1591D2A82910E4900001811D /* PrimaryButtonView.swift */,
 				1591D2AC2910EB7B0001811D /* HeaderView.swift */,
 				1591D2B32910FA4C0001811D /* NFTGridCell.swift */,
-				1538F121291BDBF100338FF4 /* DiscoveryView.swift */,
 				1538F12A291D3EE000338FF4 /* SafariView.swift */,
 				15D17284292772DF0049A956 /* RefreshableScrollView.swift */,
 			);
@@ -372,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1588EB32291320390069EAC4 /* FlowManager.swift in Sources */,
-				1538F122291BDBF100338FF4 /* DiscoveryView.swift in Sources */,
 				1591D28129109E960001811D /* WelcomePage.swift in Sources */,
 				15D17285292772DF0049A956 /* RefreshableScrollView.swift in Sources */,
 				1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */,
@@ -650,7 +646,7 @@
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
 				kind = revision;
-				revision = 504523fd65e054f0a1229aeed419e00fd6437ef4;
+				revision = aca3a8cd521c7cf00bd0cfc103e106b94eca37e1;
 			};
 		};
 		15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */ = {

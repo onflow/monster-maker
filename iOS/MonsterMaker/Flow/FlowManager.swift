@@ -59,6 +59,7 @@ class FlowManager: ObservableObject {
             .put("0xFungibleToken", value: "0x631e88ae7f1d7c20")
             .put("0xMonsterMaker", value: "0xfd3d8fe2c8056370")
             .put("0xMetadataViews", value: "0x631e88ae7f1d7c20")
+            .put("0xTransactionGeneration", value: "0x44051d81c4720882")
     }
     
     
@@ -67,10 +68,14 @@ class FlowManager: ObservableObject {
             throw FCLError.unauthenticated
         }
         
-        let result: Bool = try await fcl.query(script: MonsterMakerCadence.checkInit,
-                                   args: [.init(value: .address(address))]).decode()
-        
-        return result
+        do {
+            let result: Bool = try await fcl.query(script: MonsterMakerCadence.checkInit,
+                                       args: [.address(address)]).decode()
+            return result
+        } catch {
+            print(error)
+            throw error
+        }
     }
     
 }
