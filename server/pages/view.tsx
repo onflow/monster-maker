@@ -1,5 +1,5 @@
 import Button from 'components/Button';
-import InitializePage from 'components/InitializePage';
+import ViewPage from 'components/ViewPage';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
@@ -18,7 +18,7 @@ const View = () => {
     <PageContainer>
       <Header />
 
-      <InitializePage />
+      <ViewPage />
 
       <NavPanel>
         <Button
