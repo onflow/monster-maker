@@ -23,15 +23,19 @@ const View = () => {
 
   useEffect(() => {
     const getMonsters = async () => {
-      const res: GetMonstersResponse = await fcl.query({
-        cadence: getMonstersScript,
-        args: (arg: any, t: any) => [
-          arg('0xc1c48187c3699818', t.Address),
-          // arg(user.addr, t.Address),
-        ],
-      });
+      try {
+        const res: GetMonstersResponse = await fcl.query({
+          cadence: getMonstersScript,
+          args: (arg: any, t: any) => [
+            arg('0xc1c48187c3699818', t.Address),
+            // arg(user.addr, t.Address),
+          ],
+        });
 
-      setMonsters(res);
+        setMonsters(res);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     getMonsters();
@@ -41,7 +45,7 @@ const View = () => {
     <PageContainer>
       <Header />
 
-      <ViewPage monsters={monsters}/>
+      <ViewPage monsters={monsters} />
 
       <ActionPanel />
 
