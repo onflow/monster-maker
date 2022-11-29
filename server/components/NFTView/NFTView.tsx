@@ -14,10 +14,10 @@ const NFTView = ({
   legsIndex,
   torsoIndex,
 }: {
-  bgIndex: number;
-  headIndex: number;
-  legsIndex: number;
-  torsoIndex: number;
+  bgIndex: number | string;
+  headIndex: number | string;
+  legsIndex: number | string;
+  torsoIndex: number | string;
 }) => {
   return (
     <div className={styles.overlapGrid}>
