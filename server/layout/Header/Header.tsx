@@ -22,7 +22,7 @@ export default function Header() {
       <div className={styles.exitIconWrapper}>
         <Button
           src="/images/ui/monster_maker_exit_icon.png"
-          alt="logo"
+          alt="Log out"
           width={2176}
           height={800}
           onClick={logout}
