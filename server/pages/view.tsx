@@ -9,12 +9,12 @@ import { ROUTES } from 'utils/constants';
 import * as fcl from '@onflow/fcl';
 import { useEffect, useState } from 'react';
 import getMonstersScript from 'flow/scripts/getMonsters';
-// import { useWeb3Context } from 'contexts/Web3';
+import { useWeb3Context } from 'contexts/Web3';
 import { GetMonstersResponse } from 'utils/types';
 
 const View = () => {
   const router = useRouter();
-  // const { user } = useWeb3Context();
+  const { user } = useWeb3Context();
   const [monsters, setMonsters] = useState<GetMonstersResponse>([]);
 
   const handleCreate = () => {
@@ -26,10 +26,7 @@ const View = () => {
       try {
         const res: GetMonstersResponse = await fcl.query({
           cadence: getMonstersScript,
-          args: (arg: any, t: any) => [
-            arg('0xc1c48187c3699818', t.Address),
-            // arg(user.addr, t.Address),
-          ],
+          args: (arg: any, t: any) => [arg(user.addr, t.Address)],
         });
 
         setMonsters(res);

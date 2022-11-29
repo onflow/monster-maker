@@ -26,10 +26,10 @@ const ViewPage = ({ monsters }: Props) => {
             return (
               <div key={resourceID} className={styles.emblaSlide}>
                 <NFTView
-                  bgIndex={component.background}
-                  headIndex={component.head}
-                  legsIndex={component.legs}
-                  torsoIndex={component.torso}
+                  bgIndex={parseInt(component.background)}
+                  headIndex={parseInt(component.head)}
+                  legsIndex={parseInt(component.legs)}
+                  torsoIndex={parseInt(component.torso)}
                 />
               </div>
             );

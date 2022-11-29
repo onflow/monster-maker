@@ -47,22 +47,27 @@ export const Web3ContextProvider = ({
 
   useEffect(() => {
     const {
+      flowNetwork,
       accessApi,
       walletDiscovery,
       walletDiscoveryApi,
       walletDiscoveryInclude,
+      addresses,
     } = network;
-    const iconUrl =
-      window.location.origin + '/images/ui/monster_maker_logo.png';
+    const iconUrl = window.location.origin + '/images/wallet-icon.png';
     const appTitle = process.env.NEXT_PUBLIC_APP_NAME || 'MonsterMaker';
 
     fcl.config({
       'app.detail.title': appTitle,
       'app.detail.icon': iconUrl,
       'accessNode.api': accessApi, // connect to Flow
+      'flow.network': flowNetwork,
       'discovery.wallet': walletDiscovery, // use wallets on public discovery
       'discovery.authn.endpoint': walletDiscoveryApi, // public discovery api endpoint
       'discovery.authn.include': walletDiscoveryInclude, // opt-in wallets
+      '0xMetadataViews': addresses.MetadataViews,
+      '0xNonFungibleToken': addresses.NonFungibleToken,
+      '0xMonsterMaker': addresses.MonsterMaker,
     });
   }, []);
 

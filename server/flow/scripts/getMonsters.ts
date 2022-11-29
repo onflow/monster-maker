@@ -1,9 +1,7 @@
-import { network } from '../../constants/networks';
-
 const getMonstersScript = `
-    import NonFungibleToken from ${network.addresses.NonFungibleToken}
-    import MetadataViews from ${network.addresses.MetadataViews}
-    import MonsterMaker from ${network.addresses.MonsterMaker}
+    import NonFungibleToken from 0xNonFungibleToken
+    import MetadataViews from 0xMetadataViews
+    import MonsterMaker from 0xMonsterMaker
 
     pub struct Monster {
         pub let name: String
@@ -81,6 +79,6 @@ const getMonstersScript = `
 
         return monsters
     }
-`
+`;
 
-export default getMonstersScript
+export default getMonstersScript;
