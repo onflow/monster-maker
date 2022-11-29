@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import styles from './ArrowButton.module.css';
 
 const directions = {
@@ -13,10 +14,11 @@ interface Props {
   direction: Direction;
   onClick: VoidFunction;
   alt: string;
+  style?: CSSProperties;
   className?: string;
 }
 
-const ArrowButton = ({ direction, onClick, alt, className }: Props) => {
+const ArrowButton = ({ direction, onClick, alt, style, className }: Props) => {
   const wrapperStyles =
     direction === 'up' || direction === 'down'
       ? styles.wrapperVertical
@@ -24,6 +26,7 @@ const ArrowButton = ({ direction, onClick, alt, className }: Props) => {
 
   return (
     <div
+      style={style}
       className={className ? `${className} ${wrapperStyles}` : wrapperStyles}
     >
       <img

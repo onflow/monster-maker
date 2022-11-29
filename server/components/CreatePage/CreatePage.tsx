@@ -1,5 +1,6 @@
-import ArrowButton from 'components/ArrowButton';
-import NFTView from 'components/NFTView/NFTView';
+import HorizontalPicker from 'components/HorizontalPicker';
+import NFTView from 'components/NFTView';
+import VerticalPicker from 'components/VerticalPicker';
 import usePartSelector from 'hooks/usePartSelector';
 import {
   backgroundRange,
@@ -32,60 +33,31 @@ const CreatePage = ({ isMintInProgress }: Props) => {
 
         {!isMintInProgress && (
           <>
-            <ArrowButton
-              direction="up"
-              onClick={decrementBg}
-              alt="Change background"
-              className={styles.bgDecrement}
+            <VerticalPicker
+              partName="background"
+              increment={incrementBg}
+              decrement={decrementBg}
             />
 
-            <ArrowButton
-              direction="left"
-              onClick={decrementHead}
-              alt="Change head"
-              className={styles.headDecrement}
+            <HorizontalPicker
+              partName="head"
+              increment={incrementHead}
+              decrement={decrementHead}
+              topOffset={84}
             />
 
-            <ArrowButton
-              direction="left"
-              onClick={decrementTorso}
-              alt="Change torso"
-              className={styles.torsoDecrement}
+            <HorizontalPicker
+              partName="torso"
+              increment={incrementTorso}
+              decrement={decrementTorso}
+              topOffset={200}
             />
 
-            <ArrowButton
-              direction="left"
-              onClick={decrementLegs}
-              alt="Change legs"
-              className={styles.legsDecrement}
-            />
-
-            <ArrowButton
-              direction="right"
-              onClick={incrementHead}
-              alt="Change head"
-              className={styles.headIncrement}
-            />
-
-            <ArrowButton
-              direction="right"
-              onClick={incrementTorso}
-              alt="Change torso"
-              className={styles.torsoIncrement}
-            />
-
-            <ArrowButton
-              direction="right"
-              onClick={incrementLegs}
-              alt="Change legs"
-              className={styles.legsIncrement}
-            />
-
-            <ArrowButton
-              direction="down"
-              onClick={incrementBg}
-              alt="Change head"
-              className={styles.bgIncrement}
+            <HorizontalPicker
+              partName="legs"
+              increment={incrementLegs}
+              decrement={decrementLegs}
+              topOffset={295}
             />
           </>
         )}

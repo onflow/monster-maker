@@ -1,8 +1,8 @@
 import NFTView from 'components/NFTView/NFTView';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useEffect } from 'react';
 import { GetMonstersResponse } from 'utils/types';
 import styles from './ViewPage.module.css';
-import { useEffect } from 'react';
 
 interface Props {
   monsters: GetMonstersResponse;
@@ -14,7 +14,7 @@ const ViewPage = ({ monsters }: Props) => {
   // Reinitialize slider with response data
   useEffect(() => {
     if (emblaApi) {
-      emblaApi.reInit()
+      emblaApi.reInit();
     }
   }, [emblaApi, monsters]);
 

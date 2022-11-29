@@ -16,3 +16,8 @@ export type Monster = {
 }
 
 export type GetMonstersResponse = Array<Monster>
+
+export type MintMonsterRequest = {
+  address: string;
+  components: MonsterComponents;
+}

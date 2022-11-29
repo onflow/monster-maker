@@ -10,6 +10,14 @@ body {
   background: linear-gradient(180deg, var(--gradient-colors));
 }
 
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
