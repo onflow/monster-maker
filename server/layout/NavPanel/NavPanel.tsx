@@ -12,7 +12,7 @@ const NavPanel = ({ children }: Props) => {
       style={{ backgroundImage: `url(${tileBackground.src})` }}
       className={styles.navPanel}
     >
-      {children}
+      <div className={styles.navButtonWrapper}>{children}</div>
     </nav>
   );
 };

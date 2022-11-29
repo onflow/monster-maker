@@ -1,5 +1,6 @@
 import Button from 'components/Button';
 import InitializePage from 'components/InitializePage';
+import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
@@ -19,6 +20,14 @@ const Initialize = () => {
       <Header />
 
       <InitializePage />
+
+      <ActionPanel>
+        <img
+          style={{ width: 'auto', maxHeight: '100%' }}
+          src="/images/ui/initialize_bubble.png"
+          alt="Initialize to start minting monsters"
+        />
+      </ActionPanel>
 
       <NavPanel>
         <Button

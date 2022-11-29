@@ -6,6 +6,7 @@ import styles from './Header.module.css';
 
 export default function Header() {
   const { logout } = useWeb3Context();
+
   return (
     <div className={styles.header}>
       <div className={styles.logoWrapper}>
@@ -19,13 +20,13 @@ export default function Header() {
       </div>
 
       <div className={styles.exitIconWrapper}>
-      <Button
-        src="/images/ui/monster_maker_exit_icon.png"
-        alt="logo"
-        width={2176}
-        height={800}
-        onClick={logout}
-      />
+        <Button
+          src="/images/ui/monster_maker_exit_icon.png"
+          alt="logo"
+          width={2176}
+          height={800}
+          onClick={logout}
+        />
       </div>
     </div>
   );

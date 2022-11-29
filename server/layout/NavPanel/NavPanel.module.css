@@ -5,8 +5,14 @@
   width: 100%;
   flex-basis: 230px;
   background-repeat: repeat-x;
-  background-size: 600px;
+  background-size: contain;
   background-position: center bottom;
   padding-top: 40px;
+  z-index: 2;
+}
+
+.navButtonWrapper {
+  height: 80px;
+  display: flex;
   gap: 100px;
 }

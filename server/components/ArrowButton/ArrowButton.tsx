@@ -1,4 +1,3 @@
-import Image from 'next/legacy/image';
 import styles from './ArrowButton.module.css';
 
 const directions = {
@@ -18,15 +17,17 @@ interface Props {
 }
 
 const ArrowButton = ({ direction, onClick, alt, className }: Props) => {
+  const wrapperStyles =
+    direction === 'up' || direction === 'down'
+      ? styles.wrapperVertical
+      : styles.wrapperHorizontal;
+
   return (
     <div
-      className={className ? `${className} ${styles.wrapper}` : styles.wrapper}
+      className={className ? `${className} ${wrapperStyles}` : wrapperStyles}
     >
-      <Image
+      <img
         src={directions[direction]}
-        width={256}
-        height={256}
-        layout="responsive"
         onClick={onClick}
         alt={alt}
         className={styles.arrowButton}

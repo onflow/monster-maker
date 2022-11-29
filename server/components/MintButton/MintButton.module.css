@@ -1,0 +1,9 @@
+.mintButton {
+  width: auto;
+  height: 280px;
+  position: relative;
+  bottom: -100px;
+  z-index: 0;
+  transform: rotate(-2deg);
+  cursor: pointer;
+}

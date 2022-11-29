@@ -19,7 +19,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: -64px;
+  top: -48px;
   z-index: 2;
 }
 
@@ -27,48 +27,48 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -72px;
+  bottom: -48px;
   z-index: 2;
 }
 
 .headDecrement {
   position: absolute;
-  left: -72px;
-  top: 72px;
+  left: -42px;
+  top: 84px;
   z-index: 2;
 }
 
 .headIncrement {
   position: absolute;
-  right: -68px;
-  top: 72px;
+  right: -42px;
+  top: 84px;
   z-index: 2;
 }
 
 .torsoDecrement {
   position: absolute;
-  left: -72px;
-  top: 190px;
+  left: -42px;
+  top: 200px;
   z-index: 2;
 }
 
 .torsoIncrement {
   position: absolute;
-  right: -68px;
-  top: 190px;
+  right: -42px;
+  top: 200px;
   z-index: 2;
 }
 
 .legsDecrement {
   position: absolute;
-  left: -72px;
-  top: 280px;
+  left: -42px;
+  top: 295px;
   z-index: 2;
 }
 
 .legsIncrement {
   position: absolute;
-  right: -68px;
-  top: 280px;
+  right: -42px;
+  top: 295px;
   z-index: 2;
 }

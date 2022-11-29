@@ -1,5 +1,7 @@
 import Button from 'components/Button';
 import CreatePage from 'components/CreatePage';
+import MintButton from 'components/MintButton';
+import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
@@ -8,6 +10,11 @@ import { ROUTES } from 'utils/constants';
 
 const Create = () => {
   const router = useRouter();
+
+  const handleMint = () => {
+    // TODO: Mint
+    router.push(ROUTES.VIEW);
+  };
 
   const handleView = () => {
     // TODO: View
@@ -20,7 +27,9 @@ const Create = () => {
 
       <CreatePage />
 
-      <div>Mint</div>
+      <ActionPanel>
+        <MintButton onClick={handleMint} />
+      </ActionPanel>
 
       <NavPanel>
         <Button
