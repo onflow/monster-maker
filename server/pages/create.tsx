@@ -8,19 +8,49 @@ import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { ROUTES } from 'utils/constants';
+import {
+  backgroundRange,
+  headRange,
+  legsRange,
+  torsoRange,
+} from 'utils/mapAssets';
+import usePartSelector from 'hooks/usePartSelector';
+import { userAgent } from 'next/server';
+import { useWeb3Context } from 'contexts/Web3';
 
 const Create = () => {
   const router = useRouter();
+  const { user } = useWeb3Context();
   const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
+  const [bgIndex] = usePartSelector(backgroundRange);
+  const [headIndex] = usePartSelector(headRange);
+  const [torsoIndex] = usePartSelector(torsoRange);
+  const [legsIndex] = usePartSelector(legsRange);
 
-  const handleClickMint = () => {
-    // TODO: Mint
+  const mintMonster = async () => {
+    const response = await fetch('/api/mint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        address: user.addr,
+        components: {
+          background: bgIndex,
+          head: headIndex,
+          torso: torsoIndex,
+          legs: legsIndex,
+        },
+      }),
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  };
 
-    // While waiting for transaction to be sealed
+  const handleClickMint = async () => {
     setIsMintInProgress(true);
-
-    // Once sealed, navigate to View page
-    // router.push(ROUTES.VIEW);
+    await mintMonster();
+    setIsMintInProgress(false);
+    router.push(ROUTES.VIEW);
   };
 
   const handleClickView = () => {

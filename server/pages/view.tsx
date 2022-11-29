@@ -1,8 +1,8 @@
 import * as fcl from '@onflow/fcl';
+import getMonstersScript from 'cadence/scripts/getMonsters';
 import Button from 'components/Button';
 import ViewPage from 'components/ViewPage';
 import { useWeb3Context } from 'contexts/Web3';
-import getMonstersScript from 'flow/scripts/getMonsters';
 import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';

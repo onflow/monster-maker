@@ -12,6 +12,7 @@ const networks = {
       NonFungibleToken: '0x0ae53cb6e3f42a79',
       MetadataViews: '0x0ae53cb6e3f42a79',
       MonsterMaker: '0x0ae53cb6e3f42a79',
+      FungibleToken: '0xee82856bf20e2aa6',
     },
   },
   testnet: {
@@ -27,6 +28,7 @@ const networks = {
       NonFungibleToken: '0x631e88ae7f1d7c20',
       MetadataViews: '0x631e88ae7f1d7c20',
       MonsterMaker: '0xfd3d8fe2c8056370',
+      FungibleToken: '0x9a0766d93b6608b7',
     },
   },
   mainnet: {
@@ -42,6 +44,7 @@ const networks = {
       NonFungibleToken: '0x1d7e57aa55817448',
       MetadataViews: '0x1d7e57aa55817448',
       MonsterMaker: '',
+      FungibleToken: '0xf233dcee88fe0abe',
     },
   },
 } as const;
