@@ -1,15 +1,15 @@
+import * as fcl from '@onflow/fcl';
 import Button from 'components/Button';
 import ViewPage from 'components/ViewPage';
+import { useWeb3Context } from 'contexts/Web3';
+import getMonstersScript from 'flow/scripts/getMonsters';
 import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
-import { ROUTES } from 'utils/constants';
-import * as fcl from '@onflow/fcl';
 import { useEffect, useState } from 'react';
-import getMonstersScript from 'flow/scripts/getMonsters';
-import { useWeb3Context } from 'contexts/Web3';
+import { ROUTES } from 'utils/constants';
 import { GetMonstersResponse } from 'utils/types';
 
 const View = () => {
@@ -36,7 +36,7 @@ const View = () => {
     };
 
     getMonsters();
-  }, []);
+  }, [user.addr]);
 
   return (
     <PageContainer>
