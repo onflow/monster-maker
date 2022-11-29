@@ -1,11 +1,12 @@
 import Button from 'components/Button';
 import HomePage from 'components/HomePage';
+import { useWeb3Context } from 'contexts/Web3';
+import ActionPanel from 'layout/ActionPanel';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
-import { ROUTES } from 'utils/constants';
-import { useWeb3Context } from 'contexts/Web3';
 import { useEffect } from 'react';
+import { ROUTES } from 'utils/constants';
 
 const Home = () => {
   const router = useRouter();
@@ -21,6 +22,8 @@ const Home = () => {
   return (
     <PageContainer>
       <HomePage />
+
+      <ActionPanel />
 
       <NavPanel>
         <Button

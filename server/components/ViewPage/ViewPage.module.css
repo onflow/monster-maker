@@ -5,3 +5,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.embla {
+  overflow: hidden;
+}
+.emblaContainer {
+  display: flex;
+}
+.emblaSlide {
+  flex: 0 0 450px;
+}
