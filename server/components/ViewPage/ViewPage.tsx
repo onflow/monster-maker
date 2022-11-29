@@ -1,53 +1,39 @@
 import NFTView from 'components/NFTView/NFTView';
 import useEmblaCarousel from 'embla-carousel-react';
-import getRandomIndex from 'utils/getRandomIndex';
-import {
-  backgroundRange,
-  headRange,
-  legsRange,
-  torsoRange,
-} from 'utils/mapAssets';
+import { GetMonstersResponse } from 'utils/types';
 import styles from './ViewPage.module.css';
+import { useEffect } from 'react';
 
-const ViewPage = () => {
-  const [emblaRef] = useEmblaCarousel();
+interface Props {
+  monsters: GetMonstersResponse;
+}
+
+const ViewPage = ({ monsters }: Props) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel();
+
+  // Reinitialize slider with response data
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit()
+    }
+  }, [emblaApi, monsters]);
 
   return (
     <main className={styles.main}>
       <div className={styles.embla} ref={emblaRef}>
         <div className={styles.emblaContainer}>
-          <div className={styles.emblaSlide}>
-            <NFTView
-              bgIndex={getRandomIndex(backgroundRange)}
-              headIndex={getRandomIndex(headRange)}
-              legsIndex={getRandomIndex(legsRange)}
-              torsoIndex={getRandomIndex(torsoRange)}
-            />
-          </div>
-          <div className={styles.emblaSlide}>
-            <NFTView
-              bgIndex={getRandomIndex(backgroundRange)}
-              headIndex={getRandomIndex(headRange)}
-              legsIndex={getRandomIndex(legsRange)}
-              torsoIndex={getRandomIndex(torsoRange)}
-            />
-          </div>
-          <div className={styles.emblaSlide}>
-            <NFTView
-              bgIndex={getRandomIndex(backgroundRange)}
-              headIndex={getRandomIndex(headRange)}
-              legsIndex={getRandomIndex(legsRange)}
-              torsoIndex={getRandomIndex(torsoRange)}
-            />
-          </div>
-          <div className={styles.emblaSlide}>
-            <NFTView
-              bgIndex={getRandomIndex(backgroundRange)}
-              headIndex={getRandomIndex(headRange)}
-              legsIndex={getRandomIndex(legsRange)}
-              torsoIndex={getRandomIndex(torsoRange)}
-            />
-          </div>
+          {monsters.map(({ resourceID, component }) => {
+            return (
+              <div key={resourceID} className={styles.emblaSlide}>
+                <NFTView
+                  bgIndex={component.background}
+                  headIndex={component.head}
+                  legsIndex={component.legs}
+                  torsoIndex={component.torso}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </main>
