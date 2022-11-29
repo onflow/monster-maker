@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
+import { ALL_UI_IMAGE_ASSETS } from 'utils/constants';
 
 const Document = () => {
   return (
@@ -11,6 +12,9 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
           rel="stylesheet"
         ></link>
+        {ALL_UI_IMAGE_ASSETS.map((href, idx) => (
+          <link key={idx} rel="preload" href={href} as="image" />
+        ))}
       </Head>
       <body>
         <Main />
