@@ -10,28 +10,30 @@ import * as fcl from '@onflow/fcl';
 import { useEffect, useState } from 'react';
 import getMonstersScript from 'flow/scripts/getMonsters';
 import { useWeb3Context } from 'contexts/Web3';
+import { GetMonstersResponse } from 'utils/types';
 
 const View = () => {
   const router = useRouter();
   const { user } = useWeb3Context();
-  const [monsters, setMonsters] = useState();
+  const [monsters, setMonsters] = useState<GetMonstersResponse>([]);
 
   const handleCreate = () => {
     router.push(ROUTES.CREATE);
   };
 
-  const getMonsters = async () => {
-    const result = await fcl.query({
-      cadence: getMonstersScript,
-      args: (arg: any, t: any) => [
-        arg('0xc56db4f69436c73e', t.Address),
-        //arg(user.addr, t.Address),
-      ],
-    });
-    setMonsters(result);
-  };
-
   useEffect(() => {
+    const getMonsters = async () => {
+      try {
+        const res: GetMonstersResponse = await fcl.query({
+          cadence: getMonstersScript,
+          args: (arg: any, t: any) => [arg(user.addr, t.Address)],
+        });
+        setMonsters(res);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
     getMonsters();
   }, []);
 

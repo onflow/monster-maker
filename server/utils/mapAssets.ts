@@ -9,11 +9,11 @@ export const legsRange: Array<number> = generateRange(5);
 export const torsoRange: Array<number> = generateRange(10);
 export const backgroundRange: Array<number> = generateRange(5);
 
-export const getHeadImage = (index: number): string =>
+export const getHeadImage = (index: number | string): string =>
   `/images/head/monster_head_${index}.png`;
-export const getLegsImage = (index: number): string =>
+export const getLegsImage = (index: number | string): string =>
   `/images/legs/monster_legs_${index}.png`;
-export const getTorsoImage = (index: number): string =>
+export const getTorsoImage = (index: number | string): string =>
   `/images/torso/monster_torso_${index}.png`;
-export const getBackgroundImage = (index: number): string =>
+export const getBackgroundImage = (index: number | string): string =>
   `/images/background/bg_${index}.png`;
