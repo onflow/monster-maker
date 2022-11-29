@@ -28,9 +28,10 @@ const View = () => {
           cadence: getMonstersScript,
           args: (arg: any, t: any) => [arg(user.addr, t.Address)],
         });
+
         setMonsters(res);
-      } catch (e) {
-        console.error(e);
+      } catch (error) {
+        console.error(error);
       }
     };
 
