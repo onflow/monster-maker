@@ -4,7 +4,7 @@ import 'styles/globals.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <Web3ContextProvider network={process.env.NEXT_PUBLIC_FLOW_ENV}>
+    <Web3ContextProvider>
       <Component {...pageProps} />
     </Web3ContextProvider>
   );

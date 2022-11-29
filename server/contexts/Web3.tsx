@@ -10,41 +10,16 @@ import {
   useState,
 } from 'react';
 import { ROUTES } from 'utils/constants';
+import { network } from '../constants/networks';
 
 interface IWeb3Context {
   connect: () => void;
   logout: () => void;
   user: {
     loggedIn: boolean | null;
+    addr: string;
   };
 }
-
-export const networks = {
-  emulator: {
-    accessApi: process.env.NEXT_PUBLIC_EMULATOR_API || 'http://localhost:8888',
-    walletDiscovery: 'https://fcl-discovery.onflow.org/local/authn',
-    walletDiscoveryApi: 'https://fcl-discovery.onflow.org/api/local/authn',
-    walletDiscoveryInclude: [],
-  },
-  testnet: {
-    accessApi: 'https://rest-testnet.onflow.org',
-    walletDiscovery: 'https://fcl-discovery.onflow.org/testnet/authn',
-    walletDiscoveryApi: 'https://fcl-discovery.onflow.org/api/testnet/authn',
-    walletDiscoveryInclude: [
-      '0x82ec283f88a62e65', // Dapper Wallet
-    ],
-  },
-  mainnet: {
-    accessApi: 'https://rest-mainnet.onflow.org',
-    walletDiscovery: 'https://fcl-discovery.onflow.org/authn',
-    walletDiscoveryApi: 'https://fcl-discovery.onflow.org/api/authn',
-    walletDiscoveryInclude: [
-      '0xead892083b3e2c6c', // Dapper Wallet
-    ],
-  },
-} as const;
-
-type NetworksKey = keyof typeof networks;
 
 export const Web3Context = createContext<IWeb3Context>({} as IWeb3Context);
 
@@ -58,12 +33,11 @@ export const useWeb3Context = () => {
 
 export const Web3ContextProvider = ({
   children,
-  network = 'testnet',
 }: {
   children: ReactNode;
   network?: string;
 }) => {
-  const [user, setUser] = useState({ loggedIn: null });
+  const [user, setUser] = useState({ loggedIn: null, addr: '' });
   const [transactionInProgress, setTransactionInProgress] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState<number | null>(
     null,
@@ -77,7 +51,7 @@ export const Web3ContextProvider = ({
       walletDiscovery,
       walletDiscoveryApi,
       walletDiscoveryInclude,
-    } = networks[network as NetworksKey];
+    } = network;
     const iconUrl =
       window.location.origin + '/images/ui/monster_maker_logo.png';
     const appTitle = process.env.NEXT_PUBLIC_APP_NAME || 'MonsterMaker';
@@ -90,7 +64,7 @@ export const Web3ContextProvider = ({
       'discovery.authn.endpoint': walletDiscoveryApi, // public discovery api endpoint
       'discovery.authn.include': walletDiscoveryInclude, // opt-in wallets
     });
-  }, [network]);
+  }, []);
 
   useEffect(() => fcl.currentUser.subscribe(setUser), []);
 

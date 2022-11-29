@@ -6,14 +6,33 @@ import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
+import * as fcl from '@onflow/fcl';
+import { useEffect } from 'react';
+import getMonstersScript from 'flow/scripts/getMonsters';
+import { useWeb3Context } from 'contexts/Web3';
 
 const View = () => {
   const router = useRouter();
+  const { user } = useWeb3Context();
 
   const handleCreate = () => {
-    // TODO: Create
     router.push(ROUTES.CREATE);
   };
+
+  const getMonsters = async () => {
+    const result = await fcl.query({
+      cadence: getMonstersScript,
+      args: (arg: any, t: any) => [
+        arg('0xc56db4f69436c73e', t.Address),
+        // arg(user.addr, t.Address),
+      ],
+    });
+    console.log(result);
+  };
+
+  useEffect(() => {
+    getMonsters();
+  }, []);
 
   return (
     <PageContainer>
