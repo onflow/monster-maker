@@ -6,18 +6,24 @@ import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { ROUTES } from 'utils/constants';
 
 const Create = () => {
   const router = useRouter();
+  const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
 
-  const handleMint = () => {
+  const handleClickMint = () => {
     // TODO: Mint
-    router.push(ROUTES.VIEW);
+
+    // While waiting for transaction to be sealed
+    setIsMintInProgress(true);
+
+    // Once sealed, navigate to View page
+    // router.push(ROUTES.VIEW);
   };
 
-  const handleView = () => {
-    // TODO: View
+  const handleClickView = () => {
     router.push(ROUTES.VIEW);
   };
 
@@ -25,10 +31,13 @@ const Create = () => {
     <PageContainer>
       <Header />
 
-      <CreatePage />
+      <CreatePage isMintInProgress={isMintInProgress} />
 
       <ActionPanel>
-        <MintButton onClick={handleMint} />
+        <MintButton
+          onClick={handleClickMint}
+          isMintInProgress={isMintInProgress}
+        />
       </ActionPanel>
 
       <NavPanel>
@@ -44,7 +53,7 @@ const Create = () => {
           src="/images/ui/view_button_off.png"
           width={640}
           height={208}
-          onClick={handleView}
+          onClick={handleClickView}
           alt="View NFTs"
         />
       </NavPanel>

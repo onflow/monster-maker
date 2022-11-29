@@ -9,7 +9,11 @@ import {
 } from 'utils/mapAssets';
 import styles from './CreatePage.module.css';
 
-const CreatePage = () => {
+interface Props {
+  isMintInProgress: boolean;
+}
+
+const CreatePage = ({ isMintInProgress }: Props) => {
   const [bgIndex, incrementBg, decrementBg] = usePartSelector(backgroundRange);
   const [headIndex, incrementHead, decrementHead] = usePartSelector(headRange);
   const [torsoIndex, incrementTorso, decrementTorso] =
@@ -26,61 +30,65 @@ const CreatePage = () => {
           legsIndex={legsIndex}
         />
 
-        <ArrowButton
-          direction="up"
-          onClick={decrementBg}
-          alt="Change background"
-          className={styles.bgDecrement}
-        />
+        {!isMintInProgress && (
+          <>
+            <ArrowButton
+              direction="up"
+              onClick={decrementBg}
+              alt="Change background"
+              className={styles.bgDecrement}
+            />
 
-        <ArrowButton
-          direction="left"
-          onClick={decrementHead}
-          alt="Change head"
-          className={styles.headDecrement}
-        />
+            <ArrowButton
+              direction="left"
+              onClick={decrementHead}
+              alt="Change head"
+              className={styles.headDecrement}
+            />
 
-        <ArrowButton
-          direction="left"
-          onClick={decrementTorso}
-          alt="Change torso"
-          className={styles.torsoDecrement}
-        />
+            <ArrowButton
+              direction="left"
+              onClick={decrementTorso}
+              alt="Change torso"
+              className={styles.torsoDecrement}
+            />
 
-        <ArrowButton
-          direction="left"
-          onClick={decrementLegs}
-          alt="Change legs"
-          className={styles.legsDecrement}
-        />
+            <ArrowButton
+              direction="left"
+              onClick={decrementLegs}
+              alt="Change legs"
+              className={styles.legsDecrement}
+            />
 
-        <ArrowButton
-          direction="right"
-          onClick={incrementHead}
-          alt="Change head"
-          className={styles.headIncrement}
-        />
+            <ArrowButton
+              direction="right"
+              onClick={incrementHead}
+              alt="Change head"
+              className={styles.headIncrement}
+            />
 
-        <ArrowButton
-          direction="right"
-          onClick={incrementTorso}
-          alt="Change torso"
-          className={styles.torsoIncrement}
-        />
+            <ArrowButton
+              direction="right"
+              onClick={incrementTorso}
+              alt="Change torso"
+              className={styles.torsoIncrement}
+            />
 
-        <ArrowButton
-          direction="right"
-          onClick={incrementLegs}
-          alt="Change legs"
-          className={styles.legsIncrement}
-        />
+            <ArrowButton
+              direction="right"
+              onClick={incrementLegs}
+              alt="Change legs"
+              className={styles.legsIncrement}
+            />
 
-        <ArrowButton
-          direction="down"
-          onClick={incrementBg}
-          alt="Change head"
-          className={styles.bgIncrement}
-        />
+            <ArrowButton
+              direction="down"
+              onClick={incrementBg}
+              alt="Change head"
+              className={styles.bgIncrement}
+            />
+          </>
+        )}
       </div>
     </main>
   );
