@@ -65,7 +65,9 @@ export const Web3ContextProvider = ({
 }) => {
   const [user, setUser] = useState({ loggedIn: null });
   const [transactionInProgress, setTransactionInProgress] = useState(false);
-  const [transactionStatus, setTransactionStatus] = useState<number | null>(null);
+  const [transactionStatus, setTransactionStatus] = useState<number | null>(
+    null,
+  );
   const [transactionError, setTransactionError] = useState('');
   const [txId, setTxId] = useState(null);
 
@@ -101,32 +103,35 @@ export const Web3ContextProvider = ({
     router.push(ROUTES.HOME);
   }, []);
 
-  const executeTransaction = async (cadence: string, args: any, options: any = {}) => {
-    setTransactionInProgress(true);
-    setTransactionStatus(-1);
+  const executeTransaction = useCallback(
+    async (cadence: string, args: any, options: any = {}) => {
+      setTransactionInProgress(true);
+      setTransactionStatus(-1);
 
-    const transactionId = await fcl
-      .mutate({
-        cadence,
-        args,
-        payer: fcl.authz,
-        proposer: fcl.authz,
-        authorizations: [fcl.authz],
-        limit: options.limit || 50,
-      })
-      .catch((e: Error) => {
-        setTransactionInProgress(false);
-        setTransactionStatus(500);
-        setTransactionError(String(e));
-      });
+      const transactionId = await fcl
+        .mutate({
+          cadence,
+          args,
+          payer: fcl.authz,
+          proposer: fcl.authz,
+          authorizations: [fcl.authz],
+          limit: options.limit || 50,
+        })
+        .catch((e: Error) => {
+          setTransactionInProgress(false);
+          setTransactionStatus(500);
+          setTransactionError(String(e));
+        });
 
-    if (transactionId) {
-      setTxId(transactionId);
-      fcl
-        .tx(transactionId)
-        .subscribe((res: any) => setTransactionStatus(res.status));
-    }
-  };
+      if (transactionId) {
+        setTxId(transactionId);
+        fcl
+          .tx(transactionId)
+          .subscribe((res: any) => setTransactionStatus(res.status));
+      }
+    },
+    [],
+  );
 
   const providerProps = useMemo(
     () => ({
@@ -141,7 +146,16 @@ export const Web3ContextProvider = ({
         errorMessage: transactionError,
       },
     }),
-    [connect, logout, txId, transactionInProgress, transactionStatus, transactionError, executeTransaction, user],
+    [
+      connect,
+      logout,
+      txId,
+      transactionInProgress,
+      transactionStatus,
+      transactionError,
+      executeTransaction,
+      user,
+    ],
   );
 
   return (
