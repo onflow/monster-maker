@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
 import * as fcl from '@onflow/fcl';
 import { useEffect, useState } from 'react';
-import getMonstersScript from 'flow/scripts/getMonsters';
+import getMonstersScript from 'cadence/scripts/getMonsters';
 import { useWeb3Context } from 'contexts/Web3';
 import { GetMonstersResponse } from 'utils/types';
 

@@ -15,6 +15,7 @@ import { network } from '../constants/networks';
 interface IWeb3Context {
   connect: () => void;
   logout: () => void;
+  executeTransaction: (cadence: string, args: any, options: any) => void;
   user: {
     loggedIn: boolean | null;
     addr: string;
@@ -65,8 +66,10 @@ export const Web3ContextProvider = ({
       'discovery.wallet': walletDiscovery, // use wallets on public discovery
       'discovery.authn.endpoint': walletDiscoveryApi, // public discovery api endpoint
       'discovery.authn.include': walletDiscoveryInclude, // opt-in wallets
-      '0xMetadataViews': addresses.MetadataViews,
+      '0xFungibleToken': addresses.FungibleToken,
+      '0xFlowToken': addresses.FlowToken,
       '0xNonFungibleToken': addresses.NonFungibleToken,
+      '0xMetadataViews': addresses.MetadataViews,
       '0xMonsterMaker': addresses.MonsterMaker,
     });
   }, []);
