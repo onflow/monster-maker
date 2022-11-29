@@ -7,13 +7,14 @@ import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
 import * as fcl from '@onflow/fcl';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import getMonstersScript from 'flow/scripts/getMonsters';
 import { useWeb3Context } from 'contexts/Web3';
 
 const View = () => {
   const router = useRouter();
   const { user } = useWeb3Context();
+  const [monsters, setMonsters] = useState();
 
   const handleCreate = () => {
     router.push(ROUTES.CREATE);
@@ -24,10 +25,10 @@ const View = () => {
       cadence: getMonstersScript,
       args: (arg: any, t: any) => [
         arg('0xc56db4f69436c73e', t.Address),
-        // arg(user.addr, t.Address),
+        //arg(user.addr, t.Address),
       ],
     });
-    console.log(result);
+    setMonsters(result);
   };
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const View = () => {
     <PageContainer>
       <Header />
 
-      <ViewPage />
+      <ViewPage monsters={monsters} />
 
       <ActionPanel />
 
