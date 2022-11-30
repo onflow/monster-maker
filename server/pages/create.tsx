@@ -8,7 +8,7 @@ import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ROUTES } from 'utils/constants';
 import {
   backgroundRange,
@@ -17,6 +17,8 @@ import {
   torsoRange,
 } from 'utils/mapAssets';
 import { MintMonsterRequestBody } from 'utils/types';
+import * as fcl from '@onflow/fcl';
+import { TxnStatus } from 'utils/types';
 
 const Create = () => {
   const router = useRouter();
@@ -28,6 +30,20 @@ const Create = () => {
   const legsSelector = usePartSelector(legsRange);
 
   const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
+  const [txId, setTxId] = useState('');
+  const [txStatus, setTxStatus] = useState<TxnStatus>();
+
+  useEffect(() => {
+    if (txId) {
+      fcl.tx(txId).subscribe(setTxStatus);
+    }
+  }, [txId]);
+
+  useEffect(() => {
+    if (txStatus?.statusString === 'SEALED') {
+      router.push(ROUTES.VIEW);
+    }
+  }, [txStatus]);
 
   const mintMonster = async () => {
     const response = await fetch('/api/mint', {
@@ -55,14 +71,8 @@ const Create = () => {
 
   const handleClickMint = async () => {
     setIsMintInProgress(true);
-
-    try {
-      await mintMonster();
-    } catch (error) {
-      console.error(error);
-    }
-
-    router.push(ROUTES.VIEW);
+    const { txId } = await mintMonster();
+    setTxId(txId);
   };
 
   const handleClickView = () => {

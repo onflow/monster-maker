@@ -21,3 +21,12 @@ export type MintMonsterRequestBody = {
   address: string;
   components: MonsterComponents;
 };
+
+export type TxnStatus = {
+  blockId: string;
+  status: number;
+  statusString: string;
+  statusCode: number;
+  errorMessage: string;
+  events: any[];
+};
