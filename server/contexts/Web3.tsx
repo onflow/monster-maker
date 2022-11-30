@@ -20,6 +20,12 @@ interface IWeb3Context {
     loggedIn: boolean | null;
     addr: string;
   };
+  transaction: {
+    id: string | null;
+    inProgress: boolean;
+    status: number | null;
+    errorMessage: string;
+  };
 }
 
 export const Web3Context = createContext<IWeb3Context>({} as IWeb3Context);
@@ -107,9 +113,10 @@ export const Web3ContextProvider = ({
 
       if (transactionId) {
         setTxId(transactionId);
-        fcl
-          .tx(transactionId)
-          .subscribe((res: any) => setTransactionStatus(res.status));
+        fcl.tx(transactionId).subscribe((res: any) => {
+          setTransactionStatus(res.status);
+          setTransactionInProgress(false);
+        });
       }
     },
     [],

@@ -6,14 +6,23 @@ import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { ROUTES } from 'utils/constants';
+import setupAccountTxn from 'cadence/transactions/setupAccount';
+import { useWeb3Context } from 'contexts/Web3';
+import { useEffect } from 'react';
 
 const Initialize = () => {
   const router = useRouter();
+  const { executeTransaction, transaction } = useWeb3Context();
 
-  const handleConnect = () => {
-    // TODO: Initialize wallet
-    router.push(ROUTES.CREATE);
+  const handleInit = async () => {
+    await executeTransaction(setupAccountTxn, (arg: any, t: any) => [], {});
   };
+
+  useEffect(() => {
+    if (transaction.id !== null) {
+      router.push(ROUTES.CREATE);
+    }
+  }, [transaction]);
 
   return (
     <PageContainer>
@@ -34,7 +43,7 @@ const Initialize = () => {
           src="/images/ui/initialize_button.png"
           width={640}
           height={208}
-          onClick={handleConnect}
+          onClick={handleInit}
           alt="Initialize wallet"
         />
       </NavPanel>
