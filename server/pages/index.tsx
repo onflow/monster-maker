@@ -5,19 +5,42 @@ import ActionPanel from 'layout/ActionPanel';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ROUTES } from 'utils/constants';
+import checkCapabilityScript from 'cadence/scripts/checkCapability';
 
 const Home = () => {
   const router = useRouter();
+  const [isInitialized, setIsInitialized] = useState<boolean | null>(null);
 
-  const { connect, user } = useWeb3Context();
+  const { connect, user, executeScript } = useWeb3Context();
+
+  const checkCapability = async () => {
+    try {
+      const res: boolean = await executeScript(
+        checkCapabilityScript,
+        (arg: any, t: any) => [arg(user.addr, t.Address)],
+      );
+
+      setIsInitialized(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     if (user.loggedIn) {
-      router.push(ROUTES.INITIALIZE);
+      checkCapability();
     }
-  }, [user, router]);
+  }, [user]);
+
+  useEffect(() => {
+    if (user.loggedIn && isInitialized === false) {
+      router.push(ROUTES.INITIALIZE);
+    } else if (user.loggedIn && isInitialized === true) {
+      router.push(ROUTES.CREATE);
+    }
+  }, [user, router, isInitialized]);
 
   return (
     <PageContainer>

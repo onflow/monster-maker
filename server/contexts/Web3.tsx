@@ -16,6 +16,7 @@ interface IWeb3Context {
   connect: () => void;
   logout: () => void;
   executeTransaction: (cadence: string, args: any, options: any) => void;
+  executeScript: (cadence: string, args: any) => any;
   user: {
     loggedIn: boolean | null;
     addr: string;
@@ -122,12 +123,25 @@ export const Web3ContextProvider = ({
     [],
   );
 
+  const executeScript = useCallback(async (cadence: string, args: any) => {
+    try {
+      const res: boolean = await fcl.query({
+        cadence: cadence,
+        args,
+      });
+      return res;
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   const providerProps = useMemo(
     () => ({
       connect,
       logout,
       user,
       executeTransaction,
+      executeScript,
       transaction: {
         id: txId,
         inProgress: transactionInProgress,
@@ -143,6 +157,7 @@ export const Web3ContextProvider = ({
       transactionStatus,
       transactionError,
       executeTransaction,
+      executeScript,
       user,
     ],
   );

@@ -15,7 +15,6 @@ import {
   torsoRange,
 } from 'utils/mapAssets';
 import usePartSelector from 'hooks/usePartSelector';
-import { userAgent } from 'next/server';
 import { useWeb3Context } from 'contexts/Web3';
 
 const Create = () => {
