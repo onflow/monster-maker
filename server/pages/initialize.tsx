@@ -1,21 +1,21 @@
+import setupAccountTxn from 'cadence/transactions/setupAccount';
 import Button from 'components/Button';
 import InitializePage from 'components/InitializePage';
+import { useWeb3Context } from 'contexts/Web3';
 import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
-import { ROUTES } from 'utils/constants';
-import setupAccountTxn from 'cadence/transactions/setupAccount';
-import { useWeb3Context } from 'contexts/Web3';
 import { useEffect } from 'react';
+import { ROUTES } from 'utils/constants';
 
 const Initialize = () => {
   const router = useRouter();
   const { executeTransaction, transaction } = useWeb3Context();
 
   const handleInit = async () => {
-    await executeTransaction(setupAccountTxn, (arg: any, t: any) => [], {});
+    await executeTransaction(setupAccountTxn, () => [], {});
   };
 
   useEffect(() => {
