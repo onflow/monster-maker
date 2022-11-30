@@ -30,7 +30,7 @@ const View = () => {
     };
 
     getMonsters();
-  }, [user.addr]);
+  }, [executeScript, user.addr]);
 
   return (
     <PageContainer>
