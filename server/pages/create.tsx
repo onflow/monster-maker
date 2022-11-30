@@ -1,6 +1,8 @@
 import Button from 'components/Button';
 import CreatePage from 'components/CreatePage';
 import MintButton from 'components/MintButton';
+import { useWeb3Context } from 'contexts/Web3';
+import usePartSelector from 'hooks/usePartSelector';
 import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
@@ -14,18 +16,18 @@ import {
   legsRange,
   torsoRange,
 } from 'utils/mapAssets';
-import usePartSelector from 'hooks/usePartSelector';
-import { userAgent } from 'next/server';
-import { useWeb3Context } from 'contexts/Web3';
+import { MintMonsterRequestBody } from 'utils/types';
 
 const Create = () => {
   const router = useRouter();
   const { user } = useWeb3Context();
+
+  const backgroundSelector = usePartSelector(backgroundRange);
+  const headSelector = usePartSelector(headRange);
+  const torsoSelector = usePartSelector(torsoRange);
+  const legsSelector = usePartSelector(legsRange);
+
   const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
-  const [bgIndex] = usePartSelector(backgroundRange);
-  const [headIndex] = usePartSelector(headRange);
-  const [torsoIndex] = usePartSelector(torsoRange);
-  const [legsIndex] = usePartSelector(legsRange);
 
   const mintMonster = async () => {
     const response = await fetch('/api/mint', {
@@ -36,20 +38,30 @@ const Create = () => {
       body: JSON.stringify({
         address: user.addr,
         components: {
-          background: bgIndex,
-          head: headIndex,
-          torso: torsoIndex,
-          legs: legsIndex,
+          background: backgroundSelector.index,
+          head: headSelector.index,
+          torso: torsoSelector.index,
+          legs: legsSelector.index,
         },
-      }),
+      } as MintMonsterRequestBody),
     });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
     return response.json(); // parses JSON response into native JavaScript objects
   };
 
   const handleClickMint = async () => {
     setIsMintInProgress(true);
-    await mintMonster();
-    setIsMintInProgress(false);
+
+    try {
+      await mintMonster();
+    } catch (error) {
+      console.error(error);
+    }
+
     router.push(ROUTES.VIEW);
   };
 
@@ -61,7 +73,13 @@ const Create = () => {
     <PageContainer>
       <Header />
 
-      <CreatePage isMintInProgress={isMintInProgress} />
+      <CreatePage
+        isMintInProgress={isMintInProgress}
+        backgroundSelector={backgroundSelector}
+        headSelector={headSelector}
+        torsoSelector={torsoSelector}
+        legsSelector={legsSelector}
+      />
 
       <ActionPanel>
         <MintButton

@@ -1,62 +1,60 @@
 import HorizontalPicker from 'components/HorizontalPicker';
 import NFTView from 'components/NFTView';
 import VerticalPicker from 'components/VerticalPicker';
-import usePartSelector from 'hooks/usePartSelector';
-import {
-  backgroundRange,
-  headRange,
-  legsRange,
-  torsoRange,
-} from 'utils/mapAssets';
+import { PartSelectorReturnProps } from 'hooks/usePartSelector';
 import styles from './CreatePage.module.css';
 
 interface Props {
   isMintInProgress: boolean;
+  backgroundSelector: PartSelectorReturnProps;
+  headSelector: PartSelectorReturnProps;
+  torsoSelector: PartSelectorReturnProps;
+  legsSelector: PartSelectorReturnProps;
 }
 
-const CreatePage = ({ isMintInProgress }: Props) => {
-  const [bgIndex, incrementBg, decrementBg] = usePartSelector(backgroundRange);
-  const [headIndex, incrementHead, decrementHead] = usePartSelector(headRange);
-  const [torsoIndex, incrementTorso, decrementTorso] =
-    usePartSelector(torsoRange);
-  const [legsIndex, incrementLegs, decrementLegs] = usePartSelector(legsRange);
-
+const CreatePage = ({
+  isMintInProgress,
+  backgroundSelector,
+  headSelector,
+  torsoSelector,
+  legsSelector,
+}: Props) => {
   return (
     <main className={styles.main}>
       <div className={styles.relativeContainer}>
         <NFTView
-          bgIndex={bgIndex}
-          headIndex={headIndex}
-          torsoIndex={torsoIndex}
-          legsIndex={legsIndex}
+          bgIndex={backgroundSelector.index}
+          headIndex={headSelector.index}
+          torsoIndex={torsoSelector.index}
+          legsIndex={legsSelector.index}
         />
 
         {!isMintInProgress && (
           <>
             <VerticalPicker
               partName="background"
-              increment={incrementBg}
-              decrement={decrementBg}
+              increment={backgroundSelector.increment}
+              decrement={backgroundSelector.decrement}
             />
 
             <HorizontalPicker
               partName="head"
-              increment={incrementHead}
-              decrement={decrementHead}
+              increment={headSelector.increment}
+              decrement={headSelector.decrement}
               topOffset={84}
             />
 
             <HorizontalPicker
               partName="torso"
-              increment={incrementTorso}
-              decrement={decrementTorso}
+              increment={torsoSelector.increment}
+              decrement={torsoSelector.decrement}
               topOffset={200}
             />
 
             <HorizontalPicker
               partName="legs"
-              increment={incrementLegs}
-              decrement={decrementLegs}
+              increment={legsSelector.increment}
+              decrement={legsSelector.decrement}
               topOffset={295}
             />
           </>

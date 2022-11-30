@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import getRandomIndex from 'utils/getRandomIndex';
 
-const usePartSelector = (range: Array<number>) => {
+export interface PartSelectorReturnProps {
+  index: number;
+  increment: VoidFunction;
+  decrement: VoidFunction;
+}
+
+const usePartSelector = (range: Array<number>): PartSelectorReturnProps => {
   // NOTE: Ranges are 1-indexed
   const [index, setIndex] = useState<number>(() => getRandomIndex(range));
 
@@ -27,7 +33,7 @@ const usePartSelector = (range: Array<number>) => {
       return newIndex;
     });
 
-  return [index, increment, decrement] as const;
+  return { index, increment, decrement };
 };
 
 export default usePartSelector;

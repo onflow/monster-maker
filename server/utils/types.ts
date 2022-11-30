@@ -1,9 +1,9 @@
 type MonsterComponents = {
-  background: string;
-  head: string;
-  torso: string;
-  legs: string;
-}
+  background: string | number;
+  head: string | number;
+  torso: string | number;
+  legs: string | number;
+};
 
 export type Monster = {
   name: string;
@@ -12,12 +12,12 @@ export type Monster = {
   itemID: string;
   resourceID: string;
   owner: string;
-  component: MonsterComponents
-}
+  component: MonsterComponents;
+};
 
-export type GetMonstersResponse = Array<Monster>
+export type GetMonstersResponse = Array<Monster>;
 
-export type MintMonsterRequest = {
+export type MintMonsterRequestBody = {
   address: string;
   components: MonsterComponents;
-}
+};

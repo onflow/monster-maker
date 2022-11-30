@@ -11,7 +11,6 @@ export default function MintButton({ onClick, isMintInProgress }: Props) {
     <img
       src="/images/ui/monster_maker_minting_banner.png"
       alt="Minting in progress..."
-      onClick={onClick}
       className={styles.mintBanner}
     />
   ) : (
