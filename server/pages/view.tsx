@@ -1,4 +1,3 @@
-import * as fcl from '@onflow/fcl';
 import getMonstersScript from 'cadence/scripts/getMonsters';
 import Button from 'components/Button';
 import ViewPage from 'components/ViewPage';
@@ -14,7 +13,7 @@ import { GetMonstersResponse } from 'utils/types';
 
 const View = () => {
   const router = useRouter();
-  const { user } = useWeb3Context();
+  const { user, executeScript } = useWeb3Context();
   const [monsters, setMonsters] = useState<GetMonstersResponse>([]);
 
   const handleCreate = () => {
@@ -23,16 +22,11 @@ const View = () => {
 
   useEffect(() => {
     const getMonsters = async () => {
-      try {
-        const res: GetMonstersResponse = await fcl.query({
-          cadence: getMonstersScript,
-          args: (arg: any, t: any) => [arg(user.addr, t.Address)],
-        });
-
-        setMonsters(res);
-      } catch (error) {
-        console.error(error);
-      }
+      const res: GetMonstersResponse = await executeScript(
+        getMonstersScript,
+        (arg: any, t: any) => [arg(user.addr, t.Address)],
+      );
+      setMonsters(res || []);
     };
 
     getMonsters();
