@@ -1,11 +1,11 @@
 import NFTView from 'components/NFTView/NFTView';
-import getRandomIndex from 'utils/getRandomIndex';
+import getRandomInt from 'utils/getRandomInt';
 import {
-  backgroundRange,
-  headRange,
-  legsRange,
-  torsoRange,
-} from 'utils/mapAssets';
+  NUM_BACKGROUND_IMAGES,
+  NUM_HEAD_IMAGES,
+  NUM_LEGS_IMAGES,
+  NUM_TORSO_IMAGES,
+} from 'utils/imageAssets';
 import styles from './InitializePage.module.css';
 
 const InitializePage = () => {
@@ -13,10 +13,10 @@ const InitializePage = () => {
     <main className={styles.main}>
       <div className={styles.opacityWrapper}>
         <NFTView
-          bgIndex={getRandomIndex(backgroundRange)}
-          headIndex={getRandomIndex(headRange)}
-          legsIndex={getRandomIndex(legsRange)}
-          torsoIndex={getRandomIndex(torsoRange)}
+          bgIndex={getRandomInt(NUM_BACKGROUND_IMAGES)}
+          headIndex={getRandomInt(NUM_HEAD_IMAGES)}
+          legsIndex={getRandomInt(NUM_LEGS_IMAGES)}
+          torsoIndex={getRandomInt(NUM_TORSO_IMAGES)}
         />
       </div>
     </main>

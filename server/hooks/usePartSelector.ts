@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import getRandomIndex from 'utils/getRandomIndex';
+import getRandomInt from 'utils/getRandomInt';
 
 export interface PartSelectorReturnProps {
   index: number;
@@ -7,16 +7,15 @@ export interface PartSelectorReturnProps {
   decrement: VoidFunction;
 }
 
-const usePartSelector = (range: Array<number>): PartSelectorReturnProps => {
-  // NOTE: Ranges are 1-indexed
-  const [index, setIndex] = useState<number>(() => getRandomIndex(range));
+const usePartSelector = (numberOfParts: number): PartSelectorReturnProps => {
+  const [index, setIndex] = useState<number>(() => getRandomInt(numberOfParts));
 
   const increment = () =>
     setIndex((idx) => {
       let newIndex = idx + 1;
 
-      if (newIndex > range.length) {
-        newIndex = 1;
+      if (newIndex >= numberOfParts) {
+        newIndex = 0;
       }
 
       return newIndex;
@@ -26,8 +25,8 @@ const usePartSelector = (range: Array<number>): PartSelectorReturnProps => {
     setIndex((idx) => {
       let newIndex = idx - 1;
 
-      if (newIndex < 1) {
-        newIndex = range.length;
+      if (newIndex < 0) {
+        newIndex = numberOfParts - 1;
       }
 
       return newIndex;

@@ -12,21 +12,21 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ROUTES } from 'utils/constants';
 import {
-  backgroundRange,
-  headRange,
-  legsRange,
-  torsoRange,
-} from 'utils/mapAssets';
+  NUM_BACKGROUND_IMAGES,
+  NUM_HEAD_IMAGES,
+  NUM_LEGS_IMAGES,
+  NUM_TORSO_IMAGES,
+} from 'utils/imageAssets';
 import { MintMonsterRequestBody, TxnStatus } from 'utils/types';
 
 const Create = () => {
   const router = useRouter();
   const { user } = useWeb3Context();
 
-  const backgroundSelector = usePartSelector(backgroundRange);
-  const headSelector = usePartSelector(headRange);
-  const torsoSelector = usePartSelector(torsoRange);
-  const legsSelector = usePartSelector(legsRange);
+  const backgroundSelector = usePartSelector(NUM_BACKGROUND_IMAGES);
+  const headSelector = usePartSelector(NUM_HEAD_IMAGES);
+  const torsoSelector = usePartSelector(NUM_TORSO_IMAGES);
+  const legsSelector = usePartSelector(NUM_LEGS_IMAGES);
 
   const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
   const [txId, setTxId] = useState('');
