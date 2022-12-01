@@ -15,14 +15,16 @@ const Initialize = () => {
   const { executeTransaction, transaction } = useWeb3Context();
 
   const handleInit = async () => {
-    await executeTransaction(setupAccountTxn, () => [], {});
+    await executeTransaction(setupAccountTxn, () => [], {
+      limit: 9999,
+    });
   };
 
   useEffect(() => {
     if (transaction.id !== null) {
       router.push(ROUTES.CREATE);
     }
-  }, [transaction]);
+  }, [router, transaction]);
 
   return (
     <PageContainer>
