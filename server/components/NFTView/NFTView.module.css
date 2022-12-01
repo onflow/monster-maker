@@ -1,0 +1,11 @@
+.overlapGrid {
+  max-width: 420px;
+  max-height: 420px;
+  display: grid;
+  grid-template-areas: 'overlap';
+  flex-shrink: 0;
+}
+
+.overlapGrid > span {
+  grid-area: overlap;
+}

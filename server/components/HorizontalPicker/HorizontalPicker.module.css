@@ -1,0 +1,11 @@
+.decrementArrow {
+  position: absolute;
+  left: -42px;
+  z-index: 2;
+}
+
+.incrementArrow {
+  position: absolute;
+  right: -42px;
+  z-index: 2;
+}

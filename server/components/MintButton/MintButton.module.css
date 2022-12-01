@@ -1,0 +1,25 @@
+.mintButton {
+  width: auto;
+  height: 280px;
+  position: relative;
+  bottom: -100px;
+  z-index: 0;
+  transform: rotate(-2deg);
+  cursor: pointer;
+}
+
+.mintBanner {
+  width: 400px;
+  height: auto;
+  position: relative;
+  animation: animate 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes animate {
+  0% {
+    top: 25px;
+  }
+  100% {
+    top: 75px;
+  }
+}
