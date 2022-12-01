@@ -95,10 +95,9 @@ struct MakerPage: View {
                     Image("bar-mint")
                         .resizable()
                         .scaledToFit()
-                        .transition(.move(edge: .bottom))
                         .offset(y: isShown ? UIScreen.main.bounds.height * 0.02 : 500)
                         .animation(.easeInOut(duration: animationDuration),
-                                   value: isShown )
+                                   value: isShown)
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
                         .animation(.easeInOut

@@ -28,26 +28,28 @@ class MakerViewModel: ViewModel {
         guard let user = fcl.currentUser else {
             return
         }
-        
+
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        
+
         Task {
             do {
-                state.isMiniting = true
-                let txId = try await fcl.mutate(cadence: MonsterMakerCadence.mintMonster,
-                                                args: [
-                                                .int(state.components.background),
-                                                .int(state.components.head),
-                                                .int(state.components.torso),
-                                                .int(state.components.legs)
-                                               ],
-                                                gasLimit: 999,
-                                                authorizors: [user, MinterHelper.shared])
-                state.isMiniting = false
+                setMintState(true)
+                let txId = try await fcl.mutate(
+                    cadence: MonsterMakerCadence.mintMonster,
+                    args: [
+                    .int(state.components.background),
+                    .int(state.components.head),
+                    .int(state.components.torso),
+                    .int(state.components.legs),
+                    .ufix64(0.0)
+                   ],
+                    gasLimit: 999,
+                    authorizors: [user, MinterHelper.shared])
+                setMintState(false)
                 print("txId ==> \(txId)")
                 FlowManager.shared.subscribeTransaction(txId: txId.hex)
             } catch {
-                state.isMiniting = false
+                setMintState(false)
                 print(error)
             }
         }
@@ -62,15 +64,22 @@ class MakerViewModel: ViewModel {
         
         Task {
             do {
-                state.isMiniting = true
+                setMintState(true)
                 let request = MintRequest(address: user.addr.hex, components: state.components)
                 let response: MintResponse = try await Network.request(NFTEndpoint.mint(request))
                 print("txId ==> \(response.txId)")
+                setMintState(false)
                 FlowManager.shared.subscribeTransaction(txId: response.txId)
             } catch {
-                state.isMiniting = false
+                setMintState(false)
                 print(error)
             }
+        }
+    }
+    
+    private func setMintState(_ isMinting: Bool) {
+        Task { @MainActor in
+            state.isMiniting = isMinting
         }
     }
     
