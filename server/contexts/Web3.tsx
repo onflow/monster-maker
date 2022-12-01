@@ -15,8 +15,8 @@ import { network } from '../constants/networks';
 interface IWeb3Context {
   connect: () => void;
   logout: () => void;
-  executeTransaction: (cadence: string, args: any, options: any) => void;
-  executeScript: (cadence: string, args: any) => any;
+  executeTransaction: (cadence: string, args?: any, options?: any) => void;
+  executeScript: (cadence: string, args?: any) => any;
   user: {
     loggedIn: boolean | null;
     addr: string;
@@ -93,7 +93,7 @@ export const Web3ContextProvider = ({
   }, []);
 
   const executeTransaction = useCallback(
-    async (cadence: string, args: any, options: any = {}) => {
+    async (cadence: string, args: any = () => [], options: any = {}) => {
       setTransactionInProgress(true);
       setTransactionStatus(-1);
 
@@ -123,7 +123,7 @@ export const Web3ContextProvider = ({
     [],
   );
 
-  const executeScript = useCallback(async (cadence: string, args: any) => {
+  const executeScript = useCallback(async (cadence: string, args: any = []) => {
     try {
       const res: boolean = await fcl.query({
         cadence: cadence,
