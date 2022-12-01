@@ -1,3 +1,4 @@
+import * as fcl from '@onflow/fcl';
 import Button from 'components/Button';
 import CreatePage from 'components/CreatePage';
 import MintButton from 'components/MintButton';
@@ -16,9 +17,7 @@ import {
   legsRange,
   torsoRange,
 } from 'utils/mapAssets';
-import { MintMonsterRequestBody } from 'utils/types';
-import * as fcl from '@onflow/fcl';
-import { TxnStatus } from 'utils/types';
+import { MintMonsterRequestBody, TxnStatus } from 'utils/types';
 
 const Create = () => {
   const router = useRouter();
@@ -43,7 +42,7 @@ const Create = () => {
     if (txStatus?.statusString === 'SEALED') {
       router.push(ROUTES.VIEW);
     }
-  }, [txStatus]);
+  }, [txStatus, router]);
 
   const mintMonster = async () => {
     const response = await fetch('/api/mint', {
