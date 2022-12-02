@@ -1,6 +1,6 @@
 import NFTView from 'components/NFTView/NFTView';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { GetMonstersResponse } from 'utils/types';
 import styles from './ViewPage.module.css';
 
@@ -18,11 +18,20 @@ const ViewPage = ({ monsters }: Props) => {
     }
   }, [emblaApi, monsters]);
 
+  // Sort monsters by itemID, in descending order (newest first)
+  const descendingOrderMonsters = useMemo(
+    () =>
+      [...monsters].sort(
+        (a, b) => parseInt(b.itemID, 10) - parseInt(a.itemID, 10),
+      ),
+    [monsters],
+  );
+
   return (
     <main className={styles.main}>
       <div className={styles.embla} ref={emblaRef}>
         <div className={styles.emblaContainer}>
-          {monsters.map(({ resourceID, component }) => {
+          {descendingOrderMonsters.map(({ resourceID, component }) => {
             return (
               <div key={resourceID} className={styles.emblaSlide}>
                 <NFTView
