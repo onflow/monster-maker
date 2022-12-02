@@ -1,7 +1,9 @@
 import * as fcl from '@onflow/fcl';
 import Button from 'components/Button';
-import CreatePage from 'components/CreatePage';
+import HorizontalPicker from 'components/HorizontalPicker';
 import MintButton from 'components/MintButton';
+import NFTView from 'components/NFTView';
+import VerticalPicker from 'components/VerticalPicker';
 import { useWeb3Context } from 'contexts/Web3';
 import usePartSelector from 'hooks/usePartSelector';
 import ActionPanel from 'layout/ActionPanel';
@@ -10,6 +12,7 @@ import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import styles from 'styles/CreatePage.module.css';
 import { ROUTES } from 'utils/constants';
 import {
   NUM_BACKGROUND_IMAGES,
@@ -82,13 +85,47 @@ const Create = () => {
     <PageContainer>
       <Header />
 
-      <CreatePage
-        isMintInProgress={isMintInProgress}
-        backgroundSelector={backgroundSelector}
-        headSelector={headSelector}
-        torsoSelector={torsoSelector}
-        legsSelector={legsSelector}
-      />
+      <main className={styles.main}>
+        <div className={styles.relativeContainer}>
+          <NFTView
+            bgIndex={backgroundSelector.index}
+            headIndex={headSelector.index}
+            torsoIndex={torsoSelector.index}
+            legsIndex={legsSelector.index}
+          />
+
+          {!isMintInProgress && (
+            <>
+              <VerticalPicker
+                partName="background"
+                increment={backgroundSelector.increment}
+                decrement={backgroundSelector.decrement}
+              />
+
+              <HorizontalPicker
+                partName="head"
+                increment={headSelector.increment}
+                decrement={headSelector.decrement}
+                topOffset={84}
+              />
+
+              <HorizontalPicker
+                partName="torso"
+                increment={torsoSelector.increment}
+                decrement={torsoSelector.decrement}
+                topOffset={200}
+              />
+
+              <HorizontalPicker
+                partName="legs"
+                increment={legsSelector.increment}
+                decrement={legsSelector.decrement}
+                topOffset={295}
+              />
+            </>
+          )}
+        </div>
+      </main>
 
       <ActionPanel>
         <MintButton

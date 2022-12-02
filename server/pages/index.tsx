@@ -1,12 +1,13 @@
 import checkCapabilityScript from 'cadence/scripts/checkCapability';
 import Button from 'components/Button';
-import HomePage from 'components/HomePage';
 import { useWeb3Context } from 'contexts/Web3';
 import ActionPanel from 'layout/ActionPanel';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import styles from 'styles/HomePage.module.css';
 import { ROUTES } from 'utils/constants';
 
 const Home = () => {
@@ -44,7 +45,15 @@ const Home = () => {
 
   return (
     <PageContainer>
-      <HomePage />
+      <main className={styles.logoContainer}>
+        <Image
+          src="/images/ui/monster_maker_logo.png"
+          alt="logo"
+          width={2176}
+          height={800}
+          className={styles.logo}
+        />
+      </main>
 
       <ActionPanel />
 
