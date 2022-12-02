@@ -123,17 +123,19 @@ export const Web3ContextProvider = ({
     [],
   );
 
-  const executeScript = useCallback(async (cadence: string, args: any = []) => {
-    try {
-      const res: boolean = await fcl.query({
-        cadence: cadence,
-        args,
-      });
-      return res;
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  const executeScript = useCallback(
+    async (cadence: string, args: any = () => []) => {
+      try {
+        return await fcl.query({
+          cadence: cadence,
+          args,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [],
+  );
 
   const providerProps = useMemo(
     () => ({
