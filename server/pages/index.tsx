@@ -16,6 +16,8 @@ const Home = () => {
   const { connect, user, executeScript } = useWeb3Context();
 
   useEffect(() => {
+    if (!user.loggedIn) return;
+
     const checkCapability = async () => {
       try {
         const res: boolean = await executeScript(
@@ -29,9 +31,7 @@ const Home = () => {
       }
     };
 
-    if (user.loggedIn) {
-      checkCapability();
-    }
+    checkCapability();
   }, [user, executeScript]);
 
   useEffect(() => {
