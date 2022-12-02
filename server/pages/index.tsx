@@ -1,3 +1,4 @@
+import checkCapabilityScript from 'cadence/scripts/checkCapability';
 import Button from 'components/Button';
 import HomePage from 'components/HomePage';
 import { useWeb3Context } from 'contexts/Web3';
@@ -7,7 +8,6 @@ import PageContainer from 'layout/PageContainer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ROUTES } from 'utils/constants';
-import checkCapabilityScript from 'cadence/scripts/checkCapability';
 
 const Home = () => {
   const router = useRouter();
@@ -15,24 +15,24 @@ const Home = () => {
 
   const { connect, user, executeScript } = useWeb3Context();
 
-  const checkCapability = async () => {
-    try {
-      const res: boolean = await executeScript(
-        checkCapabilityScript,
-        (arg: any, t: any) => [arg(user.addr, t.Address)],
-      );
-
-      setIsInitialized(res);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    if (user.loggedIn) {
-      checkCapability();
-    }
-  }, [user]);
+    if (!user.loggedIn) return;
+
+    const checkCapability = async () => {
+      try {
+        const res: boolean = await executeScript(
+          checkCapabilityScript,
+          (arg: any, t: any) => [arg(user.addr, t.Address)],
+        );
+
+        setIsInitialized(res);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    checkCapability();
+  }, [user, executeScript]);
 
   useEffect(() => {
     if (user.loggedIn && isInitialized === false) {
