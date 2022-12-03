@@ -43,7 +43,7 @@ class FlowManager: ObservableObject {
     }
     
     func setup() {
-        let defaultProvider: FCL.Provider = .dapperPro
+        let defaultProvider: FCL.Provider = .dapperSC
         let defaultNetwork: Flow.ChainID = .testnet
         let accountProof = FCL.Metadata.AccountProofConfig(appIdentifier: "Monster Maker",
                                                            nonce: nonce)
