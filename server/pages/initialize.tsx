@@ -6,6 +6,7 @@ import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
+import PageContent from 'layout/PageContent';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from 'styles/InitializePage.module.css';
@@ -38,7 +39,7 @@ const Initialize = () => {
     <PageContainer>
       <Header />
 
-      <main className={styles.main}>
+      <PageContent>
         <div className={styles.opacityWrapper}>
           <NFTView
             bgIndex={getRandomInt(NUM_BACKGROUND_IMAGES)}
@@ -47,7 +48,7 @@ const Initialize = () => {
             torsoIndex={getRandomInt(NUM_TORSO_IMAGES)}
           />
         </div>
-      </main>
+      </PageContent>
 
       <ActionPanel>
         <img

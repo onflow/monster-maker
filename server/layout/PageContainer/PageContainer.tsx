@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
 import styles from './PageContainer.module.css';
+
 interface Props {
   children: ReactNode;
 }

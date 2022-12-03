@@ -10,6 +10,7 @@ import ActionPanel from 'layout/ActionPanel';
 import Header from 'layout/Header';
 import NavPanel from 'layout/NavPanel';
 import PageContainer from 'layout/PageContainer';
+import PageContent from 'layout/PageContent';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/CreatePage.module.css';
@@ -35,19 +36,9 @@ const Create = () => {
   const [txId, setTxId] = useState('');
   const [txStatus, setTxStatus] = useState<TxnStatus>();
 
-  useEffect(() => {
-    if (txId) {
-      fcl.tx(txId).subscribe(setTxStatus);
-    }
-  }, [txId]);
+  const handleClickMint = async () => {
+    setIsMintInProgress(true);
 
-  useEffect(() => {
-    if (txStatus?.statusString === 'SEALED') {
-      router.push(ROUTES.VIEW);
-    }
-  }, [txStatus, router]);
-
-  const mintMonster = async () => {
     const response = await fetch('/api/mint', {
       method: 'POST',
       headers: {
@@ -68,14 +59,24 @@ const Create = () => {
       throw new Error(response.statusText);
     }
 
-    return response.json(); // parses JSON response into native JavaScript objects
-  };
+    const { txId } = await response.json();
 
-  const handleClickMint = async () => {
-    setIsMintInProgress(true);
-    const { txId } = await mintMonster();
     setTxId(txId);
   };
+
+  // Subscribe to tx returned from /api/mint
+  useEffect(() => {
+    if (txId) {
+      fcl.tx(txId).subscribe(setTxStatus);
+    }
+  }, [txId]);
+
+  // Navigate to View page when tx is sealed
+  useEffect(() => {
+    if (txStatus?.statusString === 'SEALED') {
+      router.push(ROUTES.VIEW);
+    }
+  }, [txStatus, router]);
 
   const handleClickView = () => {
     router.push(ROUTES.VIEW);
@@ -85,7 +86,7 @@ const Create = () => {
     <PageContainer>
       <Header />
 
-      <main className={styles.main}>
+      <PageContent>
         <div className={styles.relativeContainer}>
           <NFTView
             bgIndex={backgroundSelector.index}
@@ -125,7 +126,7 @@ const Create = () => {
             </>
           )}
         </div>
-      </main>
+      </PageContent>
 
       <ActionPanel>
         <MintButton

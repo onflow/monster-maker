@@ -12,6 +12,7 @@ import { useEffect, useMemo, useState } from 'react';
 import styles from 'styles/ViewPage.module.css';
 import { ROUTES } from 'utils/constants';
 import { GetMonstersResponse } from 'utils/types';
+import PageContent from 'layout/PageContent';
 
 const View = () => {
   const router = useRouter();
@@ -54,7 +55,7 @@ const View = () => {
     <PageContainer>
       <Header />
 
-      <main className={styles.main}>
+      <PageContent>
         <div className={styles.embla} ref={emblaRef}>
           <div className={styles.emblaContainer}>
             {descendingOrderMonsters.map(({ resourceID, component }) => {
@@ -71,7 +72,7 @@ const View = () => {
             })}
           </div>
         </div>
-      </main>
+      </PageContent>
 
       <ActionPanel />
 
