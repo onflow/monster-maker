@@ -49,6 +49,7 @@ struct ComponentView: View {
     }
     
     private func previousImage() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if currentIndex == 0 {
             currentIndex = images.count - 1
             return
@@ -57,6 +58,7 @@ struct ComponentView: View {
     }
     
     private func nextImage() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if currentIndex == images.count - 1 {
             currentIndex = 0
             return

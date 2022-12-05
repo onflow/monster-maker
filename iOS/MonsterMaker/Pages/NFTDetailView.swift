@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NFTDetailView: View {
+struct NFTDetailPage: View {
     
     @Environment(\.presentationMode)
     var presentationMode
@@ -75,8 +75,8 @@ struct NFTDetailView: View {
     }
 }
 
-struct NFTDetailView_Previews: PreviewProvider {
+struct NFTDetailPage_Previews: PreviewProvider {
     static var previews: some View {
-        NFTDetailView(data: .init(name: "", description: "", thumbnail: "", itemID: 0, resourceID: 0, owner: "", component: .init(background: 0, head: 0, torso: 0, legs: 0)))
+        NFTDetailPage(data: .init(name: "", description: "", thumbnail: "", itemID: 0, resourceID: 0, owner: "", component: .init(background: 0, head: 0, torso: 0, legs: 0)))
     }
 }
