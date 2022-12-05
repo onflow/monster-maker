@@ -51,22 +51,26 @@ struct MakerPage: View {
                     ComponentView(images: NFTLocalImage.backgrounds,
                                   currentIndex: .init(get: { vm.components.background },
                                                       set: { vm.trigger(.updateIndex($0, .background)) }),
+                                  hideButton: .init(get: {vm.isMiniting}, set: {_ in }),
                                   position: .background)
                         .zIndex(998)
 
                     ComponentView(images: NFTLocalImage.headers,
                                   currentIndex: .init(get: { vm.components.head },
                                                       set: { vm.trigger(.updateIndex($0, .head)) }),
+                                  hideButton: .init(get: {vm.isMiniting}, set: {_ in }),
                                   position: .head)
                         .zIndex(1000)
                     ComponentView(images: NFTLocalImage.torso,
                                   currentIndex: .init(get: { vm.components.torso },
                                                       set: { vm.trigger(.updateIndex($0, .torso)) }),
+                                  hideButton: .init(get: {vm.isMiniting}, set: {_ in }),
                                   position: .torso)
                         .zIndex(1001)
                     ComponentView(images: NFTLocalImage.legs,
                                   currentIndex: .init(get: { vm.components.legs },
                                                       set: { vm.trigger(.updateIndex($0, .legs)) }),
+                                  hideButton: .init(get: {vm.isMiniting}, set: {_ in }),
                                   position: .legs)
                         .zIndex(999)
                 }
