@@ -1,4 +1,4 @@
-const setupAccount = `
+const initAccount = `
     import NonFungibleToken from 0xNonFungibleToken
     import MonsterMaker from 0xMonsterMaker
     import MetadataViews from 0xMetadataViews
@@ -21,4 +21,4 @@ const setupAccount = `
     }
 `;
 
-export default setupAccount;
+export default initAccount;

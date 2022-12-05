@@ -1,4 +1,4 @@
-import setupAccountTxn from 'cadence/transactions/setupAccount';
+import initAccountTxn from 'cadence/transactions/initAccount';
 import Button from 'components/Button';
 import InitializePage from 'components/InitializePage';
 import { useWeb3Context } from 'contexts/Web3';
@@ -15,7 +15,7 @@ const Initialize = () => {
   const { executeTransaction, transaction } = useWeb3Context();
 
   const handleInit = async () => {
-    await executeTransaction(setupAccountTxn, () => [], {
+    await executeTransaction(initAccountTxn, () => [], {
       limit: 9999,
     });
   };
