@@ -1,4 +1,4 @@
-import checkCapabilityScript from 'cadence/scripts/checkCapability';
+import isInitializedScript from 'cadence/scripts/isInitialized';
 import Button from 'components/Button';
 import { useWeb3Context } from 'contexts/Web3';
 import ActionPanel from 'layout/ActionPanel';
@@ -20,10 +20,10 @@ const Home = () => {
   useEffect(() => {
     if (!user.loggedIn) return;
 
-    const checkCapability = async () => {
+    const checkIsInitialized = async () => {
       try {
         const res: boolean = await executeScript(
-          checkCapabilityScript,
+          isInitializedScript,
           (arg: any, t: any) => [arg(user.addr, t.Address)],
         );
 
@@ -33,7 +33,7 @@ const Home = () => {
       }
     };
 
-    checkCapability();
+    checkIsInitialized();
   }, [user, executeScript]);
 
   useEffect(() => {

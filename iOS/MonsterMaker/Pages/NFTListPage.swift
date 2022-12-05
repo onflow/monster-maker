@@ -41,7 +41,7 @@ struct NFTListPage: View {
                               spacing: NFTListPage.spacing) {
                         ForEach(vm.nfts, id: \.name) { nft in
                             NavigationLink {
-                               NFTDetailView(data: nft)
+                               NFTDetailPage(data: nft)
                            } label: {
                                NFTGridCell(data: nft.component)
                                    .frame(width: NFTListPage.width,

@@ -14,6 +14,9 @@ struct ComponentView: View {
     @Binding
     var currentIndex: Int
     
+    @Binding
+    var hideButton: Bool
+    
     var position: NFTComponent = .head
     
     @State
@@ -46,6 +49,7 @@ struct ComponentView: View {
     }
     
     private func previousImage() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if currentIndex == 0 {
             currentIndex = images.count - 1
             return
@@ -54,6 +58,7 @@ struct ComponentView: View {
     }
     
     private func nextImage() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if currentIndex == images.count - 1 {
             currentIndex = 0
             return
@@ -73,6 +78,7 @@ struct ComponentView: View {
             }
             .visibility( !isBackground ? .gone : .visible)
             .offset(y: -.MM.zero)
+            .visibility(hideButton ? .gone : .visible)
             
             HStack {
                 Button {
@@ -82,6 +88,7 @@ struct ComponentView: View {
                 }
                 .visibility( isBackground ? .gone : .visible)
                 .offset(y: offset)
+                .visibility(hideButton ? .gone : .visible)
                 
                 if position == .head {
                     if let image = images[safe: currentIndex] {
@@ -118,6 +125,7 @@ struct ComponentView: View {
                 }
                 .visibility( isBackground ? .gone : .visible)
                 .offset(y: offset)
+                .visibility(hideButton ? .gone : .visible)
             }
             
             Button {
@@ -127,8 +135,9 @@ struct ComponentView: View {
             }
             .visibility( !isBackground ? .gone : .visible)
             .offset(y: .MM.small)
-            
+            .visibility(hideButton ? .gone : .visible)
         }
+        .animation(.easeInOut, value: hideButton)
         .padding(.horizontal, .MM.standard)
         .frame(width: screenWidth)
         .onAppear {
@@ -145,15 +154,19 @@ struct ComponentView_Previews: PreviewProvider {
         ZStack {
             ComponentView(images: NFTLocalImage.backgrounds,
                           currentIndex: .constant(1),
+                          hideButton: .constant(false),
                           position: .background)
             ComponentView(images: NFTLocalImage.headers,
                           currentIndex: .constant(1),
+                          hideButton: .constant(false),
                           position: .head)
             ComponentView(images: NFTLocalImage.legs,
                           currentIndex: .constant(1),
+                          hideButton: .constant(false),
                           position: .legs)
             ComponentView(images: NFTLocalImage.torso,
                           currentIndex: .constant(1),
+                          hideButton: .constant(false),
                           position: .torso)
         }
 //        .previewLayout(.sizeThatFits)
