@@ -1,15 +1,23 @@
 import * as fcl from '@onflow/fcl';
-import Button from 'components/Button';
-import CreatePage from 'components/CreatePage';
-import MintButton from 'components/MintButton';
+import {
+  Button,
+  HorizontalPicker,
+  MintButton,
+  NFTView,
+  VerticalPicker,
+} from 'components/';
 import { useWeb3Context } from 'contexts/Web3';
 import usePartSelector from 'hooks/usePartSelector';
-import ActionPanel from 'layout/ActionPanel';
-import Header from 'layout/Header';
-import NavPanel from 'layout/NavPanel';
-import PageContainer from 'layout/PageContainer';
+import {
+  ActionPanel,
+  Header,
+  NavPanel,
+  PageContainer,
+  PageContent,
+} from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import styles from 'styles/CreatePage.module.css';
 import { ROUTES } from 'utils/constants';
 import {
   NUM_BACKGROUND_IMAGES,
@@ -32,19 +40,9 @@ const Create = () => {
   const [txId, setTxId] = useState('');
   const [txStatus, setTxStatus] = useState<TxnStatus>();
 
-  useEffect(() => {
-    if (txId) {
-      fcl.tx(txId).subscribe(setTxStatus);
-    }
-  }, [txId]);
+  const handleClickMint = async () => {
+    setIsMintInProgress(true);
 
-  useEffect(() => {
-    if (txStatus?.statusString === 'SEALED') {
-      router.push(ROUTES.VIEW);
-    }
-  }, [txStatus, router]);
-
-  const mintMonster = async () => {
     const response = await fetch('/api/mint', {
       method: 'POST',
       headers: {
@@ -65,14 +63,24 @@ const Create = () => {
       throw new Error(response.statusText);
     }
 
-    return response.json(); // parses JSON response into native JavaScript objects
-  };
+    const { txId } = await response.json();
 
-  const handleClickMint = async () => {
-    setIsMintInProgress(true);
-    const { txId } = await mintMonster();
     setTxId(txId);
   };
+
+  // Subscribe to tx returned from /api/mint
+  useEffect(() => {
+    if (txId) {
+      fcl.tx(txId).subscribe(setTxStatus);
+    }
+  }, [txId]);
+
+  // Navigate to View page when tx is sealed
+  useEffect(() => {
+    if (txStatus?.statusString === 'SEALED') {
+      router.push(ROUTES.VIEW);
+    }
+  }, [txStatus, router]);
 
   const handleClickView = () => {
     router.push(ROUTES.VIEW);
@@ -82,13 +90,47 @@ const Create = () => {
     <PageContainer>
       <Header />
 
-      <CreatePage
-        isMintInProgress={isMintInProgress}
-        backgroundSelector={backgroundSelector}
-        headSelector={headSelector}
-        torsoSelector={torsoSelector}
-        legsSelector={legsSelector}
-      />
+      <PageContent>
+        <div className={styles.relativeContainer}>
+          <NFTView
+            bgIndex={backgroundSelector.index}
+            headIndex={headSelector.index}
+            torsoIndex={torsoSelector.index}
+            legsIndex={legsSelector.index}
+          />
+
+          {!isMintInProgress && (
+            <>
+              <VerticalPicker
+                partName="background"
+                increment={backgroundSelector.increment}
+                decrement={backgroundSelector.decrement}
+              />
+
+              <HorizontalPicker
+                partName="head"
+                increment={headSelector.increment}
+                decrement={headSelector.decrement}
+                topOffset={84}
+              />
+
+              <HorizontalPicker
+                partName="torso"
+                increment={torsoSelector.increment}
+                decrement={torsoSelector.decrement}
+                topOffset={200}
+              />
+
+              <HorizontalPicker
+                partName="legs"
+                increment={legsSelector.increment}
+                decrement={legsSelector.decrement}
+                topOffset={295}
+              />
+            </>
+          )}
+        </div>
+      </PageContent>
 
       <ActionPanel>
         <MintButton

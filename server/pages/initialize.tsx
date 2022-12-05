@@ -1,14 +1,24 @@
 import initAccountTxn from 'cadence/transactions/initAccount';
-import Button from 'components/Button';
-import InitializePage from 'components/InitializePage';
+import { Button, NFTView } from 'components';
 import { useWeb3Context } from 'contexts/Web3';
-import ActionPanel from 'layout/ActionPanel';
-import Header from 'layout/Header';
-import NavPanel from 'layout/NavPanel';
-import PageContainer from 'layout/PageContainer';
+import {
+  ActionPanel,
+  Header,
+  NavPanel,
+  PageContainer,
+  PageContent,
+} from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import styles from 'styles/InitializePage.module.css';
 import { ROUTES } from 'utils/constants';
+import getRandomInt from 'utils/getRandomInt';
+import {
+  NUM_BACKGROUND_IMAGES,
+  NUM_HEAD_IMAGES,
+  NUM_LEGS_IMAGES,
+  NUM_TORSO_IMAGES,
+} from 'utils/imageAssets';
 
 const Initialize = () => {
   const router = useRouter();
@@ -30,7 +40,16 @@ const Initialize = () => {
     <PageContainer>
       <Header />
 
-      <InitializePage />
+      <PageContent>
+        <div className={styles.opacityWrapper}>
+          <NFTView
+            bgIndex={getRandomInt(NUM_BACKGROUND_IMAGES)}
+            headIndex={getRandomInt(NUM_HEAD_IMAGES)}
+            legsIndex={getRandomInt(NUM_LEGS_IMAGES)}
+            torsoIndex={getRandomInt(NUM_TORSO_IMAGES)}
+          />
+        </div>
+      </PageContent>
 
       <ActionPanel>
         <img

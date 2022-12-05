@@ -1,4 +1,4 @@
-import ArrowButton from 'components/ArrowButton';
+import { ArrowButton } from 'components/';
 import React from 'react';
 import styles from './HorizontalPicker.module.css';
 

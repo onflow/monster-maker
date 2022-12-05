@@ -1,19 +1,13 @@
-.main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .embla {
   overflow: hidden;
   width: 100%;
 }
+
 .emblaContainer {
   display: flex;
   height: 420px;
 }
+
 .emblaSlide {
   flex: 0 0 450px;
 }
