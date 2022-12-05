@@ -52,6 +52,10 @@ const View = () => {
     [monsters],
   );
 
+  const handleClickCreate = () => {
+    router.push(ROUTES.CREATE);
+  };
+
   return (
     <PageContainer>
       <Header />
@@ -82,7 +86,7 @@ const View = () => {
           src="/images/ui/create_button_off.png"
           width={640}
           height={208}
-          onClick={() => router.push(ROUTES.CREATE)}
+          onClick={handleClickCreate}
           alt="Create NFT"
         />
 
