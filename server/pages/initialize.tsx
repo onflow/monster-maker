@@ -1,5 +1,5 @@
-import setupAccountTxn from 'cadence/transactions/setupAccount';
-import { Button, NFTView } from 'components/';
+import initAccountTxn from 'cadence/transactions/initAccount';
+import { Button, NFTView } from 'components';
 import { useWeb3Context } from 'contexts/Web3';
 import {
   ActionPanel,
@@ -25,7 +25,7 @@ const Initialize = () => {
   const { executeTransaction, transaction } = useWeb3Context();
 
   const handleInit = async () => {
-    await executeTransaction(setupAccountTxn, () => [], {
+    await executeTransaction(initAccountTxn, () => [], {
       limit: 9999,
     });
   };
