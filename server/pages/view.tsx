@@ -1,18 +1,19 @@
 import getMonstersScript from 'cadence/scripts/getMonsters';
-import Button from 'components/Button';
-import NFTView from 'components/NFTView/NFTView';
+import { Button, NFTView } from 'components/';
 import { useWeb3Context } from 'contexts/Web3';
 import useEmblaCarousel from 'embla-carousel-react';
-import ActionPanel from 'layout/ActionPanel';
-import Header from 'layout/Header';
-import NavPanel from 'layout/NavPanel';
-import PageContainer from 'layout/PageContainer';
+import {
+  ActionPanel,
+  Header,
+  NavPanel,
+  PageContainer,
+  PageContent,
+} from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import styles from 'styles/ViewPage.module.css';
 import { ROUTES } from 'utils/constants';
 import { GetMonstersResponse } from 'utils/types';
-import PageContent from 'layout/PageContent';
 
 const View = () => {
   const router = useRouter();

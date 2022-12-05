@@ -1,12 +1,13 @@
 import setupAccountTxn from 'cadence/transactions/setupAccount';
-import Button from 'components/Button';
-import NFTView from 'components/NFTView/NFTView';
+import { Button, NFTView } from 'components/';
 import { useWeb3Context } from 'contexts/Web3';
-import ActionPanel from 'layout/ActionPanel';
-import Header from 'layout/Header';
-import NavPanel from 'layout/NavPanel';
-import PageContainer from 'layout/PageContainer';
-import PageContent from 'layout/PageContent';
+import {
+  ActionPanel,
+  Header,
+  NavPanel,
+  PageContainer,
+  PageContent,
+} from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from 'styles/InitializePage.module.css';

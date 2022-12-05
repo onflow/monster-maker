@@ -1,16 +1,20 @@
 import * as fcl from '@onflow/fcl';
-import Button from 'components/Button';
-import HorizontalPicker from 'components/HorizontalPicker';
-import MintButton from 'components/MintButton';
-import NFTView from 'components/NFTView';
-import VerticalPicker from 'components/VerticalPicker';
+import {
+  Button,
+  HorizontalPicker,
+  MintButton,
+  NFTView,
+  VerticalPicker,
+} from 'components/';
 import { useWeb3Context } from 'contexts/Web3';
 import usePartSelector from 'hooks/usePartSelector';
-import ActionPanel from 'layout/ActionPanel';
-import Header from 'layout/Header';
-import NavPanel from 'layout/NavPanel';
-import PageContainer from 'layout/PageContainer';
-import PageContent from 'layout/PageContent';
+import {
+  ActionPanel,
+  Header,
+  NavPanel,
+  PageContainer,
+  PageContent,
+} from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/CreatePage.module.css';

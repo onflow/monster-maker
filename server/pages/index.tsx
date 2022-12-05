@@ -1,10 +1,7 @@
 import isInitializedScript from 'cadence/scripts/isInitialized';
-import Button from 'components/Button';
+import { Button } from 'components/';
 import { useWeb3Context } from 'contexts/Web3';
-import ActionPanel from 'layout/ActionPanel';
-import NavPanel from 'layout/NavPanel';
-import PageContainer from 'layout/PageContainer';
-import PageContent from 'layout/PageContent';
+import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
