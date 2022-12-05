@@ -1,4 +1,4 @@
-const checkCapability = `
+const isInitialized = `
 import NonFungibleToken from 0xNonFungibleToken
 import MonsterMaker from 0xMonsterMaker
 
@@ -13,4 +13,4 @@ pub fun main(address: Address) : Bool {
 }
 `;
 
-export default checkCapability;
+export default isInitialized;
