@@ -14,11 +14,6 @@ class FlowManager: ObservableObject {
     
     static let shared = FlowManager()
     
-    lazy var nonce: String = {
-        let letters = "abcdefghijklmnopqrstuvwxyz0123456789"
-        return String((0..<64).map{ _ in letters.randomElement()! })
-    }()
-    
     @Published
     var pendingTx: String? = nil
     
@@ -45,8 +40,7 @@ class FlowManager: ObservableObject {
     func setup() {
         let defaultProvider: FCL.Provider = .dapperSC
         let defaultNetwork: Flow.ChainID = .testnet
-        let accountProof = FCL.Metadata.AccountProofConfig(appIdentifier: "Monster Maker",
-                                                           nonce: nonce)
+        let accountProof = FCL.Metadata.AccountProofConfig(appIdentifier: "Monster Maker")
         let walletConnect = FCL.Metadata.WalletConnectConfig(urlScheme: "monster-maker://", projectID: "12ed93a2aae83134c4c8473ca97d9399")
         let metadata = FCL.Metadata(appName: "Monster Maker",
                                     appDescription: "Monster Maker Demo App for fcl",
