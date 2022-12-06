@@ -8,6 +8,7 @@
 import Foundation
 import FCL
 import UIKit
+import Combine
 
 class MakerViewModel: ViewModel {
     @Published
@@ -29,7 +30,7 @@ class MakerViewModel: ViewModel {
             return
         }
 
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 
         Task {
             do {

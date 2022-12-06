@@ -21,8 +21,8 @@
 		1538F129291D3C2B00338FF4 /* MonsterMakerCadence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F128291D3C2B00338FF4 /* MonsterMakerCadence.swift */; };
 		1538F12B291D3EE000338FF4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F12A291D3EE000338FF4 /* SafariView.swift */; };
 		1538F12D291D431900338FF4 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538F12C291D431900338FF4 /* NFTModel.swift */; };
+		1545703C293FBD00004A278E /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1545703B293FBD00004A278E /* FCL */; };
 		1545C196292B91CC00A5B4E5 /* MintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545C195292B91CC00A5B4E5 /* MintHelper.swift */; };
-		1545C19F292E4A6E00A5B4E5 /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 1545C19E292E4A6E00A5B4E5 /* FCL */; };
 		1588EB32291320390069EAC4 /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB31291320390069EAC4 /* FlowManager.swift */; };
 		1588EB342913327C0069EAC4 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588EB332913327C0069EAC4 /* NFTDetailView.swift */; };
 		1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D27E29109E960001811D /* MonsterMakerApp.swift */; };
@@ -51,6 +51,7 @@
 		15D17271292450700049A956 /* InitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17270292450700049A956 /* InitViewModel.swift */; };
 		15D172802926E0A60049A956 /* Instabug in Frameworks */ = {isa = PBXBuildFile; productRef = 15D1727F2926E0A60049A956 /* Instabug */; };
 		15D17285292772DF0049A956 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17284292772DF0049A956 /* RefreshableScrollView.swift */; };
+		15DC3DD7293F9D870071510F /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 15DC3DD6293F9D870071510F /* FCL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,7 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1545C19F292E4A6E00A5B4E5 /* FCL in Frameworks */,
+				1545703C293FBD00004A278E /* FCL in Frameworks */,
+				15DC3DD7293F9D870071510F /* FCL in Frameworks */,
 				15D172802926E0A60049A956 /* Instabug in Frameworks */,
 				1525E940291578CF00F7C63A /* Moya in Frameworks */,
 			);
@@ -151,6 +153,7 @@
 			children = (
 				1591D27D29109E960001811D /* MonsterMaker */,
 				1591D27C29109E960001811D /* Products */,
+				15DC3DD5293F9D870071510F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +263,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		15DC3DD5293F9D870071510F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,7 +290,8 @@
 			packageProductDependencies = (
 				1525E93F291578CF00F7C63A /* Moya */,
 				15D1727F2926E0A60049A956 /* Instabug */,
-				1545C19E292E4A6E00A5B4E5 /* FCL */,
+				15DC3DD6293F9D870071510F /* FCL */,
+				1545703B293FBD00004A278E /* FCL */,
 			);
 			productName = MonsterMaker;
 			productReference = 1591D27B29109E960001811D /* MonsterMaker.app */;
@@ -313,7 +324,7 @@
 			packageReferences = (
 				1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */,
 				15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */,
-				1545C19D292E4A6E00A5B4E5 /* XCRemoteSwiftPackageReference "fcl-swift" */,
+				1545703A293FBD00004A278E /* XCRemoteSwiftPackageReference "fcl-swift" */,
 			);
 			productRefGroup = 1591D27C29109E960001811D /* Products */;
 			projectDirPath = "";
@@ -533,6 +544,7 @@
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Atlantis would use Bonjour Service to discover Proxyman app from your local network.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “MonsterMaker“ to use voice recordings in activities.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “MonsterMaker“ to save photo to your device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -579,6 +591,7 @@
 				INFOPLIST_FILE = MonsterMaker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Monster;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Atlantis would use Bonjour Service to discover Proxyman app from your local network.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow “MonsterMaker“ to use voice recordings in activities.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow “MonsterMaker“ to save photo to your device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -641,12 +654,12 @@
 				minimumVersion = 15.0.3;
 			};
 		};
-		1545C19D292E4A6E00A5B4E5 /* XCRemoteSwiftPackageReference "fcl-swift" */ = {
+		1545703A293FBD00004A278E /* XCRemoteSwiftPackageReference "fcl-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
-				kind = revision;
-				revision = d5bc735b1a43145d9ee7e0ddbbbefcaa825cb61c;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.8;
 			};
 		};
 		15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */ = {
@@ -665,15 +678,19 @@
 			package = 1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		1545C19E292E4A6E00A5B4E5 /* FCL */ = {
+		1545703B293FBD00004A278E /* FCL */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1545C19D292E4A6E00A5B4E5 /* XCRemoteSwiftPackageReference "fcl-swift" */;
+			package = 1545703A293FBD00004A278E /* XCRemoteSwiftPackageReference "fcl-swift" */;
 			productName = FCL;
 		};
 		15D1727F2926E0A60049A956 /* Instabug */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */;
 			productName = Instabug;
+		};
+		15DC3DD6293F9D870071510F /* FCL */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FCL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

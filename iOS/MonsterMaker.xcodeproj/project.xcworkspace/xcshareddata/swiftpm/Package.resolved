@@ -32,7 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Outblock/fcl-swift",
       "state" : {
-        "revision" : "d5bc735b1a43145d9ee7e0ddbbbefcaa825cb61c"
+        "revision" : "506f2ea4ce8b618209057e3ae8a2d62a32a2adc8",
+        "version" : "0.0.9"
       }
     },
     {
@@ -40,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/outblock/flow-swift.git",
       "state" : {
-        "revision" : "ae293db37174d2b8f1c5a5f508ae3b6429de78d5",
-        "version" : "0.3.0"
+        "revision" : "e1721bea71d8a27e209398f5a740ef02f6c6c920",
+        "version" : "0.3.1"
       }
     },
     {
@@ -121,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/WalletConnect/WalletConnectSwiftV2",
       "state" : {
-        "revision" : "84197cd011da4b1986fc7a431cdf3f0f32199db1",
-        "version" : "1.0.5"
+        "revision" : "41966b44442a0f77378ab55f70d89ec3f1c35c66",
+        "version" : "1.0.6"
       }
     },
     {

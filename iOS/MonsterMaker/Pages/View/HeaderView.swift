@@ -44,7 +44,10 @@ struct HeaderView: View {
             Spacer()
             
             Button {
-                fcl.unauthenticate()
+                Task {
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    try? await fcl.unauthenticate()
+                }
             } label: {
                 Image("exit")
             }
