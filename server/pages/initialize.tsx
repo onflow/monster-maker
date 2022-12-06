@@ -1,17 +1,11 @@
 import initAccountTxn from 'cadence/transactions/initAccount';
 import { Button, NFTView } from 'components';
+import ROUTES from 'constants/routes';
 import { useWeb3Context } from 'contexts/Web3';
-import {
-  ActionPanel,
-  Header,
-  NavPanel,
-  PageContainer,
-  PageContent,
-} from 'layout';
+import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from 'styles/InitializePage.module.css';
-import { ROUTES } from 'utils/constants';
 import getRandomInt from 'utils/getRandomInt';
 import {
   NUM_BACKGROUND_IMAGES,
@@ -37,9 +31,7 @@ const Initialize = () => {
   }, [router, transaction]);
 
   return (
-    <PageContainer>
-      <Header />
-
+    <PageContainer pageTitle="Initialize">
       <PageContent>
         <div className={styles.opacityWrapper}>
           <NFTView

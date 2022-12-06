@@ -1,18 +1,12 @@
 import getMonstersScript from 'cadence/scripts/getMonsters';
 import { Button, NFTView } from 'components/';
+import ROUTES from 'constants/routes';
 import { useWeb3Context } from 'contexts/Web3';
 import useEmblaCarousel from 'embla-carousel-react';
-import {
-  ActionPanel,
-  Header,
-  NavPanel,
-  PageContainer,
-  PageContent,
-} from 'layout';
+import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import styles from 'styles/ViewPage.module.css';
-import { ROUTES } from 'utils/constants';
 import { GetMonstersResponse } from 'utils/types';
 
 const View = () => {
@@ -57,9 +51,7 @@ const View = () => {
   };
 
   return (
-    <PageContainer>
-      <Header />
-
+    <PageContainer pageTitle="View">
       <PageContent>
         <div className={styles.embla} ref={emblaRef}>
           <div className={styles.emblaContainer}>

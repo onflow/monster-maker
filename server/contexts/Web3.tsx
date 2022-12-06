@@ -1,4 +1,6 @@
 import * as fcl from '@onflow/fcl';
+import { NETWORK } from 'constants/networks';
+import ROUTES from 'constants/routes';
 import router from 'next/router';
 import {
   createContext,
@@ -9,8 +11,6 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { ROUTES } from 'utils/constants';
-import { network } from '../constants/networks';
 
 interface IWeb3Context {
   connect: () => void;
@@ -61,7 +61,7 @@ export const Web3ContextProvider = ({
       walletDiscoveryApi,
       walletDiscoveryInclude,
       addresses,
-    } = network;
+    } = NETWORK;
     const iconUrl = window.location.origin + '/images/wallet-icon.png';
     const appTitle = process.env.NEXT_PUBLIC_APP_NAME || 'MonsterMaker';
 

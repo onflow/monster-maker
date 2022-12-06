@@ -1,12 +1,5 @@
-export const ROUTES = {
-  HOME: '/',
-  INITIALIZE: '/initialize',
-  CREATE: '/create',
-  VIEW: '/view',
-};
-
 // For preloading all UI image assets in <head>
-export const ALL_UI_IMAGE_ASSETS: Array<string> = [
+export const ALL_UI_ASSETS: Array<string> = [
   '/images/ui/button_background_tileable.jpg',
   '/images/ui/button_background.png',
   '/images/ui/connect_button.png',

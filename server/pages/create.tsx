@@ -6,19 +6,13 @@ import {
   NFTView,
   VerticalPicker,
 } from 'components/';
+import ROUTES from 'constants/routes';
 import { useWeb3Context } from 'contexts/Web3';
 import usePartSelector from 'hooks/usePartSelector';
-import {
-  ActionPanel,
-  Header,
-  NavPanel,
-  PageContainer,
-  PageContent,
-} from 'layout';
+import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/CreatePage.module.css';
-import { ROUTES } from 'utils/constants';
 import {
   NUM_BACKGROUND_IMAGES,
   NUM_HEAD_IMAGES,
@@ -87,9 +81,7 @@ const Create = () => {
   };
 
   return (
-    <PageContainer>
-      <Header />
-
+    <PageContainer pageTitle="Create">
       <PageContent>
         <div className={styles.relativeContainer}>
           <NFTView
