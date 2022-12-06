@@ -659,7 +659,7 @@
 			repositoryURL = "https://github.com/Outblock/fcl-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.8;
+				minimumVersion = 0.0.9;
 			};
 		};
 		15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */ = {
