@@ -1,6 +1,6 @@
-// For preloading all UI image assets in <head>
+// For preloading all UI assets in <head>
 export const ALL_UI_ASSETS: Array<string> = [
-  '/images/ui/button_background_tileable.jpg',
+  '/images/ui/button_background_tileable.png',
   '/images/ui/button_background.png',
   '/images/ui/connect_button.png',
   '/images/ui/create_button_off.png',
@@ -18,4 +18,33 @@ export const ALL_UI_ASSETS: Array<string> = [
   '/images/ui/up_arrow.png',
   '/images/ui/view_button_off.png',
   '/images/ui/view_button_on.png',
+];
+
+// For preloading all part assets in <head>
+export const ALL_MONSTER_PART_ASSETS: Array<string> = [
+  'images/background/bg_1.png',
+  'images/background/bg_2.png',
+  'images/background/bg_3.png',
+  'images/background/bg_4.png',
+  'images/background/bg_5.png',
+  'images/head/monster_head_1.png',
+  'images/head/monster_head_2.png',
+  'images/head/monster_head_3.png',
+  'images/head/monster_head_4.png',
+  'images/head/monster_head_5.png',
+  'images/legs/monster_legs_1.png',
+  'images/legs/monster_legs_2.png',
+  'images/legs/monster_legs_3.png',
+  'images/legs/monster_legs_4.png',
+  'images/legs/monster_legs_5.png',
+  'images/torso/monster_torso_1.png',
+  'images/torso/monster_torso_2.png',
+  'images/torso/monster_torso_3.png',
+  'images/torso/monster_torso_4.png',
+  'images/torso/monster_torso_5.png',
+  'images/torso/monster_torso_6.png',
+  'images/torso/monster_torso_7.png',
+  'images/torso/monster_torso_8.png',
+  'images/torso/monster_torso_9.png',
+  'images/torso/monster_torso_10.png',
 ];
