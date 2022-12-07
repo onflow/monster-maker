@@ -1,6 +1,6 @@
-const flowEnv = process.env.NEXT_PUBLIC_FLOW_ENV || 'testnet';
+const FLOW_ENV = process.env.NEXT_PUBLIC_FLOW_ENV || 'testnet';
 
-const networks = {
+const NETWORKS = {
   emulator: {
     flowNetwork: 'local',
     accessApi: process.env.NEXT_PUBLIC_EMULATOR_API || 'http://localhost:8888',
@@ -49,9 +49,9 @@ const networks = {
   },
 } as const;
 
-type NetworksKey = keyof typeof networks;
+type NetworksKey = keyof typeof NETWORKS;
 
-export const network = networks[flowEnv as NetworksKey];
+export const NETWORK = NETWORKS[FLOW_ENV as NetworksKey];
 
 export const getNetwork = (flowEnv = 'testnet') =>
-  networks[flowEnv as NetworksKey];
+  NETWORKS[flowEnv as NetworksKey];
