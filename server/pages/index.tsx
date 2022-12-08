@@ -5,13 +5,11 @@ import { useWeb3Context } from 'contexts/Web3';
 import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import styles from 'styles/HomePage.module.css';
 
 const Home = () => {
   const router = useRouter();
-  const [isInitialized, setIsInitialized] = useState<boolean | null>(null);
-
   const { connect, user, executeScript } = useWeb3Context();
 
   useEffect(() => {
@@ -19,27 +17,23 @@ const Home = () => {
 
     const checkIsInitialized = async () => {
       try {
-        const res: boolean = await executeScript(
+        const isUserInitialized: boolean = await executeScript(
           isInitializedScript,
           (arg: any, t: any) => [arg(user.addr, t.Address)],
         );
 
-        setIsInitialized(res);
+        if (isUserInitialized) {
+          router.push(ROUTES.CREATE);
+        } else {
+          router.push(ROUTES.INITIALIZE);
+        }
       } catch (error) {
         console.error(error);
       }
     };
 
     checkIsInitialized();
-  }, [user, executeScript]);
-
-  useEffect(() => {
-    if (user.loggedIn && isInitialized === false) {
-      router.push(ROUTES.INITIALIZE);
-    } else if (user.loggedIn && isInitialized === true) {
-      router.push(ROUTES.CREATE);
-    }
-  }, [user, router, isInitialized]);
+  }, [user, executeScript, router]);
 
   return (
     <PageContainer withHeader={false}>
