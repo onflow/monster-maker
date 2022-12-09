@@ -5,20 +5,20 @@
 //  Created by Hao Fu on 5/11/2022.
 //
 
-import Foundation
 import FCL
+import Foundation
 
 class InitViewModel: ViewModel {
     @Published
     private(set) var state: InitPage.ViewState = .init()
-    
+
     func trigger(_ input: InitPage.Action) {
         switch input {
         case .initialize:
             initNFT()
         }
     }
-    
+
     private func initNFT() {
         Task {
             do {

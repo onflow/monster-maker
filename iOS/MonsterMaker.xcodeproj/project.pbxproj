@@ -40,7 +40,6 @@
 		1591D2A32910D1CE0001811D /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A22910D1CE0001811D /* ComponentView.swift */; };
 		1591D2A52910D7840001811D /* MainTabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A42910D7840001811D /* MainTabPage.swift */; };
 		1591D2A72910DCC90001811D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A62910DCC90001811D /* TabBarView.swift */; };
-		1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2A82910E4900001811D /* PrimaryButtonView.swift */; };
 		1591D2AB2910EB610001811D /* NFTListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AA2910EB610001811D /* NFTListPage.swift */; };
 		1591D2AD2910EB7B0001811D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AC2910EB7B0001811D /* HeaderView.swift */; };
 		1591D2AF2910ECF20001811D /* NFTLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2AE2910ECF20001811D /* NFTLocalView.swift */; };
@@ -49,7 +48,6 @@
 		1591D2B72911C2900001811D /* NFTLocalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591D2B62911C2900001811D /* NFTLocalImage.swift */; };
 		15D1726F29244FE20049A956 /* InitPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1726E29244FE20049A956 /* InitPage.swift */; };
 		15D17271292450700049A956 /* InitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17270292450700049A956 /* InitViewModel.swift */; };
-		15D172802926E0A60049A956 /* Instabug in Frameworks */ = {isa = PBXBuildFile; productRef = 15D1727F2926E0A60049A956 /* Instabug */; };
 		15D17285292772DF0049A956 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D17284292772DF0049A956 /* RefreshableScrollView.swift */; };
 		15DC3DD7293F9D870071510F /* FCL in Frameworks */ = {isa = PBXBuildFile; productRef = 15DC3DD6293F9D870071510F /* FCL */; };
 /* End PBXBuildFile section */
@@ -89,7 +87,6 @@
 		1591D2A22910D1CE0001811D /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		1591D2A42910D7840001811D /* MainTabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPage.swift; sourceTree = "<group>"; };
 		1591D2A62910DCC90001811D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		1591D2A82910E4900001811D /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
 		1591D2AA2910EB610001811D /* NFTListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListPage.swift; sourceTree = "<group>"; };
 		1591D2AC2910EB7B0001811D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1591D2AE2910ECF20001811D /* NFTLocalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTLocalView.swift; sourceTree = "<group>"; };
@@ -108,7 +105,6 @@
 			files = (
 				1545703C293FBD00004A278E /* FCL in Frameworks */,
 				15DC3DD7293F9D870071510F /* FCL in Frameworks */,
-				15D172802926E0A60049A956 /* Instabug in Frameworks */,
 				1525E940291578CF00F7C63A /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,15 +123,76 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		1525E94829157B7600F7C63A /* ViewModel */ = {
+		1525E94829157B7600F7C63A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1525E94B29157BB900F7C63A /* AnyViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1545704729414863004A278E /* Maker */ = {
 			isa = PBXGroup;
 			children = (
 				1525E94929157B8500F7C63A /* MakerViewModel.swift */,
-				15D17270292450700049A956 /* InitViewModel.swift */,
-				1525E94B29157BB900F7C63A /* AnyViewModel.swift */,
-				1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */,
+				1591D29E2910D15B0001811D /* MakerPage.swift */,
 			);
-			path = ViewModel;
+			path = Maker;
+			sourceTree = "<group>";
+		};
+		1545704829420D39004A278E /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				1591D28029109E960001811D /* WelcomePage.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		1545704929420D4D004A278E /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				1591D2A42910D7840001811D /* MainTabPage.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		1545704A29420D5F004A278E /* NFTList */ = {
+			isa = PBXGroup;
+			children = (
+				1538F126291D3BAD00338FF4 /* NFTListViewModel.swift */,
+				1591D2AA2910EB610001811D /* NFTListPage.swift */,
+			);
+			path = NFTList;
+			sourceTree = "<group>";
+		};
+		1545704B29420D6D004A278E /* Init */ = {
+			isa = PBXGroup;
+			children = (
+				15D17270292450700049A956 /* InitViewModel.swift */,
+				15D1726E29244FE20049A956 /* InitPage.swift */,
+			);
+			path = Init;
+			sourceTree = "<group>";
+		};
+		1545704C29420DD2004A278E /* NFTDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1588EB332913327C0069EAC4 /* NFTDetailView.swift */,
+			);
+			path = NFTDetail;
+			sourceTree = "<group>";
+		};
+		1545704E2943693A004A278E /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				1545704C29420DD2004A278E /* NFTDetail */,
+				1545704B29420D6D004A278E /* Init */,
+				1545704A29420D5F004A278E /* NFTList */,
+				1545704929420D4D004A278E /* MainTab */,
+				1545704829420D39004A278E /* Welcome */,
+				1545704729414863004A278E /* Maker */,
+			);
+			path = Page;
 			sourceTree = "<group>";
 		};
 		1588EB302913201E0069EAC4 /* Flow */ = {
@@ -171,7 +228,8 @@
 				1525E941291578E100F7C63A /* Network */,
 				1588EB302913201E0069EAC4 /* Flow */,
 				1591D2B02910EF090001811D /* Util */,
-				1591D2A02910D16E0001811D /* Pages */,
+				1591D2B52911C27F0001811D /* Model */,
+				1591D2A02910D16E0001811D /* UI */,
 				1591D28D2910CB590001811D /* Resources */,
 				1591D27E29109E960001811D /* MonsterMakerApp.swift */,
 				1591D29B2910CBBE0001811D /* Info.plist */,
@@ -212,35 +270,28 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		1591D2A02910D16E0001811D /* Pages */ = {
+		1591D2A02910D16E0001811D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1525E94829157B7600F7C63A /* ViewModel */,
-				1591D2B52911C27F0001811D /* Model */,
-				1591D2A12910D1BC0001811D /* View */,
-				1591D29E2910D15B0001811D /* MakerPage.swift */,
-				1591D28029109E960001811D /* WelcomePage.swift */,
-				1591D2A42910D7840001811D /* MainTabPage.swift */,
-				15D1726E29244FE20049A956 /* InitPage.swift */,
-				1591D2AA2910EB610001811D /* NFTListPage.swift */,
-				1588EB332913327C0069EAC4 /* NFTDetailView.swift */,
+				1545704E2943693A004A278E /* Page */,
+				1525E94829157B7600F7C63A /* Base */,
+				1591D2A12910D1BC0001811D /* Components */,
 			);
-			path = Pages;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		1591D2A12910D1BC0001811D /* View */ = {
+		1591D2A12910D1BC0001811D /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				1591D2A22910D1CE0001811D /* ComponentView.swift */,
 				1591D2AE2910ECF20001811D /* NFTLocalView.swift */,
 				1591D2A62910DCC90001811D /* TabBarView.swift */,
-				1591D2A82910E4900001811D /* PrimaryButtonView.swift */,
 				1591D2AC2910EB7B0001811D /* HeaderView.swift */,
 				1591D2B32910FA4C0001811D /* NFTGridCell.swift */,
 				1538F12A291D3EE000338FF4 /* SafariView.swift */,
 				15D17284292772DF0049A956 /* RefreshableScrollView.swift */,
 			);
-			path = View;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		1591D2B02910EF090001811D /* Util */ = {
@@ -280,7 +331,6 @@
 				1591D27729109E960001811D /* Sources */,
 				1591D27829109E960001811D /* Frameworks */,
 				1591D27929109E960001811D /* Resources */,
-				98083885292850B400BC002D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -289,7 +339,6 @@
 			name = MonsterMaker;
 			packageProductDependencies = (
 				1525E93F291578CF00F7C63A /* Moya */,
-				15D1727F2926E0A60049A956 /* Instabug */,
 				15DC3DD6293F9D870071510F /* FCL */,
 				1545703B293FBD00004A278E /* FCL */,
 			);
@@ -323,7 +372,6 @@
 			mainGroup = 1591D27229109E960001811D;
 			packageReferences = (
 				1525E93E291578CF00F7C63A /* XCRemoteSwiftPackageReference "Moya" */,
-				15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */,
 				1545703A293FBD00004A278E /* XCRemoteSwiftPackageReference "fcl-swift" */,
 			);
 			productRefGroup = 1591D27C29109E960001811D /* Products */;
@@ -353,26 +401,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		98083885292850B400BC002D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "#- -- SCRIPT BEGIN - --\n SKIP_SIMULATOR_BUILDS=1\n  SCRIPT_SRC=$(find \"$BUILT_PRODUCTS_DIR\" -name 'Instabug_dsym_upload.sh' | head -1)\n  if [ ! \"${SCRIPT_SRC}\" ]; then\n    echo \"Instabug: err: script not found. Make sure that you're including InstabugResources.bundle in your project directory\"\n    exit 1\n  fi\n   APP_TOKEN=\"37c1409f4fa0b8a5c7efcf8cdc797d59\"\n  source \"${SCRIPT_SRC}\"\n#- -- SCRIPT END - --\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1591D27729109E960001811D /* Sources */ = {
@@ -408,7 +436,6 @@
 				1538F12D291D431900338FF4 /* NFTModel.swift in Sources */,
 				1591D2AB2910EB610001811D /* NFTListPage.swift in Sources */,
 				1525E94E29157E8100F7C63A /* Response.swift in Sources */,
-				1591D2A92910E4900001811D /* PrimaryButtonView.swift in Sources */,
 				1591D29D2910CD100001811D /* Style.swift in Sources */,
 				1591D27F29109E960001811D /* MonsterMakerApp.swift in Sources */,
 			);
@@ -662,14 +689,6 @@
 				minimumVersion = 0.0.9;
 			};
 		};
-		15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Instabug/Instabug-SP";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -682,11 +701,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1545703A293FBD00004A278E /* XCRemoteSwiftPackageReference "fcl-swift" */;
 			productName = FCL;
-		};
-		15D1727F2926E0A60049A956 /* Instabug */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 15D1727E2926E0A60049A956 /* XCRemoteSwiftPackageReference "Instabug-SP" */;
-			productName = Instabug;
 		};
 		15DC3DD6293F9D870071510F /* FCL */ = {
 			isa = XCSwiftPackageProductDependency;

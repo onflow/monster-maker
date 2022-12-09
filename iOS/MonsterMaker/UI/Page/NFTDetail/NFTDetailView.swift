@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct NFTDetailPage: View {
-    
     @Environment(\.presentationMode)
     var presentationMode
-    
+
     let data: NFTModel
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -28,19 +27,19 @@ struct NFTDetailPage: View {
 
                 Spacer()
             }.padding(.horizontal, .MM.standard)
-            
+
             Spacer()
-            
+
             NFTLocalView(data: data.component)
                 .padding(.horizontal, .MM.double)
-            
+
             Spacer()
-            
+
             ZStack(alignment: .bottom) {
                 Image("bottom-bar")
                     .resizable()
                     .scaledToFit()
-                
+
                 Button {
                     Task {
                         let title = "Monster Maker NFT #\(data.itemID)"
@@ -51,13 +50,14 @@ struct NFTDetailPage: View {
                         let itemSource = ShareActivityItemSource(shareText: title, shareImage: image)
                         let activityController = UIActivityViewController(activityItems: [image, title, itemSource], applicationActivities: nil)
                         activityController.isModalInPresentation = true
-                        
+
                         if let keyWindow = UIApplication.shared.currentUIWindow(),
-                           let rootVC = keyWindow.rootViewController {
+                           let rootVC = keyWindow.rootViewController
+                        {
                             rootVC.present(activityController, animated: true, completion: nil)
                         }
                     }
-                    
+
                 } label: {
                     Image("share-button")
                         .resizable()
@@ -66,7 +66,6 @@ struct NFTDetailPage: View {
                         .padding(.bottom, .MM.large)
                 }
             }
-            
         }
         .ignoresSafeArea(edges: .bottom)
         .mmBackground()
@@ -77,6 +76,16 @@ struct NFTDetailPage: View {
 
 struct NFTDetailPage_Previews: PreviewProvider {
     static var previews: some View {
-        NFTDetailPage(data: .init(name: "", description: "", thumbnail: "", itemID: 0, resourceID: 0, owner: "", component: .init(background: 0, head: 0, torso: 0, legs: 0)))
+        NFTDetailPage(data: .init(name: "",
+                                  description: "",
+                                  thumbnail: "",
+                                  itemID: 0,
+                                  resourceID: 0,
+                                  owner: "",
+                                  component: .init(background: 0,
+                                                   head: 0,
+                                                   torso: 0,
+                                                   legs: 0))
+        )
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 struct MintRequest: Codable {
     let address: String
     let components: NFTLocalData
-    
+
     struct Components: Codable {
         let background, head, torso, legs: Int
     }
@@ -29,7 +29,7 @@ struct MinterResponse: Codable {
     let address: String
     let keyIndex: Int
     let sig: String
-    
+
     enum CodingKeys: String, CodingKey {
         case address
         case keyIndex

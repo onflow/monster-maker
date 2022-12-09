@@ -30,7 +30,7 @@ public struct RefreshableScrollView<Content: View>: View {
     }
 }
 
-//struct RefreshableScrollView_Previews: PreviewProvider {
+// struct RefreshableScrollView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RefreshableScrollView {
 //
@@ -38,4 +38,4 @@ public struct RefreshableScrollView<Content: View>: View {
 //
 //        }
 //    }
-//}
+// }

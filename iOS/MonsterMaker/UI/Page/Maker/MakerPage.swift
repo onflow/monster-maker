@@ -23,64 +23,62 @@ extension MakerPage {
     }
 }
 
-
 struct MakerPage: View {
-    
     @StateObject
-    var vm:AnyViewModel<ViewState, Action>
-    
+    var vm: AnyViewModel<ViewState, Action>
+
     @State
     var isShown: Bool = false
-    
+
     @State
     var isRotate: Bool = false
-    
+
     @State
     var isPending: Bool = false
-    
+
     @State
     var isShowFlight: Bool = false
 
     let animationDuration = 1.5
-    
+
     var body: some View {
         VStack(spacing: .MM.zero) {
             let isWaiting = isPending || vm.isMiniting
             HeaderView()
             Spacer()
-                ZStack {
-                    ComponentView(images: NFTLocalImage.backgrounds,
-                                  currentIndex: .init(get: { vm.components.background },
-                                                      set: { vm.trigger(.updateIndex($0, .background)) }),
-                                  hideButton: .init(get: {isWaiting}, set: {_ in }),
-                                  position: .background)
-                        .zIndex(998)
+            ZStack {
+                ComponentView(images: NFTLocalImage.backgrounds,
+                              currentIndex: .init(get: { vm.components.background },
+                                                  set: { vm.trigger(.updateIndex($0, .background)) }),
+                              hideButton: .init(get: { isWaiting }, set: { _ in }),
+                              position: .background)
+                    .zIndex(998)
 
-                    ComponentView(images: NFTLocalImage.headers,
-                                  currentIndex: .init(get: { vm.components.head },
-                                                      set: { vm.trigger(.updateIndex($0, .head)) }),
-                                  hideButton: .init(get: {isWaiting}, set: {_ in }),
-                                  position: .head)
-                        .zIndex(1000)
-                    ComponentView(images: NFTLocalImage.torso,
-                                  currentIndex: .init(get: { vm.components.torso },
-                                                      set: { vm.trigger(.updateIndex($0, .torso)) }),
-                                  hideButton: .init(get: {isWaiting}, set: {_ in }),
-                                  position: .torso)
-                        .zIndex(1001)
-                    ComponentView(images: NFTLocalImage.legs,
-                                  currentIndex: .init(get: { vm.components.legs },
-                                                      set: { vm.trigger(.updateIndex($0, .legs)) }),
-                                  hideButton: .init(get: {isWaiting}, set: {_ in }),
-                                  position: .legs)
-                        .zIndex(999)
-                }
-                .frame(maxWidth: UIScreen.main.bounds.width)
-                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                .padding(.horizontal, .MM.standard)
-                
-                Spacer()
-            
+                ComponentView(images: NFTLocalImage.headers,
+                              currentIndex: .init(get: { vm.components.head },
+                                                  set: { vm.trigger(.updateIndex($0, .head)) }),
+                              hideButton: .init(get: { isWaiting }, set: { _ in }),
+                              position: .head)
+                    .zIndex(1000)
+                ComponentView(images: NFTLocalImage.torso,
+                              currentIndex: .init(get: { vm.components.torso },
+                                                  set: { vm.trigger(.updateIndex($0, .torso)) }),
+                              hideButton: .init(get: { isWaiting }, set: { _ in }),
+                              position: .torso)
+                    .zIndex(1001)
+                ComponentView(images: NFTLocalImage.legs,
+                              currentIndex: .init(get: { vm.components.legs },
+                                                  set: { vm.trigger(.updateIndex($0, .legs)) }),
+                              hideButton: .init(get: { isWaiting }, set: { _ in }),
+                              position: .legs)
+                    .zIndex(999)
+            }
+            .frame(maxWidth: UIScreen.main.bounds.width)
+            .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+            .padding(.horizontal, .MM.standard)
+
+            Spacer()
+
             if isWaiting {
                 Image("minting-banner")
                     .resizable()
@@ -92,7 +90,7 @@ struct MakerPage: View {
                     .onAppear {
                         isShowFlight.toggle()
                     }
-                
+
             } else {
                 Button {
                     vm.trigger(.buy)
@@ -106,9 +104,8 @@ struct MakerPage: View {
                         .rotationEffect(.degrees(isRotate ? 0 : 2),
                                         anchor: .bottom)
                         .animation(.easeInOut
-                            .repeatForever(autoreverses: true)
-                            .delay(animationDuration),
-                                   value: isRotate)
+                            .repeatForever(autoreverses: true),
+                            value: isRotate)
                 }
             }
         }

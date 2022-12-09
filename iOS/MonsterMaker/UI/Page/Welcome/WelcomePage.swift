@@ -5,38 +5,34 @@
 //  Created by Hao Fu on 1/11/2022.
 //
 
-import SwiftUI
-import FCL
 import Combine
+import FCL
+import SwiftUI
 
 struct WelcomePage: View {
-    
     @State
     var isShown = false
-    
+
     var body: some View {
         NavigationView {
-            
             ZStack(alignment: .bottom) {
-                
                 VStack(spacing: 0) {
-                    
                     Spacer()
-                    
+
                     Image("logo")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal, .MM.double)
-                    
+
                     Spacer()
                 }
-                                
+
                 ZStack(alignment: .bottom) {
                     Image("bottom-bar")
                         .resizable()
                         .scaledToFit()
-                    
+
                     Button {
                         fcl.openDiscovery()
                     } label: {
@@ -50,7 +46,7 @@ struct WelcomePage: View {
                 .offset(y: isShown ? 0 : 300)
                 .animation(.easeInOut(duration: 1), value: isShown)
             }
-            .onAppear{
+            .onAppear {
                 isShown = true
             }
             .ignoresSafeArea(.all)
@@ -67,13 +63,13 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct ClearBackgroundView: UIViewRepresentable {
-    func makeUIView(context: Context) -> some UIView {
+    func makeUIView(context _: Context) -> some UIView {
         let view = UIView()
         DispatchQueue.main.async {
             view.superview?.superview?.backgroundColor = .clear
         }
         return view
     }
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-    }
+
+    func updateUIView(_: UIViewType, context _: Context) {}
 }

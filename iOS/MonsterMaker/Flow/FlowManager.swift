@@ -5,26 +5,25 @@
 //  Created by Hao Fu on 3/11/2022.
 //
 
-import Foundation
 import FCL
 import Flow
+import Foundation
 import UIKit
 
 class FlowManager: ObservableObject {
-    
     static let shared = FlowManager()
-    
+
     @Published
     var pendingTx: String? = nil
-    
-    func subscribeTransaction(txId: String) {        
+
+    func subscribeTransaction(txId: String) {
         Task {
             do {
                 let id = Flow.ID(hex: txId)
                 DispatchQueue.main.async {
                     self.pendingTx = txId
                 }
-                let _ = try await id.onceSealed()
+                _ = try await id.onceSealed()
                 await UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 DispatchQueue.main.async {
                     self.pendingTx = nil
@@ -36,7 +35,7 @@ class FlowManager: ObservableObject {
             }
         }
     }
-    
+
     func setup() {
         let defaultProvider: FCL.Provider = .dapperSC
         let defaultNetwork: Flow.ChainID = .testnet
@@ -58,20 +57,19 @@ class FlowManager: ObservableObject {
             .put("0xMetadataViews", value: "0x631e88ae7f1d7c20")
             .put("0xTransactionGeneration", value: "0x44051d81c4720882")
     }
-    
+
     func checkCollectionVault() async throws -> Bool {
         guard let address = fcl.currentUser?.addr else {
             throw FCLError.unauthenticated
         }
-        
+
         do {
             let result: Bool = try await fcl.query(script: MonsterMakerCadence.checkInit,
-                                       args: [.address(address)]).decode()
+                                                   args: [.address(address)]).decode()
             return result
         } catch {
             print(error)
             throw error
         }
     }
-    
 }

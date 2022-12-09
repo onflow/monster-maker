@@ -15,16 +15,15 @@ struct TabItemData {
 struct TabBarView: View {
     let items: [TabItemData]
     @Binding var selectedIndex: Int
-    
+
     var body: some View {
         VStack(alignment: .trailing) {
             Spacer()
             HStack(spacing: 0) {
-                
                 ForEach(items.indices, id: \.self) { index in
                     let item = items[index]
                     let isSelected = selectedIndex == index
-                    
+
                     Button {
                         self.selectedIndex = index
                     } label: {
@@ -33,9 +32,8 @@ struct TabBarView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
-                
             }
-            .background{
+            .background {
                 Image("bottom-bar")
                     .resizable()
                     .scaledToFill()
@@ -53,9 +51,9 @@ struct TabBarView_Previews: PreviewProvider {
         TabBarView(items: [
             .init(image: "create-button-on",
                   selectedImage: "create-button-off"),
-            .init(image: "view-button-on" ,
-                  selectedImage: "view-button-off")
+            .init(image: "view-button-on",
+                  selectedImage: "view-button-off"),
         ],
-                   selectedIndex: .constant(0))
+        selectedIndex: .constant(0))
     }
 }

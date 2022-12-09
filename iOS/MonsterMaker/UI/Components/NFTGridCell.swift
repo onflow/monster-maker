@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct NFTGridCell: View {
-    
     var data: NFTLocalData
-    
+
     var body: some View {
         VStack(alignment: .center) {
             NFTLocalView(data: data)
@@ -18,7 +17,6 @@ struct NFTGridCell: View {
         }
     }
 }
-
 
 struct NFTGridCell_Previews: PreviewProvider {
     static var previews: some View {

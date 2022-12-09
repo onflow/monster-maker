@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct MainTabPage: View {
-    
     @State
     var isInit = false
-    
+
     @State
     var selectedIndex: Int = 0
-    
+
     var body: some View {
-        NavigationView{
+        NavigationView {
             ZStack {
                 if isInit {
                     TabView(selection: $selectedIndex) {
@@ -30,10 +29,10 @@ struct MainTabPage: View {
                     TabBarView(items: [
                         .init(image: "create-button-off",
                               selectedImage: "create-button-on"),
-                        .init(image: "view-button-off" ,
-                              selectedImage: "view-button-on")
+                        .init(image: "view-button-off",
+                              selectedImage: "view-button-on"),
                     ],
-                               selectedIndex: $selectedIndex)
+                    selectedIndex: $selectedIndex)
                 } else {
                     InitPage(vm: .init(InitViewModel()))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,7 +46,7 @@ struct MainTabPage: View {
                         print(error)
                     }
                 }
-            }.onReceive(FlowManager.shared.$pendingTx) { value in
+            }.onReceive(FlowManager.shared.$pendingTx) { _ in
                 Task {
                     isInit = try await FlowManager.shared.checkCollectionVault()
                 }

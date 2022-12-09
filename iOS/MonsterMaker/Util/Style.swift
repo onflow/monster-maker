@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    class MM {
+    enum MM {
         static let dark = Color("dark")
         static let background = Color("background")
         static let grey = Color("grey")
@@ -18,7 +18,7 @@ extension Color {
 }
 
 extension Font {
-    class MM {
+    enum MM {
         static let body = Font.custom("Montserrat", size: 18, relativeTo: .body)
         static let title = Font.custom("Montserrat", size: 32, relativeTo: .title).weight(.bold)
     }
@@ -26,7 +26,7 @@ extension Font {
 
 // Padding
 extension CGFloat {
-    class MM  {
+    enum MM {
         static let zero: CGFloat = 0
         static let small: CGFloat = 8
         static let standard: CGFloat = 12
@@ -35,7 +35,7 @@ extension CGFloat {
         static let large: CGFloat = 48
         static let xlarge: CGFloat = 64
     }
-    
+
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
 }
