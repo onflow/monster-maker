@@ -5,23 +5,21 @@
 //  Created by Hao Fu on 1/11/2022.
 //
 
-import SwiftUI
 import FCL
+import SwiftUI
 
 struct HeaderView: View {
-    
     @State
     var pendingTx = FlowManager.shared.pendingTx
-    
+
     @State
     var lastTxId = ""
-    
+
     @State
     var showWebView = false
-    
+
     var body: some View {
         HStack {
-            
             Button {
                 if let _ = pendingTx {
                     showWebView.toggle()
@@ -33,16 +31,16 @@ struct HeaderView: View {
                 }
             }
             .frame(width: 50)
-            
+
             Spacer()
-            
+
             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 50)
-            
+
             Spacer()
-            
+
             Button {
                 Task {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -52,7 +50,6 @@ struct HeaderView: View {
                 Image("exit")
             }
             .frame(width: 50)
-            
         }
         .frame(maxWidth: .infinity)
         .frame(height: 56)

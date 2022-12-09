@@ -5,15 +5,15 @@
 //  Created by Hao Fu on 5/11/2022.
 //
 
-import Foundation
-import FCL
-import UIKit
 import Combine
+import FCL
+import Foundation
+import UIKit
 
 class MakerViewModel: ViewModel {
     @Published
     private(set) var state: MakerPage.ViewState = .init()
-    
+
     func trigger(_ input: MakerPage.Action) {
         switch input {
         case let .updateIndex(index, position):
@@ -24,7 +24,7 @@ class MakerViewModel: ViewModel {
             buyNFT()
         }
     }
-    
+
     private func buyNFT() {
         guard let user = fcl.currentUser else {
             return
@@ -38,14 +38,15 @@ class MakerViewModel: ViewModel {
                 let txId = try await fcl.mutate(
                     cadence: MonsterMakerCadence.mintMonster,
                     args: [
-                    .int(state.components.background),
-                    .int(state.components.head),
-                    .int(state.components.torso),
-                    .int(state.components.legs),
-                    .ufix64(0.0)
-                   ],
+                        .int(state.components.background),
+                        .int(state.components.head),
+                        .int(state.components.torso),
+                        .int(state.components.legs),
+                        .ufix64(0.0),
+                    ],
                     gasLimit: 999,
-                    authorizors: [user, MinterHelper.shared])
+                    authorizors: [user, MinterHelper.shared]
+                )
                 setMintState(false)
                 print("txId ==> \(txId)")
                 FlowManager.shared.subscribeTransaction(txId: txId.hex)
@@ -55,14 +56,14 @@ class MakerViewModel: ViewModel {
             }
         }
     }
-    
+
     private func mintNFT() {
         guard let user = fcl.currentUser else {
             return
         }
-        
+
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        
+
         Task {
             do {
                 setMintState(true)
@@ -77,13 +78,13 @@ class MakerViewModel: ViewModel {
             }
         }
     }
-    
+
     private func setMintState(_ isMinting: Bool) {
         Task { @MainActor in
             state.isMiniting = isMinting
         }
     }
-    
+
     private func updateSelection(index: Int, position: NFTComponent) {
         Task { @MainActor in
             switch position {
@@ -96,7 +97,6 @@ class MakerViewModel: ViewModel {
             case .torso:
                 self.state.components.torso = index
             }
-            
         }
     }
 }

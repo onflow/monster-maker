@@ -5,8 +5,8 @@
 //  Created by Hao Fu on 5/11/2022.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol ViewModel: ObservableObject where ObjectWillChangePublisher.Output == Void {
     associatedtype State

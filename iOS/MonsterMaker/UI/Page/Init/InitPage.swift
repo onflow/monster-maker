@@ -14,27 +14,25 @@ extension InitPage {
                                              torso: NFTLocalImage.torso.randomIndex,
                                              legs: NFTLocalImage.legs.randomIndex)
     }
-    
+
     enum Action {
         case initialize
     }
 }
 
 struct InitPage: View {
-    
     @StateObject
-    var vm:AnyViewModel<ViewState, Action>
-    
+    var vm: AnyViewModel<ViewState, Action>
+
     @State
     var isShown: Bool = false
-    
+
     @State
     var isRotate: Bool = false
-    
+
     let animationDuration = 1.5
-    
+
     var body: some View {
-        
         VStack(spacing: .MM.zero) {
             HeaderView()
             Spacer()
@@ -42,9 +40,9 @@ struct InitPage: View {
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                 .opacity(0.5)
                 .padding(.horizontal, .MM.large)
-            
+
             Spacer(minLength: .MM.double)
-        
+
             Button {
                 vm.trigger(.initialize)
             } label: {
@@ -56,7 +54,7 @@ struct InitPage: View {
                                value: isShown)
                     .padding(.bottom, .MM.medium)
             }
-            
+
             HStack(alignment: .center) {
                 Button {
                     vm.trigger(.initialize)
@@ -66,19 +64,18 @@ struct InitPage: View {
                         .scaledToFit()
                         .frame(height: 52)
                 }
-                
-            }.background{
+
+            }.background {
                 Image("bottom-bar")
                     .resizable()
                     .scaledToFill()
                     .frame(width: .screenWidth)
             }
             .frame(height: 70)
-            
         }
         .frame(maxWidth: .screenWidth, maxHeight: .infinity)
         .mmBackground()
-        .onAppear{
+        .onAppear {
             isShown = true
             isRotate.toggle()
         }

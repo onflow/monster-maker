@@ -5,9 +5,9 @@
 //  Created by Hao Fu on 5/11/2022.
 //
 
+import Flow
 import Foundation
 import Moya
-import Flow
 
 enum NFTEndpoint {
     case mint(MintRequest)
@@ -19,7 +19,7 @@ extension NFTEndpoint: TargetType {
     var baseURL: URL {
         .init(string: "https://monster-maker.vercel.app/api")!
     }
-    
+
     var path: String {
         switch self {
         case .mint:
@@ -30,7 +30,7 @@ extension NFTEndpoint: TargetType {
             return "/signAsMinter"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
         case .mint, .signAsMinter:
@@ -39,7 +39,7 @@ extension NFTEndpoint: TargetType {
             return .get
         }
     }
-    
+
     var task: Moya.Task {
         switch self {
         case let .mint(request):
@@ -50,8 +50,8 @@ extension NFTEndpoint: TargetType {
             return .requestPlain
         }
     }
-    
-    var headers: [String : String]? {
+
+    var headers: [String: String]? {
         ["network": flow.chainID.name]
     }
 }

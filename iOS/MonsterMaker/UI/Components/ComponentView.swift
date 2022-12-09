@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct ComponentView: View {
-    
     var images: [String]
-    
+
     @Binding
     var currentIndex: Int
-    
+
     @Binding
     var hideButton: Bool
-    
+
     var position: NFTComponent = .head
-    
+
     @State
     var appear = false
-    
+
     let screenWidth = UIScreen.main.bounds.width
     let width = UIScreen.main.bounds.width
-    
+
     let defaultOffset: CGFloat = 250 / 5
-    
+
     var offset: CGFloat {
         switch position {
         case .legs:
@@ -39,15 +38,15 @@ struct ComponentView: View {
             return defaultOffset * -2
         }
     }
-    
+
     var isBackground: Bool {
         position == .background
     }
-    
+
     var imageHeight: CGFloat {
         screenWidth - CGFloat.MM.large * 2 - CGFloat.MM.medium * 2
     }
-    
+
     private func previousImage() {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if currentIndex == 0 {
@@ -56,7 +55,7 @@ struct ComponentView: View {
         }
         currentIndex = currentIndex - 1
     }
-    
+
     private func nextImage() {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if currentIndex == images.count - 1 {
@@ -66,30 +65,27 @@ struct ComponentView: View {
         currentIndex = currentIndex + 1
     }
 
-    
     var body: some View {
-        
         VStack(alignment: .center, spacing: 0) {
-            
             Button {
                 previousImage()
             } label: {
                 Image("arrow-up")
             }
-            .visibility( !isBackground ? .gone : .visible)
+            .visibility(!isBackground ? .gone : .visible)
             .offset(y: -.MM.zero)
             .visibility(hideButton ? .gone : .visible)
-            
+
             HStack {
                 Button {
                     previousImage()
                 } label: {
                     Image("arrow-left")
                 }
-                .visibility( isBackground ? .gone : .visible)
+                .visibility(isBackground ? .gone : .visible)
                 .offset(y: offset)
                 .visibility(hideButton ? .gone : .visible)
-                
+
                 if position == .head {
                     if let image = images[safe: currentIndex] {
                         Image(image)
@@ -99,10 +95,10 @@ struct ComponentView: View {
                             .aspectRatio(1, contentMode: .fill)
                             .allowsHitTesting(false)
                             .zIndex(1100)
-                            .offset(x:0, y: appear ? 2 : 0)
+                            .offset(x: 0, y: appear ? 2 : 0)
                             .animation(Animation.linear(duration: 0.5)
                                 .repeatForever(autoreverses: true),
-                                       value: appear)
+                                value: appear)
                             .scaleEffect(isBackground ? CGSize(width: 1, height: 1) : CGSize(width: 0.8, height: 0.8))
                     }
                 } else {
@@ -117,23 +113,23 @@ struct ComponentView: View {
                             .scaleEffect(isBackground ? CGSize(width: 1, height: 1) : CGSize(width: 0.8, height: 0.8))
                     }
                 }
-                
+
                 Button {
                     nextImage()
                 } label: {
                     Image("arrow-right")
                 }
-                .visibility( isBackground ? .gone : .visible)
+                .visibility(isBackground ? .gone : .visible)
                 .offset(y: offset)
                 .visibility(hideButton ? .gone : .visible)
             }
-            
+
             Button {
                 nextImage()
             } label: {
                 Image("arrow-down")
             }
-            .visibility( !isBackground ? .gone : .visible)
+            .visibility(!isBackground ? .gone : .visible)
             .offset(y: .MM.small)
             .visibility(hideButton ? .gone : .visible)
         }
@@ -147,9 +143,8 @@ struct ComponentView: View {
 }
 
 struct ComponentView_Previews: PreviewProvider {
-    
     static let screenWidth = UIScreen.main.bounds.width
-    
+
     static var previews: some View {
         ZStack {
             ComponentView(images: NFTLocalImage.backgrounds,

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct NFTLocalView: View {
     var data: NFTLocalData
-    
+
     var showAnimation = true
-    
+
     @State
     var appear = false
-    
+
     let scale = 0.8
-    
+
     var body: some View {
         ZStack {
             if let backgroundImage = NFTLocalImage.backgrounds[safe: data.background] {
@@ -25,17 +25,17 @@ struct NFTLocalView: View {
                     .scaledToFit()
                     .zIndex(998)
             }
-            
+
             if let headImage = NFTLocalImage.headers[safe: data.head] {
                 Image(headImage)
                     .resizable()
                     .scaledToFit()
                     .zIndex(1000)
-                    .offset(x:0, y: appear ? 2 : 0)
+                    .offset(x: 0, y: appear ? 2 : 0)
                     .animation(Animation.linear(duration: 0.5)
                         .repeatForever(autoreverses: true)
-                        .delay(Double.random(in: 0..<1)),
-                               value: appear)
+                        .delay(Double.random(in: 0 ..< 1)),
+                        value: appear)
                     .onAppear {
                         if showAnimation {
                             appear.toggle()

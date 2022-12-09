@@ -15,11 +15,11 @@ struct GridentBackground: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .background{
+            .background {
                 LinearGradient(colors: colors,
                                startPoint: startPoint,
                                endPoint: endPoint)
-                .ignoresSafeArea()
+                    .ignoresSafeArea()
             }
     }
 }
@@ -55,12 +55,11 @@ public extension UIApplication {
         let connectedScenes = UIApplication.shared.connectedScenes
             .filter { $0.activationState == .foregroundActive }
             .compactMap { $0 as? UIWindowScene }
-        
+
         let window = connectedScenes.first?
             .windows
             .first { $0.isKeyWindow }
 
         return window
-        
     }
 }
