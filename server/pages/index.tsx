@@ -1,12 +1,12 @@
 import isInitializedScript from 'cadence/scripts/isInitialized';
 import { Button } from 'components/';
+import ROUTES from 'constants/routes';
 import { useWeb3Context } from 'contexts/Web3';
 import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/HomePage.module.css';
-import { ROUTES } from 'utils/constants';
 
 const Home = () => {
   const router = useRouter();
@@ -42,7 +42,7 @@ const Home = () => {
   }, [user, router, isInitialized]);
 
   return (
-    <PageContainer>
+    <PageContainer withHeader={false}>
       <PageContent>
         <Image
           src="/images/ui/monster_maker_logo.png"
