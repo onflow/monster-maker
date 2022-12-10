@@ -1,3 +1,8 @@
+export const NUM_BACKGROUND_IMAGES = 5;
+export const NUM_HEAD_IMAGES = 20;
+export const NUM_TORSO_IMAGES = 10;
+export const NUM_LEGS_IMAGES = 5;
+
 // For preloading all UI assets in <head>
 export const ALL_UI_ASSETS: Array<string> = [
   '/images/ui/button_background_tileable.png',
@@ -20,31 +25,21 @@ export const ALL_UI_ASSETS: Array<string> = [
   '/images/ui/view_button_on.png',
 ];
 
+// Generates all possible images per part
+const generatePartAssets = (
+  partName: string,
+  imagePrefix: string,
+  totalNumOfParts: number,
+) =>
+  Array.from(
+    { length: totalNumOfParts },
+    (_, i) => `/images/${partName}/${imagePrefix}_${i + 1}.png`,
+  );
+
 // For preloading all part assets in <head>
 export const ALL_MONSTER_PART_ASSETS: Array<string> = [
-  'images/background/bg_1.png',
-  'images/background/bg_2.png',
-  'images/background/bg_3.png',
-  'images/background/bg_4.png',
-  'images/background/bg_5.png',
-  'images/head/monster_head_1.png',
-  'images/head/monster_head_2.png',
-  'images/head/monster_head_3.png',
-  'images/head/monster_head_4.png',
-  'images/head/monster_head_5.png',
-  'images/legs/monster_legs_1.png',
-  'images/legs/monster_legs_2.png',
-  'images/legs/monster_legs_3.png',
-  'images/legs/monster_legs_4.png',
-  'images/legs/monster_legs_5.png',
-  'images/torso/monster_torso_1.png',
-  'images/torso/monster_torso_2.png',
-  'images/torso/monster_torso_3.png',
-  'images/torso/monster_torso_4.png',
-  'images/torso/monster_torso_5.png',
-  'images/torso/monster_torso_6.png',
-  'images/torso/monster_torso_7.png',
-  'images/torso/monster_torso_8.png',
-  'images/torso/monster_torso_9.png',
-  'images/torso/monster_torso_10.png',
+  ...generatePartAssets('background', 'bg', NUM_BACKGROUND_IMAGES),
+  ...generatePartAssets('head', 'monster_head', NUM_HEAD_IMAGES),
+  ...generatePartAssets('torso', 'monster_torso', NUM_TORSO_IMAGES),
+  ...generatePartAssets('legs', 'monster_legs', NUM_LEGS_IMAGES),
 ];

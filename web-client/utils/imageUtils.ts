@@ -1,8 +1,3 @@
-export const NUM_BACKGROUND_IMAGES = 5;
-export const NUM_HEAD_IMAGES = 5;
-export const NUM_TORSO_IMAGES = 10;
-export const NUM_LEGS_IMAGES = 5;
-
 const getImageNumber = (value: string | number) =>
   typeof value === 'string' ? parseInt(value, 10) + 1 : value + 1;
 

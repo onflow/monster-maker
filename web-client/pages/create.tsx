@@ -18,7 +18,7 @@ import {
   NUM_HEAD_IMAGES,
   NUM_LEGS_IMAGES,
   NUM_TORSO_IMAGES,
-} from 'utils/imageAssets';
+} from 'constants/assets';
 import { MintMonsterRequestBody, TxnStatus } from 'utils/types';
 
 const Create = () => {

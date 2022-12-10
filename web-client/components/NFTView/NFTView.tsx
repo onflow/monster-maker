@@ -3,7 +3,7 @@ import {
   getHeadImage,
   getLegsImage,
   getTorsoImage,
-} from 'utils/imageAssets';
+} from 'utils/imageUtils';
 import BackgroundImage from './NFTBackground';
 import NFTBodyPart from './NFTBodyPart';
 import styles from './NFTView.module.css';
