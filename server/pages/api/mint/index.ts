@@ -3,9 +3,9 @@ const fcl = require('@onflow/fcl');
 import * as secp from '@noble/secp256k1';
 import { env } from 'process';
 import * as fs from 'fs';
-import * as path from 'path';
 import { join } from 'path';
 const { send } = require('@onflow/transport-http');
+import allowCors from 'utils/allowCors';
 
 const MonsterMakerAddress = '0xfd3d8fe2c8056370';
 
@@ -54,10 +54,8 @@ const replaceAddress = (cadence: string) => {
     .replaceAll(`"../../contracts/MonsterMaker.cdc"`, MonsterMakerAddress);
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>,
-) {
+
+async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   fclConfig();
   const { address, components } = req.body;
   const { background, head, torso, legs } = components;
@@ -89,3 +87,5 @@ export default async function handler(
     txId: txId,
   });
 }
+
+export default allowCors(handler);

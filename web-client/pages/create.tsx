@@ -37,7 +37,7 @@ const Create = () => {
   const handleClickMint = async () => {
     setIsMintInProgress(true);
 
-    const response = await fetch('/api/mint', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/api/mint`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
