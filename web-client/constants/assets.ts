@@ -1,7 +1,7 @@
 export const NUM_BACKGROUND_IMAGES = 5;
 export const NUM_HEAD_IMAGES = 20;
-export const NUM_TORSO_IMAGES = 10;
-export const NUM_LEGS_IMAGES = 5;
+export const NUM_TORSO_IMAGES = 20;
+export const NUM_LEGS_IMAGES = 20;
 
 // For preloading all UI assets in <head>
 export const ALL_UI_ASSETS: Array<string> = [
