@@ -14,6 +14,7 @@
     "@napi-rs/canvas-linux-x64-gnu": "^0.1.30",
     "@noble/secp256k1": "^1.7.0",
     "@onflow/fcl": "^1.3.2",
+    "@onflow/fcl-wc": "^1.0.0",
     "@onflow/transport-http": "^1.5.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",

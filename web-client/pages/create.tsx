@@ -1,4 +1,5 @@
 import * as fcl from '@onflow/fcl';
+import mintMonster from 'cadence/transactions/mintMonster';
 import {
   Button,
   HorizontalPicker,
@@ -7,7 +8,6 @@ import {
   VerticalPicker,
 } from 'components/';
 import ROUTES from 'constants/routes';
-import { useWeb3Context } from 'contexts/Web3';
 import usePartSelector from 'hooks/usePartSelector';
 import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import { useRouter } from 'next/router';
@@ -19,16 +19,17 @@ import {
   NUM_LEGS_IMAGES,
   NUM_TORSO_IMAGES,
 } from 'constants/assets';
-import { MintMonsterRequestBody, TxnStatus } from 'utils/types';
+import minterAuthz from 'utils/minterAuthz';
+import { TxnStatus } from 'utils/types';
 
 const Create = () => {
   const router = useRouter();
-  const { user } = useWeb3Context();
 
   const backgroundSelector = usePartSelector(NUM_BACKGROUND_IMAGES);
   const headSelector = usePartSelector(NUM_HEAD_IMAGES);
   const torsoSelector = usePartSelector(NUM_TORSO_IMAGES);
   const legsSelector = usePartSelector(NUM_LEGS_IMAGES);
+  const monsterPrice = '0.0';
 
   const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
   const [txId, setTxId] = useState('');
@@ -37,32 +38,22 @@ const Create = () => {
   const handleClickMint = async () => {
     setIsMintInProgress(true);
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/api/mint`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        address: user.addr,
-        components: {
-          background: backgroundSelector.index,
-          head: headSelector.index,
-          torso: torsoSelector.index,
-          legs: legsSelector.index,
-        },
-      } as MintMonsterRequestBody),
+    const txId = await fcl.mutate({
+      cadence: mintMonster,
+      args: (arg: any, t: any) => [
+        arg(backgroundSelector.index, t.Int),
+        arg(headSelector.index, t.Int),
+        arg(torsoSelector.index, t.Int),
+        arg(legsSelector.index, t.Int),
+        arg(monsterPrice, t.UFix64),
+      ],
+      authorizations: [fcl.currentUser, minterAuthz],
     });
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const { txId } = await response.json();
 
     setTxId(txId);
   };
 
-  // Subscribe to tx returned from /api/mint
+  // Subscribe to tx returned from /api/signAsMinter
   useEffect(() => {
     if (txId) {
       fcl.tx(txId).subscribe(setTxStatus);
