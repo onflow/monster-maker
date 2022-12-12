@@ -8,11 +8,6 @@ body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(180deg, var(--gradient-colors));
-  min-height: 100vh;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
 }
 
 img {
@@ -21,8 +16,6 @@ img {
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
-  max-width: 800px;
-  padding: 40px;
 }
 
 a {
