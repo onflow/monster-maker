@@ -7,28 +7,28 @@ import {
   VerticalPicker,
 } from 'components/';
 import ROUTES from 'constants/routes';
-import { useWeb3Context } from 'contexts/Web3';
 import usePartSelector from 'hooks/usePartSelector';
 import { ActionPanel, NavPanel, PageContainer, PageContent } from 'layout';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from 'styles/CreatePage.module.css';
+import mintMonster from 'cadence/transactions/mintMonster'
 import {
   NUM_BACKGROUND_IMAGES,
   NUM_HEAD_IMAGES,
   NUM_LEGS_IMAGES,
   NUM_TORSO_IMAGES,
 } from 'utils/imageAssets';
-import { MintMonsterRequestBody, TxnStatus } from 'utils/types';
+import {TxnStatus } from 'utils/types';
 
 const Create = () => {
   const router = useRouter();
-  const { user } = useWeb3Context();
 
   const backgroundSelector = usePartSelector(NUM_BACKGROUND_IMAGES);
   const headSelector = usePartSelector(NUM_HEAD_IMAGES);
   const torsoSelector = usePartSelector(NUM_TORSO_IMAGES);
   const legsSelector = usePartSelector(NUM_LEGS_IMAGES);
+  const monsterPrice = "0.0"
 
   const [isMintInProgress, setIsMintInProgress] = useState<boolean>(false);
   const [txId, setTxId] = useState('');
@@ -37,32 +37,71 @@ const Create = () => {
   const handleClickMint = async () => {
     setIsMintInProgress(true);
 
-    const response = await fetch('/api/mint', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        address: user.addr,
-        components: {
-          background: backgroundSelector.index,
-          head: headSelector.index,
-          torso: torsoSelector.index,
-          legs: legsSelector.index,
-        },
-      } as MintMonsterRequestBody),
-    });
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const { txId } = await response.json();
+    const txId = await fcl.mutate({
+      cadence: mintMonster,
+      args: (arg: any, t: any) => [
+        arg(backgroundSelector.index, t.Int), 
+        arg(headSelector.index, t.Int), 
+        arg(torsoSelector.index, t.Int), 
+        arg(legsSelector.index, t.Int), 
+        arg(monsterPrice, t.UFix64),
+      ],
+      authorizations: [fcl.currentUser, minterAuthz]
+    })
 
     setTxId(txId);
   };
 
-  // Subscribe to tx returned from /api/mint
+  const minterAuthz = async (account: any) => {
+    const network = await fcl.config.get('flow.network')
+    const response = await fetch('/api/signAsMinter/info', {
+      headers: {
+        'Content-Type': 'application/json',
+        'network': network,
+      },
+    })
+    const { data } = await response.json();
+    const ADDRESS = data.address
+    const KEY_ID = data.keyIndex
+
+    return {
+      ...account, // bunch of defaults in here, we want to overload some of them though
+      tempId: `${ADDRESS}-${KEY_ID}`, // tempIds are more of an advanced topic, for 99% of the times where you know the address and keyId you will want it to be a unique string per that address and keyId
+      addr: ADDRESS, // the address of the signatory
+      keyId: Number(KEY_ID), // this is the keyId for the accounts registered key that will be used to sign, make extra sure this is a number and not a string
+      signingFunction: async (signable: any) => {
+        // Singing functions are passed a signable and need to return a composite signature
+        // signable.message is a hex string of what needs to be signed.
+        const signature = await fetchMinterSignature(signable.message)
+        return {
+          addr: ADDRESS, // needs to be the same as the account.addr
+          keyId: Number(KEY_ID), // needs to be the same as account.keyId, once again make sure its a number and not a string
+          signature: signature, // this needs to be a hex string of the signature, where signable.message is the hex value that needs to be signed
+        }
+      }
+    }
+  }
+
+  const fetchMinterSignature = async (message: string): Promise<string> => {
+      const response = await fetch('/api/signAsMinter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'network': await fcl.config.get('flow.network'),
+      },
+      body: JSON.stringify({
+        message
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const {data} = await response.json()
+    return data.signature
+  }
+
+  // Subscribe to tx returned from /api/signAsMinter
   useEffect(() => {
     if (txId) {
       fcl.tx(txId).subscribe(setTxStatus);
