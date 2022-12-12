@@ -56,20 +56,20 @@ export const Web3ContextProvider = ({
   const [client, setClient] = useState(null);
 
   const wcSetup = useCallback(async (appTitle: string, iconUrl: string) => {
-    try { 
+    try {
       const DEFAULT_APP_METADATA = {
         name: appTitle,
         description: appTitle,
         url: window.location.origin,
         icons: [iconUrl]
       }
-  
+
       const { FclWcServicePlugin, client } = await init({
         projectId: '12ed93a2aae83134c4c8473ca97d9399', // required
         metadata: DEFAULT_APP_METADATA, // optional
         includeBaseWC: true, // optional, default: false
       })
-  
+
       setClient(client)
       fcl.pluginRegistry.add(FclWcServicePlugin)
 
@@ -88,7 +88,7 @@ export const Web3ContextProvider = ({
       addresses,
     } = NETWORK;
     const iconUrl = window.location.origin + '/images/wallet-icon.png';
-    const appTitle = process.env.NEXT_PUBLIC_APP_NAME || 'MonsterMaker';
+    const appTitle = process.env.NEXT_PUBLIC_APP_NAME || 'Monster Maker';
 
     fcl.config({
       'app.detail.title': appTitle,
