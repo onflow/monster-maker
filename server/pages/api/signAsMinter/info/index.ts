@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import withCors from 'utils/withCors';
 
 const MonsterMakerAddress = "0xfd3d8fe2c8056370"
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
@@ -22,3 +23,5 @@ export default async function handler(
   }
   res.status(200).json(finalReturn);
 }
+
+export default withCors(handler);

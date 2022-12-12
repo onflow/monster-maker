@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-const allowCors = (fn: any) => async (req: NextApiRequest, res: NextApiResponse) => {
+const withCors = (fn: any) => async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
 
@@ -20,4 +20,4 @@ const allowCors = (fn: any) => async (req: NextApiRequest, res: NextApiResponse)
   return await fn(req, res);
 };
 
-export default allowCors;
+export default withCors;
