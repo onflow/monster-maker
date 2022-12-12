@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 const RLP = require("rlp");
 const secp = require("@noble/secp256k1");
 import { env } from 'process';
+import withCors from 'utils/withCors';
 
 const MonsterMakerAddress = "0xfd3d8fe2c8056370"
 const expectedCadenceHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -57,7 +58,7 @@ const sign = async (signableMessage: string, network: string): Promise<string> =
     return realSignature;
 };
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
@@ -74,7 +75,7 @@ export default async function handler(
   const cadenceHash = Buffer.from(hashed).toString('hex')
   const proposer = decoded[5]
   if (proposer === MonsterMakerAddress || cadenceHash !== expectedCadenceHash ) {
-    res.status(403).json({ 
+    res.status(403).json({
       error: 'Malicious Transaction',
       status: 403
     })
@@ -91,3 +92,5 @@ export default async function handler(
     status: 200,
   });
 }
+
+export default withCors(handler);
