@@ -130,9 +130,6 @@ export const Web3ContextProvider = ({
         .mutate({
           cadence,
           args,
-          payer: fcl.authz,
-          proposer: fcl.authz,
-          authorizations: [fcl.authz],
           limit: options.limit || 50,
         })
         .catch((e: Error) => {

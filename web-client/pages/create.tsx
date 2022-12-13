@@ -38,19 +38,25 @@ const Create = () => {
   const handleClickMint = async () => {
     setIsMintInProgress(true);
 
-    const txId = await fcl.mutate({
-      cadence: mintMonster,
-      args: (arg: any, t: any) => [
-        arg(backgroundSelector.index, t.Int),
-        arg(headSelector.index, t.Int),
-        arg(torsoSelector.index, t.Int),
-        arg(legsSelector.index, t.Int),
-        arg(monsterPrice, t.UFix64),
-      ],
-      authorizations: [fcl.currentUser, minterAuthz],
-    });
+    try {
+      const txId = await fcl.mutate({
+        cadence: mintMonster,
+        args: (arg: any, t: any) => [
+          arg(backgroundSelector.index, t.Int),
+          arg(headSelector.index, t.Int),
+          arg(torsoSelector.index, t.Int),
+          arg(legsSelector.index, t.Int),
+          arg(monsterPrice, t.UFix64),
+        ],
+        authorizations: [fcl.currentUser, minterAuthz],
+      });
 
-    setTxId(txId);
+      setTxId(txId);
+    } catch (error) {
+      console.error(error);
+
+      setIsMintInProgress(false);
+    }
   };
 
   // Subscribe to tx returned from /api/signAsMinter
