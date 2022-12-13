@@ -45,7 +45,7 @@ class MakerViewModel: ViewModel {
                         .ufix64(0.0),
                     ],
                     gasLimit: 999,
-                    authorizors: [user, MinterHelper.shared]
+                    authorizors: [MinterHelper.shared, user]
                 )
                 setMintState(false)
                 print("txId ==> \(txId)")
