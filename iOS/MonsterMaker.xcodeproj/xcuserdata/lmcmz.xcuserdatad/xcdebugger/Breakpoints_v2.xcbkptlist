@@ -181,22 +181,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2D27F9D4-FA7D-4975-8F11-E1CB68918224"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MonsterMaker/Network/Network.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "request(_:decoder:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AB5E3000-3A2E-4F3F-87C5-31896B03D741"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -526,54 +510,6 @@
             endingLineNumber = "47"
             landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2FDCA57D-BD63-41F1-A827-EADF60EDF5F2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MonsterMaker/Flow/FlowManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "checkCollectionVault()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2FDCA57D-BD63-41F1-A827-EADF60EDF5F2 - edb588293966c9d0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MonsterMaker.FlowManager.checkCollectionVault() async throws -&gt; Swift.Bool"
-                  moduleName = "MonsterMaker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lmcmz/dapper/MonsterMaker/iOS/MonsterMaker/Flow/FlowManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "420">
-               </Location>
-               <Location
-                  uuid = "2FDCA57D-BD63-41F1-A827-EADF60EDF5F2 - 9a28fb885c4e6bd3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MonsterMaker.FlowManager.checkCollectionVault() async throws -&gt; Swift.Bool"
-                  moduleName = "MonsterMaker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lmcmz/dapper/MonsterMaker/iOS/MonsterMaker/Flow/FlowManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "196">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

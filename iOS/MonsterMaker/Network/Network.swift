@@ -27,7 +27,6 @@ class Network {
     }
 }
 
-
 internal class AsyncMoyaRequestWrapper {
     var performRequest: (CheckedContinuation<Result<Response, MoyaError>, Never>) -> Moya.Cancellable?
     var cancellable: Moya.Cancellable?
@@ -45,7 +44,6 @@ internal class AsyncMoyaRequestWrapper {
     }
 }
 
-
 public extension MoyaProvider {
     /// Async request
     /// - Parameter target: Entity, with provides Moya.Target protocol
@@ -62,7 +60,7 @@ public extension MoyaProvider {
                 }
             }
         }
-        
+
         return await withTaskCancellationHandler {
             await withCheckedContinuation { continuation in
                 asyncRequestWrapper.perform(continuation: continuation)

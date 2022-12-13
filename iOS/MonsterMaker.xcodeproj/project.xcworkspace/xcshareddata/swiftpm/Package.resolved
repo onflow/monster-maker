@@ -46,15 +46,6 @@
       }
     },
     {
-      "identity" : "instabug-sp",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Instabug/Instabug-SP",
-      "state" : {
-        "revision" : "13f95f7aad0ae6652163fcff09c6227fd51f2d9e",
-        "version" : "11.4.1"
-      }
-    },
-    {
       "identity" : "moya",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Moya/Moya",

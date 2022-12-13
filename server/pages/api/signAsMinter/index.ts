@@ -2,8 +2,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 const RLP = require("rlp");
 const secp = require("@noble/secp256k1");
 import { env } from 'process';
+import withCors from 'utils/withCors';
 
 const MonsterMakerAddress = "0xfd3d8fe2c8056370"
+const expectedCadenceHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 function sansPrefix(address: string): string | null {
   if (address == null) return null;
@@ -41,7 +43,6 @@ const TRANSACTION_DOMAIN_TAG = rightPaddedHexBuffer(
 ).toString("hex");
 
 const prependTransactionDomainTag = (tx: string) => TRANSACTION_DOMAIN_TAG + tx;
-
 interface Roles {
   proposal: string;
   payer: string;
@@ -52,12 +53,12 @@ const sign = async (signableMessage: string, network: string): Promise<string> =
     const messageHash = await secp.utils.sha256(
       Buffer.from(signableMessage, 'hex')
     );
-    const signature = await secp.sign(messageHash,  env.privateKey as string);
+    const signature = await secp.sign(messageHash, env.privateKey as string);
     const realSignature = secp.Signature.fromHex(signature).toCompactHex();
     return realSignature;
 };
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
@@ -68,15 +69,28 @@ export default async function handler(
     return;
   }
   const msg = req.body.message;
+  const encodedMessage = removeTag(msg)
+  const decoded = arrToStringArr(RLP.decode(encodedMessage))
+  const hashed = await secp.utils.sha256(Buffer.from(decoded[0], 'hex'))
+  const cadenceHash = Buffer.from(hashed).toString('hex')
+  const proposer = decoded[5]
+  if (proposer === MonsterMakerAddress || cadenceHash !== expectedCadenceHash ) {
+    res.status(403).json({
+      error: 'Malicious Transaction',
+      status: 403
+    })
+    return
+  }
   const signature = await sign(msg, network);
-  const payerAddress = MonsterMakerAddress;
 
   res.status(200).json({
     data: {
-      address: payerAddress,
+      address: MonsterMakerAddress,
       keyIndex: 0,
       signature: signature,
     },
     status: 200,
   });
 }
+
+export default withCors(handler);

@@ -16,9 +16,9 @@ extension Collection {
         }
         return indices.contains(correctIndex) ? self[correctIndex] : nil
     }
-    
+
     var randomIndex: Int {
-        Int.random(in: 0..<count)
+        Int.random(in: 0 ..< count)
     }
 }
 
@@ -41,17 +41,17 @@ extension View {
 
 extension Color {
     static var random: Color {
-        return Color(red: .random(in: 0...1),
-                     green: .random(in: 0...1),
-                     blue: .random(in: 0...1))
+        return Color(red: .random(in: 0 ... 1),
+                     green: .random(in: 0 ... 1),
+                     blue: .random(in: 0 ... 1))
     }
-    
+
     init(hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB,
-            red: Double((hex >> 16) & 0xff) / 255,
-            green: Double((hex >> 08) & 0xff) / 255,
-            blue: Double((hex >> 00) & 0xff) / 255,
+            red: Double((hex >> 16) & 0xFF) / 255,
+            green: Double((hex >> 08) & 0xFF) / 255,
+            blue: Double((hex >> 00) & 0xFF) / 255,
             opacity: alpha
         )
     }

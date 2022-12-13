@@ -5,20 +5,18 @@
 //  Created by Hao Fu on 1/11/2022.
 //
 
-import SwiftUI
 import Combine
 import FCL
-import Instabug
+import SwiftUI
 
 @main
 struct MonsterMakerApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate
-    
+
     @State
     var isLogin: Bool = false
-    
+
     var body: some Scene {
         WindowGroup {
             if isLogin {
@@ -29,7 +27,7 @@ struct MonsterMakerApp: App {
             } else {
                 WelcomePage()
                     .onReceive(fcl.$currentUser) { value in
-                        
+
                         self.isLogin = (value != nil)
                     }
             }
@@ -37,10 +35,8 @@ struct MonsterMakerApp: App {
     }
 }
 
-
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        Instabug.start(withToken: "37c1409f4fa0b8a5c7efcf8cdc797d59", invocationEvents: [.shake, .screenshot])
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FlowManager.shared.setup()
         return true
     }

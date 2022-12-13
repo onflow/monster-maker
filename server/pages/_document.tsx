@@ -1,4 +1,3 @@
-import { ALL_MONSTER_PART_ASSETS, ALL_UI_ASSETS } from 'constants/assets';
 import { Head, Html, Main, NextScript } from 'next/document';
 
 const Document = () => {
@@ -12,12 +11,6 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
           rel="stylesheet"
         ></link>
-        {ALL_UI_ASSETS.map((href, idx) => (
-          <link key={idx} rel="preload" href={href} as="image" />
-        ))}
-        {ALL_MONSTER_PART_ASSETS.map((href, idx) => (
-          <link key={idx} rel="preload" href={href} as="image" />
-        ))}
       </Head>
       <body>
         <Main />
