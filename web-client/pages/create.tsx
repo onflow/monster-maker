@@ -48,7 +48,7 @@ const Create = () => {
           arg(legsSelector.index, t.Int),
           arg(monsterPrice, t.UFix64),
         ],
-        authorizations: [fcl.currentUser, minterAuthz],
+        authorizations: [minterAuthz, fcl.currentUser],
       });
 
       setTxId(txId);
