@@ -10,7 +10,6 @@ import styles from 'styles/HomePage.module.css';
 
 const Home = () => {
   const router = useRouter();
-
   const { connect, user, executeScript } = useWeb3Context();
 
   useEffect(() => {

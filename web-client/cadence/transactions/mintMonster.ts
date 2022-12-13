@@ -33,7 +33,7 @@ transaction(
     // The Minter will receive the FungibleToken
     let minterReceiver: &{FungibleToken.Receiver}
 
-    prepare(recipient: AuthAccount, minter: AuthAccount) {
+    prepare(minter: AuthAccount, recipient: AuthAccount) {
         self.mintingIDBefore = MonsterMaker.totalSupply
 
         // if the account doesn't already have a collection
