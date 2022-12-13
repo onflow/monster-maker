@@ -6,6 +6,7 @@ import { useQuery } from "urql"
 import { NftModelDocument, NftModelQuery } from "../../../../generated/graphql"
 import AppLayout from "../../../components/AppLayout"
 import { NFTModelDetail } from "../../../components/drops/NFTModelDetail"
+import tileBackground from "../../../images/ui/button_background_tileable.png"
 
 const NFTModelDetailPage = () => {
   const router = useRouter()

@@ -1,5 +1,6 @@
-import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Button, Heading, Stack, Text, Image } from "@chakra-ui/react"
+import React from "react"
+import logo from "../images/ui/monster_maker_logo.png"
 
 interface IHeroWithBackgroundProps {
   heading?: React.ReactNode
@@ -47,35 +48,31 @@ export const Hero = ({ heading, button, content, imageUrl }: IHeroWithBackground
   }, [button])
 
   return (
-    <Box width="100vw" minH={{ base: "90vh", sm: "100vh" }} position="relative" bgImage={imageUrl}>
+    <Box width="100vw" minH={{ base: "90vh", sm: "100vh" }} position="relative">
       <Box
-        zIndex={100}
         position="absolute"
-        bottom="5%"
-        maxW={{ base: "100%", lg: "50%" }}
-        mx="auto"
-        px={{ base: "10", lg: "20" }}
-      >
-        <Box
-          maxW={{ lg: "md", xl: "xl" }}
-          pt={{ base: "0", sm: "4", md: "8", lg: "16" }}
-          pb={{ base: "4", sm: "8" }}
-        >
-          {headingComponent}
-          {contentComponent}
-          <Stack direction={{ base: "column", sm: "row" }} spacing="4" mt="8">
-            {buttonComponent}
-          </Stack>
-        </Box>
-      </Box>
-      <Box
-        zIndex={1}
-        background="rgba(0,0,0,0.5)"
-        top="0"
-        left="0"
-        width="100%"
-        height="100%"
+        bottom="0"
+        bgImage={imageUrl}
+        bgPosition="bottom"
+        bgRepeat="repeat-x"
+        bgSize="contain"
+        width="100vw"
+        minH={{ base: "240px" }}
       ></Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        pt={20}
+      >
+        <Image src={logo.src} alt="MonsterMaker" maxHeight={300} />
+        {headingComponent}
+        {contentComponent}
+        <Stack direction={{ base: "column", sm: "row" }} spacing="4" mt="20">
+          {buttonComponent}
+        </Stack>
+      </Box>
     </Box>
   )
 }

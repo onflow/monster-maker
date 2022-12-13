@@ -28,14 +28,13 @@ export const NFTDetail = (props: Props) => {
 
   return (
     <Box p="8">
-      <Stack direction={{ base: "column", lg: "row" }} spacing={{ base: "6", lg: "12", xl: "16" }}>
+      <Stack direction={{ base: "column", lg: "row" }} bg="teal.900" p={5} boxShadow="10px 10px">
         <Stack
           spacing={{ base: "6", lg: "8" }}
           minW={{ lg: "sm" }}
           maxW={{ lg: "sm" }}
           justify="center"
           p="8"
-          borderRadius="4"
           backgroundColor="gray.800"
         >
           <Stack spacing={{ base: "3", md: "4" }}>

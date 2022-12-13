@@ -32,7 +32,7 @@ export const NFTModelCard = (props: { nftModel: NftModel; clickUrl: string }) =>
         spacing="3"
         padding="5"
         bg="blue.900"
-        borderRadius="8px"
+        boxShadow="8px 8px"
         _hover={{ bg: "teal.800", borderColor: "gray.600" }}
       >
         <Box position="relative" className="group">

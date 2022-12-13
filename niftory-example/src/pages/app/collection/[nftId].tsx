@@ -8,6 +8,7 @@ import AppLayout from "../../../components/AppLayout"
 import { NFTDetail } from "../../../components/collection/NFTDetail"
 import { Subset } from "../../../lib/types"
 import { LoginSkeleton } from "../../../ui/Skeleton"
+import tileBackground from "../../../images/ui/button_background_tileable.png"
 
 export const NFTDetailPage = () => {
   const router = useRouter()
@@ -22,7 +23,7 @@ export const NFTDetailPage = () => {
 
   return (
     <AppLayout>
-      <Box maxW="7xl" mx="auto" mt="12">
+      <Box maxW="7xl" mx="auto" mt="12" position="relative">
         {nft && <NFTDetail nft={nft} />}
       </Box>
     </AppLayout>

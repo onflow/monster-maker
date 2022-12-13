@@ -33,7 +33,7 @@ export const NFTCard = (props: { nft: Subset<Nft>; clickUrl: string }) => {
         spacing="3"
         padding="4"
         bg="blue.900"
-        borderRadius="8px"
+        boxShadow="10px 10px"
         _hover={{ bg: "teal.800", borderColor: "gray.600" }}
       >
         <Box position="relative" className="group">
