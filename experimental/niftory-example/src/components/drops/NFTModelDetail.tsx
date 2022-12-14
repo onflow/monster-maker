@@ -14,6 +14,7 @@ type NFTModelDetailProps = {
     title: string
     description: string
     amount: number
+    amountMinted: number
     content: {
       contentType: string
       contentUrl: string
@@ -136,10 +137,12 @@ export const NFTModelDetail = ({ id, metadata }: NFTModelDetailProps) => {
           </Stack>
 
           <Text color="page.text">{metadata.description}</Text>
-          <Text color="page.text">{metadata.amount} Total Available </Text>
+          <Text color="page.text">{metadata.amount} Total </Text>
+          <Text color="page.text">{metadata.amountMinted} Minted </Text>
         </Stack>
         <Button
           isLoading={!currentUser?.addr || checkoutStatusIndex > 0}
+          isDisabled={metadata.amount === metadata.amountMinted}
           loadingText={checkoutStatusMessages[checkoutStatusIndex]}
           onClick={handleCheckout}
           my="auto"
@@ -151,7 +154,7 @@ export const NFTModelDetail = ({ id, metadata }: NFTModelDetailProps) => {
             textTransform: "uppercase",
           }}
         >
-          Mint
+          {metadata.amount === metadata.amountMinted ? "Fully Minted" : "Mint!"}
         </Button>
       </Stack>
       <Gallery rootProps={{ overflow: "hidden", flex: "1" }} content={metadata.content} />

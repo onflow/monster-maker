@@ -9,6 +9,7 @@ query nftModel($id: ID!) {
     description
     rarity
     quantity
+    quantityMinted
     content {
       id
       poster {
