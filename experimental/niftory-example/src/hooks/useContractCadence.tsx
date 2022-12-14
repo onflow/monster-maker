@@ -48,10 +48,10 @@ const CONFIGURE_ACCOUNT_TRANSACTION = `
     
     transaction {
         prepare(acct: AuthAccount) {
-            let paths = NiftoryNFTRegistry.getCollectionPaths(${registryAddress}, "${clientId}_{contractName}")
+            let paths = NiftoryNFTRegistry.getCollectionPaths(${registryAddress}, ${clientId}_{contractName})
             
             if acct.borrow<&NonFungibleToken.Collection>(from: paths.storage) == nil {
-                let nftManager = NiftoryNFTRegistry.getNFTManagerPublic(${registryAddress}, "${clientId}_{contractName}")
+                let nftManager = NiftoryNFTRegistry.getNFTManagerPublic(${registryAddress}, ${clientId}_{contractName})
                 let collection <- nftManager.getNFTCollectionData().createEmptyCollection()
                 acct.save(<-collection, to: paths.storage)
     
