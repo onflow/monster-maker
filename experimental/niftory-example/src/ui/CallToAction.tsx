@@ -35,7 +35,17 @@ export const CallToAction: React.FunctionComponent<IBannerCTAProps> = ({
 
       <Center width="100%" pt="8">
         <Link onClick={() => router.push(buttonPath)}>
-          <Button p="8" fontSize="md" borderRadius="0">
+          <Button
+            p="8"
+            fontSize="xl"
+            borderRadius="0"
+            style={{
+              background: "#A41B15",
+              borderRadius: 0,
+              boxShadow: "5px 5px #ffffff",
+              textTransform: "uppercase",
+            }}
+          >
             {buttonContent}
           </Button>
         </Link>
