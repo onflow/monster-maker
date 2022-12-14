@@ -1,10 +1,10 @@
-import { Divider, VStack } from "@chakra-ui/react"
+import { VStack, Box } from "@chakra-ui/react"
 import React from "react"
 
 import AppLayout from "../../components/AppLayout"
 import { WalletSetup } from "../../components/wallet/WalletSetup"
 import { SectionHeader } from "../../ui/SectionHeader"
-import { LogOut } from "../../components/LogOut"
+import tileBackground from "../../images/ui/button_background_tileable.png"
 
 const AccountPage = () => {
   return (
@@ -12,9 +12,17 @@ const AccountPage = () => {
       <VStack>
         <SectionHeader text="My Account" />
         <WalletSetup />
-        <Divider w="80%" maxW="xl" py="8" />
-        <LogOut />
       </VStack>
+      <Box
+        position="absolute"
+        bottom="0"
+        bgImage={tileBackground.src}
+        bgPosition="bottom"
+        bgRepeat="repeat-x"
+        bgSize="contain"
+        width="100vw"
+        minH={{ base: "240px" }}
+      ></Box>
     </AppLayout>
   )
 }

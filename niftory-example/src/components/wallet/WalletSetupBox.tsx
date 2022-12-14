@@ -30,7 +30,17 @@ export const WalletSetupBox = ({
       <Box fontSize="xl" maxW="xl" textColor="page.text" py="8">
         {text}
       </Box>
-      <Button p="8" onClick={onClick}>
+      <Button
+        p="8"
+        fontSize="xl"
+        onClick={onClick}
+        style={{
+          background: "#A41B15",
+          borderRadius: 0,
+          boxShadow: "5px 5px #ffffff",
+          textTransform: "uppercase",
+        }}
+      >
         {buttonText}
       </Button>
     </>

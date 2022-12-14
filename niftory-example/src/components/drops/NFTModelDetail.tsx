@@ -115,10 +115,14 @@ export const NFTModelDetail = ({ id, metadata }: NFTModelDetailProps) => {
   }, [currentUser?.addr, id, router, signTransaction])
 
   return (
-    <Stack direction={{ base: "column-reverse", lg: "row" }} bg="teal.900" p={5} borderRadius={10}>
+    <Stack
+      direction={{ base: "column-reverse", lg: "row" }}
+      bg="teal.900"
+      boxShadow="10px 10px"
+      position="relative"
+    >
       <Stack
         p="8"
-        borderRadius="4"
         minW={{ lg: "sm" }}
         maxW={{ lg: "sm" }}
         // justify="center"
@@ -140,6 +144,12 @@ export const NFTModelDetail = ({ id, metadata }: NFTModelDetailProps) => {
           onClick={handleCheckout}
           my="auto"
           p="8"
+          style={{
+            background: "#A41B15",
+            borderRadius: 0,
+            boxShadow: "5px 5px #ffffff",
+            textTransform: "uppercase",
+          }}
         >
           Mint
         </Button>

@@ -7,6 +7,7 @@ import { CollectionGrid } from "../../../components/collection/CollectionGrid"
 import { Subset } from "../../../lib/types"
 import { SectionHeader } from "../../../ui/SectionHeader"
 import { useWalletContext } from "../../../hooks/useWalletContext"
+import tileBackground from "../../../images/ui/button_background_tileable.png"
 
 const CollectionPage = () => {
   const { currentUser } = useWalletContext()
@@ -24,7 +25,17 @@ const CollectionPage = () => {
 
   return (
     <AppLayout>
-      <Box maxW="7xl" mx="auto">
+      <Box maxW="100vw" mx="auto">
+        <Box
+          position="absolute"
+          bottom="0"
+          bgImage={tileBackground.src}
+          bgPosition="bottom"
+          bgRepeat="repeat-x"
+          bgSize="contain"
+          width="100vw"
+          minH={{ base: "240px" }}
+        ></Box>
         <SectionHeader text="My Monsters" />
         <CollectionGrid nfts={nfts} isLoading={nftsByWalletResponse.fetching} />
       </Box>

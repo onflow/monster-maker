@@ -1400,6 +1400,21 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/geo@^4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/geo/-/geo-4.5.10.tgz#902d369ff11d8c7cd2f0fd538a6b25a6e6afb02e"
+  integrity sha512-XGY2ys0L4vM15A/aFtIi8OLPTI7S4eHC08Zc9YtkXfMKtq3U6STwVW7DTj28Kxa5yp4Ee/y0gCpPGWSyhmNyVA==
+
+"@fontsource/mouse-memoirs@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/mouse-memoirs/-/mouse-memoirs-4.5.11.tgz#ed6e95af55fdfdeadc2a435a307bcc09c0bec8d1"
+  integrity sha512-2FDVt+YRsveECAkTbOpk0gIgSeXSPQOTe+F9Rbb6ueTzWqlIyvfPIUZG5YbvUyXNg/JPbRM6Ei9ayVltp2bqKg==
+
+"@fontsource/press-start-2p@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/press-start-2p/-/press-start-2p-4.5.11.tgz#c347ffc85221bac9b242cbbc54194b65d76c4f24"
+  integrity sha512-wICB8YPvoBi9Ok7s+CxAOljiQ6wqQN/UhrDrB63q9nudYDSOWmvrjFQaXSlj0AN16nAkDjZiaCz6dcKtR0kleg==
+
 "@fontsource/roboto@^4.5.0":
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.8.tgz#56347764786079838faf43f0eeda22dd7328437f"

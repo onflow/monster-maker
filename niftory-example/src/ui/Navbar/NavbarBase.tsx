@@ -8,12 +8,14 @@ interface Props {
   useApi?: boolean
   background?: BackgroundProps["bg"]
   leftComponent?: React.ReactNode
+  rightComponent?: React.ReactNode
   menu?: IMenuItem[]
   homeUrl?: string
 }
 
 export const NavbarBase: React.FunctionComponent<Props> = ({
   leftComponent,
+  rightComponent,
   menu,
   homeUrl = "/",
 }) => {
@@ -36,12 +38,17 @@ export const NavbarBase: React.FunctionComponent<Props> = ({
                 </Stack>
               </Box>
             </Link>
-            <NavContent.Desktop display={{ base: "none", lg: "flex" }} mr="20" menu={menu} />
-            <NavContent.Mobile
-              display={{ base: "flex", lg: "none" }}
-              mr={{ base: "0", sm: "5", md: "10" }}
-              menu={menu}
-            />
+            <Box display="flex" alignItems="center" pr="20px">
+              <Box pt="20px">
+                <NavContent.Desktop display={{ base: "none", lg: "flex" }} mr="10" menu={menu} />
+                <NavContent.Mobile
+                  display={{ base: "flex", lg: "none" }}
+                  mr={{ base: "0", sm: "5", md: "10" }}
+                  menu={menu}
+                />
+              </Box>
+              {rightComponent}
+            </Box>
           </Flex>
         </Box>
       </Box>

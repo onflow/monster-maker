@@ -7,6 +7,7 @@ const DesktopNavLink = ({ href = "", ...props }: HTMLChakraProps<"a">) => {
     <Link href={href} passHref>
       <chakra.a
         fontWeight="700"
+        fontSize="lg"
         display="flex"
         alignItems="center"
         justifyContent="center"

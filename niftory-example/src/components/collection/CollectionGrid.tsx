@@ -1,10 +1,10 @@
-import { Box, SimpleGrid, Spinner } from '@chakra-ui/react';
-import * as React from 'react';
+import { Box, SimpleGrid, Spinner } from "@chakra-ui/react"
+import * as React from "react"
 
-import { Nft } from '../../../generated/graphql';
-import { Subset } from '../../lib/types';
-import { CallToAction } from '../../ui/CallToAction';
-import { NFTCard } from './NFTCard';
+import { Nft } from "../../../generated/graphql"
+import { Subset } from "../../lib/types"
+import { CallToAction } from "../../ui/CallToAction"
+import { NFTCard } from "./NFTCard"
 
 interface CollectionProps {
   isLoading: boolean
@@ -28,7 +28,11 @@ export const CollectionGrid = ({ isLoading, nfts }: CollectionProps) => {
           buttonPath={"/app/drops"}
         />
       )}
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={{ base: "8", lg: "10" }}>
+      <SimpleGrid
+        columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
+        gap={{ base: "8", lg: "10" }}
+        px="100px"
+      >
         {nfts &&
           nfts.map((nft) => (
             <NFTCard key={nft.id} nft={nft} clickUrl={`/app/collection/${nft.id}`} />

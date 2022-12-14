@@ -6,6 +6,7 @@ import { useQuery } from "urql"
 import { NftModelDocument, NftModelQuery } from "../../../../generated/graphql"
 import AppLayout from "../../../components/AppLayout"
 import { NFTModelDetail } from "../../../components/drops/NFTModelDetail"
+import tileBackground from "../../../images/ui/button_background_tileable.png"
 
 const NFTModelDetailPage = () => {
   const router = useRouter()
@@ -34,6 +35,16 @@ const NFTModelDetailPage = () => {
   return (
     <AppLayout>
       <Skeleton isLoaded={!nftModelResponse.fetching}>
+        <Box
+          position="absolute"
+          bottom="0"
+          bgImage={tileBackground.src}
+          bgPosition="bottom"
+          bgRepeat="repeat-x"
+          bgSize="contain"
+          width="100vw"
+          minH={{ base: "240px" }}
+        ></Box>
         <Box maxW="7xl" mx="auto" mt="20">
           <NFTModelDetail id={nftModelId} metadata={metadata} />
         </Box>

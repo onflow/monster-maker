@@ -1,12 +1,13 @@
-import '@fontsource/roboto';
+import "@fontsource/roboto"
+import "@fontsource/geo"
 
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme } from "@chakra-ui/react"
 
 const theme = extendTheme({
   fonts: {
-    title: "Roboto",
-    heading: "Roboto",
-    body: "Roboto",
+    title: `"Geo"`,
+    heading: `"Geo"`,
+    body: `"Geo"`,
   },
   colors: {
     brand: {
@@ -41,8 +42,8 @@ const theme = extendTheme({
   components: {
     Button: {
       defaultProps: {
-        colorScheme: "gray",
-        color: "black",
+        colorScheme: "white",
+        color: "white",
         fontSize: "md",
       },
     },
