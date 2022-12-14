@@ -19,6 +19,7 @@ export const SectionHeader = (props: SectionHeaderProps) => {
         letterSpacing="tight"
         py="12"
         textShadow="2px 2px yellow"
+        mt="50px"
       >
         {text}
       </Heading>

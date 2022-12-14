@@ -115,7 +115,12 @@ export const NFTModelDetail = ({ id, metadata }: NFTModelDetailProps) => {
   }, [currentUser?.addr, id, router, signTransaction])
 
   return (
-    <Stack direction={{ base: "column-reverse", lg: "row" }} bg="teal.900" boxShadow="10px 10px">
+    <Stack
+      direction={{ base: "column-reverse", lg: "row" }}
+      bg="teal.900"
+      boxShadow="10px 10px"
+      position="relative"
+    >
       <Stack
         p="8"
         minW={{ lg: "sm" }}

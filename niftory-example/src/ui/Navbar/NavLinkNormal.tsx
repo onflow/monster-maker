@@ -7,6 +7,8 @@ const DesktopNavLinkNormal = ({ href = "", ...props }: HTMLChakraProps<"a">) => 
     <Link href={href} passHref>
       <chakra.a
         fontWeight="700"
+        fontSize="25px"
+        textShadow="2px 2px #555555"
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -14,7 +16,7 @@ const DesktopNavLinkNormal = ({ href = "", ...props }: HTMLChakraProps<"a">) => 
         color="navbar.text"
         _hover={{
           borderColor: "currentcolor",
-          color: "gray.100",
+          color: "#4BA823",
           fontWeight: "725",
         }}
         {...props}

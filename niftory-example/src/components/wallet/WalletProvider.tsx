@@ -33,7 +33,8 @@ export function WalletProvider({ children, requireWallet }: WalletComponentProps
     setIsLoading(true)
     fcl.unauthenticate()
     setIsLoading(false)
-  }, [])
+    router.push("/app/account")
+  }, [router])
 
   useEffect(() => {
     fcl

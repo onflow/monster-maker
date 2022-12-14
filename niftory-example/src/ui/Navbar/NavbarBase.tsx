@@ -39,12 +39,14 @@ export const NavbarBase: React.FunctionComponent<Props> = ({
               </Box>
             </Link>
             <Box display="flex" alignItems="center" pr="20px">
-              <NavContent.Desktop display={{ base: "none", lg: "flex" }} mr="20" menu={menu} />
-              <NavContent.Mobile
-                display={{ base: "flex", lg: "none" }}
-                mr={{ base: "0", sm: "5", md: "10" }}
-                menu={menu}
-              />
+              <Box pt="20px">
+                <NavContent.Desktop display={{ base: "none", lg: "flex" }} mr="10" menu={menu} />
+                <NavContent.Mobile
+                  display={{ base: "flex", lg: "none" }}
+                  mr={{ base: "0", sm: "5", md: "10" }}
+                  menu={menu}
+                />
+              </Box>
               {rightComponent}
             </Box>
           </Flex>

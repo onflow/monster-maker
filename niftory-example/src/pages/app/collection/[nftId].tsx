@@ -23,6 +23,16 @@ export const NFTDetailPage = () => {
 
   return (
     <AppLayout>
+      <Box
+        position="absolute"
+        bottom="0"
+        bgImage={tileBackground.src}
+        bgPosition="bottom"
+        bgRepeat="repeat-x"
+        bgSize="contain"
+        width="100vw"
+        minH={{ base: "240px" }}
+      ></Box>
       <Box maxW="7xl" mx="auto" mt="12" position="relative">
         {nft && <NFTDetail nft={nft} />}
       </Box>

@@ -32,6 +32,7 @@ export const WalletSetupBox = ({
       </Box>
       <Button
         p="8"
+        fontSize="xl"
         onClick={onClick}
         style={{
           background: "#A41B15",
