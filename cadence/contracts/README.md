@@ -12,5 +12,5 @@ Real projects should not deploy any of the following:
 * NFTStorefrontV2.cdc
 * NonFungibleToken.cdc
 
-Applications will instead reference the deployed token contracts, for which more information is provided at Flow 
-Core Contracts and Standards please see: https://developers.flow.com/flow/core-contracts
+Applications should instead reference the above contracts with their deployed addresses. Detailed information is provided
+in [Flow Core Contracts and Standards](https://developers.flow.com/flow/core-contracts)
