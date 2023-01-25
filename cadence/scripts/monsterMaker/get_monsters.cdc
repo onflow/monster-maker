@@ -34,7 +34,10 @@ pub struct Monster {
 
 pub fun getMonsterById(address: Address, itemID: UInt64): Monster? {
 
-    if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+    if let collection = getAccount(address).
+        getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, 
+            MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).
+            borrow() {
         
         if let item = collection.borrowMonsterMaker(id: itemID) {
 
