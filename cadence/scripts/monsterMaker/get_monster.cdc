@@ -2,6 +2,7 @@ import NonFungibleToken from "../../contracts/NonFungibleToken.cdc"
 import MetadataViews from "../../contracts/MetadataViews.cdc"
 import MonsterMaker from "../../contracts/MonsterMaker.cdc"
 
+// We use a struct here to collate results and get nice JSON payload in the response
 pub struct Monster {
     pub let name: String
     pub let description: String
@@ -42,7 +43,9 @@ pub fun dwebURL(_ file: MetadataViews.IPFSFile): String {
 }
 
 pub fun main(address: Address, itemID: UInt64): Monster? {
-    if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+    if let collection = getAccount(address).
+        getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, 
+            MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
         
         if let item = collection.borrowMonsterMaker(id: itemID) {
 
