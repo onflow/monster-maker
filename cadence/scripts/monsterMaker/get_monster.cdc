@@ -45,7 +45,8 @@ pub fun dwebURL(_ file: MetadataViews.IPFSFile): String {
 pub fun main(address: Address, itemID: UInt64): Monster? {
     if let collection = getAccount(address).
         getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, 
-            MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+            MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).
+            borrow() {
         
         if let item = collection.borrowMonsterMaker(id: itemID) {
 
