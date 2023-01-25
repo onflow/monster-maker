@@ -1,6 +1,14 @@
 import NonFungibleToken from "./NonFungibleToken.cdc"
 import MetadataViews from "./MetadataViews.cdc"
 
+// The Monster contract containing sub-types and their specification:
+//
+// - Events
+// - The Monster NFT Resource
+// - MetadataViews that it supports, and their content
+// - The Collection Resource
+// - Minter Resource
+// - init() function
 pub contract MonsterMaker: NonFungibleToken {
 
     // totalSupply
