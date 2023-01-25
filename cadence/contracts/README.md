@@ -1,7 +1,7 @@
 ## Token standards in this folder are not for deployment
 
 For simplicity we copy the Flow core contract standards into the project folder here. This is to mitigate program
-non-compilation since on-chain contract may be updated at a future time. 
+non-compilation since on-chain contracts may be updated at a future time. 
 
 Developers should not deploy any of the following as their contract addresses won't be recognized by the 
 eco-system standard on Flow. 
