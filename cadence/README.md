@@ -31,3 +31,4 @@ Helpful resources containing reference examples of contracts, scripts and transa
 * [Non Fungible Token standard](https://github.com/onflow/flow-nft)
 * [Flow Core Contracts](https://github.com/onflow/flow-core-contracts)
 * [Cadence Cookbook](https://cookbook.onflow.org/) 
+* [Guide for Solidity developers](https://developers.flow.com/cadence/solidity-to-cadence)
