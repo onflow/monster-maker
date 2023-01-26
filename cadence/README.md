@@ -14,14 +14,16 @@ as program friendly data structures.
 
 Transactions have phases, are ACID, and mutate on-chain state across accounts when sealed. Their primary purpose is 
 to orchestrate interactions between the parties to the transaction via functions exposed by Resources from the 
-relevant contracts. 
+relevant contracts.
 
+<Callout type="Avoid critical code in transactions">
 Developers should take care not to code critical business logic, or other code that affects fundamental program flow,
 within a transaction. Since transactions reside off-chain, others who see the transaction may craft a modified 
 transaction which changes, or skips, certain logic compared to the original. If that logic is critical to the 
 functioning of the program, or makes determinations about how or where value should be allocated it may leave open 
 the possibility for an attacker to take advantage of this vulnerability. Always remember, smart contract engineering 
 is also security engineering!
+</Callout>
 
 Helpful resources containing reference examples of contracts, scripts and transactions are listed below:
 
