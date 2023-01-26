@@ -1,11 +1,11 @@
 import NonFungibleToken from "../../contracts/NonFungibleToken.cdc"
 import MonsterMaker from "../../contracts/MonsterMaker.cdc"
 
-// This transaction transfers a Kitty Item from one account to another.
+// This transaction transfers a Monster from one account to another.
 
 transaction(recipient: Address, withdrawID: UInt64) {
     prepare(signer: AuthAccount) {
-        
+
         // get the recipients public account object
         let recipient = getAccount(recipient)
 

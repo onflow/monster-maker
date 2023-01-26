@@ -2,6 +2,8 @@ import NonFungibleToken from "../../contracts/NonFungibleToken.cdc"
 import MetadataViews from "../../contracts/MetadataViews.cdc"
 import MonsterMaker from "../../contracts/MonsterMaker.cdc"
 
+
+// We use a struct here to collate results and get nice JSON payload in the response
 pub struct Monster {
     pub let name: String
     pub let description: String
@@ -32,7 +34,10 @@ pub struct Monster {
 
 pub fun getMonsterById(address: Address, itemID: UInt64): Monster? {
 
-    if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+    if let collection = getAccount(address).
+        getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, 
+            MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).
+            borrow() {
         
         if let item = collection.borrowMonsterMaker(id: itemID) {
 
@@ -63,8 +68,9 @@ pub fun getMonsterById(address: Address, itemID: UInt64): Monster? {
 
 pub fun main(address: Address): [Monster] {
     let account = getAccount(address)
-    let collectionRef = account.getCapability(MonsterMaker.CollectionPublicPath)!.borrow<&{NonFungibleToken.CollectionPublic}>()
-        ?? panic("Could not borrow capability from public collection")
+    let collectionRef = account.getCapability(MonsterMaker.CollectionPublicPath)
+        !.borrow<&{NonFungibleToken.CollectionPublic}>()
+            ?? panic("Could not borrow capability from public collection")
     
     let ids = collectionRef.getIDs()
 
