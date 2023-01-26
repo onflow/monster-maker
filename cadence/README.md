@@ -27,7 +27,7 @@ the possibility for an attacker to take advantage of this vulnerability. Always 
 is also security engineering!
 
 ### Useful documentation and guidance
-Rsources containing reference examples of contracts, scripts, transactions, best practices, design, 
+Development resources with reference examples of contracts, scripts, transactions, best practices, design, 
 anti-patterns, etc. are listed below:
 
 * [Fungible Token standard](https://github.com/onflow/flow-ft)
