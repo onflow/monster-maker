@@ -58,3 +58,4 @@ transaction(
         MonsterMaker.totalSupply == self.mintingIDBefore + 1: "The total supply should have been increased by 1"
     }
 }
+ 
