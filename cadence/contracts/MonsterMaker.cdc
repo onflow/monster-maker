@@ -27,7 +27,9 @@ pub contract MonsterMaker: NonFungibleToken {
     //
     pub let CollectionStoragePath: StoragePath
     pub let CollectionPublicPath: PublicPath
+    pub let ProviderPrivatePath: PrivatePath
     pub let MinterStoragePath: StoragePath
+    pub let MinterPrivatePath: PrivatePath
 
     pub struct MonsterComponent {
         pub var background: Int
@@ -82,12 +84,11 @@ pub contract MonsterMaker: NonFungibleToken {
         pub let component: MonsterMaker.MonsterComponent
 
         init(
-            id: UInt64,
             royalties: [MetadataViews.Royalty],
             metadata: {String: AnyStruct},
             component: MonsterMaker.MonsterComponent,    
         ){
-            self.id = id
+            self.id = self.uuid
             self.royalties = royalties
             self.metadata = metadata
             self.component = component
@@ -312,17 +313,18 @@ pub contract MonsterMaker: NonFungibleToken {
 
             // create a new NFT
             var newNFT <- create MonsterMaker.NFT(
-                id: MonsterMaker.totalSupply,
                 royalties: royalties,
                 metadata: metadata,
                 component: component, 
             )
 
+            let mintedID = newNFT.id
+
             // deposit it in the recipient's account using their reference
             recipient.deposit(token: <-newNFT)
 
             emit Minted(
-                id: MonsterMaker.totalSupply,
+                id: mintedID,
                 component: component,
             )
 
@@ -356,7 +358,9 @@ pub contract MonsterMaker: NonFungibleToken {
         // Set our named paths
         self.CollectionStoragePath = /storage/MonsterMakerCollection
         self.CollectionPublicPath = /public/MonsterMakerCollection
+        self.ProviderPrivatePath = /private/MonsterMakerCollectionProvider
         self.MinterStoragePath = /storage/MonsterMakerMinter
+        self.MinterPrivatePath = /private/MonsterMakerMinter
 
         // Create a Collection resource and save it to storage
         let collection <- create Collection()
