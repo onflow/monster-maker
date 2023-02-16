@@ -71,7 +71,8 @@ async function handler(
   const msg = req.body.message;
   const encodedMessage = removeTag(msg)
   const decoded = arrToStringArr(RLP.decode(encodedMessage))
-  const hashed = await secp.utils.sha256(Buffer.from(decoded[0], 'hex'))
+  const cadenceHex = sansPrefix(decoded[0]) || ''
+  const hashed = await secp.utils.sha256(Buffer.from(cadenceHex, 'hex'))
   const cadenceHash = Buffer.from(hashed).toString('hex')
   const proposer = decoded[5]
   if (proposer === MonsterMakerAddress || cadenceHash !== expectedCadenceHash ) {
