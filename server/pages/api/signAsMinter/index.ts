@@ -5,7 +5,7 @@ import { env } from 'process';
 import withCors from 'utils/withCors';
 
 const MonsterMakerAddress = "0xfd3d8fe2c8056370"
-const expectedCadenceHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+const expectedCadenceHash = "e0618389055dd62d4849e04b1ea027fe8ea8771b45f18764baaa6f4e53f38255"
 
 function sansPrefix(address: string): string | null {
   if (address == null) return null;
@@ -71,7 +71,8 @@ async function handler(
   const msg = req.body.message;
   const encodedMessage = removeTag(msg)
   const decoded = arrToStringArr(RLP.decode(encodedMessage))
-  const hashed = await secp.utils.sha256(Buffer.from(decoded[0], 'hex'))
+  const cadenceHex = sansPrefix(decoded[0]) || ''
+  const hashed = await secp.utils.sha256(Buffer.from(cadenceHex, 'hex'))
   const cadenceHash = Buffer.from(hashed).toString('hex')
   const proposer = decoded[5]
   if (proposer === MonsterMakerAddress || cadenceHash !== expectedCadenceHash ) {
