@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Outblock/fcl-swift",
       "state" : {
-        "revision" : "506f2ea4ce8b618209057e3ae8a2d62a32a2adc8",
-        "version" : "0.0.9"
+        "revision" : "393783732f0eef171469b8239683536df73b7450",
+        "version" : "0.1.0"
       }
     },
     {
@@ -43,6 +43,15 @@
       "state" : {
         "revision" : "e1721bea71d8a27e209398f5a740ef02f6c6c920",
         "version" : "0.3.1"
+      }
+    },
+    {
+      "identity" : "gzipswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/1024jp/GzipSwift",
+      "state" : {
+        "revision" : "7a7f17761c76a932662ab77028a4329f67d645a4",
+        "version" : "5.2.0"
       }
     },
     {

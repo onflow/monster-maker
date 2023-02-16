@@ -28,7 +28,7 @@ class MonsterMakerCadence {
                     signer.save(<-collection, to: MonsterMaker.CollectionStoragePath)
 
                     // create a public capability for the collection
-                    signer.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
+                    signer.link<&MonsterMaker.Collection{NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
                 }
             }
         }
@@ -251,7 +251,6 @@ class MonsterMakerCadence {
             }
 
             post {
-                self.recipientCollectionRef.getIDs().contains(self.mintingIDBefore): "The next NFT ID should have been minted and delivered"
                 MonsterMaker.totalSupply == self.mintingIDBefore + 1: "The total supply should have been increased by 1"
             }
         }

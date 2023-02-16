@@ -5,7 +5,7 @@ import { env } from 'process';
 import withCors from 'utils/withCors';
 
 const MonsterMakerAddress = "0xfd3d8fe2c8056370"
-const expectedCadenceHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+const expectedCadenceHash = "bcb4f50c20761746916faf0421ef48272337959cdc77786af3d3c25a58369d4f"
 
 function sansPrefix(address: string): string | null {
   if (address == null) return null;

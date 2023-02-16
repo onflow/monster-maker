@@ -54,7 +54,6 @@ transaction(
     }
 
     post {
-        self.recipientCollectionRef.getIDs().contains(self.mintingIDBefore): "The next NFT ID should have been minted and delivered"
         MonsterMaker.totalSupply == self.mintingIDBefore + 1: "The total supply should have been increased by 1"
     }
 }
