@@ -22,8 +22,8 @@ class InitViewModel: ViewModel {
     private func initNFT() {
         Task {
             do {
-                let txId = try await fcl.mutate(cadence: MonsterMakerCadence.initAccount,
-                                                args: [])
+                let genTx: String = try await fcl.query(script: MonsterMakerCadence.generateInit).decode()
+                let txId = try await fcl.mutate(cadence: genTx)
                 print("txId ==> \(txId.hex)")
                 FlowManager.shared.subscribeTransaction(txId: txId.hex)
             } catch {
