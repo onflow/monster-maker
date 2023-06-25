@@ -12,3 +12,11 @@ Before we get started, here is a general overview of the Monster Maker monorepo 
   - Best practice guidance for Flow dapp development is located at: https://developers.flow.com/cadence/style-guide/project-development-tips
 - `iOS` folder contains all the Swift code to exemplify how to build mobile dApp on Flow Blockchain
 - `server` folder will guide you on how to build a web dApp and API on Flow
+
+## Getting Started
+
+If using the Flow Emulator or interacting with the smart contract locally first rename or copy `flow.json.example` to `flow.json`
+
+```bash
+mv flow.json.example flow.json
+```
