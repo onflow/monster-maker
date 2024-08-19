@@ -1,5 +1,7 @@
 import NonFungibleToken from "./NonFungibleToken.cdc"
 import MetadataViews from "./MetadataViews.cdc"
+import ViewResolver from "./ViewResolver.cdc"
+
 
 // The Monster contract containing sub-types and their specification:
 //
@@ -9,31 +11,31 @@ import MetadataViews from "./MetadataViews.cdc"
 // - The Collection Resource
 // - Minter Resource
 // - init() function
-pub contract MonsterMaker: NonFungibleToken {
+access(all) contract MonsterMaker: NonFungibleToken {
 
     // totalSupply
     // The total number of MonsterMaker that have been minted
     //
-    pub var totalSupply: UInt64
+    access(all) var totalSupply: UInt64
 
     // Events
     //
-    pub event ContractInitialized()
-    pub event Withdraw(id: UInt64, from: Address?)
-    pub event Deposit(id: UInt64, to: Address?)
-    pub event Minted(id: UInt64, component: MonsterComponent)
+    access(all) event ContractInitialized()
+    access(all) event Withdraw(id: UInt64, from: Address?)
+    access(all) event Deposit(id: UInt64, to: Address?)
+    access(all) event Minted(id: UInt64, component: MonsterComponent)
 
     // Named Paths
     //
-    pub let CollectionStoragePath: StoragePath
-    pub let CollectionPublicPath: PublicPath
-    pub let MinterStoragePath: StoragePath
+    access(all) let CollectionStoragePath: StoragePath
+    access(all) let CollectionPublicPath: PublicPath
+    access(all) let MinterStoragePath: StoragePath
 
-    pub struct MonsterComponent {
-        pub var background: Int
-        pub var head: Int
-        pub var torso: Int
-        pub var legs: Int
+    access(all) struct MonsterComponent {
+        access(all) var background: Int
+        access(all) var head: Int
+        access(all) var torso: Int
+        access(all) var legs: Int
 
         init(background: Int, head: Int, torso: Int, legs: Int) {
             self.background = background
@@ -43,7 +45,7 @@ pub contract MonsterMaker: NonFungibleToken {
         }
     }
 
-    pub fun componentToString(_ component: MonsterComponent): String {
+    access(all) fun componentToString(_ component: MonsterComponent): String {
         return component.background.toString()
         .concat("-")
         .concat(component.head.toString())
@@ -55,23 +57,23 @@ pub contract MonsterMaker: NonFungibleToken {
     
     // A Monster Item as an NFT
     //
-    pub resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
-        pub let id: UInt64
+    access(all) resource NFT: NonFungibleToken.NFT, ViewResolver.Resolver {
+        access(all) let id: UInt64
 
-        pub fun name(): String {
+        access(all) fun name(): String {
             return "Monster"
                 .concat(" #")
                 .concat(self.id.toString())
         }
         
-        pub fun description(): String {
+        access(all) fun description(): String {
             return "Monster "
                 .concat(" with serial number ")
                 .concat(self.id.toString())
         }
 
 
-        pub fun thumbnail(): MetadataViews.HTTPFile {
+        access(all) fun thumbnail(): MetadataViews.HTTPFile {
           return MetadataViews.HTTPFile(url: "https://monster-maker.vercel.app/api/image/".concat(MonsterMaker.componentToString(self.component)))
         }
 
@@ -79,7 +81,7 @@ pub contract MonsterMaker: NonFungibleToken {
         access(self) let metadata: {String: AnyStruct}
 
 
-        pub let component: MonsterMaker.MonsterComponent
+        access(all) let component: MonsterMaker.MonsterComponent
 
         init(
             royalties: [MetadataViews.Royalty],
@@ -92,7 +94,7 @@ pub contract MonsterMaker: NonFungibleToken {
             self.component = component
         }
 
-        pub fun getViews(): [Type] {
+        access(all) view fun getViews(): [Type] {
             return [
                 Type<MetadataViews.Display>(),
                 Type<MetadataViews.Editions>(),
@@ -105,7 +107,11 @@ pub contract MonsterMaker: NonFungibleToken {
             ]
         }
 
-        pub fun resolveView(_ view: Type): AnyStruct? {
+        access(all) fun createEmptyCollection(): @{NonFungibleToken.Collection} {
+            return <-MonsterMaker.createEmptyCollection(nftType: Type<@MonsterMaker.NFT>())
+        }
+
+        access(all) fun resolveView(_ view: Type): AnyStruct? {
             switch view {
                 case Type<MetadataViews.Display>():
                     return MetadataViews.Display(
@@ -135,12 +141,10 @@ pub contract MonsterMaker: NonFungibleToken {
                     return MetadataViews.NFTCollectionData(
                         storagePath: MonsterMaker.CollectionStoragePath,
                         publicPath: MonsterMaker.CollectionPublicPath,
-                        providerPath: /private/MonsterMakerCollection,
-                        publicCollection: Type<&MonsterMaker.Collection{MonsterMaker.MonsterMakerCollectionPublic}>(),
-                        publicLinkedType: Type<&MonsterMaker.Collection{MonsterMaker.MonsterMakerCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}>(),
-                        providerLinkedType: Type<&MonsterMaker.Collection{MonsterMaker.MonsterMakerCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Provider,MetadataViews.ResolverCollection}>(),
-                        createEmptyCollectionFunction: (fun (): @NonFungibleToken.Collection {
-                            return <-MonsterMaker.createEmptyCollection()
+                        publicCollection: Type<&MonsterMaker.Collection>(),
+                        publicLinkedType: Type<&MonsterMaker.Collection>(),
+                        createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
+                        return <-MonsterMaker.createEmptyCollection(nftType: Type<@MonsterMaker.NFT>())
                         })
                     )
                 case Type<MetadataViews.NFTCollectionDisplay>():
@@ -176,14 +180,52 @@ pub contract MonsterMaker: NonFungibleToken {
         }
     }
 
+      /// Function that resolves a metadata view for this contract.
+    ///
+    /// @param view: The Type of the desired view.
+    /// @return A structure representing the requested view.
+    ///
+    access(all) fun resolveContractView(resourceType: Type?, viewType: Type): AnyStruct? {
+        switch viewType {
+            case Type<MetadataViews.NFTCollectionData>():
+                let collectionData = MetadataViews.NFTCollectionData(
+                    storagePath: MonsterMaker.CollectionStoragePath,
+                    publicPath: MonsterMaker.CollectionPublicPath,
+                    publicCollection: Type<&MonsterMaker.Collection>(),
+                    publicLinkedType: Type<&MonsterMaker.Collection>(),
+                    createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
+                        return <-MonsterMaker.createEmptyCollection(nftType: Type<@MonsterMaker.NFT>())
+                    })
+                )
+                return collectionData
+            case Type<MetadataViews.NFTCollectionDisplay>():
+                let media = MetadataViews.Media(
+                        file: MetadataViews.HTTPFile(
+                            url: "https://i.imgur.com/UMXsEjt.png"
+                        ),
+                        mediaType: "image/png"
+                    )
+                return MetadataViews.NFTCollectionDisplay(
+                    name: "The MonsterMaker Collection",
+                    description: "This collection is used as an example to help you develop your next Flow NFT.",
+                    externalURL: MetadataViews.ExternalURL("https://monster-maker.vercel.app/"),
+                    squareImage: media,
+                    bannerImage: media,
+                    socials: {
+                    }
+                )
+        }
+        return nil
+    }
+
     // This is the interface that users can cast their MonsterMaker Collection as
     // to allow others to deposit MonsterMaker into their Collection. It also allows for reading
     // the details of MonsterMaker in the Collection.
-    pub resource interface MonsterMakerCollectionPublic {
-        pub fun deposit(token: @NonFungibleToken.NFT)
-        pub fun getIDs(): [UInt64]
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
-        pub fun borrowMonsterMaker(id: UInt64): &MonsterMaker.NFT? {
+    access(all) resource interface MonsterMakerCollectionPublic {
+        access(all) fun deposit(token: @{NonFungibleToken.NFT})
+        access(all) view fun getIDs(): [UInt64]
+        access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}?
+        access(all) fun borrowMonsterMaker(id: UInt64): &MonsterMaker.NFT? {
             // If the result isn't nil, the id of the returned reference
             // should be the same as the argument to the function
             post {
@@ -196,11 +238,11 @@ pub contract MonsterMaker: NonFungibleToken {
     // Collection
     // A collection of MonsterMaker NFTs owned by an account
     //
-    pub resource Collection: MonsterMakerCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection {
+    access(all) resource Collection: MonsterMakerCollectionPublic, NonFungibleToken.Collection {
         // dictionary of NFT conforming tokens
         // NFT is a resource type with an `UInt64` ID field
         //
-        pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+        access(all) var ownedNFTs: @{UInt64: {NonFungibleToken.NFT}}
 
         // initializer
         //
@@ -210,18 +252,16 @@ pub contract MonsterMaker: NonFungibleToken {
 
         // withdraw 
         // removes an NFT from the collection and moves it to the caller
-        pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-            let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("missing NFT")
-
-            emit Withdraw(id: token.id, from: self.owner?.address)
+        access(NonFungibleToken.Withdraw) fun withdraw(withdrawID: UInt64): @{NonFungibleToken.NFT} {
+            let token <- self.ownedNFTs.remove(key: withdrawID)
+                ?? panic("Could not withdraw an NFT with the provided ID from the collection")
 
             return <-token
         }
-
         // deposit 
         // takes a NFT and adds it to the collections dictionary
         // and adds the ID to the id array
-        pub fun deposit(token: @NonFungibleToken.NFT) {
+        access(all) fun deposit(token: @{NonFungibleToken.NFT}) {
             let token <- token as! @MonsterMaker.NFT
 
             let id: UInt64 = token.id
@@ -236,48 +276,79 @@ pub contract MonsterMaker: NonFungibleToken {
 
         // getIDs 
         // returns an array of the IDs that are in the collection
-        pub fun getIDs(): [UInt64] {
+        access(all) view fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
         }
 
         // borrowNFT 
         // gets a reference to an NFT in the collection
         // so that the caller can read its metadata and call its methods
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-            return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
+        access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
+            return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
         }
+
 
         // borrowMonsterMaker
         // Gets a reference to an NFT in the collection as a MonsterMaker,
         // exposing all of its fields (including the typeID & rarityID).
         // This is safe as there are no functions that can be called on the MonsterMaker.
         //
-        pub fun borrowMonsterMaker(id: UInt64): &MonsterMaker.NFT? {
+        access(all) fun borrowMonsterMaker(id: UInt64): &MonsterMaker.NFT? {
             if self.ownedNFTs[id] != nil {
                 // Create an authorized reference to allow downcasting
-                let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
-                return ref as! &MonsterMaker.NFT
+                let ref = &self.ownedNFTs[id] as &{NonFungibleToken.NFT}?
+                return ref! as! &MonsterMaker.NFT
             } else {
                 return nil
             }    
         }
 
-        pub fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
-            let nft = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
-            let MonsterMaker = nft as! &MonsterMaker.NFT
-            return MonsterMaker as &AnyResource{MetadataViews.Resolver}
+        access(all) view fun borrowViewResolver(id: UInt64): &{ViewResolver.Resolver}? {
+            if let nft = &self.ownedNFTs[id] as &{NonFungibleToken.NFT}? {
+                return nft as &{ViewResolver.Resolver}
+            }
+            return nil
+        }
+
+
+         access(all) fun createEmptyCollection(): @{NonFungibleToken.Collection} {
+            return <-MonsterMaker.createEmptyCollection(nftType: Type<@MonsterMaker.NFT>())
+        }
+
+             /// getSupportedNFTTypes returns a list of NFT types that this receiver accepts
+        access(all) view fun getSupportedNFTTypes(): {Type: Bool} {
+            let supportedTypes: {Type: Bool} = {}
+            supportedTypes[Type<@MonsterMaker.NFT>()] = true
+            return supportedTypes
+        }
+
+        /// Returns whether or not the given type is accepted by the collection
+        /// A collection that can accept any type should just return true by default
+        access(all) view fun isSupportedNFTType(type: Type): Bool {
+           if type == Type<@MonsterMaker.NFT>() {
+            return true
+           } else {
+            return false
+           }
         }
 
         // destructor
-        destroy() {
-            destroy self.ownedNFTs
-        }
+        // destroy() {
+        //     destroy self.ownedNFTs
+        // }
+    }
+
+    access(all) view fun getContractViews(resourceType: Type?): [Type] {
+        return [
+            Type<MetadataViews.NFTCollectionData>(),
+            Type<MetadataViews.NFTCollectionDisplay>()
+        ]
     }
 
     // createEmptyCollection
     // public function that anyone can call to create a new empty collection
     //
-    pub fun createEmptyCollection(): @NonFungibleToken.Collection {
+    access(all) fun createEmptyCollection(nftType: Type): @{NonFungibleToken.Collection} {
         return <- create Collection()
     }
 
@@ -285,13 +356,13 @@ pub contract MonsterMaker: NonFungibleToken {
     // Resource that an admin or something similar would own to be
     // able to mint new NFTs
     //
-    pub resource NFTMinter {
+    access(all) resource NFTMinter {
 
         // mintNFT
         // Mints a new NFT with a new ID
         // and deposit it in the recipients collection using their collection reference
         //
-        pub fun mintNFT(
+        access(all) fun mintNFT(
             recipient: &{NonFungibleToken.CollectionPublic}, 
             component: MonsterMaker.MonsterComponent,
             royalties: [MetadataViews.Royalty],
@@ -336,11 +407,9 @@ pub contract MonsterMaker: NonFungibleToken {
     // If it has a collection but does not contain the itemID, return nil.
     // If it has a collection and that collection contains the itemID, return a reference to that.
     //
-    pub fun fetch(_ from: Address, itemID: UInt64): &MonsterMaker.NFT? {
+    access(all) fun fetch(_ from: Address, itemID: UInt64): &MonsterMaker.NFT? {
         let collection = getAccount(from)
-            .getCapability(MonsterMaker.CollectionPublicPath)!
-            .borrow<&MonsterMaker.Collection{MonsterMaker.MonsterMakerCollectionPublic}>()
-            ?? panic("Couldn't get collection")
+            .capabilities.borrow<&{MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath)!
         // We trust MonsterMaker.Collection.borowMonsterMaker to get the correct itemID
         // (it checks it before returning it).
         return collection.borrowMonsterMaker(id: itemID)
@@ -360,17 +429,14 @@ pub contract MonsterMaker: NonFungibleToken {
 
         // Create a Collection resource and save it to storage
         let collection <- create Collection()
-        self.account.save(<-collection, to: self.CollectionStoragePath)
+        self.account.storage.save(<-collection, to: self.CollectionStoragePath)
 
-        // Create a public capability for the collection
-        self.account.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(
-            self.CollectionPublicPath,
-            target: self.CollectionStoragePath
-        )
+        let collectionCap = self.account.capabilities.storage.issue<&{NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic}>(self.CollectionStoragePath)
+        self.account.capabilities.publish(collectionCap, at: self.CollectionPublicPath)
 
         // Create a Minter resource and save it to storage
         let minter <- create NFTMinter()
-        self.account.save(<-minter, to: self.MinterStoragePath)
+        self.account.storage.save(<-minter, to: self.MinterStoragePath)
 
         emit ContractInitialized()
     }

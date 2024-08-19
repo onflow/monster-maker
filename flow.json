@@ -27,6 +27,13 @@
         "testnet": "0x631e88ae7f1d7c20"
       }
     },
+    "ViewResolver": {
+      "source": "./cadence/contracts/ViewResolver.cdc",
+      "aliases": {
+        "emulator": "0xf8d6e0586b0a20c7",
+        "testnet": "0x631e88ae7f1d7c20"
+      }
+    },
     "FungibleToken": {
       "source": "./cadence/contracts/FungibleToken.cdc",
       "aliases": {
@@ -48,13 +55,34 @@
   },
   "accounts": {
     "emulator-account": {
-      "address": "f8d6e0586b0a20c7",
-      "keys": "f8e188e8af0b8b414be59c4a1a15cc666c898fb34d94156e9b51e18bfde754a5"
+      "address": "0xf8d6e0586b0a20c7",
+      "keys": "84f82df6790f07b281adb5bbc848bd6298a2de67f94bdfac7a400d5a1b893de5"
+    },
+    "test":{
+      "address": "0xfd3d8fe2c8056370",
+      "keys": "c6a80a29c8e7a753a595ee025f72354443520106ce66128f7a6b75e01d9253c4"
+    },
+    "testnet-account": {
+      "address": "0xccd5ad285b372daa",
+      "keys": "bbbae07f85e35e07e8e043a4efba795be41b80d3fedbc9ef4dc4fa20b892a8ae"
+    },
+    "testnet-account-bak": {
+      "address": "0x9c69465fe058d2ea",
+      "key":{
+        "type": "hex",
+        "index": 0,
+        "signatureAlgorithm": "ECDSA_P256",
+        "hashAlgorithm": "SHA2_256",
+        "privateKey": "bbbae07f85e35e07e8e043a4efba795be41b80d3fedbc9ef4dc4fa20b892a8ae"
+      }
     }
   },
   "deployments": {
     "emulator": {
-      "emulator-account": ["MonsterMaker", "NonFungibleToken", "MetadataViews"]
+      "emulator-account": ["MonsterMaker"]
+    },
+    "testnet":{
+      "testnet-account": ["MonsterMaker"]
     }
   }
 }
