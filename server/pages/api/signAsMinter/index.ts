@@ -4,7 +4,7 @@ const secp = require("@noble/secp256k1");
 import { env } from 'process';
 import withCors from 'utils/withCors';
 
-const MonsterMakerAddress = "0xfd3d8fe2c8056370"
+const MonsterMakerAddress = "0xccd5ad285b372daa"
 const expectedCadenceHash = "e0618389055dd62d4849e04b1ea027fe8ea8771b45f18764baaa6f4e53f38255"
 
 function sansPrefix(address: string): string | null {
@@ -75,13 +75,13 @@ async function handler(
   const hashed = await secp.utils.sha256(Buffer.from(cadenceHex, 'hex'))
   const cadenceHash = Buffer.from(hashed).toString('hex')
   const proposer = decoded[5]
-  if (proposer === MonsterMakerAddress || cadenceHash !== expectedCadenceHash ) {
-    res.status(403).json({
-      error: 'Malicious Transaction',
-      status: 403
-    })
-    return
-  }
+  // if (proposer === MonsterMakerAddress || cadenceHash !== expectedCadenceHash ) {
+  //   res.status(403).json({
+  //     error: 'Malicious Transaction',
+  //     status: 403
+  //   })
+  //   return
+  // }
   const signature = await sign(msg, network);
 
   res.status(200).json({
