@@ -27,7 +27,7 @@ const NETWORKS = {
       FlowToken: '0x7e60df042a9c0868',
       NonFungibleToken: '0x631e88ae7f1d7c20',
       MetadataViews: '0x631e88ae7f1d7c20',
-      MonsterMaker: '0xfd3d8fe2c8056370',
+      MonsterMaker: '0xccd5ad285b372daa',
       FungibleToken: '0x9a0766d93b6608b7',
     },
   },

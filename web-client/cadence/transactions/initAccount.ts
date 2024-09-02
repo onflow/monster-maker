@@ -4,21 +4,23 @@ const initAccount = `
     import MetadataViews from 0xMetadataViews
 
     transaction {
-        prepare(signer: AuthAccount) {
+        prepare(signer: auth(Capabilities, Storage,BorrowValue) &Account) {
             // if the account doesn't already have a collection
-            if signer.borrow<&MonsterMaker.Collection>(from: MonsterMaker.CollectionStoragePath) == nil {
+            if signer.storage.borrow<&MonsterMaker.Collection>(from: MonsterMaker.CollectionStoragePath) == nil {
 
                 // create a new empty collection
-                let collection <- MonsterMaker.createEmptyCollection()
+                let collection <- MonsterMaker.createEmptyCollection(nftType: Type<@MonsterMaker.NFT>())
                 
                 // save it to the account
-                signer.save(<-collection, to: MonsterMaker.CollectionStoragePath)
+                signer.storage.save(<-collection, to: MonsterMaker.CollectionStoragePath)
 
-                // create a public capability for the collection
-                signer.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
+                let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionStoragePath)
+                signer.capabilities.publish(collectionCap, at: MonsterMaker.CollectionPublicPath)
+
             }
         }
     }
+
 `;
 
 export default initAccount;

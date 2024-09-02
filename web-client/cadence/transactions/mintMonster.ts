@@ -45,7 +45,7 @@ transaction(
             recipient.save(<-collection, to: MonsterMaker.CollectionStoragePath)
 
             // create a public capability for the collection
-            recipient.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
+            recipient.link<&{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
         }
 
 
