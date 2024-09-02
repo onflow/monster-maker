@@ -58,17 +58,28 @@
       "address": "0xf8d6e0586b0a20c7",
       "keys": "84f82df6790f07b281adb5bbc848bd6298a2de67f94bdfac7a400d5a1b893de5"
     },
-    "test":{
+    "test": {
       "address": "0xfd3d8fe2c8056370",
       "keys": "c6a80a29c8e7a753a595ee025f72354443520106ce66128f7a6b75e01d9253c4"
     },
-    "testnet-account": {
+    "testnet-account-bak1": {
       "address": "0xccd5ad285b372daa",
       "keys": "bbbae07f85e35e07e8e043a4efba795be41b80d3fedbc9ef4dc4fa20b892a8ae"
     },
+    "testnet-account": {
+      "address": "0x724a9da00340f14c",
+      "key": {
+        "type": "hex",
+        "index": 0,
+        "signatureAlgorithm": "ECDSA_P256",
+        "hashAlgorithm": "SHA2_256",
+        "privateKey": "de2fccfda5affb6deece20b8e284663fb0d527ea1877403e9a76264254372753",
+        "pubKey":"f3565a1b73bf54cdbb2b8f06d806db3f8c01a56d7eeff8322bcd9d209a1b76c2505965b59b0b01dd330f970f384836d60d0c8a6e49c3c1a89154fbfb1a318241"
+      }
+    },
     "testnet-account-bak": {
       "address": "0x9c69465fe058d2ea",
-      "key":{
+      "key": {
         "type": "hex",
         "index": 0,
         "signatureAlgorithm": "ECDSA_P256",
@@ -79,10 +90,14 @@
   },
   "deployments": {
     "emulator": {
-      "emulator-account": ["MonsterMaker"]
+      "emulator-account": [
+        "MonsterMaker"
+      ]
     },
-    "testnet":{
-      "testnet-account": ["MonsterMaker"]
+    "testnet": {
+      "testnet-account": [
+        "MonsterMaker"
+      ]
     }
   }
 }
