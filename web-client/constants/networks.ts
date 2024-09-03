@@ -43,7 +43,7 @@ const NETWORKS = {
       FlowToken: '0x1654653399040a61',
       NonFungibleToken: '0x1d7e57aa55817448',
       MetadataViews: '0x1d7e57aa55817448',
-      MonsterMaker: '',
+      MonsterMaker: '0x724a9da00340f14c',
       FungibleToken: '0xf233dcee88fe0abe',
     },
   },
