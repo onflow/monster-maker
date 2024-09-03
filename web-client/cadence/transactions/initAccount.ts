@@ -15,7 +15,7 @@ const initAccount = `
                 // save it to the account
                 signer.storage.save(<-collection, to: MonsterMaker.CollectionStoragePath)
 
-                let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, ViewResolver.ResolverCollection, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionStoragePath)
+                let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.Collection, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, ViewResolver.ResolverCollection, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionStoragePath)
                 signer.capabilities.publish(collectionCap, at: MonsterMaker.CollectionPublicPath)
 
             }
