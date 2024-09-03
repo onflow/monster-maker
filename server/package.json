@@ -15,18 +15,19 @@
     "@onflow/fcl": "^1.3.2",
     "@onflow/fcl-wc": "^1.0.0",
     "@onflow/transport-http": "^1.5.0",
+    "@types/elliptic": "^6.4.18",
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
     "canvas": "^2.6.1",
     "dotenv": "^16.0.3",
+    "elliptic": "^6.5.4",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "next": "13.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rlp": "^3.0.0",
-    "elliptic": "^6.5.4"
+    "rlp": "^3.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.44.0",

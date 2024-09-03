@@ -35,7 +35,7 @@ access(all)struct Monster {
 access(all)fun getMonsterById(address: Address, itemID: UInt64): Monster? {
 
     if let collection = getAccount(address).
-        getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, 
+        getCapability<&{NonFungibleToken.CollectionPublic, 
             MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).
             borrow() {
         
