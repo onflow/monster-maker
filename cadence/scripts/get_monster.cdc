@@ -3,14 +3,14 @@ import MetadataViews from "../../contracts/MetadataViews.cdc"
 import MonsterMaker from "../../contracts/MonsterMaker.cdc"
 
 // We use a struct here to collate results and get nice JSON payload in the response
-pub struct Monster {
-    pub let name: String
-    pub let description: String
-    pub let thumbnail: String
+access(all) struct Monster {
+    access(all) let name: String
+    access(all) let description: String
+    access(all) let thumbnail: String
 
-    pub let itemID: UInt64
-    pub let resourceID: UInt64
-    pub let owner: Address
+    access(all) let itemID: UInt64
+    access(all) let resourceID: UInt64
+    access(all) let owner: Address
 
     init(
         name: String,
@@ -30,7 +30,7 @@ pub struct Monster {
     }
 }
 
-pub fun dwebURL(_ file: MetadataViews.IPFSFile): String {
+access(all) fun dwebURL(_ file: MetadataViews.IPFSFile): String {
     var url = "https://"
         .concat(file.cid)
         .concat(".ipfs.dweb.link/")
@@ -42,9 +42,9 @@ pub fun dwebURL(_ file: MetadataViews.IPFSFile): String {
     return url
 }
 
-pub fun main(address: Address, itemID: UInt64): Monster? {
+access(all) fun main(address: Address, itemID: UInt64): Monster? {
     if let collection = getAccount(address).
-        getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, 
+        getCapability<&{NonFungibleToken.CollectionPublic, 
             MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).
             borrow() {
         

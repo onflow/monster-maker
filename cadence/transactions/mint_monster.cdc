@@ -29,14 +29,13 @@ transaction(
         self.mintingIDBefore = MonsterMaker.totalSupply
 
         // Borrow a reference to the NFTMinter resource in storage
-        self.minter = signer.borrow<&MonsterMaker.NFTMinter>(from: MonsterMaker.MinterStoragePath)
+        self.minter = signer.capabilities.borrow<&MonsterMaker.NFTMinter>(from: MonsterMaker.MinterStoragePath)
             ?? panic("Could not borrow a reference to the NFT minter")
 
         // Borrow the recipient's public NFT collection reference
         self.recipientCollectionRef = getAccount(recipient)
-            .getCapability(MonsterMaker.CollectionPublicPath)
-            .borrow<&{NonFungibleToken.CollectionPublic}>()
-            ?? panic("Could not get receiver reference to the NFT Collection")
+            .capabilities
+            .borrow<&{NonFungibleToken.CollectionPublic}>(MonsterMaker.CollectionPublicPath)!
     }
 
     execute {

@@ -28,7 +28,7 @@ class MonsterMakerCadence {
                     signer.save(<-collection, to: MonsterMaker.CollectionStoragePath)
 
                     // create a public capability for the collection
-                    signer.link<&MonsterMaker.Collection{NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
+                    signer.link<&{NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
                 }
             }
         }
@@ -98,7 +98,7 @@ class MonsterMakerCadence {
 
         pub fun getMonsterById(address: Address, itemID: UInt64): Monster? {
 
-            if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+            if let collection = getAccount(address).getCapability<&{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
 
                 if let item = collection.borrowMonsterMaker(id: itemID) {
                     if let view = item.resolveView(Type<MetadataViews.Display>()) {
@@ -206,7 +206,7 @@ class MonsterMakerCadence {
                     recipient.save(<-collection, to: MonsterMaker.CollectionStoragePath)
 
                     // create a public capability for the collection
-                    recipient.link<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
+                    recipient.link<&{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic, MetadataViews.ResolverCollection}>(MonsterMaker.CollectionPublicPath, target: MonsterMaker.CollectionStoragePath)
                 }
 
 

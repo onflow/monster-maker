@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import withCors from 'utils/withCors';
 
-const MonsterMakerAddress = "0xfd3d8fe2c8056370"
+const MonsterMakerAddress = "0x724a9da00340f14c"
 
 async function handler(
   req: NextApiRequest,

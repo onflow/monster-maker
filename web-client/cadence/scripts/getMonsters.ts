@@ -3,14 +3,14 @@ const getMonstersScript = `
     import MetadataViews from 0xMetadataViews
     import MonsterMaker from 0xMonsterMaker
 
-    pub struct Monster {
-        pub let name: String
-        pub let description: String
-        pub let thumbnail: String
-        pub let itemID: UInt64
-        pub let resourceID: UInt64
-        pub let owner: Address
-        pub let component: MonsterMaker.MonsterComponent
+    access(all) struct Monster {
+        access(all) let name: String
+        access(all) let description: String
+        access(all) let thumbnail: String
+        access(all) let itemID: UInt64
+        access(all) let resourceID: UInt64
+        access(all) let owner: Address
+        access(all) let component: &MonsterMaker.MonsterComponent
 
         init(
             name: String,
@@ -19,7 +19,7 @@ const getMonstersScript = `
             itemID: UInt64,
             resourceID: UInt64,
             owner: Address,
-            component: MonsterMaker.MonsterComponent
+            component: &MonsterMaker.MonsterComponent
         ) {
             self.name = name
             self.description = description
@@ -31,9 +31,9 @@ const getMonstersScript = `
         }
     }
 
-    pub fun getMonsterById(address: Address, itemID: UInt64): Monster? {
+    access(all) fun getMonsterById(address: Address, itemID: UInt64): Monster? {
 
-        if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+        if let collection = getAccount(address).capabilities.get<&{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
             
             if let item = collection.borrowMonsterMaker(id: itemID) {
 
@@ -62,9 +62,9 @@ const getMonstersScript = `
         return nil
     }
 
-    pub fun main(address: Address): [Monster] {
+    access(all) fun main(address: Address): [Monster] {
         let account = getAccount(address)
-        let collectionRef = account.getCapability(MonsterMaker.CollectionPublicPath)!.borrow<&{NonFungibleToken.CollectionPublic}>()
+        let collectionRef = account.capabilities.get<&{NonFungibleToken.CollectionPublic}>(MonsterMaker.CollectionPublicPath)!.borrow()
             ?? panic("Could not borrow capability from public collection")
         
         let ids = collectionRef.getIDs()
